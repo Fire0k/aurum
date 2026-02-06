@@ -12,6 +12,7 @@
 
 ## Структура проекта
 
+```text
 /
 ├─ index.html        — HTML главной страницы (точка входа)
 ├─ script.ts         — основной скрипт лендинга (TypeScript, ESM)
@@ -29,7 +30,7 @@
 │  ├─ script.js      — основной JS
 │  └─ modules.js     — внешние библиотеки (GSAP, Swiper, lodash)
 └─ node_modules/
-
+```
 
 ---
 
