@@ -1,4 +1,3 @@
-import './style.less'
 import { debounce } from 'lodash-es'
 
 const onClick = debounce(() => {

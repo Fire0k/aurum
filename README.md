@@ -13,7 +13,7 @@
 ## Структура проекта
 
 /
-├─ index.html        — HTML лендинга  
+├─ index.html        — HTML  
 ├─ script.ts         — основной скрипт (TypeScript, ESM)  
 ├─ style.less        — стили лендинга  
 ├─ vite.config.ts    — конфигурация Vite  
@@ -21,6 +21,22 @@
 ├─ package.json  
 ├─ dist/             — результат сборки (генерируется)  
 └─ node_modules/  
+
+/
+├─ index.html
+├─ script.ts
+├─ style.less
+├─ ui-kit.less        ← ОБЩИЙ КОНТРАКТ
+├─ vite.config.ts.     
+├─ tsconfig.json.     
+├─ package.json
+├─ node_modules/ 
+└─ dist/              — результат сборки (генерируется) 
+   ├─ index.html
+   ├─ ui-kit.css
+   ├─ style.css
+   ├─ script.js
+   └─ modules.js
 
 ---
 
