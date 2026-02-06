@@ -13,19 +13,23 @@
 ## Структура проекта
 
 /
-├─ index.html
-├─ script.ts
-├─ style.less
-├─ ui-kit.less        ← ОБЩИЙ КОНТРАКТ
-├─ vite.config.ts
-├─ tsconfig.json
+├─ index.html        — HTML главной страницы (точка входа)
+├─ script.ts         — основной скрипт лендинга (TypeScript, ESM)
+├─ style.less        — стили конкретной страницы
+├─ ui-kit.less       — общий UI-kit (CSS-переменные, дизайн-токены)
+├─ vite.config.ts    — конфигурация Vite
+├─ tsconfig.json     — конфигурация TypeScript
 ├─ package.json
-└─ dist/
-   ├─ index.html
-   ├─ ui-kit.css
-   ├─ style.css
-   ├─ script.js
-   └─ modules.js
+├─ README.md
+├─ .gitignore
+├─ dist/             — production-сборка (генерируется)
+│  ├─ index.html
+│  ├─ ui-kit.css     — UI-kit, общий для всех страниц
+│  ├─ style.css      — стили текущей страницы
+│  ├─ script.js      — основной JS
+│  └─ modules.js     — внешние библиотеки (GSAP, Swiper, lodash)
+└─ node_modules/
+
 
 ---
 
