@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+
+    "strict": true,
+    "isolatedModules": true,
+    "noEmit": true,
+
+    "useDefineForClassFields": true,
+    "skipLibCheck": true
+  },
+  "include": [
+    "script.ts"
+  ]
+}
