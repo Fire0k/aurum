@@ -2,7 +2,7 @@
 
 Используется:
 - Vite
-- TypeScript (ESNext)
+- TypeScript
 - Less
 - ESM-импорты
 - Tree-shaking
