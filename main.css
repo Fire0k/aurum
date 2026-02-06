@@ -2,18 +2,18 @@ body {
   position: relative;
 }
 .main-page #first-section {
-  background-image: url('/first-screen.png');
+  background-image: url('./first-screen.png');
   height: 100vh;
 }
 .main-page #premium-class {
-  background-image: url('/second-screen.png');
+  background-image: url('./second-screen.png');
   height: 100vh;
 }
 .main-page #safety-and-comfort {
-  background-image: url('/third-screen.png');
+  background-image: url('./third-screen.png');
   height: 100vh;
 }
 .main-page #improvement {
-  background-image: url('/fourth-screen.png');
+  background-image: url('./fourth-screen.png');
   height: 100vh;
 }
