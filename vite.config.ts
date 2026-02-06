@@ -9,24 +9,17 @@ export default defineConfig({
     minify: 'esbuild',
 
     cssCodeSplit: true,
+    cssMinify: false,
 
     rollupOptions: {
       input: {
         main: 'index.html',
-        uiKit: 'ui-kit.less'
+        'ui-kit': 'ui-kit.less'
       },
       output: {
         entryFileNames: 'script.js',
         chunkFileNames: '[name].js',
-        assetFileNames: (assetInfo) => {
-          if (assetInfo.name === 'ui-kit.css') {
-            return 'ui-kit.css'
-          }
-          if (assetInfo.name === 'style.css') {
-            return 'style.css'
-          }
-          return '[name][extname]'
-        },
+        assetFileNames: '[name][extname]',
         manualChunks(id) {
           if (id.includes('node_modules')) {
             return 'modules'
@@ -34,5 +27,5 @@ export default defineConfig({
         }
       }
     }
-  }
+  },
 })

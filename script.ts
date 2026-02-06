@@ -1,3 +1,4 @@
+import 'normalize.css';
 import { debounce } from 'lodash-es'
 
 const onClick = debounce(() => {
