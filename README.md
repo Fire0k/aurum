@@ -16,12 +16,12 @@
 ├─ index.html
 ├─ script.ts
 ├─ style.less
-├─ ui-kit.less        ← ОБЩИЙ КОНТРАКТ
-├─ vite.config.ts.     
-├─ tsconfig.json.     
+├─ ui-kit.less
+├─ vite.config.ts     
+├─ tsconfig.json     
 ├─ package.json
 ├─ node_modules/ 
-└─ dist/              — результат сборки (генерируется) 
+└─ dist/
    ├─ index.html
    ├─ ui-kit.css
    ├─ style.css
