@@ -2,18 +2,30 @@ body {
   position: relative;
 }
 .main-page #first-section {
-  background-image: url('./first-screen.png');
+  background-image: url('./img/first-section.png');
   height: 100vh;
 }
 .main-page #premium-class {
-  background-image: url('./second-screen.png');
+  background-image: url('./img/premium-class-section.png');
   height: 100vh;
 }
 .main-page #safety-and-comfort {
-  background-image: url('./third-screen.png');
+  background-image: url('./img/safety-and-comfort-section.png');
   height: 100vh;
 }
 .main-page #improvement {
-  background-image: url('./fourth-screen.png');
+  background-image: url('./img/improvement-section.png');
+  height: 100vh;
+}
+.main-page #design-and-interior {
+  background-image: url('./img/design-and-interior-section.jpg');
+  height: 100vh;
+}
+.main-page #apartments {
+  background-image: url('./img/apartments-section.jpg');
+  height: 100vh;
+}
+.main-page #penthouses {
+  background-image: url('./img/penthouses-section.jpg');
   height: 100vh;
 }

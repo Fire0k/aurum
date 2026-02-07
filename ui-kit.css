@@ -5,13 +5,13 @@
 }
 @font-face {
   font-family: 'Gilroy';
-  src: url('./Gilroy-Light.woff2') format('woff2'), url('./Gilroy-Light.woff') format('woff');
+  src: url('./fonts/Gilroy-Light.woff2') format('woff2'), url('./fonts/Gilroy-Light.woff') format('woff');
   font-weight: 300;
   font-style: normal;
 }
 @font-face {
   font-family: 'Gilroy';
-  src: url('./Gilroy-Extrabold.woff2') format('woff2'), url('./Gilroy-Extrabold.woff') format('woff');
+  src: url('./fonts/Gilroy-Extrabold.woff2') format('woff2'), url('./fonts/Gilroy-Extrabold.woff') format('woff');
   font-weight: 800;
   font-style: normal;
 }
@@ -107,12 +107,12 @@ header .header-wrapper .info-block .phone {
   border-top-left-radius: var(--section-radius);
   border-top-right-radius: var(--section-radius);
 }
-.section-wrapper .section-title-wrapper {
+.section-wrapper .next-section-title-wrapper {
   width: 100%;
   height: 100vh;
   position: relative;
 }
-.section-wrapper .section-title-wrapper .section-title {
+.section-wrapper .next-section-title-wrapper .next-section-title {
   color: var(--color-text);
   position: absolute;
   top: 50%;
@@ -121,17 +121,17 @@ header .header-wrapper .info-block .phone {
   text-align: center;
   white-space: nowrap;
 }
-.section-wrapper .section-title-wrapper .section-title.bold-title {
+.section-wrapper .next-section-title-wrapper .next-section-title.bold-title {
   font-weight: 800;
 }
-.section-wrapper .section-title-wrapper .section-title.uppercase-title {
+.section-wrapper .next-section-title-wrapper .next-section-title.uppercase-title {
   font-size: 96px;
   text-transform: uppercase;
 }
-.section-wrapper .section-title-wrapper .section-title.standart-title {
+.section-wrapper .next-section-title-wrapper .next-section-title.standart-title {
   font-size: 54px;
 }
-.section-wrapper .section-title-wrapper .section-title.with-decorate::before {
+.section-wrapper .next-section-title-wrapper .next-section-title.with-decorate::before {
   content: '';
   position: absolute;
   width: 1px;
@@ -140,4 +140,25 @@ header .header-wrapper .info-block .phone {
   left: 50%;
   transform: translate(-50%, -100%);
   top: -35px;
+}
+#application-form {
+  width: 100%;
+  height: calc(100vh - 370px);
+  position: relative;
+  padding-top: 370px;
+}
+#application-form .form-inputs {
+  margin-bottom: 166px;
+}
+#application-form .form-inputs .inputs-title {
+  font-weight: 800;
+  font-size: 54px;
+  color: var(--color-text);
+}
+#application-form .phone-group .phone {
+  font-weight: 800;
+  font-size: 90px;
+  text-decoration: none;
+  color: var(--color-text);
+  display: block;
 }
