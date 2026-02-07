@@ -125,12 +125,12 @@ header {
     border-top-right-radius: var(--section-radius);
   }
 
-  .section-title-wrapper {
+  .next-section-title-wrapper {
     width: 100%;
     height: 100vh;
     position: relative;
 
-    .section-title {
+    .next-section-title {
       color: var(--color-text);
       position: absolute;
       top: 50%;
@@ -164,6 +164,33 @@ header {
           top: -35px;
         }
       }
+    }
+  }
+}
+
+#application-form {
+  width: 100%;
+  height: calc(100vh - 370px);
+  position: relative;
+  padding-top: 370px;
+
+  .form-inputs {
+    margin-bottom: 166px;
+    
+    .inputs-title {
+      font-weight: 800;
+      font-size: 54px;
+      color: var(--color-text);
+    }
+  }
+
+  .phone-group {
+    .phone {
+      font-weight: 800;
+      font-size: 90px;
+      text-decoration: none;
+      color: var(--color-text);
+      display: block;
     }
   }
 }
