@@ -141,6 +141,49 @@ header .header-wrapper .info-block .phone {
   transform: translate(-50%, -100%);
   top: -35px;
 }
+.button-circle {
+  width: 64px;
+  height: 64px;
+  line-height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.button-circle .button-content {
+  font-size: 24px;
+  width: 24px;
+  height: 24px;
+}
+.button-accent {
+  background-color: var(--accent-color);
+}
+.button-square {
+  font-size: 24px;
+  padding: 28px 86px;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: center;
+}
+.button-with-text {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.button-with-text .button-text {
+  font-size: 16px;
+  color: var(--color-text);
+}
+.text-input {
+  outline: none;
+  border: 1px solid #6E7378;
+  border-radius: 10px;
+  color: var(--color-text);
+  background: none;
+  padding: 33px 31px;
+}
 #application-form {
   width: 100%;
   height: calc(100vh - 370px);
@@ -154,11 +197,57 @@ header .header-wrapper .info-block .phone {
   font-weight: 800;
   font-size: 54px;
   color: var(--color-text);
+  margin-bottom: 70px;
+}
+#application-form .form-inputs .inputs-group {
+  display: flex;
+  align-items: center;
+  gap: 21px;
+}
+#application-form .form-inputs .inputs-group .application-input {
+  width: 505px;
+}
+#application-form .form-inputs .inputs-group .application-submit-button {
+  width: 375px;
+}
+#application-form .phone-group {
+  display: flex;
+  align-items: center;
 }
 #application-form .phone-group .phone {
   font-weight: 800;
   font-size: 90px;
+  line-height: 90px;
   text-decoration: none;
   color: var(--color-text);
   display: block;
+  margin-right: 26px;
+  height: 75px;
+}
+#application-form .phone-group .callback-link {
+  margin-right: 56px;
+}
+#application-form .phone-group .map-preview {
+  border-radius: 50%;
+  cursor: pointer;
+  margin-right: 17px;
+  height: 64px;
+}
+footer .footer-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--color-text);
+  padding-top: 40px;
+  padding-bottom: 40px;
+  border-top: 1px solid var(--accent-color);
+  position: relative;
+  font-size: 16px;
+}
+footer .footer-wrapper .legal-entity {
+  text-transform: uppercase;
+}
+footer .footer-wrapper .privacy-policy {
+  display: block;
+  color: var(--color-text);
 }
