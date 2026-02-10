@@ -1,4 +1,4 @@
 import 'normalize.css';
 
 
-history.scrollRestoration = "manual";
+history.scrollRestoration = "auto";
