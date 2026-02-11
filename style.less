@@ -1,38 +1,63 @@
 body {
-  position: relative;
+    position: relative;
 }
 
 .main-page {
-  #first-section {
-    background-image: url('/img/first-section.png');
     height: 100vh;
-  }
+    overflow-y: auto;
 
-  #premium-class {
-    background-image: url('/img/premium-class-section.png');
-    height: 100vh;
-  }
+    #first-section {
+        background-image: url("/img/first-section.png");
+        height: 100vh;
 
-  #safety-and-comfort {
-    background-image: url('/img/safety-and-comfort-section.png');
-    height: 100vh;
-  }
+        .next-section-title {
+            transform: translate(-50%, -50%) !important;
+        }
+    }
 
-  #improvement {
-    background-image: url('/img/improvement-section.png');
-    height: 100vh;
-  }
+    #premium-class {
+        height: 100vh;
 
-  #design-and-interior {
-    background-image: url('/img/design-and-interior-section.jpg');
-    height: 100vh;
-  }
-  #apartments {
-    background-image: url('/img/apartments-section.jpg');
-    height: 100vh;
-  }
-  #penthouses {
-    background-image: url('/img/penthouses-section.jpg');
-    height: 100vh;
-  }
+        .section-background {
+            background-image: url("/img/premium-class-section.png");
+        }
+    }
+
+    #safety-and-comfort {
+        height: 100vh;
+
+        .section-background {
+            background-image: url("/img/safety-and-comfort-section.png");
+        }
+    }
+
+    #improvement {
+        height: 100vh;
+
+        .section-background {
+            background-image: url("/img/improvement-section.png");
+        }
+    }
+
+    #design-and-interior {
+        height: 100vh;
+
+        .section-background {
+            background-image: url("/img/design-and-interior-section.jpg");
+        }
+    }
+    #apartments {
+        height: 100vh;
+
+        .section-background {
+            background-image: url("/img/apartments-section.jpg");
+        }
+    }
+    #penthouses {
+        height: 100vh;
+
+        .section-background {
+            background-image: url("/img/penthouses-section.jpg");
+        }
+    }
 }
