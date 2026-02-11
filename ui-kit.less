@@ -38,10 +38,10 @@ body {
     top: 0;
     left: 0;
     background-color: #333333;
-	transition-property: opacity;
-	transition-duration: 1s;
-	transition-timing-function: ease-in-out;
-	opacity: 0;
+    transition-property: opacity;
+    transition-duration: 1s;
+    transition-timing-function: ease-in-out;
+    opacity: 0;
 }
 
 header {
@@ -120,11 +120,11 @@ header {
 
 .section-wrapper {
     position: sticky;
-	position: -webkit-sticky;
+    position: -webkit-sticky;
     top: 0;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 
     .section-background {
         height: 100%;
@@ -139,10 +139,10 @@ header {
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
-		will-change: transform;
-		transition-property: transform;
-		transition-duration: 1s;
-		transition-timing-function: ease-in-out;
+        will-change: transform;
+        transition-property: transform;
+        transition-duration: 1s;
+        transition-timing-function: ease-in-out;
     }
 
     .next-section-title-wrapper {
@@ -187,17 +187,17 @@ header {
         }
     }
 
-	&.show {
-		.section-background {
-			transform: translateX(-50%) scale(1.2);
-		}
-	}
+    &.show {
+        .section-background {
+            transform: translateX(-50%) scale(1.2);
+        }
+    }
 
-	&.with-filter {
-		.filter {
-			opacity: .8;
-		}
-	}
+    &.with-filter {
+        .filter {
+            opacity: 0.8;
+        }
+    }
 }
 
 .button-circle {
