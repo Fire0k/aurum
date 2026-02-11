@@ -1,31 +1,50 @@
 body {
   position: relative;
 }
-.main-page #first-section {
-  background-image: url('./img/first-section.png');
+.main-page {
   height: 100vh;
+  overflow-y: auto;
+}
+.main-page #first-section {
+  background-image: url("./img/first-section.png");
+  height: 100vh;
+}
+.main-page #first-section .next-section-title {
+  transform: translate(-50%, -50%) !important;
 }
 .main-page #premium-class {
-  background-image: url('./img/premium-class-section.png');
   height: 100vh;
+}
+.main-page #premium-class .section-background {
+  background-image: url("./img/premium-class-section.png");
 }
 .main-page #safety-and-comfort {
-  background-image: url('./img/safety-and-comfort-section.png');
   height: 100vh;
+}
+.main-page #safety-and-comfort .section-background {
+  background-image: url("./img/safety-and-comfort-section.png");
 }
 .main-page #improvement {
-  background-image: url('./img/improvement-section.png');
   height: 100vh;
+}
+.main-page #improvement .section-background {
+  background-image: url("./img/improvement-section.png");
 }
 .main-page #design-and-interior {
-  background-image: url('./img/design-and-interior-section.jpg');
   height: 100vh;
+}
+.main-page #design-and-interior .section-background {
+  background-image: url("./img/design-and-interior-section.jpg");
 }
 .main-page #apartments {
-  background-image: url('./img/apartments-section.jpg');
   height: 100vh;
 }
+.main-page #apartments .section-background {
+  background-image: url("./img/apartments-section.jpg");
+}
 .main-page #penthouses {
-  background-image: url('./img/penthouses-section.jpg');
   height: 100vh;
+}
+.main-page #penthouses .section-background {
+  background-image: url("./img/penthouses-section.jpg");
 }

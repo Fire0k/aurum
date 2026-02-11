@@ -1,22 +1,22 @@
 :root {
   --color-text: #ffffff;
-  --accent-color: #FAC56A;
+  --accent-color: #fac56a;
   --section-radius: 60px;
 }
 @font-face {
-  font-family: 'Gilroy';
-  src: url('./fonts/Gilroy-Light.woff2') format('woff2'), url('./fonts/Gilroy-Light.woff') format('woff');
+  font-family: "Gilroy";
+  src: url("./fonts/Gilroy-Light.woff2") format("woff2"), url("./fonts/Gilroy-Light.woff") format("woff");
   font-weight: 300;
   font-style: normal;
 }
 @font-face {
-  font-family: 'Gilroy';
-  src: url('./fonts/Gilroy-Extrabold.woff2') format('woff2'), url('./fonts/Gilroy-Extrabold.woff') format('woff');
+  font-family: "Gilroy";
+  src: url("./fonts/Gilroy-Extrabold.woff2") format("woff2"), url("./fonts/Gilroy-Extrabold.woff") format("woff");
   font-weight: 800;
   font-style: normal;
 }
 body {
-  font-family: 'Gilroy', system-ui, sans-serif;
+  font-family: "Gilroy", system-ui, sans-serif;
   font-weight: 300;
   font-style: normal;
 }
@@ -29,7 +29,11 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  background-color: #333333F2;
+  background-color: #333333;
+  transition-property: opacity;
+  transition-duration: 1s;
+  transition-timing-function: ease-in-out;
+  opacity: 0;
 }
 header {
   width: 100%;
@@ -79,7 +83,7 @@ header .header-wrapper .info-block .link {
   margin-right: 115px;
 }
 header .header-wrapper .info-block .link::after {
-  content: '';
+  content: "";
   position: absolute;
   height: 1px;
   width: 100%;
@@ -92,24 +96,38 @@ header .header-wrapper .info-block .phone {
   font-size: 24px;
   line-height: 100%;
   text-align: center;
-  color: #FFFFFF;
+  color: #ffffff;
   text-decoration: none;
 }
 .section-wrapper {
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  position: sticky;
-  top: 0;
-  overflow: hidden;
 }
-.section-wrapper:not(:first-of-type) {
+.section-wrapper .section-background {
+  height: 100%;
+  width: 90%;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
   border-top-left-radius: var(--section-radius);
   border-top-right-radius: var(--section-radius);
+  overflow: hidden;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  will-change: transform;
+  transition-property: transform;
+  transition-duration: 1s;
+  transition-timing-function: ease-in-out;
 }
 .section-wrapper .next-section-title-wrapper {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   position: relative;
 }
 .section-wrapper .next-section-title-wrapper .next-section-title {
@@ -132,7 +150,7 @@ header .header-wrapper .info-block .phone {
   font-size: 54px;
 }
 .section-wrapper .next-section-title-wrapper .next-section-title.with-decorate::before {
-  content: '';
+  content: "";
   position: absolute;
   width: 1px;
   height: 150px;
@@ -140,6 +158,12 @@ header .header-wrapper .info-block .phone {
   left: 50%;
   transform: translate(-50%, -100%);
   top: -35px;
+}
+.section-wrapper.show .section-background {
+  transform: translateX(-50%) scale(1.2);
+}
+.section-wrapper.with-filter .filter {
+  opacity: 0.8;
 }
 .button-circle {
   width: 64px;
@@ -178,7 +202,7 @@ header .header-wrapper .info-block .phone {
 }
 .text-input {
   outline: none;
-  border: 1px solid #6E7378;
+  border: 1px solid #6e7378;
   border-radius: 10px;
   color: var(--color-text);
   background: none;
