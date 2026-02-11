@@ -1,54 +1,91 @@
-import 'normalize.css';
-
+import "normalize.css";
 
 import gsap from "gsap";
 import Observer from "gsap/dist/Observer";
 import ScrollToPlugin from "gsap/ScrollToPlugin";
+import ScrollTrigger from "gsap/ScrollTrigger";
 
 history.scrollRestoration = "manual";
 
-gsap.registerPlugin(Observer, ScrollToPlugin)
+gsap.registerPlugin(Observer, ScrollToPlugin, ScrollTrigger);
 
-let sections = Array.from(document.querySelectorAll(".section-wrapper")).map(section => section.getBoundingClientRect().top);
-let currentIndex = 0
-let isAnimating = false
+let sections = Array.from(document.querySelectorAll(".animate-show-block"));
+let sectionsTops = sections.map(
+    (section) => section.getBoundingClientRect().top,
+);
+let currentIndex = 0;
+let isAnimating = false;
 
-function goToSection(index: number) {
-  if (isAnimating) return;
+// const exampleSection = document.getElementById('premium-class');
+// const exampleSectionInner = exampleSection?.querySelector('.section-background');
+// const showTween = gsap.to(exampleSectionInner!, {
+// 	scale: 1.2,
+// 	duration: 1,
+// 	ease: "power1.inOut",
+// });
+// showTween.pause();
 
-  if (index < 0 || index >= sections.length) return
+function goToSection(index: number, direction: 'up' | 'down') {
+    if (isAnimating) return;
 
-  currentIndex = index;
+    if (index < 0 || index >= sections.length) return;
 
-  isAnimating = true
+    currentIndex = index;
 
-  gsap.to(window, {
-    scrollTo: {
-      y: sections[index],
-    },
-    duration: 1.5,
-    ease: "power3.inOut",
-    onComplete: () => {
-      console.log('complete')
-      isAnimating = false
-    }
-  })
+    isAnimating = true;
+
+    gsap.to(window, {
+        scrollTo: {
+            y: sectionsTops[index],
+        },
+        duration: 1,
+        ease: "power1.inOut",
+        onComplete: () => {
+            setTimeout(() => isAnimating = false, 500);
+        },
+    });
+
+	if (direction === 'down') {
+		sections[index + 1].classList.remove('show');
+	} 
+	if (direction === 'up') {
+		sections[index].classList.add('show');
+	}
 }
 
 Observer.create({
-  type: "wheel,touch,pointer",
-  wheelSpeed: -1,
-  target: window,
-  tolerance: 10,
-  preventDefault: true,
+    type: "wheel,touch,pointer",
+    wheelSpeed: -1,
+    target: window,
+    tolerance: 10,
+    preventDefault: true,
 
-  onDown() {
-    console.log('down')
-    goToSection(currentIndex - 1)
-  },
+    onDown() {
+        goToSection(currentIndex - 1, 'down');
+    },
 
-  onUp() {
-    console.log('up')
-    goToSection(currentIndex + 1)
-  },
-})
+    onUp() {
+        goToSection(currentIndex + 1, 'up');
+    },
+});
+
+// const exampleTrigger = ScrollTrigger.create({
+// 	trigger: exampleSection,
+// 	start: 'top bottom',
+// 	onEnter: () => console.log('enter trigger'),
+// 	onUpdate: (event) => {
+// 		if (isAnimating2) return;
+
+// 		if (event.direction === 1) {
+// 			showTween.restart();
+// 		};
+
+// 		if (event.direction === -1) {
+// 			showTween.reverse(0)
+// 		};
+
+// 		isAnimating2 = true;
+// 	},
+// 	onLeave: () => console.log('leave trigger'),
+// });
+
