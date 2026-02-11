@@ -8,48 +8,70 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 history.scrollRestoration = "manual";
 
 gsap.registerPlugin(Observer, ScrollToPlugin, ScrollTrigger);
+gsap.config({
+  force3D: true
+});
 
-let sections = Array.from(document.querySelectorAll(".animate-show-block"));
-let sectionsTops = sections.map(
-    (section) => section.getBoundingClientRect().top,
-);
+const sectionsContainer = document.querySelector('.main-page');
+let sections = Array.from(sectionsContainer!.querySelectorAll(".animate-show-block"));
+let stepsTops: { top: number; element?: Element }[] = sections.flatMap((el) => {
+	const top = el.getBoundingClientRect().top;
+
+	return [
+		{ top, element: el },
+		{ top: top + 100 }
+	]
+})
+
 let currentIndex = 0;
-let isAnimating = false;
 
-// const exampleSection = document.getElementById('premium-class');
-// const exampleSectionInner = exampleSection?.querySelector('.section-background');
-// const showTween = gsap.to(exampleSectionInner!, {
-// 	scale: 1.2,
-// 	duration: 1,
-// 	ease: "power1.inOut",
-// });
-// showTween.pause();
+let isAnimating = false;
 
 function goToSection(index: number, direction: 'up' | 'down') {
     if (isAnimating) return;
 
-    if (index < 0 || index >= sections.length) return;
+    if (index < 0 || index >= stepsTops.length) return;
 
     currentIndex = index;
 
     isAnimating = true;
 
-    gsap.to(window, {
+	const el = stepsTops[index].element;
+	let duration: number = 1;
+	if (direction === 'up') {
+		duration = stepsTops[index].element ? 1 : 1;
+	}
+	if (direction === 'down') {
+		duration = stepsTops[index + 1].element ? 1 : 1;
+	}
+
+    gsap.to(sectionsContainer, {
         scrollTo: {
-            y: sectionsTops[index],
+            y: stepsTops[index].top,
         },
-        duration: 1,
+        duration,
         ease: "power1.inOut",
         onComplete: () => {
-            setTimeout(() => isAnimating = false, 500);
+            setTimeout(() => isAnimating = false, 900);
         },
     });
 
 	if (direction === 'down') {
-		sections[index + 1].classList.remove('show');
+		const prevEl = stepsTops[index + 1].element;
+		if (prevEl) {
+			prevEl.classList.remove('show');
+		};
+		if (el) {
+			el.classList.remove('with-filter')
+		}
 	} 
 	if (direction === 'up') {
-		sections[index].classList.add('show');
+		if (el) {
+			el.classList.add('show');
+		} else {
+			const prevEl = stepsTops[index - 1].element;
+			prevEl?.classList.add('with-filter')
+		}
 	}
 }
 
@@ -68,24 +90,4 @@ Observer.create({
         goToSection(currentIndex + 1, 'up');
     },
 });
-
-// const exampleTrigger = ScrollTrigger.create({
-// 	trigger: exampleSection,
-// 	start: 'top bottom',
-// 	onEnter: () => console.log('enter trigger'),
-// 	onUpdate: (event) => {
-// 		if (isAnimating2) return;
-
-// 		if (event.direction === 1) {
-// 			showTween.restart();
-// 		};
-
-// 		if (event.direction === -1) {
-// 			showTween.reverse(0)
-// 		};
-
-// 		isAnimating2 = true;
-// 	},
-// 	onLeave: () => console.log('leave trigger'),
-// });
 

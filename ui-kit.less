@@ -37,7 +37,11 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    background-color: #333333f2;
+    background-color: #333333;
+	transition-property: opacity;
+	transition-duration: 1s;
+	transition-timing-function: ease-in-out;
+	opacity: 0;
 }
 
 header {
@@ -115,17 +119,15 @@ header {
 }
 
 .section-wrapper {
-	// position: relative;
     position: sticky;
 	position: -webkit-sticky;
     top: 0;
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
-	// overflow-x: clip;
 
     .section-background {
-        height: 110%;
+        height: 100%;
         width: 90%;
         position: absolute;
         bottom: 0;
@@ -188,6 +190,12 @@ header {
 	&.show {
 		.section-background {
 			transform: translateX(-50%) scale(1.2);
+		}
+	}
+
+	&.with-filter {
+		.filter {
+			opacity: .8;
 		}
 	}
 }
