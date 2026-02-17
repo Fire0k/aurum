@@ -1,135 +1,72 @@
 import gsap from "gsap";
 
 import { createPageObserver } from "./create-page-observer";
-import { createSectionState } from './create-section-state';
-import { StateStep } from '../types';
+import { createFirstScreenState } from '../sections-states/create-first-screen-state';
+import { createPremiumClassState } from '../sections-states/create-premium-class-state';
+import { getSectionsTools } from '../sections-states/get-sections-tools';
+import { SectionTools } from "../types";
 
 
 export function createPageState() {
-    const sectionsContainer = document.querySelector(".main-page");
-    if (!sectionsContainer) return;
+    const sectionsTools = getSectionsTools() as SectionTools[];
+    if (!sectionsTools) return;
+    
+    sectionsTools[0].controller.increaseStep();
 
-    let currentIndex = 0;
+    let currentSection = sectionsTools[0];
+    let currentSectionIndex = 0;
+    let currentSectionStepIndex = 0;
 
     let isAnimating = false;
 
-    const firstScreenSection = sectionsContainer.querySelector('#first-section');
-    if (!firstScreenSection) return;
-
-    const firstScreenSectionTop = firstScreenSection.getBoundingClientRect().top;
-    const firstScreenSteps: StateStep[] = [
-        {
-            onReachStep: () => {
-                gsap.to(sectionsContainer, {
-                    scrollTo: {
-                        y: firstScreenSectionTop,
-                    },
-                    duration: 1,
-                    ease: "power1.inOut",
-                });
-            }
-        },
-        {
-            onReachStep: () => {
-                gsap.to(sectionsContainer, {
-                    scrollTo: {
-                        y: firstScreenSectionTop + 100,
-                    },
-                    duration: 1,
-                    ease: "power1.inOut",
-                });
-
-                firstScreenSection.classList.add('with-filter')
-            },
-            beforePreviousStep: () => {
-                firstScreenSection.classList.remove('with-filter')
-            }
-        },
-    ];
-    const firstScreenController = createSectionState(firstScreenSteps);
-
-    const premiumClassSection = sectionsContainer.querySelector('#premium-class');
-    if (!premiumClassSection) return;
-
-    const premiumClassSectionTop = premiumClassSection.getBoundingClientRect().top;
-    const premiumClassSteps: StateStep[] = [
-        {
-            onReachStep: () => {
-                gsap.to(sectionsContainer, {
-                    scrollTo: {
-                        y: premiumClassSectionTop,
-                    },
-                    duration: 1,
-                    ease: "power1.inOut",
-                });
-
-                premiumClassSection.classList.add('show');
-            },
-            beforePreviousStep: () => {
-                premiumClassSection.classList.remove('show');
-            }
-        },
-        {
-            onReachStep: () => {
-                gsap.to(sectionsContainer, {
-                    scrollTo: {
-                        y: premiumClassSectionTop + 100,
-                    },
-                    duration: 1,
-                    ease: "power1.inOut",
-                });
-
-                premiumClassSection.classList.add('with-filter')
-            },
-            beforePreviousStep: () => {
-                premiumClassSection.classList.remove('with-filter')
-            }
-        },
-    ];
-    const premiumClassController = createSectionState(premiumClassSteps);
-
     function increaseStep() {
         if (isAnimating) return;
+
+        const isInEnd = currentSectionIndex === sectionsTools.length - 1 && currentSectionStepIndex === currentSection.maxStepIndex;
+        if (isInEnd) return;
+
         isAnimating = true;
 
-        currentIndex++;
-        console.log('incr', currentIndex)
+        currentSection.controller.increaseStep();
+        console.log('inc', currentSection, currentSectionIndex, currentSectionStepIndex);
 
-        if (currentIndex === 1 || currentIndex === 0) {
-            firstScreenController.increaseStep()
+        if (currentSectionStepIndex === currentSection.maxStepIndex) {
+            currentSectionIndex++;
+            currentSection = sectionsTools[currentSectionIndex];
+
+            currentSectionStepIndex = 0;
+
+            currentSection.controller.increaseStep();
         } else {
-            firstScreenController.increaseStep()
-            premiumClassController.increaseStep()
+            currentSectionStepIndex++;
         }
 
         setTimeout(() => (isAnimating = false), 1500);
     }
     function decreaseStep() {
         if (isAnimating) return;
+
+        const isInStart = currentSectionIndex === 0 && currentSectionStepIndex === 0;
+        if (isInStart) return;
+
         isAnimating = true;
 
-        if (currentIndex === 0) {
-            setTimeout(() => (isAnimating = false), 1500);
-            return
-        };
-        currentIndex--;
-        console.log('decr', currentIndex)
+        currentSection.controller.decreaseStep();
+        console.log('dec', currentSection, currentSectionIndex, currentSectionStepIndex);
 
-        if (currentIndex === 3) {
-            premiumClassController.decreaseStep()
-        } else if (currentIndex === 2) {
-            premiumClassController.decreaseStep()
-        } else if (currentIndex === 1) {
-            premiumClassController.decreaseStep()
-            firstScreenController.decreaseStep()
+        if (currentSectionStepIndex === 0) {
+            currentSectionIndex--;
+            currentSection = sectionsTools[currentSectionIndex];
+
+            currentSectionStepIndex = currentSection.maxStepIndex;
+
+            currentSection.controller.decreaseStep()
         } else {
-            firstScreenController.decreaseStep()
+            currentSectionStepIndex--;
         }
 
         setTimeout(() => (isAnimating = false), 1500);
     }
-
-    firstScreenController.increaseStep()
 
     createPageObserver(
         () => decreaseStep(),

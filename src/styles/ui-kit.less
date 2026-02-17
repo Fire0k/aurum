@@ -21,14 +21,21 @@
     font-style: normal;
 }
 
+* { 
+    box-sizing: border-box; 
+}
+
 body {
     font-family: "Gilroy", system-ui, sans-serif;
     font-weight: 300;
     font-style: normal;
+    box-sizing: border-box;
 }
 
 .container {
-    padding: 0 80px;
+    padding-left: 80px;
+    padding-right: 80px;
+    width: 100%;
 }
 
 .filter {
@@ -157,7 +164,7 @@ header {
             left: 50%;
             transform: translate(-50%, -50%);
             text-align: center;
-            white-space: nowrap;
+            // white-space: nowrap;
 
             &.bold-title {
                 font-weight: 800;
@@ -310,6 +317,11 @@ header {
 }
 
 footer {
+    position: fixed;
+    bottom: 0;
+    z-index: 999;
+    opacity: 0;
+
     .footer-wrapper {
         display: flex;
         align-items: center;

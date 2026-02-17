@@ -2,35 +2,58 @@ import { StateStep } from "../types";
 
 
 export function createSectionState(steps: StateStep[]) {
-    let currentStepIndex: number = -1;
+    let currentStepIndex: number = 0;
+    let inFuture = true;
+    let inPast = false;
 
     function increaseStep() {
-        const currentStep = steps[currentStepIndex];
-        currentStep?.beforeNextStep?.();
+        if (inFuture) {
+            inFuture = false;
 
-        if (currentStepIndex === steps.length) return;
+            const newStep = steps[0];
+            newStep?.onReachStep?.();
 
-        currentStepIndex++;
-        const newStep = steps[currentStepIndex];
-        newStep?.onReachStep?.();
+            return;
+        } else {
+            const currentStep = steps[currentStepIndex];
+            currentStep?.beforeNextStep?.();
+
+            if (currentStepIndex === steps.length - 1) {
+                inPast = true;
+                return
+            };
+
+            currentStepIndex++;
+
+            const newStep = steps[currentStepIndex];
+            newStep?.onReachStep?.();
+        }
     }
 
     function decreaseStep() {
-        const currentStep = steps[currentStepIndex];
-        currentStep?.beforePreviousStep?.();
+        if (inPast) {
+            inPast = false;
 
-        if (currentStepIndex === -1) {
+            const newStep = steps.at(-1);
+            newStep?.onReachStep?.();
+
             return;
-        };
+        } else {
+            const currentStep = steps[currentStepIndex];
+            currentStep?.beforePreviousStep?.();
 
-        currentStepIndex--;
-        const newStep = steps[currentStepIndex];
-        newStep?.onReachStep?.();
+            if (currentStepIndex === 0) {
+                inFuture = true;
+                return
+            };
+
+            currentStepIndex--;
+            const newStep = steps[currentStepIndex];
+            newStep?.onReachStep?.();
+        }
     }
 
     return {
-        currentStepIndex,
-
         increaseStep,
         decreaseStep,
     }
