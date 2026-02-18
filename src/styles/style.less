@@ -20,10 +20,10 @@ header {
 
     @keyframes background-animate {
         0% {
-            background-size: 300% auto;
+            transform: scale(3);;
         }
         100% {
-            background-size: 200% auto;
+            transform: scale(2);
         }
     }
     @keyframes slogan-animate {
@@ -35,12 +35,18 @@ header {
         }
     }
     #first-section {
-        background-image: url("/src/img/first-section.png");
-        background-position: top;
-        background-size: 300% auto;
         height: 100vh;
-        will-change: background-size;
-        animation: background-animate 2s linear 1s forwards;
+
+        .section-background {
+            background-image: url("/src/img/first-section.png");
+            width: 100%;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+            // transform: scale(3);
+            // left: 0;
+            transform-origin: center top;
+            // animation: background-animate 2s linear 1s forwards;
+        }
 
         .mask {
             position: absolute;
@@ -71,6 +77,7 @@ header {
             position: absolute;
             top: 0;
             left: 0;
+            z-index: 1;
             font-size: 250px;
             font-weight: 800;
             color: var(--color-text);
