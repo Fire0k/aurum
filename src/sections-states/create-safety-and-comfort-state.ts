@@ -9,34 +9,45 @@ export function createSafetyAndComfortState(
     tl: gsap.core.Timeline,
     startStep: number,
 ): SectionTools {
-    let currentStep: number = 0;
-    const maxStep: number = 2;
+    const maxStep: number = startStep + 2;
 
     const sectionTop = sectionElement.getBoundingClientRect().top;
 
     const backgroundElement = sectionElement.querySelector('.section-background');
+    const filterElement = backgroundElement?.querySelector('.filter') ?? null;
 
-    tl.addLabel("step0");
+    tl.to(backgroundElement, {
+        duration: 1.5,
+        ease: "none",
+        scale: 0.9,
+    }, "<")
+
+    tl.addLabel(`${startStep + 1}`);
 
     tl.to(sectionsContainer, {
         scrollTo: { y: sectionTop },
-        duration: 1,
-        ease: "power1.inOut",
+        duration: 2,
+        ease: "power1.in",
     }).to(backgroundElement, {
-        duration: 1,
+        duration: 2,
         scale: 1.2,
-        ease: "power1.inOut",
+        ease: "power1.in",
     }, "<");
 
-    tl.addLabel("step1");
+    tl.addLabel(`${startStep + 2}`);
 
+    // tl.to(filterElement, {
+    //     duration: 1.5,
+    //     ease: "none",
+    //     opacity: 0.7,
+    // })
     tl.to(sectionsContainer, {
-        scrollTo: { y: sectionTop + 100 },
-        duration: 1,
-        ease: "power1.inOut",
+        duration: 1.5,
+        ease: "none",
+        scrollTo: {
+            y: sectionTop + 200,
+        },
     });
-
-    tl.addLabel("step2");
 
     return {
         maxStep,

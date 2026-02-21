@@ -24,7 +24,7 @@ export function createFirstScreenState(
         delay: 1,
         ease: 'none',
         scale: 2,
-    })
+    }).set(nextSectionTitleElement, { yPercent: 50 })
     tl.tweenTo('"0"');
 
     tl.addLabel('0');
@@ -58,7 +58,7 @@ export function createFirstScreenState(
         duration: 1.5,
         ease: 'none',
         opacity: 1,
-    }, "<").fromTo(nextSectionTitleElement, { yPercent: 100 }, {
+    }, "<").to(nextSectionTitleElement, {
         duration: 1.5,
         ease: 'none',
         opacity: 1,
@@ -67,7 +67,7 @@ export function createFirstScreenState(
         duration: 1.5,
         ease: "none",
         scrollTo: {
-            y: sectionTop + 300,
+            y: sectionTop + 200,
         },
     }, "<")
 
