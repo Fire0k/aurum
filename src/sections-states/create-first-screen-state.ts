@@ -21,7 +21,7 @@ export function createFirstScreenState(
 
     tl.to(backgroundElement, {
         duration: 1.5,
-        delay: 0.2,
+        delay: 1,
         ease: 'none',
         scale: 2,
     })
