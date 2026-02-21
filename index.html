@@ -15,11 +15,18 @@
     </head>
 
     <body>
+        <div class="filter"></div>
+
         <header>
+			<div class="gradient"></div>
             <div class="container header-wrapper">
                 <div class="logo-small">
-                    <img src="data:image/svg+xml,%3csvg%20width='167'%20height='44'%20viewBox='0%200%20167%2044'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M46.7232%200.175526L53.9764%200.206839L53.8185%2036.7867C53.804%2040.1342%2051.1106%2042.8007%2047.7583%2042.7863L35.9947%2042.7355L36.026%2035.4925L46.5705%2035.5381L46.5832%2032.6165L42.0728%2032.5971C38.7205%2032.5826%2036.0502%2029.893%2036.0646%2026.5454L36.1787%200.130004L43.4319%200.161317L43.3231%2025.3594L46.6144%2025.3736L46.7232%200.175526Z'%20fill='white'/%3e%3cpath%20d='M83.9373%200.336183C87.2896%200.350655%2089.9596%203.10116%2089.9452%206.44873L89.8495%2028.6036C89.8351%2031.9511%2087.1417%2034.6176%2083.7893%2034.6031L79.279%2034.5837L79.243%2042.9222L71.9898%2042.8909L72.1737%200.285399L83.9373%200.336183ZM82.6016%2027.355L82.6867%207.63471L79.3954%207.62051L79.3102%2027.3408L82.6016%2027.355Z'%20fill='white'/%3e%3cpath%20d='M118.713%200.486315L125.966%200.517628L125.809%2037.0975C125.794%2040.445%20123.101%2043.1115%20119.748%2043.097L107.985%2043.0463L108.016%2035.8033L118.561%2035.8489L118.573%2032.9273L114.063%2032.9079C110.711%2032.8934%20108.04%2030.2038%20108.055%2026.8562L108.169%200.440793L115.422%200.472106L115.313%2025.6702L118.605%2025.6844L118.713%200.486315Z'%20fill='white'/%3e%3cpath%20d='M159.463%200.662234L166.045%200.690652L165.861%2043.2961L158.608%2043.2648L158.698%2022.449L154.908%2039.0491L151.323%2022.4172L151.233%2043.233L143.98%2043.2017L144.164%200.596188L150.686%200.624343L154.988%2020.4853L159.463%200.662234Z'%20fill='white'/%3e%3cpath%20d='M0.157318%206.06111C0.17177%202.71353%202.86544%20-0.0138128%206.21775%200.000659496L12.0995%200.0260518C16.5795%200.0453921%2017.9695%202.79037%2017.955%206.13794L17.7974%2042.6569L10.5442%2042.6256L10.5802%2034.2871L7.28884%2034.2729L7.25284%2042.6114L-0.000338713%2042.5801L0.157318%206.06111ZM7.32011%2027.03L10.6115%2027.0442L10.6966%207.32393L3.67354%207.29361L7.3946%209.77475L7.32011%2027.03Z'%20fill='white'/%3e%3c/svg%3e" alt="Аурум" class="logo" />
-                    <div class="slogan">Твой<br />стиль<br />жизни</div>
+                    <img
+                        src="data:image/svg+xml,%3csvg%20width='167'%20height='44'%20viewBox='0%200%20167%2044'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M46.7232%200.175526L53.9764%200.206839L53.8185%2036.7867C53.804%2040.1342%2051.1106%2042.8007%2047.7583%2042.7863L35.9947%2042.7355L36.026%2035.4925L46.5705%2035.5381L46.5832%2032.6165L42.0728%2032.5971C38.7205%2032.5826%2036.0502%2029.893%2036.0646%2026.5454L36.1787%200.130004L43.4319%200.161317L43.3231%2025.3594L46.6144%2025.3736L46.7232%200.175526Z'%20fill='white'/%3e%3cpath%20d='M83.9373%200.336183C87.2896%200.350655%2089.9596%203.10116%2089.9452%206.44873L89.8495%2028.6036C89.8351%2031.9511%2087.1417%2034.6176%2083.7893%2034.6031L79.279%2034.5837L79.243%2042.9222L71.9898%2042.8909L72.1737%200.285399L83.9373%200.336183ZM82.6016%2027.355L82.6867%207.63471L79.3954%207.62051L79.3102%2027.3408L82.6016%2027.355Z'%20fill='white'/%3e%3cpath%20d='M118.713%200.486315L125.966%200.517628L125.809%2037.0975C125.794%2040.445%20123.101%2043.1115%20119.748%2043.097L107.985%2043.0463L108.016%2035.8033L118.561%2035.8489L118.573%2032.9273L114.063%2032.9079C110.711%2032.8934%20108.04%2030.2038%20108.055%2026.8562L108.169%200.440793L115.422%200.472106L115.313%2025.6702L118.605%2025.6844L118.713%200.486315Z'%20fill='white'/%3e%3cpath%20d='M159.463%200.662234L166.045%200.690652L165.861%2043.2961L158.608%2043.2648L158.698%2022.449L154.908%2039.0491L151.323%2022.4172L151.233%2043.233L143.98%2043.2017L144.164%200.596188L150.686%200.624343L154.988%2020.4853L159.463%200.662234Z'%20fill='white'/%3e%3cpath%20d='M0.157318%206.06111C0.17177%202.71353%202.86544%20-0.0138128%206.21775%200.000659496L12.0995%200.0260518C16.5795%200.0453921%2017.9695%202.79037%2017.955%206.13794L17.7974%2042.6569L10.5442%2042.6256L10.5802%2034.2871L7.28884%2034.2729L7.25284%2042.6114L-0.000338713%2042.5801L0.157318%206.06111ZM7.32011%2027.03L10.6115%2027.0442L10.6966%207.32393L3.67354%207.29361L7.3946%209.77475L7.32011%2027.03Z'%20fill='white'/%3e%3c/svg%3e"
+                        alt="Аурум"
+                        class="logo"
+                    />
+                    <div class="slogan">вой<br />стиль<br />жизни</div>
                 </div>
                 <div class="logo-main">
                     <img src="data:image/svg+xml,%3csvg%20width='62'%20height='147'%20viewBox='0%200%2062%20147'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M0.539914%2020.7503C0.589397%209.28821%209.8125%20-0.0502014%2021.2908%20-0.000648378L41.4299%200.0862946C56.7692%200.152516%2061.5286%209.55128%2061.4791%2021.0133L60.9393%20146.054L36.1045%20145.947L36.2278%20117.396L24.9582%20117.347L24.8349%20145.898L9.97448e-05%20145.791L0.539914%2020.7503ZM25.0652%2092.5474L36.3348%2092.5961L36.6263%2025.0741L12.5794%2024.9703L25.3203%2033.4657L25.0652%2092.5474Z'%20fill='white'/%3e%3c/svg%3e" alt="Аурум" />
@@ -31,39 +38,39 @@
             </div>
         </header>
 
-        <div class="main-page">
-            <section
-                id="first-section"
-                class="section-wrapper animate-show-block"
-            >
-                <div class="filter"></div>
+        <div id="sections-container" class="main-page">
+            <section id="first-section" class="section-wrapper">
+                <div class="slogan">Твой<br />стиль<br />жизни</div>
+				
+                <div class="mask"></div>
+
+                <div class="section-background"></div>
+
                 <div class="next-section-title-wrapper">
                     <div
-                        class="next-section-title bold-title standart-title with-decorate"
+                        class="next-section-title bold-title standart-title with-decorate container"
                     >
                         «Аурум» — премиум-класс<br />для тех, кто выбирает<br />лучшее!
                     </div>
                 </div>
             </section>
 
-            <section
-                id="premium-class"
-                class="section-wrapper animate-show-block"
-            >
-                <div class="section-background"><div class="filter"></div></div>
+            <section id="premium-class" class="section-wrapper">
+                <div class="section-background">
+                    <div class="filter"></div>
+                </div>
 
                 <div class="next-section-title-wrapper">
-                    <div class="next-section-title uppercase-title">
+                    <div class="next-section-title uppercase-title container">
                         Безопасность и комфорт
                     </div>
                 </div>
             </section>
 
-            <section
-                id="safety-and-comfort"
-                class="section-wrapper animate-show-block"
-            >
-                <div class="section-background"><div class="filter"></div></div>
+            <section id="safety-and-comfort" class="section-wrapper">
+                <div class="section-background">
+                    <div class="filter"></div>
+                </div>
 
                 <div class="next-section-title-wrapper">
                     <div class="next-section-title uppercase-title">
@@ -72,11 +79,10 @@
                 </div>
             </section>
 
-            <section
-                id="improvement"
-                class="section-wrapper animate-show-block"
-            >
-                <div class="section-background"><div class="filter"></div></div>
+            <section id="improvement" class="section-wrapper">
+                <div class="section-background">
+                    <div class="filter"></div>
+                </div>
 
                 <div class="next-section-title-wrapper">
                     <div class="next-section-title uppercase-title">
@@ -85,11 +91,10 @@
                 </div>
             </section>
 
-            <section
-                id="design-and-interior"
-                class="section-wrapper animate-show-block"
-            >
-                <div class="section-background"><div class="filter"></div></div>
+            <section id="design-and-interior" class="section-wrapper">
+                <div class="section-background">
+                    <div class="filter"></div>
+                </div>
 
                 <div class="next-section-title-wrapper">
                     <div class="next-section-title bold-title standart-title">
@@ -98,8 +103,10 @@
                 </div>
             </section>
 
-            <section id="apartments" class="section-wrapper animate-show-block">
-                <div class="section-background"><div class="filter"></div></div>
+            <section id="apartments" class="section-wrapper">
+                <div class="section-background">
+                    <div class="filter"></div>
+                </div>
 
                 <div class="next-section-title-wrapper">
                     <div class="next-section-title bold-title standart-title">
@@ -108,11 +115,11 @@
                 </div>
             </section>
 
-            <section id="penthouses" class="section-wrapper animate-show-block">
+            <section id="penthouses" class="section-wrapper">
                 <div class="filter"></div>
             </section>
 
-            <section id="application-form" class="animate-show-block">
+            <section id="application-form" class=" ">
                 <div class="container">
                     <div class="form-inputs">
                         <div class="inputs-title">
@@ -145,7 +152,7 @@
                                 class="callback-button button-circle button-accent"
                             >
                                 <img
-                                    src="data:image/svg+xml,%3csvg%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M12.871%206.32583C14.0709%206.52693%2015.1608%207.09365%2016.031%207.96202C16.9011%208.83038%2017.4644%209.91812%2017.6705%2011.1156M13.0542%202.3999C15.1883%202.76096%2017.1347%203.771%2018.6826%205.31121C20.2306%206.85598%2021.2381%208.79838%2021.5999%2010.9282M19.9329%2019.4016C19.9329%2019.4016%2018.7742%2020.5396%2018.4903%2020.8732C18.0277%2021.3668%2017.4827%2021.5999%2016.7683%2021.5999C16.6996%2021.5999%2016.6263%2021.5999%2016.5576%2021.5953C15.1974%2021.5085%2013.9335%2020.9783%2012.9855%2020.5259C10.3933%2019.2736%208.11724%2017.4957%206.22582%2015.2426C4.66415%2013.3641%203.61997%2011.6274%202.92844%209.76272C2.50253%208.6247%202.34682%207.73806%202.41551%206.90168C2.46131%206.36695%202.6674%205.92363%203.04751%205.54429L4.60919%203.98581C4.83359%203.77557%205.07174%203.66131%205.3053%203.66131C5.59382%203.66131%205.82739%203.83499%205.97394%203.98124C5.97852%203.98581%205.9831%203.99038%205.98768%203.99495C6.26704%204.25546%206.53266%204.52511%206.81202%204.81304C6.95399%204.95929%207.10054%205.10554%207.24709%205.25636L8.49735%206.50407C8.9828%206.98852%208.9828%207.43641%208.49735%207.92087C8.36454%208.05341%208.23631%208.18595%208.1035%208.31392C7.7188%208.70697%208.021%208.40539%207.62257%208.76187C7.61341%208.77101%207.60425%208.77558%207.59967%208.78472C7.20582%209.17777%207.27909%209.56168%207.36153%209.82219C7.36611%209.8359%207.37069%209.84961%207.37527%209.86332C7.70042%2010.6494%208.15839%2011.3898%208.85451%2012.2719L8.85909%2012.2765C10.1231%2013.8304%2011.4558%2015.0415%2012.9259%2015.9693C13.1136%2016.0881%2013.306%2016.1841%2013.4892%2016.2755C13.654%2016.3578%2013.8097%2016.4355%2013.9426%2016.5177C13.9609%2016.5269%2013.9792%2016.5406%2013.9975%2016.5497C14.1532%2016.6274%2014.2998%2016.664%2014.4509%2016.664C14.831%2016.664%2015.0692%2016.4263%2015.147%2016.3486L16.0447%2015.4528C16.2004%2015.2974%2016.4477%2015.11%2016.7362%2015.11C17.0202%2015.11%2017.2537%2015.2883%2017.3957%2015.4436C17.4003%2015.4482%2017.4003%2015.4482%2017.4049%2015.4528L19.9283%2017.971C20.4%2018.4372%2019.9329%2019.4016%2019.9329%2019.4016Z'%20stroke='black'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e"
+                                    src="/src/src/img/phone-icon.svg"
                                     alt="Закажите звонок"
                                     class="button-content"
                                 />
@@ -176,23 +183,21 @@
                 </div>
             </section>
 
-            <footer>
-                <div class="container">
-                    <div class="footer-wrapper">
-                        <div class="legal-entity">
-                            2023-2025 © ООО "СТРОИМГРУПП"
-                        </div>
-
-                        <div class="public-offer">
-                            Все изображения на сайте носят ознакомительный
-                            характер.<br />Предложение не является публичной
-                            офертой.
-                        </div>
-
-                        <a href="#" class="privacy-policy">
-                            Политика конфиденциальности
-                        </a>
+            <footer class="container">
+                <div class="footer-wrapper">
+                    <div class="legal-entity">
+                        2023-2025 © ООО "СТРОИМГРУПП"
                     </div>
+
+                    <div class="public-offer">
+                        Все изображения на сайте носят ознакомительный
+                        характер.<br />Предложение не является публичной
+                        офертой.
+                    </div>
+
+                    <a href="#" class="privacy-policy">
+                        Политика конфиденциальности
+                    </a>
                 </div>
             </footer>
         </div>

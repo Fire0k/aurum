@@ -1,50 +1,120 @@
+@keyframes body-filter-animate {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
 body {
   position: relative;
+  margin: 0;
+}
+body .filter {
+  opacity: 1;
+  animation: body-filter-animate 500ms linear 300ms forwards;
+  z-index: 1000;
+}
+header .header-wrapper .logo-main {
+  opacity: 0;
 }
 .main-page {
   height: 100vh;
   overflow-y: auto;
 }
-.main-page #first-section {
+#first-section {
+  height: 100vh;
+}
+#first-section .section-background {
   background-image: url("./img/first-section.png");
+  width: 100%;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  transform: scale(3);
+  left: 0;
+  transform-origin: center top;
+  will-change: transform;
+}
+#first-section .mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  inset: 0;
+  background: #333333;
+  mask-image: linear-gradient(white, white), url("data:image/svg+xml,%3csvg%20width='62'%20height='147'%20viewBox='0%200%2062%20147'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M0.539914%2020.7503C0.589397%209.28821%209.8125%20-0.0502014%2021.2908%20-0.000648378L41.4299%200.0862946C56.7692%200.152516%2061.5286%209.55128%2061.4791%2021.0133L60.9393%20146.054L36.1045%20145.947L36.2278%20117.396L24.9582%20117.347L24.8349%20145.898L9.97448e-05%20145.791L0.539914%2020.7503ZM25.0652%2092.5474L36.3348%2092.5961L36.6263%2025.0741L12.5794%2024.9703L25.3203%2033.4657L25.0652%2092.5474Z'%20fill='white'/%3e%3c/svg%3e");
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: 100% 100%, 300px;
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+  opacity: 0;
+  transform: scale(11);
+  transform-origin: 50% 17%;
+  will-change: transform, opacity;
+  z-index: 2;
+  transition-property: transform, opacity;
+  transition-duration: 1.5s;
+  transition-timing-function: ease-out;
+}
+#first-section .slogan {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  font-size: 250px;
+  font-weight: 800;
+  color: var(--color-text);
+  opacity: 0.7;
+  letter-spacing: 150px;
+  line-height: 110%;
+  padding: 150px 0 0 77px;
+  text-transform: uppercase;
+  will-change: transform, opacity;
+}
+#first-section .next-section-title {
+  opacity: 0;
+}
+#first-section.with-mask .mask {
+  opacity: 0.9;
+  transform: scale(1);
+}
+#premium-class {
   height: 100vh;
 }
-.main-page #first-section .next-section-title {
-  transform: translate(-50%, -50%) !important;
-}
-.main-page #premium-class {
-  height: 100vh;
-}
-.main-page #premium-class .section-background {
+#premium-class .section-background {
   background-image: url("./img/premium-class-section.png");
 }
-.main-page #safety-and-comfort {
+#safety-and-comfort {
   height: 100vh;
 }
-.main-page #safety-and-comfort .section-background {
+#safety-and-comfort .section-background {
   background-image: url("./img/safety-and-comfort-section.png");
 }
-.main-page #improvement {
+#improvement {
   height: 100vh;
 }
-.main-page #improvement .section-background {
+#improvement .section-background {
   background-image: url("./img/improvement-section.png");
 }
-.main-page #design-and-interior {
+#design-and-interior {
   height: 100vh;
 }
-.main-page #design-and-interior .section-background {
+#design-and-interior .section-background {
   background-image: url("./img/design-and-interior-section.jpg");
 }
-.main-page #apartments {
+#apartments {
   height: 100vh;
 }
-.main-page #apartments .section-background {
+#apartments .section-background {
   background-image: url("./img/apartments-section.jpg");
 }
-.main-page #penthouses {
+#penthouses {
   height: 100vh;
 }
-.main-page #penthouses .section-background {
+#penthouses .section-background {
   background-image: url("./img/penthouses-section.jpg");
 }
