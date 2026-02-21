@@ -1,51 +1,55 @@
 import gsap from "gsap";
 
-import { createSectionState } from '../scripts/create-section-state';
-import { StateStep, SectionTools } from '../types';
+import { SectionTools } from '../types';
 
 
-export function createPremiumClassState(premiumClassSection: Element, sectionsContainer: Element): SectionTools {
-    const premiumClassSectionTop = premiumClassSection.getBoundingClientRect().top;
+export function createPremiumClassState(
+    sectionElement: Element,
+    sectionsContainer: Element,
+    tl: gsap.core.Timeline,
+    startStep: number,
+): SectionTools {
+    const maxStep: number = startStep + 3;
 
-    const premiumClassSteps: StateStep[] = [
-        {
-            onReachStep: () => {
-                gsap.to(sectionsContainer, {
-                    scrollTo: {
-                        y: premiumClassSectionTop,
-                    },
-                    duration: 1,
-                    ease: "power1.inOut",
-                });
+    const sectionTop = sectionElement.getBoundingClientRect().top;
 
-                premiumClassSection.classList.add('show');
-            },
-            beforePreviousStep: () => {
-                premiumClassSection.classList.remove('show');
-            }
-        },
-        {
-            onReachStep: () => {
-                gsap.to(sectionsContainer, {
-                    scrollTo: {
-                        y: premiumClassSectionTop + 100,
-                    },
-                    duration: 1,
-                    ease: "power1.inOut",
-                });
+    const backgroundElement = sectionElement.querySelector('.section-background');
+    const filterElement = backgroundElement?.querySelector('.filter') ?? null;
+    const headerElement = document.querySelector('header');
+    const headerGradientElement = headerElement?.querySelector('.gradient') ?? null;
 
-                premiumClassSection.classList.add('with-filter')
-            },
-            beforePreviousStep: () => {
-                premiumClassSection.classList.remove('with-filter')
-            }
-        },
-    ];
+    tl.to(backgroundElement, {
+        duration: 1.5,
+        ease: "none",
+        scale: 0.9,
+    }, "<")
 
-    const premiumClassController = createSectionState(premiumClassSteps);
+    tl.addLabel(`${startStep + 1}`);
+
+    tl.to(headerGradientElement, {
+        duration: 0.5,
+        opacity: 1,
+    }).to(sectionsContainer, {
+        scrollTo: { y: sectionTop },
+        duration: 2,
+        ease: "power1.in",
+    }, "<").to(backgroundElement, {
+        duration: 2,
+        scale: 1.2,
+        ease: "power1.in",
+    }, "<");
+
+    tl.addLabel(`${startStep + 2}`);
+
+    tl.to(filterElement, {
+        duration: 1,
+        ease: "none",
+        opacity: 0.7,
+    });
+
+    tl.addLabel(`${startStep + 3}`);
 
     return {
-        controller: premiumClassController,
-        maxStepIndex: premiumClassSteps.length - 1,
+        maxStep,
     }
 }

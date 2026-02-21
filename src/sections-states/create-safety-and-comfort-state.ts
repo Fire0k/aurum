@@ -1,51 +1,57 @@
 import gsap from "gsap";
 
-import { createSectionState } from '../scripts/create-section-state';
-import { StateStep, SectionTools } from '../types';
+import { SectionTools } from '../types';
 
 
-export function createSafetyAndComfortState(safetyAndComfortSection: Element, sectionsContainer: Element): SectionTools {
-    const safetyAndComfortSectionTop = safetyAndComfortSection.getBoundingClientRect().top;
+export function createSafetyAndComfortState(sectionElement: Element, sectionsContainer: Element): SectionTools {
+    let currentStep: number = 0;
+    const maxStep: number = 2;
 
-    const safetyAndComfortSteps: StateStep[] = [
-        {
-            onReachStep: () => {
-                gsap.to(sectionsContainer, {
-                    scrollTo: {
-                        y: safetyAndComfortSectionTop,
-                    },
-                    duration: 1,
-                    ease: "power1.inOut",
-                });
+    const sectionTop = sectionElement.getBoundingClientRect().top;
 
-                safetyAndComfortSection.classList.add('show');
-            },
-            beforePreviousStep: () => {
-                safetyAndComfortSection.classList.remove('show');
-            }
-        },
-        {
-            onReachStep: () => {
-                gsap.to(sectionsContainer, {
-                    scrollTo: {
-                        y: safetyAndComfortSectionTop + 100,
-                    },
-                    duration: 1,
-                    ease: "power1.inOut",
-                });
+    const backgroundElement = sectionElement.querySelector('.section-background');
 
-                safetyAndComfortSection.classList.add('with-filter')
-            },
-            beforePreviousStep: () => {
-                safetyAndComfortSection.classList.remove('with-filter')
-            }
-        },
-    ];
+    const tl = gsap.timeline({ paused: true });
 
-    const safetyAndComfortController = createSectionState(safetyAndComfortSteps);
+    tl.addLabel("step0");
+
+    tl.to(sectionsContainer, {
+        scrollTo: { y: sectionTop },
+        duration: 1,
+        ease: "power1.inOut",
+    }).to(backgroundElement, {
+        duration: 1,
+        scale: 1.2,
+        ease: "power1.inOut",
+    }, "<");
+
+    tl.addLabel("step1");
+
+    tl.to(sectionsContainer, {
+        scrollTo: { y: sectionTop + 100 },
+        duration: 1,
+        ease: "power1.inOut",
+    });
+
+    tl.addLabel("step2");
+
+    function increaseStep() {
+        if (currentStep >= maxStep) return;
+
+        currentStep++;
+
+        tl.tweenTo(`step${currentStep}`);
+    }
+    function decreaseStep() {
+        if (currentStep === 0) return;
+
+        currentStep--;
+
+        tl.tweenTo(`step${currentStep}`);
+    }
 
     return {
-        controller: safetyAndComfortController,
-        maxStepIndex: safetyAndComfortSteps.length - 1,
+        controller: { increaseStep, decreaseStep },
+        maxStep,
     }
 }

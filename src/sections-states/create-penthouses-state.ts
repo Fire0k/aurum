@@ -1,47 +1,57 @@
 import gsap from "gsap";
 
-import { createSectionState } from '../scripts/create-section-state';
-import { StateStep, SectionTools } from '../types';
+import { SectionTools } from '../types';
 
 
-export function createPenthousesState(penthousesSection: Element, sectionsContainer: Element): SectionTools {
-    const penthousesSectionTop = penthousesSection.getBoundingClientRect().top;
+export function createPenthousesState(sectionElement: Element, sectionsContainer: Element): SectionTools {
+    let currentStep: number = 0;
+    const maxStep: number = 2;
 
-    const penthousesSteps: StateStep[] = [
-        {
-            onReachStep: () => {
-                gsap.to(sectionsContainer, {
-                    scrollTo: { y: penthousesSectionTop },
-                    duration: 1,
-                    ease: "power1.inOut",
-                });
+    const sectionTop = sectionElement.getBoundingClientRect().top;
 
-                penthousesSection.classList.add('show');
-            },
-            beforePreviousStep: () => {
-                penthousesSection.classList.remove('show');
-            }
-        },
-        {
-            onReachStep: () => {
-                gsap.to(sectionsContainer, {
-                    scrollTo: { y: penthousesSectionTop + 100 },
-                    duration: 1,
-                    ease: "power1.inOut",
-                });
+    const backgroundElement = sectionElement.querySelector('.section-background');
 
-                penthousesSection.classList.add('with-filter')
-            },
-            beforePreviousStep: () => {
-                penthousesSection.classList.remove('with-filter')
-            }
-        },
-    ];
+    const tl = gsap.timeline({ paused: true });
 
-    const penthousesController = createSectionState(penthousesSteps);
+    tl.addLabel("step0");
+
+    tl.to(sectionsContainer, {
+        scrollTo: { y: sectionTop },
+        duration: 1,
+        ease: "power1.inOut",
+    }).to(backgroundElement, {
+        duration: 1,
+        scale: 1.2,
+        ease: "power1.inOut",
+    }, "<");
+
+    tl.addLabel("step1");
+
+    tl.to(sectionsContainer, {
+        scrollTo: { y: sectionTop + 100 },
+        duration: 1,
+        ease: "power1.inOut",
+    });
+
+    tl.addLabel("step2");
+
+    function increaseStep() {
+        if (currentStep >= maxStep) return;
+
+        currentStep++;
+
+        tl.tweenTo(`step${currentStep}`);
+    }
+    function decreaseStep() {
+        if (currentStep === 0) return;
+
+        currentStep--;
+
+        tl.tweenTo(`step${currentStep}`);
+    }
 
     return {
-        controller: penthousesController,
-        maxStepIndex: penthousesSteps.length - 1,
+        controller: { increaseStep, decreaseStep },
+        maxStep,
     }
 }

@@ -9,7 +9,7 @@ import { createPenthousesState } from './create-penthouses-state';
 import { createApplicationFormState } from './create-application-form-state';
 
 
-export function getSectionsTools(): SectionTools[] | null {
+export function getSectionsTools(tl: gsap.core.Timeline): SectionTools[] | null {
     const sectionsContainer = document.getElementById("sections-container");
     if (!sectionsContainer) {
         console.error('Не найдены секции страницы');
@@ -23,7 +23,7 @@ export function getSectionsTools(): SectionTools[] | null {
         console.error('Не найдена стартовая секция страницы');
         return null;
     } else {
-        tools.push(createFirstScreenState(firstScreenSection, sectionsContainer));
+        tools.push(createFirstScreenState(firstScreenSection, sectionsContainer, tl));
     };
 
     const premiumClassSection = sectionsContainer.querySelector('#premium-class');
@@ -31,7 +31,7 @@ export function getSectionsTools(): SectionTools[] | null {
         console.error('Не найдена секция "«Аурум» — премиум-класс"');
         return null;
     } else {
-        tools.push(createPremiumClassState(premiumClassSection, sectionsContainer));
+        tools.push(createPremiumClassState(premiumClassSection, sectionsContainer, tl, tools[0].maxStep));
     };
 
     const safetyAndComfortSection = sectionsContainer.querySelector('#safety-and-comfort');

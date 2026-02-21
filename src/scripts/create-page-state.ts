@@ -1,75 +1,71 @@
 import gsap from "gsap";
 
 import { createPageObserver } from "./create-page-observer";
-import { createFirstScreenState } from '../sections-states/create-first-screen-state';
-import { createPremiumClassState } from '../sections-states/create-premium-class-state';
 import { getSectionsTools } from '../sections-states/get-sections-tools';
 import { SectionTools } from "../types";
 
 
 export function createPageState() {
-    const sectionsTools = getSectionsTools() as SectionTools[];
+    const tl = gsap.timeline({ paused: true });
+
+    const sectionsTools = getSectionsTools(tl) as SectionTools[];
     if (!sectionsTools) return;
-    
-    sectionsTools[0].controller.increaseStep();
 
-    let currentSection = sectionsTools[0];
-    let currentSectionIndex = 0;
-    let currentSectionStepIndex = 0;
-
-    let isAnimating = false;
+    let prevStep = 0;
+    let currentStep = 0;
 
     function increaseStep() {
-        if (isAnimating) return;
+        if (gsap.isTweening(tl)) return;
 
-        const isInEnd = currentSectionIndex === sectionsTools.length - 1 && currentSectionStepIndex === currentSection.maxStepIndex;
-        if (isInEnd) return;
+        // if (currentStep === sectionsTools.at(-1)!.maxStep) return;
 
-        isAnimating = true;
+        currentStep++;
+        tl.tweenTo(`${currentStep}`);
 
-        currentSection.controller.increaseStep();
-        console.log('inc', currentSection, currentSectionIndex, currentSectionStepIndex);
-
-        if (currentSectionStepIndex === currentSection.maxStepIndex) {
-            currentSectionIndex++;
-            currentSection = sectionsTools[currentSectionIndex];
-
-            currentSectionStepIndex = 0;
-
-            currentSection.controller.increaseStep();
-        } else {
-            currentSectionStepIndex++;
+        if (currentStep !== 1) {
+            prevStep++;
         }
-
-        setTimeout(() => (isAnimating = false), 1500);
     }
     function decreaseStep() {
-        if (isAnimating) return;
+        if (gsap.isTweening(tl)) return;
 
-        const isInStart = currentSectionIndex === 0 && currentSectionStepIndex === 0;
-        if (isInStart) return;
+        if (currentStep === 0) return;
 
-        isAnimating = true;
+        currentStep--;
+        tl.tweenTo(`${currentStep}`);
 
-        currentSection.controller.decreaseStep();
-        console.log('dec', currentSection, currentSectionIndex, currentSectionStepIndex);
-
-        if (currentSectionStepIndex === 0) {
-            currentSectionIndex--;
-            currentSection = sectionsTools[currentSectionIndex];
-
-            currentSectionStepIndex = currentSection.maxStepIndex;
-
-            currentSection.controller.decreaseStep()
-        } else {
-            currentSectionStepIndex--;
+        if (currentStep !== 0) {
+            prevStep--;
         }
-
-        setTimeout(() => (isAnimating = false), 1500);
     }
 
     createPageObserver(
         () => decreaseStep(),
         () => increaseStep(),
     );
+
+    /**
+     * Анимация маски через js лагает в Chrome,
+     * обходной путь для реализации этой анимации через css
+     */
+    const sectionsContainer = document.getElementById("sections-container")!;
+    const firstScreenSection = sectionsContainer.querySelector('#first-section')!;
+    const maskElement = firstScreenSection.querySelector('.mask');
+    tl.call(() => {
+        if (prevStep > currentStep || currentStep === 0) return;
+        firstScreenSection.classList.add('with-mask')
+    }, undefined, 'add-mask');
+    tl.call(() => {
+        if (prevStep < currentStep) return;
+        firstScreenSection.classList.remove('with-mask')
+    }, undefined, '1-=0.1');
+
+    tl.call(() => {
+        if (prevStep > currentStep || currentStep === 0) return;
+        (maskElement as HTMLElement).style.transitionDuration = '1.5s';
+    }, undefined, '1');
+    tl.call(() => {
+        if (prevStep < currentStep) return;
+        (maskElement as HTMLElement).style.transitionDuration = 'unset';
+    }, undefined, '1');
 }

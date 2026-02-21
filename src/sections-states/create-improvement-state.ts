@@ -1,47 +1,57 @@
 import gsap from "gsap";
 
-import { createSectionState } from '../scripts/create-section-state';
-import { StateStep, SectionTools } from '../types';
+import { SectionTools } from '../types';
 
 
-export function createImprovementState(improvementSection: Element, sectionsContainer: Element): SectionTools {
-    const improvementSectionTop = improvementSection.getBoundingClientRect().top;
+export function createImprovementState(sectionElement: Element, sectionsContainer: Element): SectionTools {
+    let currentStep: number = 0;
+    const maxStep: number = 2;
 
-    const improvementSteps: StateStep[] = [
-        {
-            onReachStep: () => {
-                gsap.to(sectionsContainer, {
-                    scrollTo: { y: improvementSectionTop },
-                    duration: 1,
-                    ease: "power1.inOut",
-                });
+    const sectionTop = sectionElement.getBoundingClientRect().top;
 
-                improvementSection.classList.add('show');
-            },
-            beforePreviousStep: () => {
-                improvementSection.classList.remove('show');
-            }
-        },
-        {
-            onReachStep: () => {
-                gsap.to(sectionsContainer, {
-                    scrollTo: { y: improvementSectionTop + 100 },
-                    duration: 1,
-                    ease: "power1.inOut",
-                });
+    const backgroundElement = sectionElement.querySelector('.section-background');
 
-                improvementSection.classList.add('with-filter')
-            },
-            beforePreviousStep: () => {
-                improvementSection.classList.remove('with-filter')
-            }
-        },
-    ];
+    const tl = gsap.timeline({ paused: true });
 
-    const improvementController = createSectionState(improvementSteps);
+    tl.addLabel("step0");
+
+    tl.to(sectionsContainer, {
+        scrollTo: { y: sectionTop },
+        duration: 1,
+        ease: "power1.inOut",
+    }).to(backgroundElement, {
+        duration: 1,
+        scale: 1.2,
+        ease: "power1.inOut",
+    }, "<");
+
+    tl.addLabel("step1");
+
+    tl.to(sectionsContainer, {
+        scrollTo: { y: sectionTop + 100 },
+        duration: 1,
+        ease: "power1.inOut",
+    });
+
+    tl.addLabel("step2");
+
+    function increaseStep() {
+        if (currentStep >= maxStep) return;
+
+        currentStep++;
+
+        tl.tweenTo(`step${currentStep}`);
+    }
+    function decreaseStep() {
+        if (currentStep === 0) return;
+
+        currentStep--;
+
+        tl.tweenTo(`step${currentStep}`);
+    }
 
     return {
-        controller: improvementController,
-        maxStepIndex: improvementSteps.length - 1,
+        controller: { increaseStep, decreaseStep },
+        maxStep,
     }
 }
