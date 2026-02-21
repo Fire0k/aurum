@@ -5,22 +5,29 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         <title>AURUM</title>
-        <link rel="icon" href="/img/favicon.ico" />
+        <link rel="icon" href="/src/img/favicon.ico" />
 
-        <link rel="stylesheet" href="/ui-kit.less" />
-        <link rel="stylesheet" href="/style.less" />
-        <script type="module" src="/script.ts"></script>
+        <link rel="stylesheet" href="/src/styles/ui-kit.less" />
+        <link rel="stylesheet" href="/src/styles/style.less" />
+        <script type="module" src="/src/main.ts"></script>
     </head>
 
     <body>
+        <div class="filter"></div>
+
         <header>
+			<div class="gradient"></div>
             <div class="container header-wrapper">
                 <div class="logo-small">
-                    <img src="/img/logo-small.svg" alt="Аурум" class="logo" />
-                    <div class="slogan">Твой<br />стиль<br />жизни</div>
+                    <img
+                        src="/src/img/logo-small.svg"
+                        alt="Аурум"
+                        class="logo"
+                    />
+                    <div class="slogan">вой<br />стиль<br />жизни</div>
                 </div>
                 <div class="logo-main">
-                    <img src="/img/logo-main.svg" alt="Аурум" />
+                    <img src="/src/img/logo-main.svg" alt="Аурум" />
                 </div>
                 <div class="info-block">
                     <a href="#" class="link">Выбрать квартиру</a>
@@ -29,39 +36,39 @@
             </div>
         </header>
 
-        <div class="main-page">
-            <section
-                id="first-section"
-                class="section-wrapper animate-show-block"
-            >
-                <div class="filter"></div>
+        <div id="sections-container" class="main-page">
+            <section id="first-section" class="section-wrapper">
+                <div class="slogan">Твой<br />стиль<br />жизни</div>
+				
+                <div class="mask"></div>
+
+                <div class="section-background"></div>
+
                 <div class="next-section-title-wrapper">
                     <div
-                        class="next-section-title bold-title standart-title with-decorate"
+                        class="next-section-title bold-title standart-title with-decorate container"
                     >
                         «Аурум» — премиум-класс<br />для тех, кто выбирает<br />лучшее!
                     </div>
                 </div>
             </section>
 
-            <section
-                id="premium-class"
-                class="section-wrapper animate-show-block"
-            >
-                <div class="section-background"><div class="filter"></div></div>
+            <section id="premium-class" class="section-wrapper">
+                <div class="section-background">
+                    <div class="filter"></div>
+                </div>
 
                 <div class="next-section-title-wrapper">
-                    <div class="next-section-title uppercase-title">
+                    <div class="next-section-title uppercase-title container">
                         Безопасность и комфорт
                     </div>
                 </div>
             </section>
 
-            <section
-                id="safety-and-comfort"
-                class="section-wrapper animate-show-block"
-            >
-                <div class="section-background"><div class="filter"></div></div>
+            <section id="safety-and-comfort" class="section-wrapper">
+                <div class="section-background">
+                    <div class="filter"></div>
+                </div>
 
                 <div class="next-section-title-wrapper">
                     <div class="next-section-title uppercase-title">
@@ -70,11 +77,10 @@
                 </div>
             </section>
 
-            <section
-                id="improvement"
-                class="section-wrapper animate-show-block"
-            >
-                <div class="section-background"><div class="filter"></div></div>
+            <section id="improvement" class="section-wrapper">
+                <div class="section-background">
+                    <div class="filter"></div>
+                </div>
 
                 <div class="next-section-title-wrapper">
                     <div class="next-section-title uppercase-title">
@@ -83,11 +89,10 @@
                 </div>
             </section>
 
-            <section
-                id="design-and-interior"
-                class="section-wrapper animate-show-block"
-            >
-                <div class="section-background"><div class="filter"></div></div>
+            <section id="design-and-interior" class="section-wrapper">
+                <div class="section-background">
+                    <div class="filter"></div>
+                </div>
 
                 <div class="next-section-title-wrapper">
                     <div class="next-section-title bold-title standart-title">
@@ -96,8 +101,10 @@
                 </div>
             </section>
 
-            <section id="apartments" class="section-wrapper animate-show-block">
-                <div class="section-background"><div class="filter"></div></div>
+            <section id="apartments" class="section-wrapper">
+                <div class="section-background">
+                    <div class="filter"></div>
+                </div>
 
                 <div class="next-section-title-wrapper">
                     <div class="next-section-title bold-title standart-title">
@@ -106,11 +113,11 @@
                 </div>
             </section>
 
-            <section id="penthouses" class="section-wrapper animate-show-block">
+            <section id="penthouses" class="section-wrapper">
                 <div class="filter"></div>
             </section>
 
-            <section id="application-form" class="animate-show-block">
+            <section id="application-form" class=" ">
                 <div class="container">
                     <div class="form-inputs">
                         <div class="inputs-title">
@@ -143,7 +150,7 @@
                                 class="callback-button button-circle button-accent"
                             >
                                 <img
-                                    src="/img/phone-icon.svg"
+                                    src="/src/src/img/phone-icon.svg"
                                     alt="Закажите звонок"
                                     class="button-content"
                                 />
@@ -153,7 +160,7 @@
 
                         <div class="map-preview">
                             <img
-                                src="/img/map-preview.svg"
+                                src="/src/img/map-preview.svg"
                                 alt="Посмотреть на карте"
                             />
                         </div>
@@ -163,7 +170,7 @@
                                 class="callback-button button-circle button-accent"
                             >
                                 <img
-                                    src="/img/map-icon.svg"
+                                    src="/src/img/map-icon.svg"
                                     alt="Посмотреть на карте"
                                     class="button-content"
                                 />
@@ -174,23 +181,21 @@
                 </div>
             </section>
 
-            <footer>
-                <div class="container">
-                    <div class="footer-wrapper">
-                        <div class="legal-entity">
-                            2023-2025 © ООО "СТРОИМГРУПП"
-                        </div>
-
-                        <div class="public-offer">
-                            Все изображения на сайте носят ознакомительный
-                            характер.<br />Предложение не является публичной
-                            офертой.
-                        </div>
-
-                        <a href="#" class="privacy-policy">
-                            Политика конфиденциальности
-                        </a>
+            <footer class="container">
+                <div class="footer-wrapper">
+                    <div class="legal-entity">
+                        2023-2025 © ООО "СТРОИМГРУПП"
                     </div>
+
+                    <div class="public-offer">
+                        Все изображения на сайте носят ознакомительный
+                        характер.<br />Предложение не является публичной
+                        офертой.
+                    </div>
+
+                    <a href="#" class="privacy-policy">
+                        Политика конфиденциальности
+                    </a>
                 </div>
             </footer>
         </div>

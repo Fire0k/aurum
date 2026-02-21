@@ -1,4 +1,5 @@
-import { defineConfig } from 'vite'
+import { defineConfig } from 'vite';
+import viteImagemin from 'vite-plugin-imagemin';
 
 export default defineConfig({
   base: '',
@@ -15,7 +16,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: 'index.html',
-        'ui-kit': 'ui-kit.less'
+        'ui-kit': 'src/styles/ui-kit.less'
       },
       output: {
         entryFileNames: 'script.js',
@@ -41,4 +42,23 @@ export default defineConfig({
       }
     }
   },
+  // plugins: [
+  //   viteImagemin({
+  //     gifsicle: {
+  //       optimizationLevel: 7,
+  //       interlaced: false,
+  //     },
+  //     optipng: {
+  //       optimizationLevel: 7,
+  //     },
+  //     mozjpeg: {
+  //       quality: 80,
+  //       progressive: true,
+  //     },
+  //     pngquant: {
+  //       quality: [0.65, 0.8],
+  //       speed: 3,
+  //     },
+  //   }),
+  // ],
 })

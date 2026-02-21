@@ -1,0 +1,147 @@
+@keyframes body-filter-animate {
+        0% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+body {
+    position: relative;
+    margin: 0;
+
+    .filter {
+        opacity: 1;
+        animation: body-filter-animate 500ms linear 300ms forwards;
+        z-index: 1000;
+    }
+}
+
+header {
+    .header-wrapper {
+        .logo-main {
+            opacity: 0;
+        }
+    }
+}
+
+.main-page {
+    height: 100vh;
+    overflow-y: auto;
+}
+
+#first-section {
+    height: 100vh;
+
+    .section-background {
+        background-image: url("/src/img/first-section.png");
+        width: 100%;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        transform: scale(3);
+        left: 0;
+        transform-origin: center top;
+        will-change: transform;
+    }
+
+    .mask {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        inset: 0;
+        background: #333333;
+        mask-image:
+            linear-gradient(white, white),
+            url("/src/img/logo-main.svg");
+        mask-repeat: no-repeat;
+        mask-position: center;
+        mask-size: 100% 100%, 300px;
+        mask-composite: exclude;
+        -webkit-mask-composite: xor;
+        opacity: 0;
+        transform: scale(11);
+        transform-origin: 50% 17%;
+        will-change: transform, opacity;
+        z-index: 2;
+        transition-property: transform, opacity;
+        transition-duration: 1.5s;
+        transition-timing-function: ease-out;
+    }
+
+    .slogan {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        font-size: 250px;
+        font-weight: 800;
+        color: var(--color-text);
+        opacity: 0.7;
+        letter-spacing: 150px;
+        line-height: 110%;
+        padding: 150px 0 0 77px;
+        text-transform: uppercase;
+        will-change: transform, opacity;
+    }
+
+    .next-section-title {
+        opacity: 0;
+    }
+
+    &.with-mask {
+        .mask {
+            opacity: 0.9;
+            transform: scale(1);
+        }
+    }
+}
+
+#premium-class {
+    height: 100vh;
+
+    .section-background {
+        background-image: url("/src/img/premium-class-section.png");
+    }
+}
+
+#safety-and-comfort {
+    height: 100vh;
+
+    .section-background {
+        background-image: url("/src/img/safety-and-comfort-section.png");
+    }
+}
+
+#improvement {
+    height: 100vh;
+
+    .section-background {
+        background-image: url("/src/img/improvement-section.png");
+    }
+}
+
+#design-and-interior {
+    height: 100vh;
+
+    .section-background {
+        background-image: url("/src/img/design-and-interior-section.jpg");
+    }
+}
+#apartments {
+    height: 100vh;
+
+    .section-background {
+        background-image: url("/src/img/apartments-section.jpg");
+    }
+}
+#penthouses {
+    height: 100vh;
+
+    .section-background {
+        background-image: url("/src/img/penthouses-section.jpg");
+    }
+}
