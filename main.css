@@ -76,6 +76,7 @@ header .header-wrapper .logo-main {
   will-change: transform, opacity;
 }
 #first-section .next-section-title {
+  will-change: transform, opacity;
   opacity: 0;
 }
 #first-section.with-mask .mask {
