@@ -52,11 +52,11 @@ export function createFirstScreenState(
 
     tl.to(maskElement, {
         duration: 1.5,
-        ease: 'power1.out',
+        ease: 'none',
         maskSize: '100% 100%, 0px',
     }).to(headerLogoElement, {
         duration: 1.5,
-        ease: 'power1.out',
+        ease: 'none',
         opacity: 1,
     }, "<").fromTo(nextSectionTitleElement, { yPercent: 100 }, {
         duration: 1.5,

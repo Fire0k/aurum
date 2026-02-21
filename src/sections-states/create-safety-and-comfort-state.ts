@@ -3,15 +3,18 @@ import gsap from "gsap";
 import { SectionTools } from '../types';
 
 
-export function createSafetyAndComfortState(sectionElement: Element, sectionsContainer: Element): SectionTools {
+export function createSafetyAndComfortState(
+    sectionElement: Element,
+    sectionsContainer: Element,
+    tl: gsap.core.Timeline,
+    startStep: number,
+): SectionTools {
     let currentStep: number = 0;
     const maxStep: number = 2;
 
     const sectionTop = sectionElement.getBoundingClientRect().top;
 
     const backgroundElement = sectionElement.querySelector('.section-background');
-
-    const tl = gsap.timeline({ paused: true });
 
     tl.addLabel("step0");
 
@@ -35,23 +38,7 @@ export function createSafetyAndComfortState(sectionElement: Element, sectionsCon
 
     tl.addLabel("step2");
 
-    function increaseStep() {
-        if (currentStep >= maxStep) return;
-
-        currentStep++;
-
-        tl.tweenTo(`step${currentStep}`);
-    }
-    function decreaseStep() {
-        if (currentStep === 0) return;
-
-        currentStep--;
-
-        tl.tweenTo(`step${currentStep}`);
-    }
-
     return {
-        controller: { increaseStep, decreaseStep },
         maxStep,
     }
 }

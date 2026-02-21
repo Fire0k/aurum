@@ -39,7 +39,7 @@ export function getSectionsTools(tl: gsap.core.Timeline): SectionTools[] | null 
         console.error('Не найдена секция "Безопасность и комфорт"');
         return null;
     } else {
-        tools.push(createSafetyAndComfortState(safetyAndComfortSection, sectionsContainer));
+        tools.push(createSafetyAndComfortState(safetyAndComfortSection, sectionsContainer, tl, tools[1].maxStep));
     };
 
     const improvementSection = sectionsContainer.querySelector('#improvement');
