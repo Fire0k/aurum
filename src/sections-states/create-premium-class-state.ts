@@ -21,7 +21,7 @@ export function createPremiumClassState(
         duration: 1.5,
         ease: "none",
         scale: 0.9,
-        y: -200,
+        yPercent: -20,
     }, "<")
 
     tl.set(nextSectionTitleElement, { yPercent: 50 })
@@ -34,16 +34,17 @@ export function createPremiumClassState(
         duration: 0.5,
         opacity: 1,
     }).to(backgroundElement, {
-        duration: 2,
-        ease: "power1.in",
+        duration: 1.5,
+        ease: "none",
         yPercent: -100,
-        scale: 1.2,
+        scale: 1.1,
     }, "<")
 
     tl.set(prevBackgroundElement, {
         top: '100%',
-        y: 0,
         yPercent: 0,
+        borderTopLeftRadius: 60,
+        borderTopRightRadius: 60,
         backgroundImage: 'url("/src/img/safety-and-comfort-section.webp")',
         zIndex: 6,
         scale: 0.8,

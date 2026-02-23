@@ -18,7 +18,7 @@ export function createPenthousesState(
         duration: 1.5,
         ease: "none",
         scale: 0.9,
-        y: -200,
+        yPercent: -20,
     }, "<")
 
     tl.set(nextSectionTitleElement, { yPercent: 50 })
@@ -27,10 +27,10 @@ export function createPenthousesState(
     tl.addLabel(`${startStep + 1}`);
 
     tl.to(backgroundElement, {
-        duration: 2,
-        ease: "power1.in",
+        duration: 1.5,
+        ease: "none",
         yPercent: -100,
-        scale: 1.2,
+        scale: 1.1,
     });
 
     tl.set(filterElement, { opacity: 0, zIndex: 15 })

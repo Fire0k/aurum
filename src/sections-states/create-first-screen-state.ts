@@ -35,7 +35,7 @@ export function createFirstScreenState(
     tl.addLabel('0');
 
     tl.to(backgroundElement, {
-        duration: 1,
+        duration: 1.5,
         ease: 'none',
         scale: 1.5,
     }).to(sloganElement, {
