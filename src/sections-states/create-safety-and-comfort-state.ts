@@ -10,7 +10,8 @@ export function createSafetyAndComfortState(
 ): SectionTools {
     const maxStep: number = startStep + 3;
 
-    const backgroundElement = document.querySelector('.safety-and-comfort-background')!;
+    const prevBackgroundElement = document.querySelector('.section-background-next')!;
+    const backgroundElement = document.querySelector('.section-background')!;
     const filterElement = document.querySelector('.filter');
     const nextSectionTitleElement = sectionElement.querySelector('.next-section-title');
 
@@ -21,6 +22,7 @@ export function createSafetyAndComfortState(
         y: -200,
     }, "<")
     tl.set(nextSectionTitleElement, { yPercent: 50 })
+    tl.set(sectionElement, { zIndex: 7 })
 
     tl.addLabel(`${startStep + 1}`);
 
@@ -44,6 +46,15 @@ export function createSafetyAndComfortState(
         ease: "none",
         yPercent: -100,
     });
+
+    tl.set(prevBackgroundElement, {
+        top: '100%',
+        y: 0,
+        yPercent: 0,
+        backgroundImage: 'url("/src/img/improvement-section.webp")',
+        zIndex: 8,
+        scale: 0.8,
+    })
 
     tl.addLabel(`${startStep + 3}`);
 

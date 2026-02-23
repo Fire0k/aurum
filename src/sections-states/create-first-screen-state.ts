@@ -9,7 +9,8 @@ export function createFirstScreenState(
 ): SectionTools {
     const maxStep: number = 1;
 
-    const backgroundElement = document.querySelector('.first-background');
+    const backgroundElement = document.querySelector('.section-background');
+    const backgroundNextElement = document.querySelector('.section-background-next');
     const filterElement = document.querySelector('.filter');
     const sloganElement = sectionElement.querySelector('.slogan');
     const maskElement = sectionElement.querySelector('.mask');
@@ -28,6 +29,8 @@ export function createFirstScreenState(
         scale: 2,
     }, "<").set(nextSectionTitleElement, { yPercent: 50 })
     tl.tweenTo('"0"');
+
+    tl.set(backgroundNextElement, { zIndex: 4 })
 
     tl.addLabel('0');
 
@@ -66,7 +69,7 @@ export function createFirstScreenState(
         opacity: 1,
         yPercent: -50,
     })
-    
+
     return {
         maxStep,
     }

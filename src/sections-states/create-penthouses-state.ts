@@ -22,6 +22,7 @@ export function createPenthousesState(
     }, "<")
 
     tl.set(nextSectionTitleElement, { yPercent: 50 })
+    tl.set(sectionElement, { zIndex: 15 })
 
     tl.addLabel(`${startStep + 1}`);
 
@@ -32,7 +33,7 @@ export function createPenthousesState(
         scale: 1.2,
     });
 
-    tl.set(filterElement, { opacity: 0, zIndex: 19 })
+    tl.set(filterElement, { opacity: 0, zIndex: 15 })
 
     tl.addLabel(`${startStep + 2}`);
 
