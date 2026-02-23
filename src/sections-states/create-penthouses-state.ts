@@ -33,14 +33,14 @@ export function createPenthousesState(
         scale: 1.1,
     });
 
-    tl.set(filterElement, { opacity: 0, zIndex: 15 })
+    tl.set(filterElement, { opacity: 1, zIndex: 14 })
 
     tl.addLabel(`${startStep + 2}`);
 
-    tl.to(filterElement, {
+    tl.to(backgroundElement, {
         duration: 1.5,
         ease: "none",
-        opacity: 0.7,
+        opacity: 0.3,
     }).to(sectionElement, {
         duration: 0,
         ease: "none",

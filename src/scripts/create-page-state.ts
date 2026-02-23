@@ -48,23 +48,23 @@ export function createPageState() {
      * Анимация маски через js лагает в Chrome,
      * обходной путь для реализации этой анимации через css
      */
-    const firstScreenSection = document.getElementById('first-section')!;
-    const maskElement = document.querySelector('.mask');
-    tl.call(() => {
-        if (prevStep > currentStep || currentStep === 0) return;
-        firstScreenSection.classList.add('with-mask')
-    }, undefined, 'add-mask');
-    tl.call(() => {
-        if (prevStep < currentStep) return;
-        firstScreenSection.classList.remove('with-mask')
-    }, undefined, '1-=0.1');
+    // const firstScreenSection = document.getElementById('first-section')!;
+    // const maskElement = document.querySelector('.mask');
+    // tl.call(() => {
+    //     if (prevStep > currentStep || currentStep === 0) return;
+    //     firstScreenSection.classList.add('with-mask')
+    // }, undefined, 'add-mask');
+    // tl.call(() => {
+    //     if (prevStep < currentStep) return;
+    //     firstScreenSection.classList.remove('with-mask')
+    // }, undefined, '1-=0.1');
 
-    tl.call(() => {
-        if (prevStep > currentStep || currentStep === 0) return;
-        (maskElement as HTMLElement).style.transitionDuration = '1.5s';
-    }, undefined, '1');
-    tl.call(() => {
-        if (prevStep < currentStep) return;
-        (maskElement as HTMLElement).style.transitionDuration = 'unset';
-    }, undefined, '1');
+    // tl.call(() => {
+    //     if (prevStep > currentStep || currentStep === 0) return;
+    //     (maskElement as HTMLElement).style.transitionDuration = '1.5s';
+    // }, undefined, '1');
+    // tl.call(() => {
+    //     if (prevStep < currentStep) return;
+    //     (maskElement as HTMLElement).style.transitionDuration = 'unset';
+    // }, undefined, '1');
 }

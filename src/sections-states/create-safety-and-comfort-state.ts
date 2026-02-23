@@ -33,14 +33,14 @@ export function createSafetyAndComfortState(
         scale: 1.1,
     });
 
-    tl.set(filterElement, { opacity: 0, zIndex: 7 })
+    tl.set(filterElement, { opacity: 1, zIndex: 6 })
 
     tl.addLabel(`${startStep + 2}`);
 
-    tl.to(filterElement, {
+    tl.to(backgroundElement, {
         duration: 1.5,
         ease: "none",
-        opacity: 0.7,
+        opacity: 0.3,
     }).to(sectionElement, {
         duration: 0,
         ease: "none",
@@ -49,7 +49,7 @@ export function createSafetyAndComfortState(
 
     tl.set(prevBackgroundElement, {
         top: '100%',
-        
+        opacity: 1,
         yPercent: 0,
         backgroundImage: 'url("/src/img/improvement-section.webp")',
         zIndex: 8,

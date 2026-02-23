@@ -31,6 +31,7 @@ export function createFirstScreenState(
     tl.tweenTo('"0"');
 
     tl.set(backgroundNextElement, { zIndex: 4 })
+    tl.set(filterElement, { zIndex: 0, opacity: 1 })
 
     tl.addLabel('0');
 
@@ -45,7 +46,7 @@ export function createFirstScreenState(
         yPercent: 50,
     }, "<");
 
-    tl.addLabel("add-mask");
+    // tl.addLabel("add-mask");
     
     tl.to(backgroundElement, {
         duration: 1.5,
@@ -55,10 +56,15 @@ export function createFirstScreenState(
 
     tl.addLabel('1');
 
-    tl.to(maskElement, {
+    // tl.to(maskElement, {
+    //     duration: 1.5,
+    //     ease: 'none',
+    //     maskSize: '100% 100%, 0px',
+    // })
+    tl.to(backgroundElement, {
         duration: 1.5,
         ease: 'none',
-        maskSize: '100% 100%, 0px',
+        opacity: 0.3,
     }).to(headerLogoElement, {
         duration: 1.5,
         ease: 'none',
