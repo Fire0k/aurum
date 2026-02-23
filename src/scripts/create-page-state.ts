@@ -48,9 +48,8 @@ export function createPageState() {
      * Анимация маски через js лагает в Chrome,
      * обходной путь для реализации этой анимации через css
      */
-    const sectionsContainer = document.getElementById("sections-container")!;
-    const firstScreenSection = sectionsContainer.querySelector('#first-section')!;
-    const maskElement = firstScreenSection.querySelector('.mask');
+    const firstScreenSection = document.getElementById('first-section')!;
+    const maskElement = document.querySelector('.mask');
     tl.call(() => {
         if (prevStep > currentStep || currentStep === 0) return;
         firstScreenSection.classList.add('with-mask')

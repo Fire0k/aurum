@@ -5,39 +5,34 @@ import { SectionTools } from '../types';
 
 export function createApartmentsState(
     sectionElement: Element,
-    sectionsContainer: Element,
     tl: gsap.core.Timeline,
     startStep: number,
 ): SectionTools {
     const maxStep: number = startStep + 3;
 
-    const sectionTop = sectionElement.getBoundingClientRect().top;
-
     const backgroundElement = document.querySelector('.apartments-background')!;
-    const backgroundElementTop = backgroundElement.getBoundingClientRect().top;
-    const filterElement = sectionsContainer.querySelector('.sections-filter');
+    const filterElement = document.querySelector('.filter');
     const nextSectionTitleElement = sectionElement.querySelector('.next-section-title');
 
     tl.to(backgroundElement, {
         duration: 1.5,
         ease: "none",
         scale: 0.9,
+        y: -200,
     }, "<")
+
     tl.set(nextSectionTitleElement, { yPercent: 50 })
 
     tl.addLabel(`${startStep + 1}`);
 
-    tl.to(sectionsContainer, {
-        scrollTo: { y: backgroundElementTop },
+    tl.to(backgroundElement, {
         duration: 2,
         ease: "power1.in",
-    }).to(backgroundElement, {
-        duration: 2,
+        yPercent: -100,
         scale: 1.2,
-        ease: "power1.in",
-    }, "<");
+    });
 
-    tl.set(filterElement, { zIndex: 16, opacity: 0, })
+    tl.set(filterElement, { opacity: 0, zIndex: 16 })
 
     tl.addLabel(`${startStep + 2}`);
 
@@ -45,12 +40,10 @@ export function createApartmentsState(
         duration: 1.5,
         ease: "none",
         opacity: 0.7,
-    }).to(sectionsContainer, {
+    }).to(sectionElement, {
         duration: 0,
         ease: "none",
-        scrollTo: {
-            y: sectionTop,
-        },
+        yPercent: -100,
     });
 
     tl.addLabel(`${startStep + 3}`);
@@ -60,13 +53,7 @@ export function createApartmentsState(
         ease: 'none',
         opacity: 1,
         yPercent: -50,
-    }).to(sectionsContainer, {
-        duration: 1.5,
-        ease: "none",
-        scrollTo: {
-            y: sectionTop + 200,
-        },
-    }, "<")
+    })
 
     return {
         maxStep,

@@ -5,17 +5,13 @@ import { SectionTools } from '../types';
 
 export function createPremiumClassState(
     sectionElement: Element,
-    sectionsContainer: Element,
     tl: gsap.core.Timeline,
     startStep: number,
 ): SectionTools {
     const maxStep: number = startStep + 3;
 
-    const sectionTop = sectionElement.getBoundingClientRect().top;
-
     const backgroundElement = document.querySelector('.premium-class-background')!;
-    const backgroundElementTop = backgroundElement.getBoundingClientRect().top;
-    const filterElement = sectionsContainer.querySelector('.sections-filter');
+    const filterElement = document.querySelector('.filter');
     const headerElement = document.querySelector('header');
     const headerGradientElement = headerElement?.querySelector('.gradient') ?? null;
     const nextSectionTitleElement = sectionElement.querySelector('.next-section-title');
@@ -24,6 +20,7 @@ export function createPremiumClassState(
         duration: 1.5,
         ease: "none",
         scale: 0.9,
+        y: -200,
     }, "<")
 
     tl.set(filterElement, { zIndex: 4 })
@@ -34,15 +31,12 @@ export function createPremiumClassState(
     tl.to(headerGradientElement, {
         duration: 0.5,
         opacity: 1,
-    }).to(sectionsContainer, {
-        scrollTo: { y: backgroundElementTop },
+    }).to(backgroundElement, {
         duration: 2,
         ease: "power1.in",
-    }, "<").to(backgroundElement, {
-        duration: 2,
+        yPercent: -100,
         scale: 1.2,
-        ease: "power1.in",
-    }, "<");
+    }, "<")
 
     tl.addLabel(`${startStep + 2}`);
 
@@ -50,12 +44,10 @@ export function createPremiumClassState(
         duration: 1.5,
         ease: "none",
         opacity: 0.7,
-    }).to(sectionsContainer, {
+    }).to(sectionElement, {
         duration: 0,
         ease: "none",
-        scrollTo: {
-            y: sectionTop,
-        },
+        yPercent: -100,
     });
 
     tl.addLabel(`${startStep + 3}`);
@@ -65,13 +57,7 @@ export function createPremiumClassState(
         ease: 'none',
         opacity: 1,
         yPercent: -50,
-    }).to(sectionsContainer, {
-        duration: 1.5,
-        ease: "none",
-        scrollTo: {
-            y: sectionTop + 200,
-        },
-    }, "<")
+    })
 
     return {
         maxStep,

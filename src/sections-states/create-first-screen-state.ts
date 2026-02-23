@@ -4,16 +4,13 @@ import { SectionTools } from '../types';
 
 
 export function createFirstScreenState(
-    sectionElement: Element, 
-    sectionsContainer: Element, 
+    sectionElement: Element,
     tl: gsap.core.Timeline
 ): SectionTools {
     const maxStep: number = 1;
 
-    const sectionTop = sectionElement.getBoundingClientRect().top;
-
     const backgroundElement = document.querySelector('.first-background');
-    const filterElement = document.querySelector('.body-filter');
+    const filterElement = document.querySelector('.filter');
     const sloganElement = sectionElement.querySelector('.slogan');
     const maskElement = sectionElement.querySelector('.mask');
     const headerElement = document.querySelector('header');
@@ -29,7 +26,7 @@ export function createFirstScreenState(
         duration: 1.5,
         ease: 'none',
         scale: 2,
-    }, "<").set(nextSectionTitleElement, { yPercent: 50 }).set(filterElement, { display: 'none' })
+    }, "<").set(nextSectionTitleElement, { yPercent: 50 })
     tl.tweenTo('"0"');
 
     tl.addLabel('0');
@@ -68,14 +65,8 @@ export function createFirstScreenState(
         ease: 'none',
         opacity: 1,
         yPercent: -50,
-    }).to(sectionsContainer, {
-        duration: 1.5,
-        ease: "none",
-        scrollTo: {
-            y: sectionTop + 200,
-        },
-    }, "<")
-
+    })
+    
     return {
         maxStep,
     }

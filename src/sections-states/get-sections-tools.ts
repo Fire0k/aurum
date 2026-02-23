@@ -10,77 +10,71 @@ import { createApplicationFormState } from './create-application-form-state';
 
 
 export function getSectionsTools(tl: gsap.core.Timeline): SectionTools[] | null {
-    const sectionsContainer = document.getElementById("sections-container");
-    if (!sectionsContainer) {
-        console.error('Не найдены секции страницы');
-        return null;
-    };
-
     const tools: SectionTools[] = [];
 
-    const firstScreenSection = sectionsContainer.querySelector('#first-section');
+    const firstScreenSection = document.getElementById('first-section');
     if (!firstScreenSection) {
         console.error('Не найдена стартовая секция страницы');
         return null;
     } else {
-        tools.push(createFirstScreenState(firstScreenSection, sectionsContainer, tl));
+        tools.push(createFirstScreenState(firstScreenSection, tl));
     };
 
-    const premiumClassSection = sectionsContainer.querySelector('#premium-class');
+    const premiumClassSection = document.getElementById('premium-class');
     if (!premiumClassSection) {
         console.error('Не найдена секция "«Аурум» — премиум-класс"');
         return null;
     } else {
-        tools.push(createPremiumClassState(premiumClassSection, sectionsContainer, tl, tools[0].maxStep));
+        tools.push(createPremiumClassState(premiumClassSection, tl, tools[0].maxStep));
     };
 
-    const safetyAndComfortSection = sectionsContainer.querySelector('#safety-and-comfort');
+    const safetyAndComfortSection = document.getElementById('safety-and-comfort');
     if (!safetyAndComfortSection) {
         console.error('Не найдена секция "Безопасность и комфорт"');
         return null;
     } else {
-        tools.push(createSafetyAndComfortState(safetyAndComfortSection, sectionsContainer, tl, tools[1].maxStep));
+        tools.push(createSafetyAndComfortState(safetyAndComfortSection, tl, tools[1].maxStep));
     };
 
-    const improvementSection = sectionsContainer.querySelector('#improvement');
+    const improvementSection = document.getElementById('improvement');
     if (!improvementSection) {
         console.error('Не найдена секция "Благоустройство"');
         return null;
     } else {
-        tools.push(createImprovementState(improvementSection, sectionsContainer, tl, tools[2].maxStep));
+        tools.push(createImprovementState(improvementSection, tl, tools[2].maxStep));
     };
 
-    const designAndInteriorSection = sectionsContainer.querySelector('#design-and-interior');
+    const designAndInteriorSection = document.getElementById('design-and-interior');
     if (!designAndInteriorSection) {
         console.error('Не найдена секция "Дизайн и интерьер"');
         return null;
     } else {
-        tools.push(createDesignAndInteriorState(designAndInteriorSection, sectionsContainer, tl, tools[3].maxStep));
+        tools.push(createDesignAndInteriorState(designAndInteriorSection, tl, tools[3].maxStep));
     };
 
-    const apartmentsSection = sectionsContainer.querySelector('#apartments');
+    const apartmentsSection = document.getElementById('apartments');
     if (!apartmentsSection) {
         console.error('Не найдена секция "Квартиры"');
         return null;
     } else {
-        tools.push(createApartmentsState(apartmentsSection, sectionsContainer, tl, tools[4].maxStep));
+        tools.push(createApartmentsState(apartmentsSection, tl, tools[4].maxStep));
     };
 
-    const penthousesSection = sectionsContainer.querySelector('#penthouses');
+    const penthousesSection = document.getElementById('penthouses');
     if (!penthousesSection) {
         console.error('Не найдена секция "Пентхаусы"');
         return null;
     } else {
-        tools.push(createPenthousesState(penthousesSection, sectionsContainer, tl, tools[5].maxStep));
+        tools.push(createPenthousesState(penthousesSection, tl, tools[5].maxStep));
     };
 
-    const applicationFormSection = sectionsContainer.querySelector('#application-form');
-    if (!applicationFormSection) {
-        console.error('Не найдена секция формы обратной связи');
-        return null;
-    } else {
-        tools.push(createApplicationFormState(applicationFormSection, sectionsContainer));
-    };
+    // const applicationFormSection = document.getElementById('application-form');
+    // if (!applicationFormSection) {
+    //     console.error('Не найдена секция формы обратной связи');
+    //     return null;
+    // } else {
+    //     tools.push(createApplicationFormState(applicationFormSection));
+    // };
 
 
     return tools;

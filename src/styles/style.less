@@ -3,11 +3,7 @@ body {
     margin: 0;
     height: 100vh;
     width: 100vw;
-    overflow-x: hidden;
-
-    .body-filter {
-        z-index: 1001;
-    }
+    overflow: hidden;
 }
 
 header {
@@ -18,19 +14,8 @@ header {
     }
 }
 
-.main-page {
-    height: 100vh;
-    width: 100vw;
-    overflow-x: hidden;
-    overflow-y: auto;
-}
-
-.sections-filter {
-    opacity: 0;
-}
-
 .first-background {
-    position: absolute;
+    top: 0;
     background-image: url("/src/img/first-section.png");
     width: 100%;
     border-top-left-radius: 0;
@@ -42,6 +27,7 @@ header {
 }
 
 #first-section {
+    top: 0;
     height: 100vh;
     z-index: 2;
 
