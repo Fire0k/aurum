@@ -3,55 +3,74 @@ import gsap from "gsap";
 import { SectionTools } from '../types';
 
 
-export function createPenthousesState(sectionElement: Element, sectionsContainer: Element): SectionTools {
-    let currentStep: number = 0;
-    const maxStep: number = 2;
+export function createPenthousesState(
+    sectionElement: Element,
+    sectionsContainer: Element,
+    tl: gsap.core.Timeline,
+    startStep: number,
+): SectionTools {
+    const maxStep: number = startStep + 4;
 
     const sectionTop = sectionElement.getBoundingClientRect().top;
 
-    const backgroundElement = sectionElement.querySelector('.section-background');
+    const backgroundElement = document.querySelector('.penthouses-background')!;
+    const backgroundElementTop = backgroundElement.getBoundingClientRect().top;
+    const filterElement = sectionsContainer.querySelector('.sections-filter');
+    const nextSectionTitleElement = sectionElement.querySelector('.next-section-title');
 
-    const tl = gsap.timeline({ paused: true });
+    tl.to(backgroundElement, {
+        duration: 1.5,
+        ease: "none",
+        scale: 0.9,
+    }, "<")
+    tl.set(nextSectionTitleElement, { yPercent: 50 })
 
-    tl.addLabel("step0");
+    tl.addLabel(`${startStep + 1}`);
 
     tl.to(sectionsContainer, {
-        scrollTo: { y: sectionTop },
-        duration: 1,
-        ease: "power1.inOut",
+        scrollTo: { y: backgroundElementTop },
+        duration: 2,
+        ease: "power1.in",
     }).to(backgroundElement, {
-        duration: 1,
+        duration: 2,
         scale: 1.2,
-        ease: "power1.inOut",
+        ease: "power1.in",
     }, "<");
 
-    tl.addLabel("step1");
+    tl.set(filterElement, { zIndex: 19, opacity: 0, })
 
-    tl.to(sectionsContainer, {
-        scrollTo: { y: sectionTop + 100 },
-        duration: 1,
-        ease: "power1.inOut",
+    tl.addLabel(`${startStep + 2}`);
+
+    tl.to(filterElement, {
+        duration: 1.5,
+        ease: "none",
+        opacity: 0.7,
+    }).to(sectionsContainer, {
+        duration: 0,
+        ease: "none",
+        scrollTo: {
+            y: sectionTop,
+        },
     });
 
-    tl.addLabel("step2");
+    tl.addLabel(`${startStep + 3}`);
 
-    function increaseStep() {
-        if (currentStep >= maxStep) return;
+    tl.to(nextSectionTitleElement, {
+        duration: 1.5,
+        ease: 'none',
+        opacity: 1,
+        yPercent: -50,
+    }).to(sectionsContainer, {
+        duration: 1.5,
+        ease: "none",
+        scrollTo: {
+            y: sectionTop + 200,
+        },
+    }, "<")
 
-        currentStep++;
-
-        tl.tweenTo(`step${currentStep}`);
-    }
-    function decreaseStep() {
-        if (currentStep === 0) return;
-
-        currentStep--;
-
-        tl.tweenTo(`step${currentStep}`);
-    }
+    tl.addLabel(`${startStep + 4}`);
 
     return {
-        controller: { increaseStep, decreaseStep },
         maxStep,
     }
 }

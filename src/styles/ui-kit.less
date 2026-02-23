@@ -45,6 +45,8 @@ body {
     top: 0;
     left: 0;
     background-color: #333333;
+    will-change: opacity;
+    opacity: 1;
 }
 
 header {
@@ -52,7 +54,7 @@ header {
     height: 268px;
     position: fixed;
     top: 0;
-    z-index: 999;
+    z-index: 1000;
 
     .gradient {
         position: absolute;
@@ -127,6 +129,23 @@ header {
     }
 }
 
+.section-background {
+    height: 100vh;
+    width: 100%;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    transform: scale(0.7);
+    transform-origin: top;
+    border-top-left-radius: var(--section-radius);
+    border-top-right-radius: var(--section-radius);
+    overflow: hidden;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    will-change: transform;
+}
+
 .section-wrapper {
     position: sticky;
     position: -webkit-sticky;
@@ -135,29 +154,6 @@ header {
     background-repeat: no-repeat;
     background-size: cover;
     overflow: hidden;
-
-    .section-background {
-        height: 100%;
-        width: 100%;
-        position: absolute;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%) scale(0.7);
-        transform-origin: top;
-        border-top-left-radius: var(--section-radius);
-        border-top-right-radius: var(--section-radius);
-        overflow: hidden;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        will-change: transform;
-
-        .filter {
-            will-change: opacity;
-            opacity: 0;
-            animation: none;
-        }
-    }
 
     .next-section-title-wrapper {
         width: 100%;
@@ -170,9 +166,10 @@ header {
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%);
+            transform: translateX(-50%);
             text-align: center;
-            // white-space: nowrap;
+            will-change: transform, opacity;
+            opacity: 0;
 
             &.bold-title {
                 font-weight: 800;
@@ -315,7 +312,7 @@ header {
 footer {
     position: fixed;
     bottom: 0;
-    z-index: 999;
+    z-index: 1000;
     opacity: 0;
 
     .footer-wrapper {

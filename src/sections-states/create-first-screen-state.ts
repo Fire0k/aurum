@@ -12,19 +12,24 @@ export function createFirstScreenState(
 
     const sectionTop = sectionElement.getBoundingClientRect().top;
 
-    const backgroundElement = sectionElement.querySelector('.section-background');
+    const backgroundElement = document.querySelector('.first-background');
+    const filterElement = document.querySelector('.body-filter');
     const sloganElement = sectionElement.querySelector('.slogan');
     const maskElement = sectionElement.querySelector('.mask');
     const headerElement = document.querySelector('header');
     const headerLogoElement = headerElement?.querySelector('.logo-main') ?? null;
     const nextSectionTitleElement = sectionElement.querySelector('.next-section-title');
 
-    tl.to(backgroundElement, {
-        duration: 1.5,
+    tl.to(filterElement, {
+        duration: 1,
         delay: 1,
         ease: 'none',
+        opacity: 0,
+    }).to(backgroundElement, {
+        duration: 1.5,
+        ease: 'none',
         scale: 2,
-    }).set(nextSectionTitleElement, { yPercent: 50 })
+    }, "<").set(nextSectionTitleElement, { yPercent: 50 }).set(filterElement, { display: 'none' })
     tl.tweenTo('"0"');
 
     tl.addLabel('0');

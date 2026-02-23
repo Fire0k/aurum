@@ -1,19 +1,9 @@
-@keyframes body-filter-animate {
-        0% {
-            opacity: 1;
-        }
-        100% {
-            opacity: 0;
-        }
-    }
 body {
     position: relative;
     margin: 0;
 
-    .filter {
-        opacity: 1;
-        animation: body-filter-animate 1s linear 1.2s forwards;
-        z-index: 1000;
+    .body-filter {
+        z-index: 1001;
     }
 }
 
@@ -30,19 +20,25 @@ header {
     overflow-y: auto;
 }
 
+.sections-filter {
+    opacity: 0;
+}
+
+.first-background {
+    position: absolute;
+    background-image: url("/src/img/first-section.png");
+    width: 100%;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    transform: scale(3);
+    left: 0;
+    transform-origin: center top;
+    will-change: transform;
+}
+
 #first-section {
     height: 100vh;
-
-    .section-background {
-        background-image: url("/src/img/first-section.png");
-        width: 100%;
-        border-top-left-radius: 0;
-        border-top-right-radius: 0;
-        transform: scale(3);
-        left: 0;
-        transform-origin: center top;
-        will-change: transform;
-    }
+    z-index: 2;
 
     .mask {
         position: absolute;
@@ -88,11 +84,6 @@ header {
         will-change: transform, opacity;
     }
 
-    .next-section-title {
-        will-change: transform, opacity;
-        opacity: 0;
-    }
-
     &.with-mask {
         .mask {
             opacity: 0.9;
@@ -101,48 +92,62 @@ header {
     }
 }
 
+.premium-class-background {
+    background-image: url("/src/img/premium-class-section.png");
+    z-index: 3;
+}
+
 #premium-class {
     height: 100vh;
+    z-index: 5;
+}
 
-    .section-background {
-        background-image: url("/src/img/premium-class-section.png");
-    }
+.safety-and-comfort-background {
+    background-image: url("/src/img/safety-and-comfort-section.png");
+    z-index: 6;
 }
 
 #safety-and-comfort {
     height: 100vh;
+    z-index: 8;
+}
 
-    .section-background {
-        background-image: url("/src/img/safety-and-comfort-section.png");
-    }
+.improvement-background {
+    background-image: url("/src/img/improvement-section.png");
+    z-index: 9;
 }
 
 #improvement {
     height: 100vh;
+    z-index: 11;
+}
 
-    .section-background {
-        background-image: url("/src/img/improvement-section.png");
-    }
+.design-and-interior-background {
+    background-image: url("/src/img/design-and-interior-section.jpg");
+    z-index: 12;
 }
 
 #design-and-interior {
     height: 100vh;
-
-    .section-background {
-        background-image: url("/src/img/design-and-interior-section.jpg");
-    }
+    z-index: 14;
 }
+
+.apartments-background {
+    background-image: url("/src/img/apartments-section.jpg");
+    z-index: 15;
+}
+
 #apartments {
     height: 100vh;
-
-    .section-background {
-        background-image: url("/src/img/apartments-section.jpg");
-    }
+    z-index: 17;
 }
+
+.penthouses-background {
+    background-image: url("/src/img/penthouses-section.jpg");
+    z-index: 18;
+}
+
 #penthouses {
     height: 100vh;
-
-    .section-background {
-        background-image: url("/src/img/penthouses-section.jpg");
-    }
+    z-index: 19;
 }

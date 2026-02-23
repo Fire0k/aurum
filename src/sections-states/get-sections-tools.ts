@@ -47,7 +47,7 @@ export function getSectionsTools(tl: gsap.core.Timeline): SectionTools[] | null 
         console.error('Не найдена секция "Благоустройство"');
         return null;
     } else {
-        tools.push(createImprovementState(improvementSection, sectionsContainer));
+        tools.push(createImprovementState(improvementSection, sectionsContainer, tl, tools[2].maxStep));
     };
 
     const designAndInteriorSection = sectionsContainer.querySelector('#design-and-interior');
@@ -55,7 +55,7 @@ export function getSectionsTools(tl: gsap.core.Timeline): SectionTools[] | null 
         console.error('Не найдена секция "Дизайн и интерьер"');
         return null;
     } else {
-        tools.push(createDesignAndInteriorState(designAndInteriorSection, sectionsContainer));
+        tools.push(createDesignAndInteriorState(designAndInteriorSection, sectionsContainer, tl, tools[3].maxStep));
     };
 
     const apartmentsSection = sectionsContainer.querySelector('#apartments');
@@ -63,7 +63,7 @@ export function getSectionsTools(tl: gsap.core.Timeline): SectionTools[] | null 
         console.error('Не найдена секция "Квартиры"');
         return null;
     } else {
-        tools.push(createApartmentsState(apartmentsSection, sectionsContainer));
+        tools.push(createApartmentsState(apartmentsSection, sectionsContainer, tl, tools[4].maxStep));
     };
 
     const penthousesSection = sectionsContainer.querySelector('#penthouses');
@@ -71,7 +71,7 @@ export function getSectionsTools(tl: gsap.core.Timeline): SectionTools[] | null 
         console.error('Не найдена секция "Пентхаусы"');
         return null;
     } else {
-        tools.push(createPenthousesState(penthousesSection, sectionsContainer));
+        tools.push(createPenthousesState(penthousesSection, sectionsContainer, tl, tools[5].maxStep));
     };
 
     const applicationFormSection = sectionsContainer.querySelector('#application-form');
