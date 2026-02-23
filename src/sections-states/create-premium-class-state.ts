@@ -10,62 +10,51 @@ export function createPremiumClassState(
 ): SectionTools {
     const maxStep: number = startStep + 3;
 
-    const prevBackgroundElement = document.querySelector('.section-background')!;
-    const backgroundElement = document.querySelector('.section-background-next')!;
-    const filterElement = document.querySelector('.filter');
+    const backgroundElement = sectionElement.querySelector('.section-background')!;
+    const filterElement = sectionElement.querySelector('.section-filter');
     const headerElement = document.querySelector('header');
     const headerGradientElement = headerElement?.querySelector('.gradient') ?? null;
     const nextSectionTitleElement = sectionElement.querySelector('.next-section-title');
-    const maskElement = sectionElement.querySelector('.mask');
+    // const maskElement = sectionElement.querySelector('.mask');
 
-    tl.to(backgroundElement, {
+    tl.to(sectionElement, {
+        duration: 1.5,
+        ease: "none",
+        yPercent: -20,
+    }, "<").to(backgroundElement, {
         duration: 1.5,
         ease: "none",
         scale: 0.9,
-        yPercent: -20,
     }, "<")
 
     tl.set(nextSectionTitleElement, { yPercent: 50 })
-    tl.set(sectionElement, { zIndex: 5 })
+    tl.set(filterElement, { opacity: 0 })
 
     tl.addLabel(`${startStep + 1}`);
 
     tl.to(headerGradientElement, {
         duration: 0.5,
         opacity: 1,
-    }).to(backgroundElement, {
+    }).to(sectionElement, {
         duration: 1.5,
         ease: "none",
         yPercent: -100,
+    }, "<").to(backgroundElement, {
+        duration: 1.5,
+        ease: "none",
         scale: 1.1,
     }, "<")
 
-    tl.set(filterElement, { zIndex: 4, opacity: 1, })
-
-    tl.set(prevBackgroundElement, {
-        top: '100%',
-        opacity: 1,
-        yPercent: 0,
-        borderTopLeftRadius: 60,
-        borderTopRightRadius: 60,
-        backgroundImage: 'url("/src/img/safety-and-comfort-section.webp")',
-        zIndex: 6,
-        scale: 0.8,
-    })
-
     tl.addLabel(`${startStep + 2}`);
 
-    tl.set(maskElement, { display: 'none' })
+    // tl.set(maskElement, { display: 'none' })
+    tl.set(filterElement, { opacity: 1 })
 
     tl.to(backgroundElement, {
         duration: 1.5,
         ease: "none",
         opacity: 0.3,
-    }).to(sectionElement, {
-        duration: 0,
-        ease: "none",
-        yPercent: -100,
-    });
+    })
 
     tl.addLabel(`${startStep + 3}`);
 

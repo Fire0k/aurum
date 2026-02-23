@@ -14,20 +14,17 @@ header {
     }
 }
 
-.section-background {
-    top: 0;
-    background-image: url("/src/img/first-section.png");
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    transform: scale(3);
-}
-.section-background-next {
-    background-image: url("/src/img/premium-class-section.webp");
-}
-
 #first-section {
     top: 0;
     height: 100vh;
+
+    .section-background {
+        top: 0;
+        background-image: url("/src/img/first-section.png");
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        transform: scale(3);
+    }
 
     .mask {
         position: absolute;
@@ -81,56 +78,50 @@ header {
     }
 }
 
-.premium-class-background {
-    background-image: url("/src/img/premium-class-section.webp");
-    z-index: 3;
-}
-
 #premium-class {
     height: 100vh;
-}
 
-.safety-and-comfort-background {
-    background-image: url("/src/img/safety-and-comfort-section.webp");
-    z-index: 6;
+    .section-background {
+        background-image: url("/src/img/premium-class-section.webp");
+    }
 }
 
 #safety-and-comfort {
     height: 100vh;
-}
 
-.improvement-background {
-    background-image: url("/src/img/improvement-section.webp");
-    z-index: 9;
+    .section-background {
+        background-image: url("/src/img/safety-and-comfort-section.webp");
+    }
 }
 
 #improvement {
     height: 100vh;
-}
 
-.design-and-interior-background {
-    background-image: url("/src/img/design-and-interior-section.webp");
-    z-index: 12;
+    .section-background {
+        background-image: url("/src/img/improvement-section.webp");
+    }
 }
 
 #design-and-interior {
     height: 100vh;
-}
 
-.apartments-background {
-    background-image: url("/src/img/apartments-section.webp");
-    z-index: 15;
+    .section-background {
+        background-image: url("/src/img/design-and-interior-section.webp");
+    }
 }
 
 #apartments {
     height: 100vh;
-}
 
-.penthouses-background {
-    background-image: url("/src/img/penthouses-section.webp");
-    z-index: 18;
+    .section-background {
+        background-image: url("/src/img/apartments-section.webp");
+    }
 }
 
 #penthouses {
     height: 100vh;
+
+    .section-background {
+        background-image: url("/src/img/penthouses-section.webp");
+    }
 }

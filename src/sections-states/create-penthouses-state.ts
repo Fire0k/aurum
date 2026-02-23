@@ -10,42 +10,44 @@ export function createPenthousesState(
 ): SectionTools {
     const maxStep: number = startStep + 4;
 
-    const backgroundElement = document.querySelector('.penthouses-background')!;
-    const filterElement = document.querySelector('.filter');
+    const backgroundElement = sectionElement.querySelector('.section-background')!;
+    const filterElement = sectionElement.querySelector('.section-filter');
     const nextSectionTitleElement = sectionElement.querySelector('.next-section-title');
 
-    tl.to(backgroundElement, {
+    tl.to(sectionElement, {
+        duration: 1.5,
+        ease: "none",
+        yPercent: -20,
+    }, "<").to(backgroundElement, {
         duration: 1.5,
         ease: "none",
         scale: 0.9,
-        yPercent: -20,
     }, "<")
 
     tl.set(nextSectionTitleElement, { yPercent: 50 })
-    tl.set(sectionElement, { zIndex: 15 })
+    tl.set(filterElement, { opacity: 0 })
 
     tl.addLabel(`${startStep + 1}`);
 
-    tl.to(backgroundElement, {
+    tl.to(sectionElement, {
         duration: 1.5,
         ease: "none",
         yPercent: -100,
+    }).to(backgroundElement, {
+        duration: 1.5,
+        ease: "none",
         scale: 1.1,
-    });
-
-    tl.set(filterElement, { opacity: 1, zIndex: 14 })
+    }, "<")
 
     tl.addLabel(`${startStep + 2}`);
+
+    tl.set(filterElement, { opacity: 1 })
 
     tl.to(backgroundElement, {
         duration: 1.5,
         ease: "none",
         opacity: 0.3,
-    }).to(sectionElement, {
-        duration: 0,
-        ease: "none",
-        yPercent: -100,
-    });
+    })
 
     tl.addLabel(`${startStep + 3}`);
 

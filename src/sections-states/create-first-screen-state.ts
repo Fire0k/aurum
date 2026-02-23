@@ -10,15 +10,15 @@ export function createFirstScreenState(
     const maxStep: number = 1;
 
     const backgroundElement = document.querySelector('.section-background');
-    const backgroundNextElement = document.querySelector('.section-background-next');
-    const filterElement = document.querySelector('.filter');
+    const bodyFilterElement = document.querySelector('.body-filter');
     const sloganElement = sectionElement.querySelector('.slogan');
-    const maskElement = sectionElement.querySelector('.mask');
+    // const maskElement = sectionElement.querySelector('.mask');
+    const filterElement = document.querySelector('.section-filter');
     const headerElement = document.querySelector('header');
     const headerLogoElement = headerElement?.querySelector('.logo-main') ?? null;
     const nextSectionTitleElement = sectionElement.querySelector('.next-section-title');
 
-    tl.to(filterElement, {
+    tl.to(bodyFilterElement, {
         duration: 1,
         delay: 1,
         ease: 'none',
@@ -28,10 +28,10 @@ export function createFirstScreenState(
         ease: 'none',
         scale: 2,
     }, "<").set(nextSectionTitleElement, { yPercent: 50 })
-    tl.tweenTo('"0"');
 
-    tl.set(backgroundNextElement, { zIndex: 4 })
-    tl.set(filterElement, { zIndex: 0, opacity: 1 })
+    tl.set(filterElement, { opacity: 0 })
+
+    tl.tweenTo('"0"');
 
     tl.addLabel('0');
 
@@ -55,6 +55,8 @@ export function createFirstScreenState(
     })
 
     tl.addLabel('1');
+
+    tl.set(filterElement, { opacity: 1 })
 
     // tl.to(maskElement, {
     //     duration: 1.5,
