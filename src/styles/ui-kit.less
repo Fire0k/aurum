@@ -41,10 +41,13 @@ body {
 .filter {
     width: 100%;
     height: 100%;
+    transform: scale(1.2);
     position: absolute;
-    top: 0;
-    left: 0;
+    inset: 0;
     background-color: #333333;
+    will-change: opacity;
+    opacity: 1;
+    z-index: 101;
 }
 
 header {
@@ -52,7 +55,7 @@ header {
     height: 268px;
     position: fixed;
     top: 0;
-    z-index: 999;
+    z-index: 100;
 
     .gradient {
         position: absolute;
@@ -127,37 +130,33 @@ header {
     }
 }
 
+.section-background, .section-background-next {
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    transform: scale(0.7);
+    transform-origin: top;
+    border-top-left-radius: var(--section-radius);
+    border-top-right-radius: var(--section-radius);
+    overflow: hidden;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transform-origin: center top;
+    will-change: transform;
+}
+
 .section-wrapper {
-    position: sticky;
-    position: -webkit-sticky;
-    top: 0;
+    position: absolute;
+    top: 100%;
+    height: 100vh;
+    width: 100vw;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     overflow: hidden;
-
-    .section-background {
-        height: 100%;
-        width: 100%;
-        position: absolute;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%) scale(0.7);
-        transform-origin: top;
-        border-top-left-radius: var(--section-radius);
-        border-top-right-radius: var(--section-radius);
-        overflow: hidden;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        will-change: transform;
-
-        .filter {
-            will-change: opacity;
-            opacity: 0;
-            animation: none;
-        }
-    }
+    will-change: transform;
 
     .next-section-title-wrapper {
         width: 100%;
@@ -170,9 +169,10 @@ header {
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%);
+            transform: translateX(-50%);
             text-align: center;
-            // white-space: nowrap;
+            will-change: transform, opacity;
+            opacity: 0;
 
             &.bold-title {
                 font-weight: 800;
@@ -254,10 +254,11 @@ header {
 }
 
 #application-form {
-    width: 100%;
-    height: calc(100vh - 370px);
     position: relative;
-    padding-top: 370px;
+    opacity: 0;
+    will-change: transform, opacity;
+    display: flex;
+    align-items: center;
 
     .form-inputs {
         margin-bottom: 166px;
@@ -315,7 +316,7 @@ header {
 footer {
     position: fixed;
     bottom: 0;
-    z-index: 999;
+    z-index: 100;
     opacity: 0;
 
     .footer-wrapper {

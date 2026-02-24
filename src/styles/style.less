@@ -1,20 +1,9 @@
-@keyframes body-filter-animate {
-        0% {
-            opacity: 1;
-        }
-        100% {
-            opacity: 0;
-        }
-    }
 body {
     position: relative;
     margin: 0;
-
-    .filter {
-        opacity: 1;
-        animation: body-filter-animate 1s linear 1.2s forwards;
-        z-index: 1000;
-    }
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
 }
 
 header {
@@ -25,24 +14,25 @@ header {
     }
 }
 
-.main-page {
-    height: 100vh;
-    overflow-y: auto;
+.section-background {
+    top: 0;
+    background-image: url("/src/img/first-section.png");
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    transform: scale(3);
+    z-index: 1;
+}
+.section-wrapper {
+    z-index: 2;
+}
+.section-background-next {
+    background-image: url("/src/img/premium-class-section.webp");
+    z-index: 3;
 }
 
 #first-section {
+    top: 0;
     height: 100vh;
-
-    .section-background {
-        background-image: url("/src/img/first-section.png");
-        width: 100%;
-        border-top-left-radius: 0;
-        border-top-right-radius: 0;
-        transform: scale(3);
-        left: 0;
-        transform-origin: center top;
-        will-change: transform;
-    }
 
     .mask {
         position: absolute;
@@ -88,11 +78,6 @@ header {
         will-change: transform, opacity;
     }
 
-    .next-section-title {
-        will-change: transform, opacity;
-        opacity: 0;
-    }
-
     &.with-mask {
         .mask {
             opacity: 0.9;
@@ -103,46 +88,24 @@ header {
 
 #premium-class {
     height: 100vh;
-
-    .section-background {
-        background-image: url("/src/img/premium-class-section.png");
-    }
 }
 
 #safety-and-comfort {
     height: 100vh;
-
-    .section-background {
-        background-image: url("/src/img/safety-and-comfort-section.png");
-    }
 }
 
 #improvement {
     height: 100vh;
-
-    .section-background {
-        background-image: url("/src/img/improvement-section.png");
-    }
 }
 
 #design-and-interior {
     height: 100vh;
-
-    .section-background {
-        background-image: url("/src/img/design-and-interior-section.jpg");
-    }
 }
+
 #apartments {
     height: 100vh;
-
-    .section-background {
-        background-image: url("/src/img/apartments-section.jpg");
-    }
 }
+
 #penthouses {
     height: 100vh;
-
-    .section-background {
-        background-image: url("/src/img/penthouses-section.jpg");
-    }
 }

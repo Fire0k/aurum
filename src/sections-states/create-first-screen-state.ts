@@ -4,33 +4,40 @@ import { SectionTools } from '../types';
 
 
 export function createFirstScreenState(
-    sectionElement: Element, 
-    sectionsContainer: Element, 
+    sectionElement: Element,
     tl: gsap.core.Timeline
 ): SectionTools {
     const maxStep: number = 1;
 
-    const sectionTop = sectionElement.getBoundingClientRect().top;
-
-    const backgroundElement = sectionElement.querySelector('.section-background');
-    const sloganElement = sectionElement.querySelector('.slogan');
-    const maskElement = sectionElement.querySelector('.mask');
     const headerElement = document.querySelector('header');
     const headerLogoElement = headerElement?.querySelector('.logo-main') ?? null;
+
+    const backgroundElement = document.querySelector('.section-background');
+
+    const filterElement = document.querySelector('.filter');
+    const sloganElement = sectionElement.querySelector('.slogan');
+    const maskElement = sectionElement.querySelector('.mask');
     const nextSectionTitleElement = sectionElement.querySelector('.next-section-title');
 
-    tl.to(backgroundElement, {
-        duration: 1.5,
+    tl.to(filterElement, {
+        duration: 1,
         delay: 1,
         ease: 'none',
+        opacity: 0,
+    }).to(backgroundElement, {
+        duration: 1.5,
+        ease: 'none',
         scale: 2,
-    }).set(nextSectionTitleElement, { yPercent: 50 })
+    }, "<")
     tl.tweenTo('"0"');
+
+    tl.set(filterElement, { zIndex: 0, opacity: 1 })
+    tl.set(nextSectionTitleElement, { yPercent: 50 })
 
     tl.addLabel('0');
 
     tl.to(backgroundElement, {
-        duration: 1,
+        duration: 1.5,
         ease: 'none',
         scale: 1.5,
     }).to(sloganElement, {
@@ -58,18 +65,20 @@ export function createFirstScreenState(
         duration: 1.5,
         ease: 'none',
         opacity: 1,
-    }, "<").to(nextSectionTitleElement, {
+    }, "<")
+
+    tl.set(maskElement, { display: 'none' });
+    tl.set(backgroundElement, {
+        ease: 'none',
+        opacity: 0.1,
+    })
+    
+    tl.to(nextSectionTitleElement, {
         duration: 1.5,
         ease: 'none',
         opacity: 1,
         yPercent: -50,
-    }).to(sectionsContainer, {
-        duration: 1.5,
-        ease: "none",
-        scrollTo: {
-            y: sectionTop + 200,
-        },
-    }, "<")
+    })
 
     return {
         maxStep,

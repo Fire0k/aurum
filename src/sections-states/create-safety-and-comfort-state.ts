@@ -1,53 +1,74 @@
 import gsap from "gsap";
 
 import { SectionTools } from '../types';
+import bg from '../img/improvement-section.webp';
 
 
 export function createSafetyAndComfortState(
     sectionElement: Element,
-    sectionsContainer: Element,
     tl: gsap.core.Timeline,
     startStep: number,
 ): SectionTools {
-    const maxStep: number = startStep + 2;
+    const maxStep: number = startStep + 3;
 
-    const sectionTop = sectionElement.getBoundingClientRect().top;
+    const prevBackgroundElement = document.querySelector('.section-background-next')!;
+    const backgroundElement = document.querySelector('.section-background')!;
 
-    const backgroundElement = sectionElement.querySelector('.section-background');
-    const filterElement = backgroundElement?.querySelector('.filter') ?? null;
+    const filterElement = document.querySelector('.filter');
+    const nextSectionTitleElement = sectionElement.querySelector('.next-section-title');
 
     tl.to(backgroundElement, {
         duration: 1.5,
         ease: "none",
         scale: 0.9,
+        yPercent: -20,
     }, "<")
 
     tl.addLabel(`${startStep + 1}`);
 
-    tl.to(sectionsContainer, {
-        scrollTo: { y: sectionTop },
-        duration: 2,
-        ease: "power1.in",
-    }).to(backgroundElement, {
-        duration: 2,
+    tl.to(backgroundElement, {
+        duration: 1.5,
+        ease: "none",
+        yPercent: -100,
         scale: 1.2,
-        ease: "power1.in",
-    }, "<");
+    });
+
+    tl.set(prevBackgroundElement, {
+        top: '100%',
+        opacity: 1,
+        yPercent: 0,
+        borderTopLeftRadius: 60,
+        borderTopRightRadius: 60,
+        backgroundImage: `url("${bg}")`,
+        zIndex: 5,
+        scale: 0.8,
+    })
+    tl.set(backgroundElement, { zIndex: 4 })
+    tl.set(sectionElement, { zIndex: 4 })
+    tl.set(nextSectionTitleElement, { yPercent: 50 })
+    tl.set(filterElement, { zIndex: 4, opacity: 1 })
 
     tl.addLabel(`${startStep + 2}`);
 
-    // tl.to(filterElement, {
-    //     duration: 1.5,
-    //     ease: "none",
-    //     opacity: 0.7,
-    // })
-    tl.to(sectionsContainer, {
+    tl.to(backgroundElement, {
         duration: 1.5,
         ease: "none",
-        scrollTo: {
-            y: sectionTop + 200,
-        },
+        opacity: 0.2,
+    })
+    tl.set(sectionElement, {
+        duration: 0,
+        ease: "none",
+        yPercent: -100,
     });
+
+    tl.addLabel(`${startStep + 3}`);
+
+    tl.to(nextSectionTitleElement, {
+        duration: 1.5,
+        ease: 'none',
+        opacity: 1,
+        yPercent: -50,
+    })
 
     return {
         maxStep,
