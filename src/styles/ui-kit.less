@@ -41,12 +41,13 @@ body {
 .filter {
     width: 100%;
     height: 100%;
+    transform: scale(1.2);
     position: absolute;
     inset: 0;
     background-color: #333333;
     will-change: opacity;
     opacity: 1;
-    z-index: 1001;
+    z-index: 101;
 }
 
 header {
@@ -54,7 +55,7 @@ header {
     height: 268px;
     position: fixed;
     top: 0;
-    z-index: 1000;
+    z-index: 100;
 
     .gradient {
         position: absolute;
@@ -129,7 +130,7 @@ header {
     }
 }
 
-.section-background {
+.section-background, .section-background-next {
     height: 100vh;
     width: 100%;
     position: absolute;
@@ -142,6 +143,7 @@ header {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    transform-origin: center top;
     will-change: transform;
 }
 
@@ -154,6 +156,7 @@ header {
     background-repeat: no-repeat;
     background-size: cover;
     overflow: hidden;
+    will-change: transform;
 
     .next-section-title-wrapper {
         width: 100%;
@@ -251,10 +254,11 @@ header {
 }
 
 #application-form {
-    width: 100%;
-    height: calc(100vh - 370px);
     position: relative;
-    padding-top: 370px;
+    opacity: 0;
+    will-change: transform, opacity;
+    display: flex;
+    align-items: center;
 
     .form-inputs {
         margin-bottom: 166px;
@@ -312,7 +316,7 @@ header {
 footer {
     position: fixed;
     bottom: 0;
-    z-index: 1000;
+    z-index: 100;
     opacity: 0;
 
     .footer-wrapper {

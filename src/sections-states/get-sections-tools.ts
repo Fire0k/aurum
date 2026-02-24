@@ -68,13 +68,13 @@ export function getSectionsTools(tl: gsap.core.Timeline): SectionTools[] | null 
         tools.push(createPenthousesState(penthousesSection, tl, tools[5].maxStep));
     };
 
-    // const applicationFormSection = document.getElementById('application-form');
-    // if (!applicationFormSection) {
-    //     console.error('Не найдена секция формы обратной связи');
-    //     return null;
-    // } else {
-    //     tools.push(createApplicationFormState(applicationFormSection));
-    // };
+    const applicationFormSection = document.getElementById('application-form');
+    if (!applicationFormSection) {
+        console.error('Не найдена секция формы обратной связи');
+        return null;
+    } else {
+        tools.push(createApplicationFormState(applicationFormSection, tl, tools[6].maxStep));
+    };
 
 
     return tools;
