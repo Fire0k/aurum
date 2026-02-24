@@ -37,7 +37,7 @@ export function createPremiumClassState(
         duration: 1.5,
         ease: "none",
         yPercent: -100,
-        scale: 1.1,
+        scale: 1.2,
     }, "<")
 
     tl.set(filterElement, { zIndex: 4, opacity: 1, })

@@ -21,7 +21,7 @@ export function createApplicationFormState(sectionElement: Element, sectionsCont
         ease: "power1.inOut",
     }).to(backgroundElement, {
         duration: 1.5,
-        scale: 1.1,
+        scale: 1.2,
         ease: "power1.inOut",
     }, "<");
 

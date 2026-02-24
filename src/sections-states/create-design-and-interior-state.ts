@@ -31,7 +31,7 @@ export function createDesignAndInteriorState(
         duration: 1.5,
         ease: "none",
         yPercent: -100,
-        scale: 1.1,
+        scale: 1.2,
     });
 
     tl.set(filterElement, { opacity: 1, zIndex: 10 })
