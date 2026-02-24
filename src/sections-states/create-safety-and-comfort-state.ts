@@ -1,6 +1,7 @@
 import gsap from "gsap";
 
 import { SectionTools } from '../types';
+import bg from '../img/improvement-section.webp';
 
 
 export function createSafetyAndComfortState(
@@ -12,6 +13,7 @@ export function createSafetyAndComfortState(
 
     const prevBackgroundElement = document.querySelector('.section-background-next')!;
     const backgroundElement = document.querySelector('.section-background')!;
+
     const filterElement = document.querySelector('.filter');
     const nextSectionTitleElement = sectionElement.querySelector('.next-section-title');
 
@@ -21,8 +23,6 @@ export function createSafetyAndComfortState(
         scale: 0.9,
         yPercent: -20,
     }, "<")
-    tl.set(nextSectionTitleElement, { yPercent: 50 })
-    tl.set(sectionElement, { zIndex: 7 })
 
     tl.addLabel(`${startStep + 1}`);
 
@@ -33,28 +33,33 @@ export function createSafetyAndComfortState(
         scale: 1.2,
     });
 
-    tl.set(filterElement, { opacity: 1, zIndex: 6 })
+    tl.set(prevBackgroundElement, {
+        top: '100%',
+        opacity: 1,
+        yPercent: 0,
+        borderTopLeftRadius: 60,
+        borderTopRightRadius: 60,
+        backgroundImage: `url("${bg}")`,
+        zIndex: 5,
+        scale: 0.8,
+    })
+    tl.set(backgroundElement, { zIndex: 4 })
+    tl.set(sectionElement, { zIndex: 4 })
+    tl.set(nextSectionTitleElement, { yPercent: 50 })
+    tl.set(filterElement, { zIndex: 4, opacity: 1 })
 
     tl.addLabel(`${startStep + 2}`);
 
     tl.to(backgroundElement, {
         duration: 1.5,
         ease: "none",
-        opacity: 0.3,
-    }).to(sectionElement, {
+        opacity: 0.2,
+    })
+    tl.set(sectionElement, {
         duration: 0,
         ease: "none",
         yPercent: -100,
     });
-
-    tl.set(prevBackgroundElement, {
-        top: '100%',
-        opacity: 1,
-        yPercent: 0,
-        backgroundImage: 'url("/src/img/improvement-section.webp")',
-        zIndex: 8,
-        scale: 0.8,
-    })
 
     tl.addLabel(`${startStep + 3}`);
 

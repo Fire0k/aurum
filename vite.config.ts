@@ -16,7 +16,6 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: 'index.html',
-        'ui-kit': 'src/styles/ui-kit.less'
       },
       output: {
         entryFileNames: 'script.js',

@@ -9,7 +9,8 @@
     "noEmit": true,
 
     "useDefineForClassFields": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "types": ["vite/client"]
   },
   "include": [
     "src/main.ts"

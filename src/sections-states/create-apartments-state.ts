@@ -1,6 +1,7 @@
 import gsap from "gsap";
 
 import { SectionTools } from '../types';
+import bg from '../img/penthouses-section.webp';
 
 
 export function createApartmentsState(
@@ -12,6 +13,7 @@ export function createApartmentsState(
 
     const prevBackgroundElement = document.querySelector('.section-background')!;
     const backgroundElement = document.querySelector('.section-background-next')!;
+
     const filterElement = document.querySelector('.filter');
     const nextSectionTitleElement = sectionElement.querySelector('.next-section-title');
 
@@ -22,9 +24,6 @@ export function createApartmentsState(
         yPercent: -20,
     }, "<")
 
-    tl.set(nextSectionTitleElement, { yPercent: 50 })
-    tl.set(sectionElement, { zIndex: 13 })
-
     tl.addLabel(`${startStep + 1}`);
 
     tl.to(backgroundElement, {
@@ -34,24 +33,29 @@ export function createApartmentsState(
         scale: 1.2,
     });
 
-    tl.set(filterElement, { opacity: 1, zIndex: 12 })
-
     tl.set(prevBackgroundElement, {
         top: '100%',
         opacity: 1,
         yPercent: 0,
-        backgroundImage: 'url("/src/img/apartments-section.webp")',
-        zIndex: 14,
+        borderTopLeftRadius: 60,
+        borderTopRightRadius: 60,
+        backgroundImage: `url("${bg}")`,
+        zIndex: 8,
         scale: 0.8,
     })
+    tl.set(backgroundElement, { zIndex: 7 })
+    tl.set(sectionElement, { zIndex: 7 })
+    tl.set(nextSectionTitleElement, { yPercent: 50 })
+    tl.set(filterElement, { zIndex: 7, opacity: 1 })
 
     tl.addLabel(`${startStep + 2}`);
 
     tl.to(backgroundElement, {
         duration: 1.5,
         ease: "none",
-        opacity: 0.3,
-    }).to(sectionElement, {
+        opacity: 0.2,
+    })
+    tl.set(sectionElement, {
         duration: 0,
         ease: "none",
         yPercent: -100,
