@@ -29,7 +29,7 @@ export function createPageState() {
     function increaseStep() {
         if (gsap.isTweening(tl)) return;
 
-        // if (currentStep === sectionsTools.at(-1)!.maxStep) return;
+        if (currentStep === sectionsTools.at(-1)!.maxStep) return;
 
         currentStep++;
         tl.tweenTo(`${currentStep}`);
