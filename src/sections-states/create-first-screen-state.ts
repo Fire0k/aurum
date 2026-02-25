@@ -29,7 +29,6 @@ export function createFirstScreenState(
         ease: 'none',
         scale: 2,
     }, "<")
-    tl.tweenTo('"0"');
 
     tl.set(filterElement, { zIndex: 0, opacity: 1 })
     tl.set(nextSectionTitleElement, { yPercent: 50 })

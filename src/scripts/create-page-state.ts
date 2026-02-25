@@ -17,6 +17,8 @@ import { SectionTools } from "../types";
  * - Для перехвата и замены нативного скролла на кастомные действия используется gsap.Observer
  */
 export function createPageState() {
+    const dev: boolean = false;
+
     const tl = gsap.timeline({ paused: true });
 
     const sectionsTools = getSectionsTools(tl) as SectionTools[];
@@ -50,32 +52,38 @@ export function createPageState() {
         }
     }
 
-    createPageObserver(
-        () => decreaseStep(),
-        () => increaseStep(),
-    );
+    if (!dev) {
+        tl.tweenTo(`${0}`);
 
-    /**
-     * Анимация маски через js лагает в Chrome,
-     * обходной путь для реализации этой анимации через css
-     */
-    const firstScreenSection = document.getElementById('first-section')!;
-    const maskElement = document.querySelector('.mask');
-    tl.call(() => {
-        if (prevStep > currentStep || currentStep === 0) return;
-        firstScreenSection.classList.add('with-mask')
-    }, undefined, 'add-mask');
-    tl.call(() => {
-        if (prevStep < currentStep) return;
-        firstScreenSection.classList.remove('with-mask')
-    }, undefined, '1-=0.01');
+        createPageObserver(
+            () => decreaseStep(),
+            () => increaseStep(),
+        );
 
-    tl.call(() => {
-        if (prevStep > currentStep || currentStep === 0) return;
-        (maskElement as HTMLElement).style.transitionDuration = '1.5s';
-    }, undefined, '1');
-    tl.call(() => {
-        if (prevStep < currentStep) return;
-        (maskElement as HTMLElement).style.transitionDuration = 'unset';
-    }, undefined, '1');
+        /**
+         * Анимация маски через js лагает в Chrome,
+         * обходной путь для реализации этой анимации через css
+         */
+        const firstScreenSection = document.getElementById('first-section')!;
+        const maskElement = document.querySelector('.mask');
+        tl.call(() => {
+            if (prevStep > currentStep || currentStep === 0) return;
+            firstScreenSection.classList.add('with-mask')
+        }, undefined, 'add-mask');
+        tl.call(() => {
+            if (prevStep < currentStep) return;
+            firstScreenSection.classList.remove('with-mask')
+        }, undefined, '1-=0.01');
+
+        tl.call(() => {
+            if (prevStep > currentStep || currentStep === 0) return;
+            (maskElement as HTMLElement).style.transitionDuration = '1.5s';
+        }, undefined, '1');
+        tl.call(() => {
+            if (prevStep < currentStep) return;
+            (maskElement as HTMLElement).style.transitionDuration = 'unset';
+        }, undefined, '1');
+    } else {
+        document.body.classList.add('dev');
+    }
 }

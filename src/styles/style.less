@@ -4,6 +4,40 @@ body {
     height: 100vh;
     width: 100vw;
     overflow: hidden;
+
+    &.dev {
+        height: auto;
+        overflow: auto;
+
+        .filter {
+            z-index: 0;
+        }
+
+        .section-background {
+            position: relative;
+            top: unset;
+            transform: scale(1);
+        }
+
+        .section-wrapper {
+            position: relative;
+            top: unset;
+            bottom: unset;
+            transform: translateY(-100%);
+
+            .next-section-title {
+                opacity: 1;
+            }
+        }
+
+        #application-form {
+            opacity: 1;
+        }
+
+        footer {
+            opacity: 1;
+        }
+    }
 }
 
 header {
