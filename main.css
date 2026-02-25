@@ -109,8 +109,7 @@ header .header-wrapper .info-block .phone {
   color: #ffffff;
   text-decoration: none;
 }
-.section-background,
-.section-background-next {
+.section-background {
   height: 100vh;
   width: 100%;
   position: absolute;
@@ -297,6 +296,33 @@ body {
   height: 100vh;
   width: 100vw;
   overflow: hidden;
+}
+body.dev {
+  height: auto;
+  overflow: auto;
+}
+body.dev .filter {
+  z-index: 0;
+}
+body.dev .section-background {
+  position: relative;
+  top: unset;
+  transform: scale(1);
+}
+body.dev .section-wrapper {
+  position: relative;
+  top: unset;
+  bottom: unset;
+  transform: translateY(-100%);
+}
+body.dev .section-wrapper .next-section-title {
+  opacity: 1;
+}
+body.dev #application-form {
+  opacity: 1;
+}
+body.dev footer {
+  opacity: 1;
 }
 header .header-wrapper .logo-main {
   opacity: 0;
