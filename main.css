@@ -222,6 +222,7 @@ header .header-wrapper .info-block .phone {
   will-change: transform, opacity;
   display: flex;
   align-items: center;
+  z-index: 19;
 }
 #application-form .form-inputs {
   margin-bottom: 166px;
@@ -300,7 +301,7 @@ body {
 header .header-wrapper .logo-main {
   opacity: 0;
 }
-.section-background {
+.first-section-background {
   top: 0;
   background-image: url("./img/first-section.png");
   border-top-left-radius: 0;
@@ -308,16 +309,10 @@ header .header-wrapper .logo-main {
   transform: scale(3);
   z-index: 1;
 }
-.section-wrapper {
-  z-index: 2;
-}
-.section-background-next {
-  background-image: url("./img/premium-class-section.webp");
-  z-index: 3;
-}
 #first-section {
   top: 0;
   height: 100vh;
+  z-index: 2;
 }
 #first-section .mask {
   position: absolute;
@@ -363,21 +358,45 @@ header .header-wrapper .logo-main {
   opacity: 0.9;
   transform: scale(1);
 }
+.premium-class-background {
+  background-image: url("./img/premium-class-section.webp");
+  z-index: 4;
+}
 #premium-class {
-  height: 100vh;
+  z-index: 5;
+}
+.safety-and-comfort-background {
+  background-image: url("./img/safety-and-comfort-section.webp");
+  z-index: 7;
 }
 #safety-and-comfort {
-  height: 100vh;
+  z-index: 8;
+}
+.improvement-background {
+  background-image: url("./img/improvement-section.webp");
+  z-index: 10;
 }
 #improvement {
-  height: 100vh;
+  z-index: 11;
+}
+.design-and-interior-background {
+  background-image: url("./img/design-and-interior-section.webp");
+  z-index: 13;
 }
 #design-and-interior {
-  height: 100vh;
+  z-index: 14;
+}
+.apartments-background {
+  background-image: url("./img/apartments-section.webp");
+  z-index: 16;
 }
 #apartments {
-  height: 100vh;
+  z-index: 17;
+}
+.penthouses-background {
+  background-image: url("./img/penthouses-section.webp");
+  z-index: 19;
 }
 #penthouses {
-  height: 100vh;
+  z-index: 20;
 }
