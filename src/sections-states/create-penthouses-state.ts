@@ -10,7 +10,7 @@ export function createPenthousesState(
 ): SectionTools {
     const maxStep: number = startStep + 3;
 
-    const backgroundElement = document.querySelector('.section-background')!;
+    const backgroundElement = document.querySelector('.penthouses-background')!;
 
     const filterElement = document.querySelector('.filter');
 
@@ -30,9 +30,7 @@ export function createPenthousesState(
         scale: 1.2,
     });
 
-    tl.set(backgroundElement, { zIndex: 8 })
-    tl.set(sectionElement, { zIndex: 8 })
-    tl.set(filterElement, { zIndex: 8, opacity: 1 })
+    tl.set(filterElement, { zIndex: 18 })
 
     tl.addLabel(`${startStep + 2}`);
 

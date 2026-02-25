@@ -11,8 +11,7 @@ export function createDesignAndInteriorState(
 ): SectionTools {
     const maxStep: number = startStep + 3;
 
-    const prevBackgroundElement = document.querySelector('.section-background-next')!;
-    const backgroundElement = document.querySelector('.section-background')!;
+    const backgroundElement = document.querySelector('.design-and-interior-background')!;
 
     const filterElement = document.querySelector('.filter');
     const nextSectionTitleElement = sectionElement.querySelector('.next-section-title');
@@ -33,20 +32,8 @@ export function createDesignAndInteriorState(
         scale: 1.2,
     });
 
-    tl.set(prevBackgroundElement, {
-        top: '100%',
-        opacity: 1,
-        yPercent: 0,
-        borderTopLeftRadius: 60,
-        borderTopRightRadius: 60,
-        backgroundImage: `url("${bg}")`,
-        zIndex: 7,
-        scale: 0.8,
-    })
-    tl.set(backgroundElement, { zIndex: 6 })
-    tl.set(sectionElement, { zIndex: 6 })
     tl.set(nextSectionTitleElement, { yPercent: 50 })
-    tl.set(filterElement, { zIndex: 6, opacity: 1 })
+    tl.set(filterElement, { zIndex: 12 })
 
     tl.addLabel(`${startStep + 2}`);
 

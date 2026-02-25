@@ -12,7 +12,7 @@ export function createApplicationFormState(
 
     const footerElement = document.querySelector('footer');
 
-    tl.set(sectionElement, { zIndex: 8, yPercent: -50 });
+    tl.set(sectionElement, { yPercent: -80 });
 
     tl.to(sectionElement, {
         duration: 1.5,

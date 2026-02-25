@@ -12,7 +12,7 @@ export function createFirstScreenState(
     const headerElement = document.querySelector('header');
     const headerLogoElement = headerElement?.querySelector('.logo-main') ?? null;
 
-    const backgroundElement = document.querySelector('.section-background');
+    const backgroundElement = document.querySelector('.first-section-background');
 
     const filterElement = document.querySelector('.filter');
     const sloganElement = sectionElement.querySelector('.slogan');

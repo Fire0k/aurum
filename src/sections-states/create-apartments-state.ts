@@ -11,8 +11,7 @@ export function createApartmentsState(
 ): SectionTools {
     const maxStep: number = startStep + 3;
 
-    const prevBackgroundElement = document.querySelector('.section-background')!;
-    const backgroundElement = document.querySelector('.section-background-next')!;
+    const backgroundElement = document.querySelector('.apartments-background')!;
 
     const filterElement = document.querySelector('.filter');
     const nextSectionTitleElement = sectionElement.querySelector('.next-section-title');
@@ -33,20 +32,8 @@ export function createApartmentsState(
         scale: 1.2,
     });
 
-    tl.set(prevBackgroundElement, {
-        top: '100%',
-        opacity: 1,
-        yPercent: 0,
-        borderTopLeftRadius: 60,
-        borderTopRightRadius: 60,
-        backgroundImage: `url("${bg}")`,
-        zIndex: 8,
-        scale: 0.8,
-    })
-    tl.set(backgroundElement, { zIndex: 7 })
-    tl.set(sectionElement, { zIndex: 7 })
     tl.set(nextSectionTitleElement, { yPercent: 50 })
-    tl.set(filterElement, { zIndex: 7, opacity: 1 })
+    tl.set(filterElement, { zIndex: 15 })
 
     tl.addLabel(`${startStep + 2}`);
 

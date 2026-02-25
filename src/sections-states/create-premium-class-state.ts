@@ -14,8 +14,7 @@ export function createPremiumClassState(
     const headerElement = document.querySelector('header');
     const headerGradientElement = headerElement?.querySelector('.gradient') ?? null;
 
-    const prevBackgroundElement = document.querySelector('.section-background')!;
-    const backgroundElement = document.querySelector('.section-background-next')!;
+    const backgroundElement = document.querySelector('.premium-class-background')!;
 
     const filterElement = document.querySelector('.filter');
     const nextSectionTitleElement = sectionElement.querySelector('.next-section-title');
@@ -39,20 +38,8 @@ export function createPremiumClassState(
         scale: 1.2,
     }, "<")
 
-    tl.set(prevBackgroundElement, {
-        top: '100%',
-        opacity: 1,
-        yPercent: 0,
-        borderTopLeftRadius: 60,
-        borderTopRightRadius: 60,
-        backgroundImage: `url("${bg}")`,
-        zIndex: 4,
-        scale: 0.8,
-    })
-    tl.set(backgroundElement, { zIndex: 3 })
-    tl.set(sectionElement, { zIndex: 3 })
     tl.set(nextSectionTitleElement, { yPercent: 50 })
-    tl.set(filterElement, { zIndex: 3, opacity: 1 })
+    tl.set(filterElement, { zIndex: 3 })
     
 
     tl.addLabel(`${startStep + 2}`);

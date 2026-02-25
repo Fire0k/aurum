@@ -11,8 +11,7 @@ export function createImprovementState(
 ): SectionTools {
     const maxStep: number = startStep + 3;
 
-    const prevBackgroundElement = document.querySelector('.section-background')!;
-    const backgroundElement = document.querySelector('.section-background-next')!;
+    const backgroundElement = document.querySelector('.improvement-background')!;
 
     const filterElement = document.querySelector('.filter');
     const nextSectionTitleElement = sectionElement.querySelector('.next-section-title');
@@ -33,20 +32,8 @@ export function createImprovementState(
         scale: 1.2,
     });
 
-    tl.set(prevBackgroundElement, {
-        top: '100%',
-        opacity: 1,
-        yPercent: 0,
-        borderTopLeftRadius: 60,
-        borderTopRightRadius: 60,
-        backgroundImage: `url("${bg}")`,
-        zIndex: 6,
-        scale: 0.8,
-    })
-    tl.set(backgroundElement, { zIndex: 5 })
-    tl.set(sectionElement, { zIndex: 5 })
     tl.set(nextSectionTitleElement, { yPercent: 50 })
-    tl.set(filterElement, { zIndex: 5, opacity: 1 })
+    tl.set(filterElement, { zIndex: 9 })
 
     tl.addLabel(`${startStep + 2}`);
 
