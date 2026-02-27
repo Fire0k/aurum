@@ -41,7 +41,6 @@ body {
 .filter {
     width: 100%;
     height: 100%;
-    transform: scale(1.2);
     position: absolute;
     inset: 0;
     background-color: #333333;
@@ -145,6 +144,13 @@ header {
     background-size: cover;
     transform-origin: center top;
     will-change: transform;
+
+    img {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+    }
 }
 
 .section-wrapper {

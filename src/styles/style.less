@@ -121,6 +121,45 @@ header {
 
 #premium-class {
     z-index: 5;
+
+    // .next-section-title-wrapper {
+    //     display: none;
+    // }
+
+    .half-slider {
+        display: flex;
+        color: var(--color-text);
+        height: 100%;
+
+        .half-slider-text {
+            width: 50%;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 165px 0 80px;
+            opacity: 0;
+            will-change: transform, opacity;
+            display: none;
+
+            .slide-number {
+                font-size: 128px;
+                margin-bottom: 60px;
+            }
+
+            .slide-title {
+                font-weight: 800;
+                font-size: 54px;
+            }
+        }
+    }
+
+    .half-slider-img {
+        overflow: hidden;
+        width: 50%;
+        transform-origin: bottom;
+        will-change: transform;
+        display: none;
+        transform: scaleY(0);
+    }
 }
 
 .safety-and-comfort-background {
@@ -151,7 +190,6 @@ header {
 }
 
 .apartments-background {
-    background-image: url("/src/img/apartments-section.webp");
     z-index: 16;
 }
 
@@ -160,7 +198,6 @@ header {
 }
 
 .penthouses-background {
-    background-image: url("/src/img/penthouses-section.webp");
     z-index: 19;
 }
 
