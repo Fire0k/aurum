@@ -32,7 +32,6 @@ body {
 .filter {
   width: 100%;
   height: 100%;
-  transform: scale(1.2);
   position: absolute;
   inset: 0;
   background-color: #333333;
@@ -124,6 +123,12 @@ header .header-wrapper .info-block .phone {
   background-size: cover;
   transform-origin: center top;
   will-change: transform;
+}
+.section-background img {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
 }
 .section-wrapper {
   position: absolute;
@@ -327,6 +332,57 @@ body.dev footer {
 header .header-wrapper .logo-main {
   opacity: 0;
 }
+.section-wrapper .half-slider {
+  display: flex;
+  color: var(--color-text);
+  height: 100%;
+}
+.section-wrapper .half-slider .half-slider-text {
+  width: 50%;
+  position: relative;
+}
+.section-wrapper .half-slider .half-slider-text .text-wrapper {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  will-change: transform, opacity;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 0 165px 0 80px;
+}
+.section-wrapper .half-slider .half-slider-text .text-wrapper .slide-number {
+  font-size: 128px;
+  margin-bottom: 60px;
+}
+.section-wrapper .half-slider .half-slider-text .text-wrapper .slide-title {
+  font-weight: 800;
+  font-size: 54px;
+  margin-bottom: 55px;
+}
+.section-wrapper .half-slider .half-slider-text .text-wrapper .slide-desc {
+  font-size: 32px;
+}
+.section-wrapper .half-slider-img {
+  overflow: hidden;
+  width: 50%;
+  height: 100%;
+  position: relative;
+}
+.section-wrapper .half-slider-img .img-wrapper {
+  position: absolute;
+  inset: 0;
+  height: 0;
+  width: 100%;
+  will-change: height;
+  overflow: hidden;
+}
+.section-wrapper .half-slider-img .img-wrapper img {
+  width: auto;
+  height: auto;
+}
 .first-section-background {
   top: 0;
   background-image: url("./img/first-section.png");
@@ -413,14 +469,12 @@ header .header-wrapper .logo-main {
   z-index: 14;
 }
 .apartments-background {
-  background-image: url("./img/apartments-section.webp");
   z-index: 16;
 }
 #apartments {
   z-index: 17;
 }
 .penthouses-background {
-  background-image: url("./img/penthouses-section.webp");
   z-index: 19;
 }
 #penthouses {
