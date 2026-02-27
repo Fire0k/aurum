@@ -19,12 +19,8 @@ export function createDesignAndInteriorState(
     const sliderElement = sectionElement.querySelector('.half-slider')!;
     const sliderTextElements = sliderElement.querySelector('.half-slider-text')!;
     const sliderImagesElement = sliderElement.querySelector('.half-slider-img')!;
-    const getSlideTextElement = (index: number) => {
-        return sliderTextElements.querySelector(`.text-wrapper[data-slide-index="${index}"]`)!;
-    }
-    const getSlideImgElement = (index: number) => {
-        return sliderImagesElement.querySelector(`.img-wrapper[data-slide-index="${index}"]`)!;
-    }
+    const texts = Array.from(sliderTextElements.querySelectorAll(`.text-wrapper`));
+    const images = Array.from(sliderImagesElement.querySelectorAll(`.img-wrapper`));
 
     tl.to(backgroundElement, {
         duration: 1.5,
@@ -47,23 +43,21 @@ export function createDesignAndInteriorState(
 
     tl.addLabel(`${startStep + 2}`);
 
-    tl.to(backgroundElement, {
-        duration: 1.5,
-        ease: "none",
-        opacity: 0.2,
-    })
-
     tl.set(sectionElement, {
         duration: 0,
         ease: "none",
         yPercent: -100,
     });
 
-    tl.to(getSlideTextElement(1), {
+    tl.to(backgroundElement, {
+        duration: 1.5,
+        ease: "none",
+        opacity: 0.2,
+    }).to(texts[0], {
         duration: 1.5,
         ease: "none",
         opacity: 1,
-    }).to(getSlideImgElement(1), {
+    }, "<").to(images[0], {
         duration: 1.5,
         ease: "none",
         height: '100%',
@@ -71,7 +65,7 @@ export function createDesignAndInteriorState(
 
     tl.addLabel(`${startStep + 3}`);
 
-    tl.to(getSlideTextElement(1), {
+    tl.to(texts[0], {
         duration: 1.5,
         ease: "none",
         opacity: 0,
