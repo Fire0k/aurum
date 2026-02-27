@@ -1,7 +1,6 @@
 import gsap from "gsap";
 
 import { SectionTools } from '../types';
-import bg from '../img/safety-and-comfort-section.webp';
 
 
 export function createPremiumClassState(
@@ -9,7 +8,7 @@ export function createPremiumClassState(
     tl: gsap.core.Timeline,
     startStep: number,
 ): SectionTools {
-    const maxStep: number = startStep + 6;
+    const maxStep: number = startStep + 7;
 
     const headerElement = document.querySelector('header');
     const headerGradientElement = headerElement?.querySelector('.gradient') ?? null;
@@ -20,12 +19,13 @@ export function createPremiumClassState(
     const nextSectionTitleElement = sectionElement.querySelector('.next-section-title');
 
     const sliderElement = sectionElement.querySelector('.half-slider')!;
-    const sliderTextElements = sliderElement.querySelectorAll('.half-slider-text')!;
+    const sliderTextElements = sliderElement.querySelector('.half-slider-text')!;
+    const sliderImagesElement = sliderElement.querySelector('.half-slider-img')!;
     const getSlideTextElement = (index: number) => {
-        return sliderElement.querySelector(`.half-slider-text[data-slide-index="${index}"]`)!;
+        return sliderTextElements.querySelector(`.text-wrapper[data-slide-index="${index}"]`)!;
     }
     const getSlideImgElement = (index: number) => {
-        return sliderElement.querySelector(`.half-slider-img[data-slide-index="${index}"]`)!;
+        return sliderImagesElement.querySelector(`.img-wrapper[data-slide-index="${index}"]`)!;
     }
 
     tl.to(backgroundElement, {
@@ -34,10 +34,6 @@ export function createPremiumClassState(
         scale: 0.9,
         yPercent: -20,
     }, "<")
-
-    tl.set(sliderTextElements, { yPercent: 50 })
-    tl.set(getSlideTextElement(1), { display: 'flex' })
-    tl.set(getSlideImgElement(1), { display: 'block' })
 
     tl.addLabel(`${startStep + 1}`);
 
@@ -62,72 +58,105 @@ export function createPremiumClassState(
         ease: "none",
         opacity: 0.2,
     })
+
     tl.set(sectionElement, {
         duration: 0,
         ease: "none",
         yPercent: -100,
     });
 
+    tl.to(getSlideTextElement(1), {
+        duration: 1.5,
+        ease: "none",
+        opacity: 1,
+    }).to(getSlideImgElement(1), {
+        duration: 1.5,
+        ease: "none",
+        height: '100%',
+    }, "<")
+
     tl.addLabel(`${startStep + 3}`);
 
     tl.to(getSlideTextElement(1), {
         duration: 1.5,
         ease: "none",
-        yPercent: 0,
-        opacity: 1,
-    }).to(getSlideImgElement(1), {
+        opacity: 0,
+        yPercent: 20,
+    }).to(getSlideImgElement(2), {
         duration: 1.5,
         ease: "none",
-        scaleY: 1,
-    }, "<")
+        height: '100%',
+    }, "<").to(getSlideTextElement(2), {
+        duration: 1.5,
+        ease: "none",
+        opacity: 1,
+    })
 
     tl.addLabel(`${startStep + 4}`);
 
-    tl.to(getSlideTextElement(1), {
-        duration: 1.5,
-        ease: "none",
-        yPercent: 50,
-        opacity: 0,
-    }).to(getSlideImgElement(1), {
-        duration: 1.5,
-        ease: "none",
-        scaleY: 0,
-    }, "<")
-
-    tl.set(getSlideTextElement(1), { display: 'none' })
-    tl.set(getSlideImgElement(1), { display: 'none' })
-    tl.set(getSlideTextElement(2), { display: 'flex' })
-    tl.set(getSlideImgElement(2), { display: 'block' })
-
     tl.to(getSlideTextElement(2), {
         duration: 1.5,
         ease: "none",
-        yPercent: 0,
-        opacity: 1,
-    }).to(getSlideImgElement(2), {
+        opacity: 0,
+        yPercent: 20,
+    }).to(getSlideImgElement(3), {
         duration: 1.5,
         ease: "none",
-        scaleY: 1,
-    }, "<")
+        height: '100%',
+    }, "<").to(getSlideTextElement(3), {
+        duration: 1.5,
+        ease: "none",
+        opacity: 1,
+    })
 
     tl.addLabel(`${startStep + 5}`);
 
-    tl.to(getSlideTextElement(2), {
+    tl.to(getSlideTextElement(3), {
         duration: 1.5,
         ease: "none",
-        yPercent: 50,
         opacity: 0,
-    }).to(getSlideImgElement(2), {
+        yPercent: 20,
+    }).to(getSlideImgElement(4), {
         duration: 1.5,
         ease: "none",
-        scaleY: 0,
-    }, "<")
-
-    tl.set(getSlideTextElement(2), { display: 'none' })
-    tl.set(getSlideImgElement(2), { display: 'none' })
-    tl.set(sliderElement, { display: 'none' })
+        height: '100%',
+    }, "<").to(getSlideTextElement(4), {
+        duration: 1.5,
+        ease: "none",
+        opacity: 1,
+    })
 
     tl.addLabel(`${startStep + 6}`);
+
+    tl.to(getSlideTextElement(4), {
+        duration: 1.5,
+        ease: "none",
+        opacity: 0,
+        yPercent: 20,
+    }).to(getSlideImgElement(5), {
+        duration: 1.5,
+        ease: "none",
+        height: '100%',
+    }, "<").to(getSlideTextElement(5), {
+        duration: 1.5,
+        ease: "none",
+        opacity: 1,
+    })
+
+    tl.addLabel(`${startStep + 7}`);
+
+    tl.to(getSlideTextElement(5), {
+        duration: 1.5,
+        ease: "none",
+        opacity: 0,
+        yPercent: 20,
+    }).to(sliderImagesElement, {
+        duration: 1.5,
+        ease: "none",
+        height: 0,
+    }, "<")
+
+    tl.set(sliderElement, { display: 'none' })
 
     tl.to(nextSectionTitleElement, {
         duration: 1.5,
