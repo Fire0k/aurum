@@ -180,17 +180,44 @@ header {
             will-change: transform, opacity;
             opacity: 0;
 
-            &.bold-title {
-                font-weight: 800;
+            .title {
+                 &.bold-title {
+                    font-weight: 800;
+                }
+
+                &.uppercase-title {
+                    font-size: 96px;
+                    text-transform: uppercase;
+                }
+
+                &.standart-title {
+                    font-size: 54px;
+                }
             }
 
-            &.uppercase-title {
-                font-size: 96px;
-                text-transform: uppercase;
+            .description {
+                margin-top: 20px;
+                font-size: 32px;
             }
 
-            &.standart-title {
-                font-size: 54px;
+            .tags {
+                margin-top: 20px;
+                font-size: 20px;
+                color: #1C1C1C;
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 20px;
+
+                .tag {
+                    padding: 10px 20px;
+                    background-color: #ffffff99;
+                    border-radius: 40px;
+
+                    &.accent {
+                        background-color: var(--accent-color)
+                    }
+                }
             }
 
             &.with-decorate {

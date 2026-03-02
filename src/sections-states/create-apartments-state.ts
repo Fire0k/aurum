@@ -1,7 +1,7 @@
 import gsap from "gsap";
 
 import { SectionTools } from '../types';
-import bg from '../img/penthouses-section.webp';
+import { initFullpageSlider } from './init-fullpage-slider';
 
 
 export function createApartmentsState(
@@ -9,12 +9,16 @@ export function createApartmentsState(
     tl: gsap.core.Timeline,
     startStep: number,
 ): SectionTools {
-    const maxStep: number = startStep + 3;
+    const maxStep: number = startStep + 2;
 
     const backgroundElement = document.querySelector('.apartments-background')!;
 
     const filterElement = document.querySelector('.filter');
     const nextSectionTitleElement = sectionElement.querySelector('.next-section-title');
+
+    const buttonsElement = sectionElement.querySelector('.slider-buttons');
+
+    initFullpageSlider(backgroundElement, sectionElement);
 
     tl.to(backgroundElement, {
         duration: 1.5,
@@ -34,6 +38,13 @@ export function createApartmentsState(
 
     tl.set(nextSectionTitleElement, { yPercent: 50 })
     tl.set(filterElement, { zIndex: 15 })
+    tl.set(sectionElement, { yPercent: -100 });
+
+    tl.to(buttonsElement, {
+        duration: 1.5,
+        ease: "none",
+        opacity: 1,
+    })
 
     tl.addLabel(`${startStep + 2}`);
 
@@ -41,16 +52,11 @@ export function createApartmentsState(
         duration: 1.5,
         ease: "none",
         opacity: 0.2,
-    })
-    tl.set(sectionElement, {
-        duration: 0,
+    }).to(buttonsElement, {
+        duration: 1.5,
         ease: "none",
-        yPercent: -100,
-    });
-
-    tl.addLabel(`${startStep + 3}`);
-
-    tl.to(nextSectionTitleElement, {
+        opacity: 0,
+    }, "<").to(nextSectionTitleElement, {
         duration: 1.5,
         ease: 'none',
         opacity: 1,

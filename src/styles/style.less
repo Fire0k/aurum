@@ -25,9 +25,24 @@ body {
             bottom: unset;
             transform: translateY(-100%);
 
+            .half-slider {
+                display: none;
+            }
+
             .next-section-title {
                 opacity: 1;
             }
+        }
+
+        #apartments {
+            transform: translateY(-100%);
+            .slider-buttons {
+                // opacity: 1;
+            }
+
+            // .next-section-title-wrapper {
+            //     display: none;
+            // }
         }
 
         #application-form {
@@ -110,6 +125,7 @@ header {
     }
 }
 
+// Увеличить разрешение картинок, т.к. они больше вьюпорта
 .first-section-background {
     top: 0;
     background-image: url("/src/img/first-section.png");
@@ -214,6 +230,56 @@ header {
 
 #design-and-interior {
     z-index: 14;
+}
+
+.fullscreen-slider {
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+
+    .img-wrapper {
+        position: absolute;
+        inset: 0;
+        height: 0;
+        width: 100%;
+        will-change: transform;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+}
+
+.slider-buttons {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0 70px;
+    display: flex;
+    justify-content: space-between;
+    z-index: 5;
+    opacity: 0;
+
+    .slider-button {
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &.prev {
+            background-color: #ffffff;
+        }
+
+        &.next {
+            background-color: #1C1C1C;
+        }
+    }
 }
 
 .apartments-background {

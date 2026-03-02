@@ -1,6 +1,7 @@
 import gsap from "gsap";
 
 import { SectionTools } from '../types';
+import { initFullpageSlider } from './init-fullpage-slider';
 
 
 export function createPenthousesState(
@@ -13,6 +14,10 @@ export function createPenthousesState(
     const backgroundElement = document.querySelector('.penthouses-background')!;
 
     const filterElement = document.querySelector('.filter');
+
+    const buttonsElement = sectionElement.querySelector('.slider-buttons');
+
+    initFullpageSlider(backgroundElement, sectionElement);
 
     tl.to(backgroundElement, {
         duration: 1.5,
@@ -31,6 +36,13 @@ export function createPenthousesState(
     });
 
     tl.set(filterElement, { zIndex: 18 })
+    tl.set(sectionElement, { yPercent: -100 });
+
+    tl.to(buttonsElement, {
+        duration: 1.5,
+        ease: "none",
+        opacity: 1,
+    })
 
     tl.addLabel(`${startStep + 2}`);
 
@@ -38,12 +50,11 @@ export function createPenthousesState(
         duration: 1.5,
         ease: "none",
         opacity: 0.2,
-    })
-    tl.set(sectionElement, {
-        duration: 0,
+    }).to(buttonsElement, {
+        duration: 1.5,
         ease: "none",
-        yPercent: -100,
-    });
+        opacity: 0,
+    }, "<")
 
     tl.addLabel(`${startStep + 3}`);
 

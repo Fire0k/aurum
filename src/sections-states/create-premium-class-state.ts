@@ -3,6 +3,7 @@ import gsap from "gsap";
 import { SectionTools } from '../types';
 
 
+// Попробовать скрывать предыдущие картинки в слайдере
 export function createPremiumClassState(
     sectionElement: Element,
     tl: gsap.core.Timeline,
@@ -47,14 +48,9 @@ export function createPremiumClassState(
     tl.set(nextSectionTitleElement, { yPercent: 50 })
     tl.set(filterElement, { zIndex: 3 })
     
-
     tl.addLabel(`${startStep + 2}`);
 
-    tl.set(sectionElement, {
-        duration: 0,
-        ease: "none",
-        yPercent: -100,
-    });
+    tl.set(sectionElement, { yPercent: -100 });
 
     tl.to(backgroundElement, {
         duration: 1.5,

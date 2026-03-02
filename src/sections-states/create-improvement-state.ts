@@ -43,11 +43,7 @@ export function createImprovementState(
 
     tl.addLabel(`${startStep + 2}`);
 
-    tl.set(sectionElement, {
-        duration: 0,
-        ease: "none",
-        yPercent: -100,
-    });
+    tl.set(sectionElement, { yPercent: -100 });
 
     tl.to(backgroundElement, {
         duration: 1.5,

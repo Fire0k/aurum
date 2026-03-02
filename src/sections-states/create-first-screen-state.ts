@@ -2,7 +2,7 @@ import gsap from "gsap";
 
 import { SectionTools } from '../types';
 
-
+// Попробовать свг с маской еще раз
 export function createFirstScreenState(
     sectionElement: Element,
     tl: gsap.core.Timeline
