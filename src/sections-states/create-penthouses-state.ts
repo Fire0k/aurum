@@ -9,7 +9,7 @@ export function createPenthousesState(
     tl: gsap.core.Timeline,
     startStep: number,
 ): SectionTools {
-    const maxStep: number = startStep + 3;
+    const maxStep: number = startStep + 2;
 
     const backgroundElement = document.querySelector('.penthouses-background')!;
 
@@ -55,8 +55,6 @@ export function createPenthousesState(
         ease: "none",
         opacity: 0,
     }, "<")
-
-    tl.addLabel(`${startStep + 3}`);
 
     return {
         maxStep,
