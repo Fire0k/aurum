@@ -13,7 +13,7 @@ export function initFullpageSlider(
     let isAnimating = false
 
     slides[current].style.zIndex = '1'
-    slides[current].style.height = '100%'
+    slides[current].style.opacity = '1'
 
     function goTo(newIndex: number) {
         if (isAnimating || newIndex === current) return
@@ -28,16 +28,16 @@ export function initFullpageSlider(
 
         gsap.killTweensOf(nextSlide)
 
-        gsap.fromTo(
+        gsap.to(
             nextSlide,
-            { height: 0 },
             {
                 duration: 1.5,
                 ease: 'none',
-                height: '100%',
+                opacity: 1,
                 onComplete: () => {
-                    current = newIndex
-                    isAnimating = false
+                    prevSlide.style.opacity = '0';
+                    current = newIndex;
+                    isAnimating = false;
                 }
             }
         )

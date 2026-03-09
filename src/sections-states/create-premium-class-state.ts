@@ -63,7 +63,7 @@ export function createPremiumClassState(
     }, "<").to(images[0], {
         duration: 1.5,
         ease: "none",
-        height: '100%',
+        opacity: 1,
     }, "<")
 
     tl.addLabel(`${startStep + 3}`);
@@ -73,15 +73,19 @@ export function createPremiumClassState(
         ease: "none",
         opacity: 0,
         yPercent: 20,
-    }).to(images[1], {
+    }).to(images[0], {
         duration: 1.5,
         ease: "none",
-        height: '100%',
-    }, "<").to(texts[1], {
+        opacity: 0,
+    }, "<").to(images[1], {
         duration: 1.5,
         ease: "none",
         opacity: 1,
-    })
+    }).to(texts[1], {
+        duration: 1.5,
+        ease: "none",
+        opacity: 1,
+    }, "<")
 
     tl.addLabel(`${startStep + 4}`);
 
@@ -90,15 +94,19 @@ export function createPremiumClassState(
         ease: "none",
         opacity: 0,
         yPercent: 20,
-    }).to(images[2], {
+    }).to(images[1], {
         duration: 1.5,
         ease: "none",
-        height: '100%',
-    }, "<").to(texts[2], {
+        opacity: 0,
+    }, "<").to(images[2], {
         duration: 1.5,
         ease: "none",
         opacity: 1,
-    })
+    }).to(texts[2], {
+        duration: 1.5,
+        ease: "none",
+        opacity: 1,
+    }, "<")
 
     tl.addLabel(`${startStep + 5}`);
 
@@ -107,15 +115,19 @@ export function createPremiumClassState(
         ease: "none",
         opacity: 0,
         yPercent: 20,
-    }).to(images[3], {
+    }).to(images[2], {
         duration: 1.5,
         ease: "none",
-        height: '100%',
-    }, "<").to(texts[3], {
+        opacity: 0,
+    }, "<").to(images[3], {
         duration: 1.5,
         ease: "none",
         opacity: 1,
-    })
+    }).to(texts[3], {
+        duration: 1.5,
+        ease: "none",
+        opacity: 1,
+    }, "<")
 
     tl.addLabel(`${startStep + 6}`);
 
@@ -124,15 +136,19 @@ export function createPremiumClassState(
         ease: "none",
         opacity: 0,
         yPercent: 20,
-    }).to(images[4], {
+    }).to(images[3], {
         duration: 1.5,
         ease: "none",
-        height: '100%',
-    }, "<").to(texts[4], {
+        opacity: 0,
+    }, "<").to(images[4], {
         duration: 1.5,
         ease: "none",
         opacity: 1,
-    })
+    }).to(texts[4], {
+        duration: 1.5,
+        ease: "none",
+        opacity: 1,
+    }, "<")
 
     tl.addLabel(`${startStep + 7}`);
 

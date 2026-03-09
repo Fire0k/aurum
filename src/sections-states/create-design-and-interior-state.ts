@@ -56,7 +56,7 @@ export function createDesignAndInteriorState(
     }, "<").to(images[0], {
         duration: 1.5,
         ease: "none",
-        height: '100%',
+        opacity: 1,
     }, "<")
 
     tl.addLabel(`${startStep + 3}`);
