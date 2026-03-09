@@ -161,7 +161,7 @@ header .header-wrapper .info-block .phone {
   transform-origin: center top;
 }
 .section-background > img {
-  height: 100%;
+  height: auto;
   width: auto;
   position: absolute;
   top: 50%;
@@ -380,10 +380,9 @@ header .header-wrapper .logo-main {
 .section-background .fullscreen-slider .img-wrapper {
   position: absolute;
   inset: 0;
-  height: 0;
+  opacity: 0;
   width: 100%;
-  will-change: height;
-  overflow: hidden;
+  will-change: opacity;
 }
 .section-background .fullscreen-slider .img-wrapper img {
   width: auto;
@@ -431,10 +430,10 @@ header .header-wrapper .logo-main {
 .section-wrapper .half-slider .half-slider-img .img-wrapper {
   position: absolute;
   inset: 0;
-  height: 0;
+  height: 100%;
   width: 100%;
-  will-change: height;
-  overflow: hidden;
+  will-change: opacity;
+  opacity: 0;
 }
 .section-wrapper .half-slider .half-slider-img .img-wrapper img {
   width: auto;
@@ -476,6 +475,10 @@ header .header-wrapper .logo-main {
   border-top-right-radius: 0;
   transform: scale(3);
   z-index: 1;
+  transform-origin: top;
+}
+.first-section-background > img {
+  height: 100%;
 }
 #first-section {
   top: 0;
