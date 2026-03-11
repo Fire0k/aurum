@@ -1,7 +1,7 @@
 import gsap from "gsap";
 
 import { createPageObserver } from "./create-page-observer";
-import { getSectionsTools } from '../sections-states/get-sections-tools';
+import { getDesktopSectionsTools, activateMobileAnimate } from '../sections-states/get-sections-tools';
 import { SectionTools } from "../types";
 
 /**
@@ -17,42 +17,42 @@ import { SectionTools } from "../types";
  * - Для перехвата и замены нативного скролла на кастомные действия используется gsap.Observer
  */
 export function createPageState() {
-    const dev: boolean = false;
+    const isMobile = window.innerWidth <= 992;
 
-    const tl = gsap.timeline({ paused: true });
+    if (!isMobile) {
+        const tl = gsap.timeline({ paused: true });
 
-    const sectionsTools = getSectionsTools(tl) as SectionTools[];
-    if (!sectionsTools) return;
+        const sectionsTools = getDesktopSectionsTools(tl) as SectionTools[];
+        if (!sectionsTools) return;
 
-    let prevStep = 0;
-    let currentStep = 0;
+        let prevStep = 0;
+        let currentStep = 0;
 
-    function increaseStep() {
-        if (gsap.isTweening(tl)) return;
+        function increaseStep() {
+            if (gsap.isTweening(tl)) return;
 
-        if (currentStep === sectionsTools.at(-1)!.maxStep) return;
+            if (currentStep === sectionsTools.at(-1)!.maxStep) return;
 
-        currentStep++;
-        tl.tweenTo(`${currentStep}`);
+            currentStep++;
+            tl.tweenTo(`${currentStep}`);
 
-        if (currentStep !== 1) {
-            prevStep++;
+            if (currentStep !== 1) {
+                prevStep++;
+            }
         }
-    }
-    function decreaseStep() {
-        if (gsap.isTweening(tl)) return;
+        function decreaseStep() {
+            if (gsap.isTweening(tl)) return;
 
-        if (currentStep === 0) return;
+            if (currentStep === 0) return;
 
-        currentStep--;
-        tl.tweenTo(`${currentStep}`);
+            currentStep--;
+            tl.tweenTo(`${currentStep}`);
 
-        if (currentStep !== 0) {
-            prevStep--;
+            if (currentStep !== 0) {
+                prevStep--;
+            }
         }
-    }
 
-    if (!dev) {
         tl.tweenTo(`${0}`);
 
         createPageObserver(
@@ -84,6 +84,6 @@ export function createPageState() {
             (maskElement as HTMLElement).style.transitionDuration = 'unset';
         }, undefined, '1');
     } else {
-        document.body.classList.add('dev');
+        activateMobileAnimate();
     }
 }

@@ -4,7 +4,7 @@ import { SectionTools } from '../types';
 import { initFullpageSlider } from './init-fullpage-slider';
 
 
-export function createApartmentsState(
+export function createApartmentsDesktopState(
     sectionElement: Element,
     tl: gsap.core.Timeline,
     startStep: number,
@@ -14,7 +14,7 @@ export function createApartmentsState(
     const backgroundElement = document.querySelector('.apartments-background')!;
 
     const filterElement = document.querySelector('.filter');
-    const nextSectionTitleElement = sectionElement.querySelector('.next-section-title');
+    const nextSectionTitleElement = sectionElement.querySelector('.section-title');
 
     const buttonsElement = sectionElement.querySelector('.slider-buttons');
 

@@ -4,7 +4,7 @@ import { SectionTools } from '../types';
 import { initFullpageSlider } from './init-fullpage-slider';
 
 
-export function createPenthousesState(
+export function createPenthousesDesktopState(
     sectionElement: Element,
     tl: gsap.core.Timeline,
     startStep: number,

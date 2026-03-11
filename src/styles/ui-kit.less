@@ -118,6 +118,11 @@ header {
         justify-content: space-between;
         position: relative;
 
+        .burger-menu {
+            display: none;
+            cursor: pointer;
+        }
+
         .logo-small {
             display: flex;
             align-items: center;
@@ -174,13 +179,17 @@ header {
                 color: #ffffff;
                 text-decoration: none;
             }
+
+            .phone-mobile {
+                display: none;
+            }
         }
     }
 }
 
 .section-background {
     height: 100vh;
-    width: 100%;
+    width: 100vw;
     position: absolute;
     top: 100%;
     border-top-left-radius: var(--section-radius);
@@ -209,13 +218,13 @@ header {
     overflow: hidden;
     will-change: transform;
 
-    .next-section-title-wrapper {
+    .section-title-wrapper {
         width: 100%;
         height: 100%;
         position: relative;
         z-index: 3;
 
-        .next-section-title {
+        .section-title {
             color: var(--color-text);
             position: absolute;
             top: 50%;

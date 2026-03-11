@@ -3,8 +3,7 @@ import gsap from "gsap";
 import { SectionTools } from '../types';
 
 
-// Попробовать скрывать предыдущие картинки в слайдере
-export function createPremiumClassState(
+export function createPremiumClassDesktopState(
     sectionElement: Element,
     tl: gsap.core.Timeline,
     startStep: number,
@@ -17,7 +16,7 @@ export function createPremiumClassState(
     const backgroundElement = document.querySelector('.premium-class-background')!;
 
     const filterElement = document.querySelector('.filter');
-    const nextSectionTitleElement = sectionElement.querySelector('.next-section-title');
+    const nextSectionTitleElement = sectionElement.querySelector('.section-title');
 
     const sliderElement = sectionElement.querySelector('.half-slider')!;
     const sliderTextElements = sliderElement.querySelector('.half-slider-text')!;

@@ -3,7 +3,7 @@ import gsap from "gsap";
 import { SectionTools } from '../types';
 
 
-export function createApplicationFormState(
+export function createApplicationFormDesktopState(
     sectionElement: Element,
     tl: gsap.core.Timeline,
     startStep: number,

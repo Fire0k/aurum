@@ -1,59 +1,84 @@
 import gsap from "gsap";
+import Swiper from 'swiper'
+import { EffectFade, Pagination, Navigation } from 'swiper/modules'
+import ScrollTrigger from "gsap/ScrollTrigger";
 
 
 export function initFullpageSlider(
     backgroundElement: Element,
     buttonsElement: Element,
 ) {
-    const slides = backgroundElement.querySelectorAll('.img-wrapper') as NodeListOf<HTMLElement>;
-    const nextBtn = buttonsElement.querySelector('.next')!
-    const prevBtn = buttonsElement.querySelector('.prev')!
+    const slider = backgroundElement.querySelector('.swiper') as HTMLElement;
+    const paginationElement = backgroundElement.querySelector('.slider-pagination') as HTMLElement | null;
+    const nextBtn = buttonsElement.querySelector('.next') as HTMLElement | null;
+    const prevBtn = buttonsElement.querySelector('.prev') as HTMLElement | null;
 
-    let current = 0
-    let isAnimating = false
+    const swiper = new Swiper(slider, {
+        modules: [EffectFade, Pagination, Navigation],
+        effect: 'fade',
+        fadeEffect: {
+            crossFade: true
+        },
+        speed: 700,
+        loop: true,
 
-    slides[current].style.zIndex = '1'
-    slides[current].style.opacity = '1'
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
 
-    function goTo(newIndex: number) {
-        if (isAnimating || newIndex === current) return
+        pagination: {
+            el: paginationElement,
+            clickable: true
+        }
+    })
+}
 
-        isAnimating = true
+export function initMobileSection(sectionElement: Element) {
+    const paginationElement = sectionElement.querySelector('.slider-pagination')!;
+    const nextButtonElements = sectionElement.querySelectorAll('.swiper-button-next')!;
+    const prevButtonElements = sectionElement.querySelectorAll('.swiper-button-prev')!;
+    const siderTexts = sectionElement.querySelectorAll('.mobile-slide-text')
 
-        const prevSlide = slides[current]
-        const nextSlide = slides[newIndex]
+    const filterElement = sectionElement.querySelector('.mobile-slider-filter');
 
-        prevSlide.style.zIndex = '1'
-        nextSlide.style.zIndex = '2'
+    const titleElement = sectionElement.querySelector('.section-title-wrapper');
 
-        gsap.killTweensOf(nextSlide)
+    const tl = gsap.timeline({ paused: true });
+    tl.to([filterElement, titleElement], {
+        duration: 1,
+        ease: 'none',
+        opacity: 0,
+    }).to([nextButtonElements, prevButtonElements, paginationElement, ...siderTexts], {
+        duration: 1,
+        ease: 'none',
+        opacity: 1,
+    }, "<").set([filterElement, titleElement], { display: 'none' })
 
-        gsap.to(
-            nextSlide,
-            {
-                duration: 1.5,
-                ease: 'none',
-                opacity: 1,
-                onComplete: () => {
-                    prevSlide.style.opacity = '0';
-                    current = newIndex;
-                    isAnimating = false;
-                }
+    ScrollTrigger.create({
+        trigger: sectionElement,
+        start: "top top+=100",
+
+        onEnter: () => tl.play(),
+        onLeaveBack: () => tl.reverse()
+    })
+
+    initFullpageSlider(sectionElement, sectionElement);
+
+    gsap.to(
+        sectionElement.querySelectorAll('.img-wrapper'),
+        {
+            scale: 1.2,
+            ease: "none",
+
+            scrollTrigger: {
+                trigger: sectionElement,
+
+                start: "top bottom",
+                end: "top top",
+
+                scrub: true
             }
-        )
-    }
-
-    function goNext() {
-        const newIndex = (current + 1) % slides.length
-        goTo(newIndex)
-    }
-
-    function goPrev() {
-    const newIndex =
-        (current - 1 + slides.length) % slides.length
-        goTo(newIndex)
-    }
-
-    nextBtn.addEventListener('click', goNext)
-    prevBtn.addEventListener('click', goPrev)
+        }
+    )
 }

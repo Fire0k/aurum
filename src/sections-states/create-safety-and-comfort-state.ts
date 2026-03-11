@@ -4,7 +4,7 @@ import { SectionTools } from '../types';
 import bg from '../img/improvement-section.webp';
 
 
-export function createSafetyAndComfortState(
+export function createSafetyAndComfortDesktopState(
     sectionElement: Element,
     tl: gsap.core.Timeline,
     startStep: number,
@@ -14,7 +14,7 @@ export function createSafetyAndComfortState(
     const backgroundElement = document.querySelector('.safety-and-comfort-background')!;
 
     const filterElement = document.querySelector('.filter');
-    const nextSectionTitleElement = sectionElement.querySelector('.next-section-title');
+    const nextSectionTitleElement = sectionElement.querySelector('.section-title');
 
     const sliderElement = sectionElement.querySelector('.half-slider')!;
     const sliderTextElements = sliderElement.querySelector('.half-slider-text')!;

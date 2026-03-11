@@ -4,5 +4,11 @@ import { createPageState } from './scripts/create-page-state';
 
 bootstrap();
 
-createPageState();
+window.addEventListener('load', async () => {
+    await document.fonts.ready;
+
+    requestAnimationFrame(() => {
+        createPageState();
+    })
+})
 

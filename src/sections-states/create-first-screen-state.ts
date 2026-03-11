@@ -3,7 +3,7 @@ import gsap from "gsap";
 import { SectionTools } from '../types';
 
 // Попробовать свг с маской еще раз
-export function createFirstScreenState(
+export function createFirstScreenDesktopState(
     sectionElement: Element,
     tl: gsap.core.Timeline
 ): SectionTools {
@@ -17,11 +17,10 @@ export function createFirstScreenState(
     const filterElement = document.querySelector('.filter');
     const sloganElement = sectionElement.querySelector('.slogan');
     const maskElement = sectionElement.querySelector('.mask');
-    const nextSectionTitleElement = sectionElement.querySelector('.next-section-title');
+    const nextSectionTitleElement = sectionElement.querySelector('.section-title');
 
     tl.to(filterElement, {
         duration: 1,
-        delay: 1,
         ease: 'none',
         opacity: 0,
     }).to(backgroundElement, {
