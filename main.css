@@ -741,8 +741,13 @@ footer {
     height: auto;
     overflow: auto;
   }
-  .filter {
-    z-index: 0;
+  body .filter {
+    transition-property: opacity;
+    transition-timing-function: linear;
+    transition-duration: 1s;
+  }
+  body.ready .filter {
+    opacity: 0;
   }
   .container {
     padding-left: 20px;
