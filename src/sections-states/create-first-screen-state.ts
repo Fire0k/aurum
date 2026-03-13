@@ -39,17 +39,19 @@ export function createFirstScreenDesktopState(
         ease: 'none',
         scale: 1.5,
     }).to(sloganElement, {
-        duration: 1,
+        duration: 1.5,
         ease: 'none',
         opacity: 0,
         yPercent: 50,
     }, "<");
 
+    tl.set(sloganElement, { display: 'none' });
+
     tl.addLabel("add-mask");
     
     tl.to(backgroundElement, {
         duration: 1.5,
-        ease: 'none',
+        ease: "none",
         scale: 1,
     })
 
@@ -57,23 +59,21 @@ export function createFirstScreenDesktopState(
 
     tl.to(maskElement, {
         duration: 1.5,
-        ease: 'none',
+        ease: "none",
         maskSize: '100% 100%, 0px',
     }).to(headerLogoElement, {
         duration: 1.5,
-        ease: 'none',
+        ease: "none",
         opacity: 1,
     }, "<")
 
-    tl.set(maskElement, { display: 'none' });
-    tl.set(backgroundElement, {
-        ease: 'none',
-        opacity: 0.1,
-    })
+    tl.set(maskElement, { delay: 0.1, display: 'none' });
+    tl.set(backgroundElement, { opacity: 0.1 });
     
     tl.to(nextSectionTitleElement, {
+        delay: 0.2,
         duration: 1.5,
-        ease: 'none',
+        ease: "power1.out",
         opacity: 1,
         yPercent: -50,
     })
@@ -81,4 +81,8 @@ export function createFirstScreenDesktopState(
     return {
         maxStep,
     }
+}
+
+export function createFirstScreenMobileAnimate(): void {
+    document.body.classList.add('ready');
 }

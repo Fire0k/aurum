@@ -1,5 +1,5 @@
 import { SectionTools } from "../types";
-import { createFirstScreenDesktopState } from './create-first-screen-state';
+import { createFirstScreenDesktopState, createFirstScreenMobileAnimate } from './create-first-screen-state';
 import { createPremiumClassDesktopState } from './create-premium-class-state';
 import { createSafetyAndComfortDesktopState } from './create-safety-and-comfort-state';
 import { createImprovementDesktopState } from './create-improvement-state';
@@ -7,7 +7,7 @@ import { createDesignAndInteriorDesktopState } from './create-design-and-interio
 import { createApartmentsDesktopState } from './create-apartments-state';
 import { createPenthousesDesktopState } from './create-penthouses-state';
 import { createApplicationFormDesktopState } from './create-application-form-state';
-import { initMobileSection } from "./init-fullpage-slider";
+import { initMobileSliderSection } from "./init-mobile-slider-section";
 
 
 export function getDesktopSectionsTools(tl: gsap.core.Timeline): SectionTools[] | null {
@@ -26,8 +26,9 @@ export function getDesktopSectionsTools(tl: gsap.core.Timeline): SectionTools[] 
 }
 
 export function activateMobileAnimate(): void {
-    initMobileSection(document.getElementById('premium-class')!);
-    initMobileSection(document.getElementById('safety-and-comfort')!);
-    initMobileSection(document.getElementById('improvement')!);
-    initMobileSection(document.getElementById('design-and-interior')!);
+    createFirstScreenMobileAnimate();
+    initMobileSliderSection(document.getElementById('premium-class')!);
+    initMobileSliderSection(document.getElementById('safety-and-comfort')!);
+    initMobileSliderSection(document.getElementById('improvement')!);
+    initMobileSliderSection(document.getElementById('design-and-interior')!);
 }

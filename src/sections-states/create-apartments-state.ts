@@ -22,7 +22,7 @@ export function createApartmentsDesktopState(
 
     tl.to(backgroundElement, {
         duration: 1.5,
-        ease: "none",
+        ease: 'power1.out',
         scale: 0.9,
         yPercent: -20,
     }, "<")
@@ -30,8 +30,8 @@ export function createApartmentsDesktopState(
     tl.addLabel(`${startStep + 1}`);
 
     tl.to(backgroundElement, {
-        duration: 1.5,
-        ease: "none",
+        duration: 2,
+        ease: "power1.in",
         yPercent: -100,
         scale: 1.2,
     });
@@ -41,7 +41,7 @@ export function createApartmentsDesktopState(
     tl.set(sectionElement, { yPercent: -100 });
 
     tl.to(buttonsElement, {
-        duration: 1.5,
+        duration: 0.5,
         ease: "none",
         opacity: 1,
     })
@@ -49,16 +49,16 @@ export function createApartmentsDesktopState(
     tl.addLabel(`${startStep + 2}`);
 
     tl.to(backgroundElement, {
-        duration: 1.5,
-        ease: "none",
+        duration: 1,
+        ease: "power1.in",
         opacity: 0.2,
     }).to(buttonsElement, {
-        duration: 1.5,
-        ease: "none",
+        duration: 1,
+        ease: "power1.in",
         opacity: 0,
     }, "<").to(nextSectionTitleElement, {
         duration: 1.5,
-        ease: 'none',
+        ease: 'power1.out',
         opacity: 1,
         yPercent: -50,
     })

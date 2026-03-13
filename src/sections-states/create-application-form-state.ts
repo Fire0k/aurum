@@ -15,13 +15,13 @@ export function createApplicationFormDesktopState(
     tl.set(sectionElement, { yPercent: -80 });
 
     tl.to(sectionElement, {
-        duration: 1.5,
-        ease: 'none',
+        duration: 2,
+        ease: 'power1.out',
         yPercent: -100,
         opacity: 1,
     }).to(footerElement, {
-        duration: 1.5,
-        ease: 'none',
+        duration: 1,
+        ease: 'power1.out',
         opacity: 1,
     })
 

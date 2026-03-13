@@ -551,10 +551,18 @@ footer {
     body {
         height: auto;
         overflow: auto;
-    }
 
-    .filter {
-        z-index: 0;
+        .filter {
+            transition-property: opacity;
+            transition-timing-function: linear;
+            transition-duration: 1s;
+        }
+
+        &.ready {
+            .filter {
+                opacity: 0;
+            }
+        }
     }
 
     .container {

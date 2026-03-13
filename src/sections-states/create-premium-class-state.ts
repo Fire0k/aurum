@@ -27,7 +27,7 @@ export function createPremiumClassDesktopState(
 
     tl.to(backgroundElement, {
         duration: 1.5,
-        ease: "none",
+        ease: "power1.out",
         scale: 0.9,
         yPercent: -20,
     }, "<")
@@ -38,8 +38,8 @@ export function createPremiumClassDesktopState(
         duration: 0.5,
         opacity: 1,
     }).to(backgroundElement, {
-        duration: 1.5,
-        ease: "none",
+        duration: 2,
+        ease: "power1.in",
         yPercent: -100,
         scale: 1.2,
     }, "<")
@@ -52,113 +52,113 @@ export function createPremiumClassDesktopState(
     tl.set(sectionElement, { yPercent: -100 });
 
     tl.to(backgroundElement, {
-        duration: 1.5,
-        ease: "none",
+        duration: 1,
+        ease: "power1.in",
         opacity: 0.2,
     }).to(texts[0], {
-        duration: 1.5,
-        ease: "none",
+        duration: 1,
+        ease: "power1.in",
         opacity: 1,
     }, "<").to(images[0], {
-        duration: 1.5,
-        ease: "none",
+        duration: 1,
+        ease: "power1.in",
         opacity: 1,
     }, "<")
 
     tl.addLabel(`${startStep + 3}`);
 
     tl.to(texts[0], {
-        duration: 1.5,
-        ease: "none",
+        duration: 1,
+        ease: "power1.in",
         opacity: 0,
         yPercent: 20,
     }).to(images[0], {
-        duration: 1.5,
-        ease: "none",
+        duration: 1,
+        ease: "power1.in",
         opacity: 0,
     }, "<").to(images[1], {
-        duration: 1.5,
-        ease: "none",
+        duration: 0.5,
+        ease: "power1.in",
         opacity: 1,
     }).to(texts[1], {
-        duration: 1.5,
-        ease: "none",
+        duration: 0.5,
+        ease: "power1.in",
         opacity: 1,
     }, "<")
 
     tl.addLabel(`${startStep + 4}`);
 
     tl.to(texts[1], {
-        duration: 1.5,
-        ease: "none",
+        duration: 1,
+        ease: "power1.in",
         opacity: 0,
         yPercent: 20,
     }).to(images[1], {
-        duration: 1.5,
-        ease: "none",
+        duration: 1,
+        ease: "power1.in",
         opacity: 0,
     }, "<").to(images[2], {
-        duration: 1.5,
-        ease: "none",
+        duration: 0.5,
+        ease: "power1.in",
         opacity: 1,
     }).to(texts[2], {
-        duration: 1.5,
-        ease: "none",
+        duration: 0.5,
+        ease: "power1.in",
         opacity: 1,
     }, "<")
 
     tl.addLabel(`${startStep + 5}`);
 
     tl.to(texts[2], {
-        duration: 1.5,
-        ease: "none",
+        duration: 1,
+        ease: "power1.in",
         opacity: 0,
         yPercent: 20,
     }).to(images[2], {
-        duration: 1.5,
-        ease: "none",
+        duration: 1,
+        ease: "power1.in",
         opacity: 0,
     }, "<").to(images[3], {
-        duration: 1.5,
-        ease: "none",
+        duration: 0.5,
+        ease: "power1.in",
         opacity: 1,
     }).to(texts[3], {
-        duration: 1.5,
-        ease: "none",
+        duration: 0.5,
+        ease: "power1.in",
         opacity: 1,
     }, "<")
 
     tl.addLabel(`${startStep + 6}`);
 
     tl.to(texts[3], {
-        duration: 1.5,
-        ease: "none",
+        duration: 1,
+        ease: "power1.in",
         opacity: 0,
         yPercent: 20,
     }).to(images[3], {
-        duration: 1.5,
-        ease: "none",
+        duration: 1,
+        ease: "power1.in",
         opacity: 0,
     }, "<").to(images[4], {
-        duration: 1.5,
-        ease: "none",
+        duration: 0.5,
+        ease: "power1.in",
         opacity: 1,
     }).to(texts[4], {
-        duration: 1.5,
-        ease: "none",
+        duration: 0.5,
+        ease: "power1.in",
         opacity: 1,
     }, "<")
 
     tl.addLabel(`${startStep + 7}`);
 
     tl.to(texts[4], {
-        duration: 1.5,
-        ease: "none",
+        duration: 1,
+        ease: "power1.in",
         opacity: 0,
         yPercent: 20,
     }).to(sliderImagesElement, {
-        duration: 1.5,
-        ease: "none",
+        duration: 1,
+        ease: "power1.in",
         height: 0,
     }, "<")
 
@@ -166,7 +166,7 @@ export function createPremiumClassDesktopState(
 
     tl.to(nextSectionTitleElement, {
         duration: 1.5,
-        ease: 'none',
+        ease: 'power1.out',
         opacity: 1,
         yPercent: -50,
     })
