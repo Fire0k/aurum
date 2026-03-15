@@ -152,25 +152,6 @@ header {
             display: flex;
             align-items: center;
 
-            .link {
-                font-size: 24px;
-                display: block;
-                text-decoration: none;
-                color: var(--color-text);
-                position: relative;
-                margin-right: 115px;
-
-                &::after {
-                    content: "";
-                    position: absolute;
-                    height: 1px;
-                    width: 100%;
-                    background-color: var(--accent-color);
-                    bottom: -12px;
-                    left: 0;
-                }
-            }
-
             .phone {
                 font-weight: 800;
                 font-size: 24px;
@@ -184,6 +165,25 @@ header {
                 display: none;
             }
         }
+    }
+}
+
+.select-apartmnetn-link {
+    font-size: 24px;
+    display: block;
+    text-decoration: none;
+    color: var(--color-text);
+    position: relative;
+    margin-right: 115px;
+
+    &::after {
+        content: "";
+        position: absolute;
+        height: 1px;
+        width: 100%;
+        background-color: var(--accent-color);
+        bottom: -12px;
+        left: 0;
     }
 }
 
@@ -289,6 +289,33 @@ header {
     }
 }
 
+.phone-group {
+    display: flex;
+    align-items: center;
+
+    .phone {
+        font-weight: 800;
+        font-size: 90px;
+        line-height: 90px;
+        text-decoration: none;
+        color: var(--color-text);
+        display: block;
+        margin-right: 26px;
+        height: 75px;
+    }
+
+    .callback-link {
+        margin-right: 56px;
+    }
+
+    .map-preview {
+        border-radius: 50%;
+        cursor: pointer;
+        margin-right: 17px;
+        height: 64px;
+    }
+}
+
 #application-form {
     position: relative;
     display: flex;
@@ -311,38 +338,16 @@ header {
 
             .application-input {
                 width: 505px;
+
+                &::placeholder {
+                    color: var(--color-text);
+                    opacity: 1;
+                }
             }
 
             .application-submit-button {
                 width: 375px;
             }
-        }
-    }
-
-    .phone-group {
-        display: flex;
-        align-items: center;
-
-        .phone {
-            font-weight: 800;
-            font-size: 90px;
-            line-height: 90px;
-            text-decoration: none;
-            color: var(--color-text);
-            display: block;
-            margin-right: 26px;
-            height: 75px;
-        }
-
-        .callback-link {
-            margin-right: 56px;
-        }
-
-        .map-preview {
-            border-radius: 50%;
-            cursor: pointer;
-            margin-right: 17px;
-            height: 64px;
         }
     }
 }
@@ -351,29 +356,29 @@ footer {
     position: fixed;
     bottom: 0;
     z-index: 100;
+}
 
-    .footer-wrapper {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+.footer-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--color-text);
+    padding-top: 40px;
+    padding-bottom: 40px;
+    border-top: 1px solid var(--accent-color);
+    position: relative;
+    font-size: 16px;
+
+    .legal-entity {
+        text-transform: uppercase;
+    }
+
+    .public-offer {
+        text-align: center;
+    }
+
+    .privacy-policy {
+        display: block;
         color: var(--color-text);
-        padding-top: 40px;
-        padding-bottom: 40px;
-        border-top: 1px solid var(--accent-color);
-        position: relative;
-        font-size: 16px;
-
-        .legal-entity {
-            text-transform: uppercase;
-        }
-
-        .public-offer {
-            text-align: center;
-        }
-
-        .privacy-policy {
-            display: block;
-            color: var(--color-text);
-        }
     }
 }

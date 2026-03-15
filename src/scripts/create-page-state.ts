@@ -1,4 +1,5 @@
 import gsap from "gsap";
+import IMask from 'imask';
 
 import { createPageObserver } from "./create-page-observer";
 import { getDesktopSectionsTools, activateMobileAnimate } from '../sections-states/get-sections-tools';
@@ -85,5 +86,24 @@ export function createPageState() {
         }, undefined, '1');
     } else {
         activateMobileAnimate();
+
+        const burgerButtonElement = document.querySelector('.burger-menu')!;
+        const burgerCloseButtonElement = document.querySelector('.menu-close-button')!;
+
+        burgerButtonElement.addEventListener('click', () => {
+            document.body.classList.add('show-menu')
+        })
+        burgerCloseButtonElement.addEventListener('click', () => {
+            document.body.classList.remove('show-menu')
+        })
+
+        IMask(
+            document.getElementById('application-form-tel')!,
+            {
+                mask: '+{7} (000) 000-00-00',
+                lazy: false,
+                placeholderChar: '_'
+            }
+        )
     }
 }

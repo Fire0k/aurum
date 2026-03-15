@@ -68,6 +68,37 @@ body {
     }
 }
 
+.mobile-menu {
+    position: fixed;
+    inset: 0;
+    background-color: #333333;
+    z-index: 101;
+    transform: translateX(-100%);
+    transition-property: transform;
+    transition-duration: 1s;
+    padding: 60px 20px 0px;
+    display: flex;
+    flex-direction: column;
+
+    .menu-close-button {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        cursor: pointer;
+        width: 20px;
+        height: 20px;
+    }
+
+    .select-apartmnetn-link {
+        width: fit-content;
+        margin: 0 auto 60px;
+    }
+
+    .phone-group {
+        margin-bottom: auto;
+    }
+}
+
 .filter {
     will-change: opacity;
     opacity: 1;
@@ -477,7 +508,7 @@ footer {
             }
 
             .info-block {
-                .link {
+                .select-apartmnetn-link {
                     display: none;
                 }
             }
@@ -515,21 +546,19 @@ footer {
         }
     }
 
-    #application-form {
-        .phone-group {
-            justify-content: center;
-            flex-wrap: wrap;
+    .phone-group {
+        justify-content: center;
+        flex-wrap: wrap;
 
-            .phone {
-                width: 100%;
-                margin-right: 0;
-                margin-bottom: 26px;
-                text-align: center;
-            }
+        .phone {
+            width: 100%;
+            margin-right: 0;
+            margin-bottom: 26px;
+            text-align: center;
+        }
 
-            .map-preview {
-                display: none;
-            }
+        .map-preview {
+            display: none;
         }
     }
 }
@@ -541,10 +570,8 @@ footer {
         }
     }
 
-    footer {
-        .footer-wrapper {
-            font-size: 13px;
-        }
+    .footer-wrapper {
+        font-size: 13px;
     }
 }
 @media (max-width: 992px) {
@@ -556,11 +583,18 @@ footer {
             transition-property: opacity;
             transition-timing-function: linear;
             transition-duration: 1s;
+            pointer-events: none;
         }
 
         &.ready {
             .filter {
                 opacity: 0;
+            }
+        }
+
+        &.show-menu {
+            .mobile-menu {
+                transform: translateX(0%);
             }
         }
     }
@@ -655,10 +689,10 @@ footer {
 
     #application-form {
         opacity: 1;
+        margin-bottom: 0;
 
         // TODO: временно, убрать
         background-color: #333333;
-        position: sticky;
 
         .form-inputs {
             margin-bottom: 70px;
@@ -684,13 +718,62 @@ footer {
     footer {
         position: relative;
         opacity: 1;
+        // TODO: временно, убрать
+        background-color: #333333;
+    }
 
-        .footer-wrapper {
-            padding-top: 20px;
-            padding-bottom: 20px;
+    .footer-wrapper {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+}
+@media (max-width: 768px) {
+    .phone-group {
+        .phone {
+            font-size: 50px;
+        }
+    }
+
+    #application-form {
+        .form-inputs {
+            .inputs-title {
+                font-size: 35px;
+            }
+        }
+    }
+}
+@media (max-width: 576px) {
+    .phone-group {
+        .phone {
+            font-size: 40px;
+        }
+
+        .callback-link {
+            margin-right: 0;
             flex-direction: column;
-            align-items: center;
-            gap: 20px;
+            width: 100%;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .map-button {
+            flex-direction: column;
+            width: 100%;
+            gap: 10px;
+        }
+    }
+
+    #application-form {
+        .form-inputs {
+            margin-bottom: 30px;
+
+            .inputs-title {
+                margin-bottom: 30px;
+                font-size: 25px;
+            }
         }
     }
 }
