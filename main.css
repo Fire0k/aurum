@@ -129,23 +129,6 @@ header .header-wrapper .info-block {
   display: flex;
   align-items: center;
 }
-header .header-wrapper .info-block .link {
-  font-size: 24px;
-  display: block;
-  text-decoration: none;
-  color: var(--color-text);
-  position: relative;
-  margin-right: 115px;
-}
-header .header-wrapper .info-block .link::after {
-  content: "";
-  position: absolute;
-  height: 1px;
-  width: 100%;
-  background-color: var(--accent-color);
-  bottom: -12px;
-  left: 0;
-}
 header .header-wrapper .info-block .phone {
   font-weight: 800;
   font-size: 24px;
@@ -156,6 +139,23 @@ header .header-wrapper .info-block .phone {
 }
 header .header-wrapper .info-block .phone-mobile {
   display: none;
+}
+.select-apartmnetn-link {
+  font-size: 24px;
+  display: block;
+  text-decoration: none;
+  color: var(--color-text);
+  position: relative;
+  margin-right: 115px;
+}
+.select-apartmnetn-link::after {
+  content: "";
+  position: absolute;
+  height: 1px;
+  width: 100%;
+  background-color: var(--accent-color);
+  bottom: -12px;
+  left: 0;
 }
 .section-background {
   height: 100vh;
@@ -242,6 +242,29 @@ header .header-wrapper .info-block .phone-mobile {
   transform: translate(-50%, -100%);
   top: -35px;
 }
+.phone-group {
+  display: flex;
+  align-items: center;
+}
+.phone-group .phone {
+  font-weight: 800;
+  font-size: 90px;
+  line-height: 90px;
+  text-decoration: none;
+  color: var(--color-text);
+  display: block;
+  margin-right: 26px;
+  height: 75px;
+}
+.phone-group .callback-link {
+  margin-right: 56px;
+}
+.phone-group .map-preview {
+  border-radius: 50%;
+  cursor: pointer;
+  margin-right: 17px;
+  height: 64px;
+}
 #application-form {
   position: relative;
   display: flex;
@@ -264,38 +287,19 @@ header .header-wrapper .info-block .phone-mobile {
 #application-form .form-inputs .inputs-group .application-input {
   width: 505px;
 }
+#application-form .form-inputs .inputs-group .application-input::placeholder {
+  color: var(--color-text);
+  opacity: 1;
+}
 #application-form .form-inputs .inputs-group .application-submit-button {
   width: 375px;
-}
-#application-form .phone-group {
-  display: flex;
-  align-items: center;
-}
-#application-form .phone-group .phone {
-  font-weight: 800;
-  font-size: 90px;
-  line-height: 90px;
-  text-decoration: none;
-  color: var(--color-text);
-  display: block;
-  margin-right: 26px;
-  height: 75px;
-}
-#application-form .phone-group .callback-link {
-  margin-right: 56px;
-}
-#application-form .phone-group .map-preview {
-  border-radius: 50%;
-  cursor: pointer;
-  margin-right: 17px;
-  height: 64px;
 }
 footer {
   position: fixed;
   bottom: 0;
   z-index: 100;
 }
-footer .footer-wrapper {
+.footer-wrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -306,13 +310,13 @@ footer .footer-wrapper {
   position: relative;
   font-size: 16px;
 }
-footer .footer-wrapper .legal-entity {
+.footer-wrapper .legal-entity {
   text-transform: uppercase;
 }
-footer .footer-wrapper .public-offer {
+.footer-wrapper .public-offer {
   text-align: center;
 }
-footer .footer-wrapper .privacy-policy {
+.footer-wrapper .privacy-policy {
   display: block;
   color: var(--color-text);
 }
@@ -361,6 +365,33 @@ body.dev #application-form {
 }
 body.dev footer {
   opacity: 1;
+}
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  background-color: #333333;
+  z-index: 101;
+  transform: translateX(-100%);
+  transition-property: transform;
+  transition-duration: 1s;
+  padding: 60px 20px 0px;
+  display: flex;
+  flex-direction: column;
+}
+.mobile-menu .menu-close-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+}
+.mobile-menu .select-apartmnetn-link {
+  width: fit-content;
+  margin: 0 auto 60px;
+}
+.mobile-menu .phone-group {
+  margin-bottom: auto;
 }
 .filter {
   will-change: opacity;
@@ -694,7 +725,7 @@ footer {
   header .header-wrapper .logo-main img {
     height: 120px;
   }
-  header .header-wrapper .info-block .link {
+  header .header-wrapper .info-block .select-apartmnetn-link {
     display: none;
   }
   .section-wrapper .half-slider .half-slider-text .text-wrapper {
@@ -713,17 +744,17 @@ footer {
     padding: 150px 40px 0;
     letter-spacing: 65px;
   }
-  #application-form .phone-group {
+  .phone-group {
     justify-content: center;
     flex-wrap: wrap;
   }
-  #application-form .phone-group .phone {
+  .phone-group .phone {
     width: 100%;
     margin-right: 0;
     margin-bottom: 26px;
     text-align: center;
   }
-  #application-form .phone-group .map-preview {
+  .phone-group .map-preview {
     display: none;
   }
 }
@@ -732,7 +763,7 @@ footer {
     font-size: 210px;
     letter-spacing: 50px;
   }
-  footer .footer-wrapper {
+  .footer-wrapper {
     font-size: 13px;
   }
 }
@@ -745,9 +776,13 @@ footer {
     transition-property: opacity;
     transition-timing-function: linear;
     transition-duration: 1s;
+    pointer-events: none;
   }
   body.ready .filter {
     opacity: 0;
+  }
+  body.show-menu .mobile-menu {
+    transform: translateX(0%);
   }
   .container {
     padding-left: 20px;
@@ -816,8 +851,8 @@ footer {
   }
   #application-form {
     opacity: 1;
+    margin-bottom: 0;
     background-color: #333333;
-    position: sticky;
   }
   #application-form .form-inputs {
     margin-bottom: 70px;
@@ -837,12 +872,45 @@ footer {
   footer {
     position: relative;
     opacity: 1;
+    background-color: #333333;
   }
-  footer .footer-wrapper {
+  .footer-wrapper {
     padding-top: 20px;
     padding-bottom: 20px;
     flex-direction: column;
     align-items: center;
     gap: 20px;
+  }
+}
+@media (max-width: 768px) {
+  .phone-group .phone {
+    font-size: 50px;
+  }
+  #application-form .form-inputs .inputs-title {
+    font-size: 35px;
+  }
+}
+@media (max-width: 576px) {
+  .phone-group .phone {
+    font-size: 40px;
+  }
+  .phone-group .callback-link {
+    margin-right: 0;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .phone-group .map-button {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+  #application-form .form-inputs {
+    margin-bottom: 30px;
+  }
+  #application-form .form-inputs .inputs-title {
+    margin-bottom: 30px;
+    font-size: 25px;
   }
 }
