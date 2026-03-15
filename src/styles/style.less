@@ -280,12 +280,6 @@ header {
         .swiper-slide .img-wrapper {
             height: 100%;
             width: 100%;
-            transform: scale(0.7);
-            will-change: transform;
-            transform-origin: center;
-            border-top-left-radius: var(--section-radius);
-            border-top-right-radius: var(--section-radius);
-            overflow: hidden;
 
             img {
                 width: auto;
@@ -597,6 +591,14 @@ footer {
                 transform: translateX(0%);
             }
         }
+
+        .paralax-wrapper {
+            height: 100vh;
+            overflow-x: hidden;
+            overflow-y: auto;
+            perspective: 1px;
+            perspective-origin: top;
+        }
     }
 
     .container {
@@ -633,14 +635,29 @@ footer {
     }
 
     .section-background {
-        display: none;
+        position: relative;
+        transform: translateZ(-1px) scale(2);
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        top: unset;
+        z-index: 0;
+
+        &::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-color: #333333;
+            opacity: .8;
+            width: 100%;
+            height: 100%;
+        }
     }
 
     .section-wrapper {
-        position: sticky;
+        position: relative;
         top: 0;
         bottom: unset;
-        margin-bottom: 300px;
+        overflow: unset;
 
         > img {
             display: block;
@@ -659,14 +676,26 @@ footer {
         }
 
         .section-title-wrapper {
-            display: none;
+            transform: translateY(-100%);
+
+            .section-title {
+                opacity: 1;
+                transform: translate(-50%, -50%);
+
+                .title.uppercase-title {
+                    font-size: 70px;
+                }
+            }
         }
+    }
+
+    .first-section-background {
+        display: none;
     }
 
     #first-section {
         transform: scale(1);
-        border-top-left-radius: 0;
-        border-top-right-radius: 0;
+        border-radius: 0;
 
         > img {
             display: block;

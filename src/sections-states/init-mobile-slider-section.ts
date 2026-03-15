@@ -15,7 +15,7 @@ export function initMobileSliderSection(sectionElement: Element) {
     const titleElement = sectionElement.querySelector('.section-title-wrapper');
 
     const tl = gsap.timeline({ paused: true });
-    tl.to([filterElement, titleElement], {
+    tl.to([filterElement], {
         duration: 1,
         ease: 'none',
         opacity: 0,
@@ -23,11 +23,12 @@ export function initMobileSliderSection(sectionElement: Element) {
         duration: 1,
         ease: 'none',
         opacity: 1,
-    }, "<").set([filterElement, titleElement], { display: 'none' })
+    }, "<").set([filterElement], { display: 'none' })
 
     ScrollTrigger.create({
         trigger: sectionElement,
         start: "top top+=100",
+        scroller: document.querySelector('.paralax-wrapper'),
 
         onEnter: () => tl.play(),
         onLeaveBack: () => tl.reverse()
@@ -35,20 +36,20 @@ export function initMobileSliderSection(sectionElement: Element) {
 
     initFullpageSlider(sectionElement, sectionElement);
 
-    gsap.to(
-        sectionElement.querySelectorAll('.img-wrapper'),
-        {
-            scale: 1.2,
-            ease: "none",
+    // gsap.to(
+    //     sectionElement.querySelectorAll('.img-wrapper'),
+    //     {
+    //         scale: 1.2,
+    //         ease: "none",
 
-            scrollTrigger: {
-                trigger: sectionElement,
+    //         scrollTrigger: {
+    //             trigger: sectionElement,
 
-                start: "top bottom",
-                end: "top top",
+    //             start: "top bottom",
+    //             end: "top top",
 
-                scrub: true
-            }
-        }
-    )
+    //             scrub: true
+    //         }
+    //     }
+    // )
 }
