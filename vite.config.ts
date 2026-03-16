@@ -8,7 +8,7 @@ export default defineConfig({
     emptyOutDir: true,
 
     target: 'esnext',
-    minify: 'esbuild',
+    minify: false,
 
     cssCodeSplit: true,
     cssMinify: false,
