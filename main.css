@@ -85,7 +85,6 @@ body {
 header {
   width: 100vw;
   height: 268px;
-  position: fixed;
   top: 0;
   z-index: 100;
 }
@@ -295,7 +294,6 @@ header .header-wrapper .info-block .phone-mobile {
   width: 375px;
 }
 footer {
-  position: fixed;
   bottom: 0;
   z-index: 100;
 }
@@ -397,6 +395,9 @@ body.dev footer {
   will-change: opacity;
   opacity: 1;
   z-index: 101;
+}
+header {
+  position: fixed;
 }
 header .gradient {
   opacity: 0;
@@ -709,6 +710,7 @@ header .header-wrapper .logo-main {
   will-change: transform, opacity;
 }
 footer {
+  position: fixed;
   opacity: 0;
 }
 @media (max-width: 1400px) {

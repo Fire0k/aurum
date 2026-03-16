@@ -1,1 +1,719 @@
-import{g as m,O as g,S as b,a as S,b as q,E as h,P as x,N as P,I as E}from"./modules.js";(function(){const e=document.createElement("link").relList;if(e&&e.supports&&e.supports("modulepreload"))return;for(const o of document.querySelectorAll('link[rel="modulepreload"]'))i(o);new MutationObserver(o=>{for(const a of o)if(a.type==="childList")for(const n of a.addedNodes)n.tagName==="LINK"&&n.rel==="modulepreload"&&i(n)}).observe(document,{childList:!0,subtree:!0});function r(o){const a={};return o.integrity&&(a.integrity=o.integrity),o.referrerPolicy&&(a.referrerPolicy=o.referrerPolicy),o.crossOrigin==="use-credentials"?a.credentials="include":o.crossOrigin==="anonymous"?a.credentials="omit":a.credentials="same-origin",a}function i(o){if(o.ep)return;o.ep=!0;const a=r(o);fetch(o.href,a)}})();function L(){m.registerPlugin(g,b,S),history.scrollRestoration="manual"}function k(t,e){g.create({type:"wheel,touch,pointer",wheelSpeed:-1,target:window,tolerance:10,preventDefault:!0,onDown(){t()},onUp(){e()}})}function I(t,e){const o=document.querySelector("header")?.querySelector(".logo-main")??null,a=document.querySelector(".first-section-background"),n=document.querySelector(".filter"),c=t.querySelector(".slogan"),d=t.querySelector(".mask"),s=t.querySelector(".section-title");return e.to(n,{duration:1,ease:"none",opacity:0}).to(a,{duration:1.5,ease:"none",scale:2},"<"),e.set(n,{zIndex:0,opacity:1}),e.set(s,{yPercent:50}),e.addLabel("0"),e.to(a,{duration:1.5,ease:"none",scale:1.5}).to(c,{duration:1.5,ease:"none",opacity:0,yPercent:50},"<"),e.set(c,{display:"none"}),e.addLabel("add-mask"),e.to(a,{duration:1.5,ease:"none",scale:1}),e.addLabel("1"),e.to(d,{duration:1.5,ease:"none",maskSize:"100% 100%, 0px"}).to(o,{duration:1.5,ease:"none",opacity:1},"<"),e.set(d,{delay:.1,display:"none"}),e.set(a,{opacity:.1}),e.to(s,{delay:.2,duration:1.5,ease:"power1.out",opacity:1,yPercent:-50}),{maxStep:1}}function v(){document.body.classList.add("ready")}function A(t,e,r){const i=r+7,a=document.querySelector("header")?.querySelector(".gradient")??null,n=document.querySelector(".premium-class-background"),c=document.querySelector(".filter"),d=t.querySelector(".section-title"),s=t.querySelector(".half-slider"),u=s.querySelector(".half-slider-text"),y=s.querySelector(".half-slider-img"),l=Array.from(u.querySelectorAll(".text-wrapper")),p=Array.from(y.querySelectorAll(".img-wrapper"));return e.to(n,{duration:1.5,ease:"power1.out",scale:.9,yPercent:-20},"<"),e.addLabel(`${r+1}`),e.to(a,{duration:.5,opacity:1}).to(n,{duration:2,ease:"power1.in",yPercent:-100,scale:1.2},"<"),e.set(d,{yPercent:50}),e.set(c,{zIndex:3}),e.addLabel(`${r+2}`),e.set(t,{yPercent:-100}),e.to(n,{duration:1,ease:"power1.in",opacity:.2}).to(l[0],{duration:1,ease:"power1.in",opacity:1},"<").to(p[0],{duration:1,ease:"power1.in",opacity:1},"<"),e.addLabel(`${r+3}`),e.to(l[0],{duration:1,ease:"power1.in",opacity:0,yPercent:20}).to(p[0],{duration:1,ease:"power1.in",opacity:0},"<").to(p[1],{duration:.5,ease:"power1.in",opacity:1}).to(l[1],{duration:.5,ease:"power1.in",opacity:1},"<"),e.addLabel(`${r+4}`),e.to(l[1],{duration:1,ease:"power1.in",opacity:0,yPercent:20}).to(p[1],{duration:1,ease:"power1.in",opacity:0},"<").to(p[2],{duration:.5,ease:"power1.in",opacity:1}).to(l[2],{duration:.5,ease:"power1.in",opacity:1},"<"),e.addLabel(`${r+5}`),e.to(l[2],{duration:1,ease:"power1.in",opacity:0,yPercent:20}).to(p[2],{duration:1,ease:"power1.in",opacity:0},"<").to(p[3],{duration:.5,ease:"power1.in",opacity:1}).to(l[3],{duration:.5,ease:"power1.in",opacity:1},"<"),e.addLabel(`${r+6}`),e.to(l[3],{duration:1,ease:"power1.in",opacity:0,yPercent:20}).to(p[3],{duration:1,ease:"power1.in",opacity:0},"<").to(p[4],{duration:.5,ease:"power1.in",opacity:1}).to(l[4],{duration:.5,ease:"power1.in",opacity:1},"<"),e.addLabel(`${r+7}`),e.to(l[4],{duration:1,ease:"power1.in",opacity:0,yPercent:20}).to(y,{duration:1,ease:"power1.in",height:0},"<"),e.set(s,{display:"none"}),e.to(d,{duration:1.5,ease:"power1.out",opacity:1,yPercent:-50}),{maxStep:i}}function $(t,e,r){const i=r+3,o=document.querySelector(".safety-and-comfort-background"),a=document.querySelector(".filter"),n=t.querySelector(".section-title"),c=t.querySelector(".half-slider"),d=c.querySelector(".half-slider-text"),s=c.querySelector(".half-slider-img"),u=Array.from(d.querySelectorAll(".text-wrapper")),y=Array.from(s.querySelectorAll(".img-wrapper"));return e.to(o,{duration:1.5,ease:"power1.out",scale:.9,yPercent:-20},"<"),e.addLabel(`${r+1}`),e.to(o,{duration:2,ease:"power1.in",yPercent:-100,scale:1.2}),e.set(n,{yPercent:50}),e.set(a,{zIndex:6}),e.addLabel(`${r+2}`),e.set(t,{yPercent:-100}),e.to(o,{duration:1,ease:"power1.in",opacity:.2}).to(u[0],{duration:1,ease:"power1.in",opacity:1},"<").to(y[0],{duration:1,ease:"power1.in",opacity:1},"<"),e.addLabel(`${r+3}`),e.to(u[0],{duration:1,ease:"power1.in",opacity:0,yPercent:20}).to(s,{duration:1,ease:"power1.in",height:0},"<"),e.set(c,{display:"none"}),e.to(n,{duration:1.5,ease:"power1.out",opacity:1,yPercent:-50}),{maxStep:i}}function T(t,e,r){const i=r+3,o=document.querySelector(".improvement-background"),a=document.querySelector(".filter"),n=t.querySelector(".section-title"),c=t.querySelector(".half-slider"),d=c.querySelector(".half-slider-text"),s=c.querySelector(".half-slider-img"),u=Array.from(d.querySelectorAll(".text-wrapper")),y=Array.from(s.querySelectorAll(".img-wrapper"));return e.to(o,{duration:1.5,ease:"power1.out",scale:.9,yPercent:-20},"<"),e.addLabel(`${r+1}`),e.to(o,{duration:2,ease:"power1.in",yPercent:-100,scale:1.2}),e.set(n,{yPercent:50}),e.set(a,{zIndex:9}),e.addLabel(`${r+2}`),e.set(t,{yPercent:-100}),e.to(o,{duration:1,ease:"power1.in",opacity:.2}).to(u[0],{duration:1,ease:"power1.in",opacity:1},"<").to(y[0],{duration:1,ease:"power1.in",opacity:1},"<"),e.addLabel(`${r+3}`),e.to(u[0],{duration:1,ease:"power1.in",opacity:0,yPercent:20}).to(s,{duration:1,ease:"power1.in",height:0},"<"),e.set(c,{display:"none"}),e.to(n,{duration:1.5,ease:"power1.out",opacity:1,yPercent:-50}),{maxStep:i}}function B(t,e,r){const i=r+3,o=document.querySelector(".design-and-interior-background"),a=document.querySelector(".filter"),n=t.querySelector(".section-title"),c=t.querySelector(".half-slider"),d=c.querySelector(".half-slider-text"),s=c.querySelector(".half-slider-img"),u=Array.from(d.querySelectorAll(".text-wrapper")),y=Array.from(s.querySelectorAll(".img-wrapper"));return e.to(o,{duration:1.5,ease:"power1.out",scale:.9,yPercent:-20},"<"),e.addLabel(`${r+1}`),e.to(o,{duration:2,ease:"power1.in",yPercent:-100,scale:1.2}),e.set(n,{yPercent:50}),e.set(a,{zIndex:12}),e.addLabel(`${r+2}`),e.set(t,{yPercent:-100}),e.to(o,{duration:1,ease:"power1.in",opacity:.2}).to(u[0],{duration:1,ease:"power1.in",opacity:1},"<").to(y[0],{duration:1,ease:"power1.in",opacity:1},"<"),e.addLabel(`${r+3}`),e.to(u[0],{duration:1,ease:"power1.in",opacity:0,yPercent:20}).to(s,{duration:1,ease:"power1.in",height:0},"<"),e.set(c,{display:"none"}),e.to(n,{duration:1.5,ease:"power1.out",opacity:1,yPercent:-50}),{maxStep:i}}function w(t,e){const r=t.querySelector(".swiper"),i=t.querySelector(".slider-pagination");e.querySelector(".next"),e.querySelector(".prev"),new q(r,{modules:[h,x,P],effect:"fade",fadeEffect:{crossFade:!0},speed:700,loop:!0,navigation:{nextEl:".swiper-button-next",prevEl:".swiper-button-prev"},pagination:{el:i,clickable:!0}})}function D(t,e,r){const i=r+2,o=document.querySelector(".apartments-background"),a=document.querySelector(".filter"),n=t.querySelector(".section-title"),c=t.querySelector(".slider-buttons");return w(o,t),e.to(o,{duration:1.5,ease:"power1.out",scale:.9,yPercent:-20},"<"),e.addLabel(`${r+1}`),e.to(o,{duration:2,ease:"power1.in",yPercent:-100,scale:1.2}),e.set(n,{yPercent:50}),e.set(a,{zIndex:15}),e.set(t,{yPercent:-100}),e.to(c,{duration:.5,ease:"none",opacity:1}),e.addLabel(`${r+2}`),e.to(o,{duration:1,ease:"power1.in",opacity:.2}).to(c,{duration:1,ease:"power1.in",opacity:0},"<").to(n,{duration:1.5,ease:"power1.out",opacity:1,yPercent:-50}),{maxStep:i}}function z(t,e,r){const i=r+2,o=document.querySelector(".penthouses-background"),a=document.querySelector(".filter"),n=t.querySelector(".slider-buttons");return w(o,t),e.to(o,{duration:1.5,ease:"power1.out",scale:.9,yPercent:-20},"<"),e.addLabel(`${r+1}`),e.to(o,{duration:2,ease:"power1.in",yPercent:-100,scale:1.2}),e.set(a,{zIndex:18}),e.set(t,{yPercent:-100}),e.to(n,{duration:.5,ease:"none",opacity:1}),e.addLabel(`${r+2}`),e.to(o,{duration:1,ease:"power1.in",opacity:.2}).to(n,{duration:1,ease:"power1.in",opacity:0},"<"),{maxStep:i}}function O(t,e,r){const i=r+1,o=document.querySelector("footer");return e.set(t,{yPercent:-80}),e.to(t,{duration:2,ease:"power1.out",yPercent:-100,opacity:1}).to(o,{duration:1,ease:"power1.out",opacity:1}),e.addLabel(`${r+1}`),{maxStep:i}}function f(t){const e=t.querySelector(".slider-pagination"),r=t.querySelectorAll(".swiper-button-next"),i=t.querySelectorAll(".swiper-button-prev"),o=t.querySelectorAll(".mobile-slide-text"),a=t.querySelector(".mobile-slider-filter"),n=t.querySelector(".section-title-wrapper"),c=m.timeline({paused:!0});c.to([a,n],{duration:1,ease:"none",opacity:0}).to([r,i,e,...o],{duration:1,ease:"none",opacity:1},"<").set([a,n],{display:"none"}),S.create({trigger:t,start:"top top+=100",onEnter:()=>c.play(),onLeaveBack:()=>c.reverse()}),w(t,t),m.to(t.querySelectorAll(".img-wrapper"),{scale:1.2,ease:"none",scrollTrigger:{trigger:t,start:"top bottom",end:"top top",scrub:!0}})}function F(t){const e=[];return e.push(I(document.getElementById("first-section"),t)),e.push(A(document.getElementById("premium-class"),t,e[0].maxStep)),e.push($(document.getElementById("safety-and-comfort"),t,e[1].maxStep)),e.push(T(document.getElementById("improvement"),t,e[2].maxStep)),e.push(B(document.getElementById("design-and-interior"),t,e[3].maxStep)),e.push(D(document.getElementById("apartments"),t,e[4].maxStep)),e.push(z(document.getElementById("penthouses"),t,e[5].maxStep)),e.push(O(document.getElementById("application-form"),t,e[6].maxStep)),e}function M(){v(),f(document.getElementById("premium-class")),f(document.getElementById("safety-and-comfort")),f(document.getElementById("improvement")),f(document.getElementById("design-and-interior"))}function C(){if(window.innerWidth<=992){M();const e=document.querySelector(".burger-menu"),r=document.querySelector(".menu-close-button");e.addEventListener("click",()=>{document.body.classList.add("show-menu")}),r.addEventListener("click",()=>{document.body.classList.remove("show-menu")}),E(document.getElementById("application-form-tel"),{mask:"+{7} (000) 000-00-00",lazy:!1,placeholderChar:"_"})}else{let e=function(){m.isTweening(i)||n!==o.at(-1).maxStep&&(n++,i.tweenTo(`${n}`),n!==1&&a++)},r=function(){m.isTweening(i)||n!==0&&(n--,i.tweenTo(`${n}`),n!==0&&a--)};const i=m.timeline({paused:!0}),o=F(i);if(!o)return;let a=0,n=0;i.tweenTo("0"),k(()=>r(),()=>e());const c=document.getElementById("first-section"),d=document.querySelector(".mask");i.call(()=>{a>n||n===0||c.classList.add("with-mask")},void 0,"add-mask"),i.call(()=>{a<n||c.classList.remove("with-mask")},void 0,"1-=0.01"),i.call(()=>{a>n||n===0||(d.style.transitionDuration="1.5s")},void 0,"1"),i.call(()=>{a<n||(d.style.transitionDuration="unset")},void 0,"1")}}L();window.addEventListener("load",async()=>{await document.fonts.ready,requestAnimationFrame(()=>{C()})});
+import { g as gsapWithCSS, O as Observer, S as ScrollToPlugin, a as ScrollTrigger, b as Swiper, E as EffectFade, P as Pagination, N as Navigation, I as IMask } from './modules.js';
+
+true              &&(function polyfill() {
+	const relList = document.createElement("link").relList;
+	if (relList && relList.supports && relList.supports("modulepreload")) return;
+	for (const link of document.querySelectorAll("link[rel=\"modulepreload\"]")) processPreload(link);
+	new MutationObserver((mutations) => {
+		for (const mutation of mutations) {
+			if (mutation.type !== "childList") continue;
+			for (const node of mutation.addedNodes) if (node.tagName === "LINK" && node.rel === "modulepreload") processPreload(node);
+		}
+	}).observe(document, {
+		childList: true,
+		subtree: true
+	});
+	function getFetchOpts(link) {
+		const fetchOpts = {};
+		if (link.integrity) fetchOpts.integrity = link.integrity;
+		if (link.referrerPolicy) fetchOpts.referrerPolicy = link.referrerPolicy;
+		if (link.crossOrigin === "use-credentials") fetchOpts.credentials = "include";
+		else if (link.crossOrigin === "anonymous") fetchOpts.credentials = "omit";
+		else fetchOpts.credentials = "same-origin";
+		return fetchOpts;
+	}
+	function processPreload(link) {
+		if (link.ep) return;
+		link.ep = true;
+		const fetchOpts = getFetchOpts(link);
+		fetch(link.href, fetchOpts);
+	}
+}());
+
+function bootstrap() {
+  gsapWithCSS.registerPlugin(Observer, ScrollToPlugin, ScrollTrigger);
+  history.scrollRestoration = "manual";
+}
+
+function createPageObserver(onDownCallback, onUpCallback) {
+  Observer.create({
+    type: "wheel,touch,pointer",
+    wheelSpeed: -1,
+    target: window,
+    tolerance: 10,
+    preventDefault: true,
+    onDown() {
+      onDownCallback();
+    },
+    onUp() {
+      onUpCallback();
+    }
+  });
+}
+
+function createFirstScreenDesktopState(sectionElement, tl) {
+  const maxStep = 1;
+  const headerElement = document.querySelector("header");
+  const headerLogoElement = headerElement?.querySelector(".logo-main") ?? null;
+  const backgroundElement = document.querySelector(".first-section-background");
+  const filterElement = document.querySelector(".filter");
+  const sloganElement = sectionElement.querySelector(".slogan");
+  const maskElement = sectionElement.querySelector(".mask");
+  const nextSectionTitleElement = sectionElement.querySelector(".section-title");
+  tl.to(filterElement, {
+    duration: 1,
+    ease: "none",
+    opacity: 0
+  }).to(backgroundElement, {
+    duration: 1.5,
+    ease: "none",
+    scale: 2
+  }, "<");
+  tl.set(filterElement, { zIndex: 0, opacity: 1 });
+  tl.set(nextSectionTitleElement, { yPercent: 50 });
+  tl.addLabel("0");
+  tl.to(backgroundElement, {
+    duration: 1.5,
+    ease: "none",
+    scale: 1.5
+  }).to(sloganElement, {
+    duration: 1.5,
+    ease: "none",
+    opacity: 0,
+    yPercent: 50
+  }, "<");
+  tl.set(sloganElement, { display: "none" });
+  tl.addLabel("add-mask");
+  tl.to(backgroundElement, {
+    duration: 1.5,
+    ease: "none",
+    scale: 1
+  });
+  tl.addLabel("1");
+  tl.to(maskElement, {
+    duration: 1.5,
+    ease: "none",
+    maskSize: "100% 100%, 0px"
+  }).to(headerLogoElement, {
+    duration: 1.5,
+    ease: "none",
+    opacity: 1
+  }, "<");
+  tl.set(maskElement, { delay: 0.1, display: "none" });
+  tl.set(backgroundElement, { opacity: 0.1 });
+  tl.to(nextSectionTitleElement, {
+    delay: 0.2,
+    duration: 1.5,
+    ease: "power1.out",
+    opacity: 1,
+    yPercent: -50
+  });
+  return {
+    maxStep
+  };
+}
+function createFirstScreenMobileAnimate() {
+  document.body.classList.add("ready");
+}
+
+function createPremiumClassDesktopState(sectionElement, tl, startStep) {
+  const maxStep = startStep + 7;
+  const headerElement = document.querySelector("header");
+  const headerGradientElement = headerElement?.querySelector(".gradient") ?? null;
+  const backgroundElement = document.querySelector(".premium-class-background");
+  const filterElement = document.querySelector(".filter");
+  const nextSectionTitleElement = sectionElement.querySelector(".section-title");
+  const sliderElement = sectionElement.querySelector(".half-slider");
+  const sliderTextElements = sliderElement.querySelector(".half-slider-text");
+  const sliderImagesElement = sliderElement.querySelector(".half-slider-img");
+  const texts = Array.from(sliderTextElements.querySelectorAll(`.text-wrapper`));
+  const images = Array.from(sliderImagesElement.querySelectorAll(`.img-wrapper`));
+  tl.to(backgroundElement, {
+    duration: 1.5,
+    ease: "power1.out",
+    scale: 0.9,
+    yPercent: -20
+  }, "<");
+  tl.addLabel(`${startStep + 1}`);
+  tl.to(headerGradientElement, {
+    duration: 0.5,
+    opacity: 1
+  }).to(backgroundElement, {
+    duration: 2,
+    ease: "power1.in",
+    yPercent: -100,
+    scale: 1.2
+  }, "<");
+  tl.set(nextSectionTitleElement, { yPercent: 50 });
+  tl.set(filterElement, { zIndex: 3 });
+  tl.addLabel(`${startStep + 2}`);
+  tl.set(sectionElement, { yPercent: -100 });
+  tl.to(backgroundElement, {
+    duration: 1,
+    ease: "power1.in",
+    opacity: 0.2
+  }).to(texts[0], {
+    duration: 1,
+    ease: "power1.in",
+    opacity: 1
+  }, "<").to(images[0], {
+    duration: 1,
+    ease: "power1.in",
+    opacity: 1
+  }, "<");
+  tl.addLabel(`${startStep + 3}`);
+  tl.to(texts[0], {
+    duration: 1,
+    ease: "power1.in",
+    opacity: 0,
+    yPercent: 20
+  }).to(images[0], {
+    duration: 1,
+    ease: "power1.in",
+    opacity: 0
+  }, "<").to(images[1], {
+    duration: 0.5,
+    ease: "power1.in",
+    opacity: 1
+  }).to(texts[1], {
+    duration: 0.5,
+    ease: "power1.in",
+    opacity: 1
+  }, "<");
+  tl.addLabel(`${startStep + 4}`);
+  tl.to(texts[1], {
+    duration: 1,
+    ease: "power1.in",
+    opacity: 0,
+    yPercent: 20
+  }).to(images[1], {
+    duration: 1,
+    ease: "power1.in",
+    opacity: 0
+  }, "<").to(images[2], {
+    duration: 0.5,
+    ease: "power1.in",
+    opacity: 1
+  }).to(texts[2], {
+    duration: 0.5,
+    ease: "power1.in",
+    opacity: 1
+  }, "<");
+  tl.addLabel(`${startStep + 5}`);
+  tl.to(texts[2], {
+    duration: 1,
+    ease: "power1.in",
+    opacity: 0,
+    yPercent: 20
+  }).to(images[2], {
+    duration: 1,
+    ease: "power1.in",
+    opacity: 0
+  }, "<").to(images[3], {
+    duration: 0.5,
+    ease: "power1.in",
+    opacity: 1
+  }).to(texts[3], {
+    duration: 0.5,
+    ease: "power1.in",
+    opacity: 1
+  }, "<");
+  tl.addLabel(`${startStep + 6}`);
+  tl.to(texts[3], {
+    duration: 1,
+    ease: "power1.in",
+    opacity: 0,
+    yPercent: 20
+  }).to(images[3], {
+    duration: 1,
+    ease: "power1.in",
+    opacity: 0
+  }, "<").to(images[4], {
+    duration: 0.5,
+    ease: "power1.in",
+    opacity: 1
+  }).to(texts[4], {
+    duration: 0.5,
+    ease: "power1.in",
+    opacity: 1
+  }, "<");
+  tl.addLabel(`${startStep + 7}`);
+  tl.to(texts[4], {
+    duration: 1,
+    ease: "power1.in",
+    opacity: 0,
+    yPercent: 20
+  }).to(sliderImagesElement, {
+    duration: 1,
+    ease: "power1.in",
+    height: 0
+  }, "<");
+  tl.set(sliderElement, { display: "none" });
+  tl.to(nextSectionTitleElement, {
+    duration: 1.5,
+    ease: "power1.out",
+    opacity: 1,
+    yPercent: -50
+  });
+  return {
+    maxStep
+  };
+}
+
+function createSafetyAndComfortDesktopState(sectionElement, tl, startStep) {
+  const maxStep = startStep + 3;
+  const backgroundElement = document.querySelector(".safety-and-comfort-background");
+  const filterElement = document.querySelector(".filter");
+  const nextSectionTitleElement = sectionElement.querySelector(".section-title");
+  const sliderElement = sectionElement.querySelector(".half-slider");
+  const sliderTextElements = sliderElement.querySelector(".half-slider-text");
+  const sliderImagesElement = sliderElement.querySelector(".half-slider-img");
+  const texts = Array.from(sliderTextElements.querySelectorAll(`.text-wrapper`));
+  const images = Array.from(sliderImagesElement.querySelectorAll(`.img-wrapper`));
+  tl.to(backgroundElement, {
+    duration: 1.5,
+    ease: "power1.out",
+    scale: 0.9,
+    yPercent: -20
+  }, "<");
+  tl.addLabel(`${startStep + 1}`);
+  tl.to(backgroundElement, {
+    duration: 2,
+    ease: "power1.in",
+    yPercent: -100,
+    scale: 1.2
+  });
+  tl.set(nextSectionTitleElement, { yPercent: 50 });
+  tl.set(filterElement, { zIndex: 6 });
+  tl.addLabel(`${startStep + 2}`);
+  tl.set(sectionElement, { yPercent: -100 });
+  tl.to(backgroundElement, {
+    duration: 1,
+    ease: "power1.in",
+    opacity: 0.2
+  }).to(texts[0], {
+    duration: 1,
+    ease: "power1.in",
+    opacity: 1
+  }, "<").to(images[0], {
+    duration: 1,
+    ease: "power1.in",
+    opacity: 1
+  }, "<");
+  tl.addLabel(`${startStep + 3}`);
+  tl.to(texts[0], {
+    duration: 1,
+    ease: "power1.in",
+    opacity: 0,
+    yPercent: 20
+  }).to(sliderImagesElement, {
+    duration: 1,
+    ease: "power1.in",
+    height: 0
+  }, "<");
+  tl.set(sliderElement, { display: "none" });
+  tl.to(nextSectionTitleElement, {
+    duration: 1.5,
+    ease: "power1.out",
+    opacity: 1,
+    yPercent: -50
+  });
+  return {
+    maxStep
+  };
+}
+
+function createImprovementDesktopState(sectionElement, tl, startStep) {
+  const maxStep = startStep + 3;
+  const backgroundElement = document.querySelector(".improvement-background");
+  const filterElement = document.querySelector(".filter");
+  const nextSectionTitleElement = sectionElement.querySelector(".section-title");
+  const sliderElement = sectionElement.querySelector(".half-slider");
+  const sliderTextElements = sliderElement.querySelector(".half-slider-text");
+  const sliderImagesElement = sliderElement.querySelector(".half-slider-img");
+  const texts = Array.from(sliderTextElements.querySelectorAll(`.text-wrapper`));
+  const images = Array.from(sliderImagesElement.querySelectorAll(`.img-wrapper`));
+  tl.to(backgroundElement, {
+    duration: 1.5,
+    ease: "power1.out",
+    scale: 0.9,
+    yPercent: -20
+  }, "<");
+  tl.addLabel(`${startStep + 1}`);
+  tl.to(backgroundElement, {
+    duration: 2,
+    ease: "power1.in",
+    yPercent: -100,
+    scale: 1.2
+  });
+  tl.set(nextSectionTitleElement, { yPercent: 50 });
+  tl.set(filterElement, { zIndex: 9 });
+  tl.addLabel(`${startStep + 2}`);
+  tl.set(sectionElement, { yPercent: -100 });
+  tl.to(backgroundElement, {
+    duration: 1,
+    ease: "power1.in",
+    opacity: 0.2
+  }).to(texts[0], {
+    duration: 1,
+    ease: "power1.in",
+    opacity: 1
+  }, "<").to(images[0], {
+    duration: 1,
+    ease: "power1.in",
+    opacity: 1
+  }, "<");
+  tl.addLabel(`${startStep + 3}`);
+  tl.to(texts[0], {
+    duration: 1,
+    ease: "power1.in",
+    opacity: 0,
+    yPercent: 20
+  }).to(sliderImagesElement, {
+    duration: 1,
+    ease: "power1.in",
+    height: 0
+  }, "<");
+  tl.set(sliderElement, { display: "none" });
+  tl.to(nextSectionTitleElement, {
+    duration: 1.5,
+    ease: "power1.out",
+    opacity: 1,
+    yPercent: -50
+  });
+  return {
+    maxStep
+  };
+}
+
+function createDesignAndInteriorDesktopState(sectionElement, tl, startStep) {
+  const maxStep = startStep + 3;
+  const backgroundElement = document.querySelector(".design-and-interior-background");
+  const filterElement = document.querySelector(".filter");
+  const nextSectionTitleElement = sectionElement.querySelector(".section-title");
+  const sliderElement = sectionElement.querySelector(".half-slider");
+  const sliderTextElements = sliderElement.querySelector(".half-slider-text");
+  const sliderImagesElement = sliderElement.querySelector(".half-slider-img");
+  const texts = Array.from(sliderTextElements.querySelectorAll(`.text-wrapper`));
+  const images = Array.from(sliderImagesElement.querySelectorAll(`.img-wrapper`));
+  tl.to(backgroundElement, {
+    duration: 1.5,
+    ease: "power1.out",
+    scale: 0.9,
+    yPercent: -20
+  }, "<");
+  tl.addLabel(`${startStep + 1}`);
+  tl.to(backgroundElement, {
+    duration: 2,
+    ease: "power1.in",
+    yPercent: -100,
+    scale: 1.2
+  });
+  tl.set(nextSectionTitleElement, { yPercent: 50 });
+  tl.set(filterElement, { zIndex: 12 });
+  tl.addLabel(`${startStep + 2}`);
+  tl.set(sectionElement, { yPercent: -100 });
+  tl.to(backgroundElement, {
+    duration: 1,
+    ease: "power1.in",
+    opacity: 0.2
+  }).to(texts[0], {
+    duration: 1,
+    ease: "power1.in",
+    opacity: 1
+  }, "<").to(images[0], {
+    duration: 1,
+    ease: "power1.in",
+    opacity: 1
+  }, "<");
+  tl.addLabel(`${startStep + 3}`);
+  tl.to(texts[0], {
+    duration: 1,
+    ease: "power1.in",
+    opacity: 0,
+    yPercent: 20
+  }).to(sliderImagesElement, {
+    duration: 1,
+    ease: "power1.in",
+    height: 0
+  }, "<");
+  tl.set(sliderElement, { display: "none" });
+  tl.to(nextSectionTitleElement, {
+    duration: 1.5,
+    ease: "power1.out",
+    opacity: 1,
+    yPercent: -50
+  });
+  return {
+    maxStep
+  };
+}
+
+function initFullpageSlider(backgroundElement, buttonsElement) {
+  const slider = backgroundElement.querySelector(".swiper");
+  const paginationElement = backgroundElement.querySelector(".slider-pagination");
+  buttonsElement.querySelector(".next");
+  buttonsElement.querySelector(".prev");
+  new Swiper(slider, {
+    modules: [EffectFade, Pagination, Navigation],
+    effect: "fade",
+    fadeEffect: {
+      crossFade: true
+    },
+    speed: 700,
+    loop: true,
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev"
+    },
+    pagination: {
+      el: paginationElement,
+      clickable: true
+    }
+  });
+}
+
+function createApartmentsDesktopState(sectionElement, tl, startStep) {
+  const maxStep = startStep + 2;
+  const backgroundElement = document.querySelector(".apartments-background");
+  const filterElement = document.querySelector(".filter");
+  const nextSectionTitleElement = sectionElement.querySelector(".section-title");
+  const buttonsElement = sectionElement.querySelector(".slider-buttons");
+  initFullpageSlider(backgroundElement, sectionElement);
+  tl.to(backgroundElement, {
+    duration: 1.5,
+    ease: "power1.out",
+    scale: 0.9,
+    yPercent: -20
+  }, "<");
+  tl.addLabel(`${startStep + 1}`);
+  tl.to(backgroundElement, {
+    duration: 2,
+    ease: "power1.in",
+    yPercent: -100,
+    scale: 1.2
+  });
+  tl.set(nextSectionTitleElement, { yPercent: 50 });
+  tl.set(filterElement, { zIndex: 15 });
+  tl.set(sectionElement, { yPercent: -100 });
+  tl.to(buttonsElement, {
+    duration: 0.5,
+    ease: "none",
+    opacity: 1
+  });
+  tl.addLabel(`${startStep + 2}`);
+  tl.to(backgroundElement, {
+    duration: 1,
+    ease: "power1.in",
+    opacity: 0.2
+  }).to(buttonsElement, {
+    duration: 1,
+    ease: "power1.in",
+    opacity: 0
+  }, "<").to(nextSectionTitleElement, {
+    duration: 1.5,
+    ease: "power1.out",
+    opacity: 1,
+    yPercent: -50
+  });
+  return {
+    maxStep
+  };
+}
+
+function createPenthousesDesktopState(sectionElement, tl, startStep) {
+  const maxStep = startStep + 2;
+  const backgroundElement = document.querySelector(".penthouses-background");
+  const filterElement = document.querySelector(".filter");
+  const buttonsElement = sectionElement.querySelector(".slider-buttons");
+  initFullpageSlider(backgroundElement, sectionElement);
+  tl.to(backgroundElement, {
+    duration: 1.5,
+    ease: "power1.out",
+    scale: 0.9,
+    yPercent: -20
+  }, "<");
+  tl.addLabel(`${startStep + 1}`);
+  tl.to(backgroundElement, {
+    duration: 2,
+    ease: "power1.in",
+    yPercent: -100,
+    scale: 1.2
+  });
+  tl.set(filterElement, { zIndex: 18 });
+  tl.set(sectionElement, { yPercent: -100 });
+  tl.to(buttonsElement, {
+    duration: 0.5,
+    ease: "none",
+    opacity: 1
+  });
+  tl.addLabel(`${startStep + 2}`);
+  tl.to(backgroundElement, {
+    duration: 1,
+    ease: "power1.in",
+    opacity: 0.2
+  }).to(buttonsElement, {
+    duration: 1,
+    ease: "power1.in",
+    opacity: 0
+  }, "<");
+  return {
+    maxStep
+  };
+}
+
+function createApplicationFormDesktopState(sectionElement, tl, startStep) {
+  const maxStep = startStep + 1;
+  const footerElement = document.querySelector("footer");
+  tl.set(sectionElement, { yPercent: -80 });
+  tl.to(sectionElement, {
+    duration: 2,
+    ease: "power1.out",
+    yPercent: -100,
+    opacity: 1
+  }).to(footerElement, {
+    duration: 1,
+    ease: "power1.out",
+    opacity: 1
+  });
+  tl.addLabel(`${startStep + 1}`);
+  return {
+    maxStep
+  };
+}
+
+function initMobileSliderSection(sectionElement) {
+  const paginationElement = sectionElement.querySelector(".slider-pagination");
+  const nextButtonElements = sectionElement.querySelectorAll(".swiper-button-next");
+  const prevButtonElements = sectionElement.querySelectorAll(".swiper-button-prev");
+  const siderTexts = sectionElement.querySelectorAll(".mobile-slide-text");
+  const filterElement = sectionElement.querySelector(".mobile-slider-filter");
+  const titleElement = sectionElement.querySelector(".section-title-wrapper");
+  const tl = gsapWithCSS.timeline({ paused: true });
+  tl.to([filterElement, titleElement], {
+    duration: 1,
+    ease: "none",
+    opacity: 0
+  }).to([nextButtonElements, prevButtonElements, paginationElement, ...siderTexts], {
+    duration: 1,
+    ease: "none",
+    opacity: 1
+  }, "<").set([filterElement, titleElement], { display: "none" });
+  ScrollTrigger.create({
+    trigger: sectionElement,
+    start: "top top+=100",
+    onEnter: () => tl.play(),
+    onLeaveBack: () => tl.reverse()
+  });
+  initFullpageSlider(sectionElement, sectionElement);
+  gsapWithCSS.to(
+    sectionElement.querySelectorAll(".img-wrapper"),
+    {
+      scale: 1.2,
+      ease: "none",
+      scrollTrigger: {
+        trigger: sectionElement,
+        start: "top bottom",
+        end: "top top",
+        scrub: true
+      }
+    }
+  );
+}
+
+function getDesktopSectionsTools(tl) {
+  const tools = [];
+  tools.push(createFirstScreenDesktopState(document.getElementById("first-section"), tl));
+  tools.push(createPremiumClassDesktopState(document.getElementById("premium-class"), tl, tools[0].maxStep));
+  tools.push(createSafetyAndComfortDesktopState(document.getElementById("safety-and-comfort"), tl, tools[1].maxStep));
+  tools.push(createImprovementDesktopState(document.getElementById("improvement"), tl, tools[2].maxStep));
+  tools.push(createDesignAndInteriorDesktopState(document.getElementById("design-and-interior"), tl, tools[3].maxStep));
+  tools.push(createApartmentsDesktopState(document.getElementById("apartments"), tl, tools[4].maxStep));
+  tools.push(createPenthousesDesktopState(document.getElementById("penthouses"), tl, tools[5].maxStep));
+  tools.push(createApplicationFormDesktopState(document.getElementById("application-form"), tl, tools[6].maxStep));
+  return tools;
+}
+function activateMobileAnimate() {
+  createFirstScreenMobileAnimate();
+  initMobileSliderSection(document.getElementById("premium-class"));
+  initMobileSliderSection(document.getElementById("safety-and-comfort"));
+  initMobileSliderSection(document.getElementById("improvement"));
+  initMobileSliderSection(document.getElementById("design-and-interior"));
+}
+
+function createPageState() {
+  const isMobile = window.innerWidth <= 992;
+  if (!isMobile) {
+    let increaseStep = function() {
+      if (gsapWithCSS.isTweening(tl)) return;
+      if (currentStep === sectionsTools.at(-1).maxStep) return;
+      currentStep++;
+      tl.tweenTo(`${currentStep}`);
+      if (currentStep !== 1) {
+        prevStep++;
+      }
+    }, decreaseStep = function() {
+      if (gsapWithCSS.isTweening(tl)) return;
+      if (currentStep === 0) return;
+      currentStep--;
+      tl.tweenTo(`${currentStep}`);
+      if (currentStep !== 0) {
+        prevStep--;
+      }
+    };
+    const tl = gsapWithCSS.timeline({ paused: true });
+    const sectionsTools = getDesktopSectionsTools(tl);
+    if (!sectionsTools) return;
+    let prevStep = 0;
+    let currentStep = 0;
+    tl.tweenTo(`${0}`);
+    createPageObserver(
+      () => decreaseStep(),
+      () => increaseStep()
+    );
+    const firstScreenSection = document.getElementById("first-section");
+    const maskElement = document.querySelector(".mask");
+    tl.call(() => {
+      if (prevStep > currentStep || currentStep === 0) return;
+      firstScreenSection.classList.add("with-mask");
+    }, void 0, "add-mask");
+    tl.call(() => {
+      if (prevStep < currentStep) return;
+      firstScreenSection.classList.remove("with-mask");
+    }, void 0, "1-=0.01");
+    tl.call(() => {
+      if (prevStep > currentStep || currentStep === 0) return;
+      maskElement.style.transitionDuration = "1.5s";
+    }, void 0, "1");
+    tl.call(() => {
+      if (prevStep < currentStep) return;
+      maskElement.style.transitionDuration = "unset";
+    }, void 0, "1");
+  } else {
+    activateMobileAnimate();
+    const burgerButtonElement = document.querySelector(".burger-menu");
+    const burgerCloseButtonElement = document.querySelector(".menu-close-button");
+    burgerButtonElement.addEventListener("click", () => {
+      document.body.classList.add("show-menu");
+    });
+    burgerCloseButtonElement.addEventListener("click", () => {
+      document.body.classList.remove("show-menu");
+    });
+    IMask(
+      document.getElementById("application-form-tel"),
+      {
+        mask: "+{7} (000) 000-00-00",
+        lazy: false,
+        placeholderChar: "_"
+      }
+    );
+  }
+}
+
+bootstrap();
+window.addEventListener("load", async () => {
+  await document.fonts.ready;
+  requestAnimationFrame(() => {
+    createPageState();
+  });
+});
