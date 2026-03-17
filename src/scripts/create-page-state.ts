@@ -1,9 +1,9 @@
 import gsap from "gsap";
-import IMask from 'imask';
 
 import { createPageObserver } from "./create-page-observer";
 import { getDesktopSectionsTools, activateMobileAnimate } from '../sections-states/get-sections-tools';
 import { SectionTools } from "../types";
+import { createApplicationFormHandler } from './create-application-form-handler';
 
 /**
  * - Используется gsap.Timeline, по дефолту он остановлен.
@@ -18,6 +18,8 @@ import { SectionTools } from "../types";
  * - Для перехвата и замены нативного скролла на кастомные действия используется gsap.Observer
  */
 export function createPageState() {
+    createApplicationFormHandler();
+    
     const isMobile = window.innerWidth <= 992;
 
     if (!isMobile) {
@@ -96,14 +98,5 @@ export function createPageState() {
         burgerCloseButtonElement.addEventListener('click', () => {
             document.body.classList.remove('show-menu')
         })
-
-        IMask(
-            document.getElementById('application-form-tel')!,
-            {
-                mask: '+{7} (000) 000-00-00',
-                lazy: false,
-                placeholderChar: '_'
-            }
-        )
     }
 }
