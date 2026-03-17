@@ -542,26 +542,34 @@
 					<div class="inputs-title">
 						«Аурум. Роскошь жить здесь»
 					</div>
-					<div class="inputs-group">
+					<form 
+						id="request-form"
+						class="inputs-group"
+						method="post"
+						enctype="multipart/form-data"
+					>
 						<input
 							id="application-form-name"
+							name="name"
 							type="text"
 							class="text-input application-input"
 							placeholder="Ваше имя"
 						/>
 						<input
 							id="application-form-tel"
+							name="phone"
 							type="tel" 
 							inputmode="tel"
 							class="text-input application-input"
 							
 						/>
-						<div
+						<input 
+							id="application-form-submit" 
+							type="submit" 
+							value="Отправить заявку"
 							class="button-square application-submit-button button-accent"
-						>
-							Отправить заявку
-						</div>
-					</div>
+						/>
+					</form>
 				</div>
 
 				<div class="phone-group">

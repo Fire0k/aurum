@@ -292,6 +292,14 @@ header .header-wrapper .info-block .phone-mobile {
 }
 #application-form .form-inputs .inputs-group .application-submit-button {
   width: 375px;
+  appearance: none;
+  -webkit-appearance: none;
+  border: none;
+  transition: opacity 0.2s ease;
+}
+#application-form .form-inputs .inputs-group .application-submit-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 footer {
   bottom: 0;
