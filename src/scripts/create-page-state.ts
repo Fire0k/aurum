@@ -19,7 +19,17 @@ import { createApplicationFormHandler } from './create-application-form-handler'
  */
 export function createPageState() {
     createApplicationFormHandler();
-    
+
+    const burgerButtonElement = document.querySelector('.burger-menu')!;
+    const burgerCloseButtonElement = document.querySelector('.menu-close-button')!;
+
+    burgerButtonElement.addEventListener('click', () => {
+        document.body.classList.add('show-menu')
+    })
+    burgerCloseButtonElement.addEventListener('click', () => {
+        document.body.classList.remove('show-menu')
+    })
+
     const isMobile = window.innerWidth <= 992;
 
     if (!isMobile) {
@@ -88,15 +98,5 @@ export function createPageState() {
         }, undefined, '1');
     } else {
         activateMobileAnimate();
-
-        const burgerButtonElement = document.querySelector('.burger-menu')!;
-        const burgerCloseButtonElement = document.querySelector('.menu-close-button')!;
-
-        burgerButtonElement.addEventListener('click', () => {
-            document.body.classList.add('show-menu')
-        })
-        burgerCloseButtonElement.addEventListener('click', () => {
-            document.body.classList.remove('show-menu')
-        })
     }
 }
