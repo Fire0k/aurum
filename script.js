@@ -117,7 +117,7 @@ function createFirstScreenMobileAnimate() {
 }
 
 function createPremiumClassDesktopState(sectionElement, tl, startStep) {
-  const maxStep = startStep + 7;
+  const maxStep = startStep + 6;
   const headerElement = document.querySelector("header");
   const headerGradientElement = headerElement?.querySelector(".gradient") ?? null;
   const backgroundElement = document.querySelector(".premium-class-background");
@@ -220,25 +220,6 @@ function createPremiumClassDesktopState(sectionElement, tl, startStep) {
   }, "<");
   tl.addLabel(`${startStep + 6}`);
   tl.to(texts[3], {
-    duration: 1,
-    ease: "power1.in",
-    opacity: 0,
-    yPercent: 20
-  }).to(images[3], {
-    duration: 1,
-    ease: "power1.in",
-    opacity: 0
-  }, "<").to(images[4], {
-    duration: 0.5,
-    ease: "power1.in",
-    opacity: 1
-  }).to(texts[4], {
-    duration: 0.5,
-    ease: "power1.in",
-    opacity: 1
-  }, "<");
-  tl.addLabel(`${startStep + 7}`);
-  tl.to(texts[4], {
     duration: 1,
     ease: "power1.in",
     opacity: 0,
@@ -757,6 +738,14 @@ function createPageState() {
       () => decreaseStep(),
       () => increaseStep()
     );
+    const smallLogoElement = document.getElementById("anchor-logo");
+    smallLogoElement?.addEventListener("click", () => {
+      tl.progress(0);
+      firstScreenSection.classList.remove("with-mask");
+      tl.tweenTo(`${0}`);
+      prevStep = 0;
+      currentStep = 0;
+    });
     const firstScreenSection = document.getElementById("first-section");
     const maskElement = document.querySelector(".mask");
     tl.call(() => {
