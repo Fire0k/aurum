@@ -168,7 +168,7 @@ header .header-wrapper .info-block .phone-mobile {
   border-top-right-radius: var(--section-radius);
 }
 .section-background > img {
-  height: auto;
+  height: 100%;
   width: auto;
   position: absolute;
   top: 50%;
@@ -425,7 +425,7 @@ header .header-wrapper .logo-main {
 }
 .section-background .swiper-slide > img {
   width: auto;
-  height: auto;
+  height: 100%;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -816,8 +816,6 @@ footer {
   .section-background > img {
     width: 100%;
     height: auto;
-    transform: translate(-50%, -50%);
-    transform-origin: top;
   }
   .section-background .swiper-slide > img {
     width: 100%;
