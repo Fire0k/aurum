@@ -73,6 +73,15 @@ export function createPageState() {
             () => increaseStep(),
         );
 
+        const smallLogoElement = document.getElementById('anchor-logo');
+        smallLogoElement?.addEventListener('click', () => {
+            tl.progress(0);
+            firstScreenSection.classList.remove('with-mask');
+            tl.tweenTo(`${0}`);
+            prevStep = 0;
+            currentStep = 0;
+        })
+
         /**
          * Анимация маски через js лагает в Chrome,
          * обходной путь для реализации этой анимации через css

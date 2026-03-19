@@ -123,6 +123,20 @@ header {
 .section-background {
     transform: scale(0.7);
     will-change: transform;
+
+    .swiper-slide {
+        height: 100vh;
+        position: relative;
+
+        > img {
+            width: auto;
+            height: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
 }
 
 .section-wrapper {
@@ -466,7 +480,8 @@ footer {
     position: fixed;
     opacity: 0;
 }
-@media (min-width: 1920px) {
+
+@media (min-width: 2560px) {
     .select-apartmnetn-link {
         font-size: 44px;
     }
@@ -498,27 +513,6 @@ footer {
         }
     }
 
-    .section-background {
-        > img {
-            width: 100%;
-            height: auto;
-        }
-
-        .swiper-slide {
-            height: 100vh;
-            position: relative;
-
-            > img {
-                width: 100%;
-                height: auto;
-                position: absolute;
-                bottom: 0;
-                left: 50%;
-                transform: translateX(-50%);
-            }
-        }
-    }
-
     .section-wrapper {
         .slider-buttons {
             .slider-button {
@@ -545,21 +539,6 @@ footer {
 
                     .slide-desc {
                         font-size: 52px;
-                    }
-                }
-            }
-
-            .half-slider-img {
-                .img-wrapper {
-                    height: 100vh;
-
-                    img {
-                        width: 100%;
-                        height: auto;
-                        position: absolute;
-                        top: 50%;
-                        left: 50%;
-                        transform: translate(-50%, -50%);
                     }
                 }
             }
@@ -595,10 +574,13 @@ footer {
         }
     }
 
-    .first-section-background {
-        > img {
-            top: 0;
-            transform: translate(-50%, 0%);
+    #first-section {
+        .slogan {
+            font-size: 390px;
+        }
+
+        .mask {
+            transform-origin: 50% 28%;
         }
     }
 
@@ -651,6 +633,49 @@ footer {
 
     .footer-wrapper {
         font-size: 30px;
+    }
+}
+@media (min-width: 1920px) {
+    .section-background {
+        > img {
+            width: 100%;
+            height: auto;
+            transform: translate(-50%, -50%);
+            transform-origin: top;
+        }
+
+        .swiper-slide {
+            > img {
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
+
+    .section-wrapper {
+        .half-slider {
+            .half-slider-img {
+                .img-wrapper {
+                    height: 100vh;
+
+                    img {
+                        width: 100%;
+                        height: auto;
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                    }
+                }
+            }
+        }
+    }
+
+    .first-section-background {
+        > img {
+            top: 0;
+            transform: translate(-50%, 0%);
+        }
     }
 }
 @media (max-width: 1400px) {

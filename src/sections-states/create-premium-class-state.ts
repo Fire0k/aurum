@@ -8,7 +8,7 @@ export function createPremiumClassDesktopState(
     tl: gsap.core.Timeline,
     startStep: number,
 ): SectionTools {
-    const maxStep: number = startStep + 7;
+    const maxStep: number = startStep + 6;
 
     const headerElement = document.querySelector('header');
     const headerGradientElement = headerElement?.querySelector('.gradient') ?? null;
@@ -131,27 +131,6 @@ export function createPremiumClassDesktopState(
     tl.addLabel(`${startStep + 6}`);
 
     tl.to(texts[3], {
-        duration: 1,
-        ease: "power1.in",
-        opacity: 0,
-        yPercent: 20,
-    }).to(images[3], {
-        duration: 1,
-        ease: "power1.in",
-        opacity: 0,
-    }, "<").to(images[4], {
-        duration: 0.5,
-        ease: "power1.in",
-        opacity: 1,
-    }).to(texts[4], {
-        duration: 0.5,
-        ease: "power1.in",
-        opacity: 1,
-    }, "<")
-
-    tl.addLabel(`${startStep + 7}`);
-
-    tl.to(texts[4], {
         duration: 1,
         ease: "power1.in",
         opacity: 0,
