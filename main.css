@@ -700,13 +700,11 @@ footer {
   header .header-wrapper .info-block .phone {
     font-size: 44px;
   }
-  .desktop-slider-buttons .slider-button {
+  .desktop-slider-buttons.desktop-slider-buttons .slider-button {
     width: 94px;
     height: 94px;
   }
-  .desktop-slider-buttons .slider-button > img {
-    transform: unset !important;
-    position: unset !important;
+  .desktop-slider-buttons.desktop-slider-buttons .slider-button > img {
     width: 44px !important;
     height: 44px !important;
   }
@@ -780,6 +778,12 @@ footer {
   }
 }
 @media (min-width: 1920px) {
+  .desktop-slider-buttons .slider-button > img {
+    width: auto !important;
+    height: auto !important;
+    transform: unset !important;
+    position: unset !important;
+  }
   .section-background > img {
     width: 100%;
     height: auto;
