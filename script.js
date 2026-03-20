@@ -1,4 +1,4 @@
-import { g as gsapWithCSS, O as Observer, S as ScrollToPlugin, a as ScrollTrigger, b as Swiper, E as EffectFade, P as Pagination, N as Navigation, I as IMask } from './modules.js';
+import { g as gsapWithCSS, O as Observer, S as ScrollToPlugin, a as ScrollTrigger, b as Swiper, E as EffectFade, N as Navigation, I as IMask } from './modules.js';
 
 true              &&(function polyfill() {
 	const relList = document.createElement("link").relList;
@@ -116,6 +116,24 @@ function createFirstScreenMobileAnimate() {
   document.body.classList.add("ready");
 }
 
+function initFullpageSlider(sliderElement, buttonsElement) {
+  const nextBtn = buttonsElement.querySelector(".next");
+  const prevBtn = buttonsElement.querySelector(".prev");
+  new Swiper(sliderElement, {
+    modules: [EffectFade, Navigation],
+    effect: "fade",
+    fadeEffect: {
+      crossFade: true
+    },
+    speed: 700,
+    loop: true,
+    navigation: {
+      nextEl: nextBtn,
+      prevEl: prevBtn
+    }
+  });
+}
+
 function createPremiumClassDesktopState(sectionElement, tl, startStep) {
   const maxStep = startStep + 6;
   const headerElement = document.querySelector("header");
@@ -128,6 +146,13 @@ function createPremiumClassDesktopState(sectionElement, tl, startStep) {
   const sliderImagesElement = sliderElement.querySelector(".half-slider-img");
   const texts = Array.from(sliderTextElements.querySelectorAll(`.text-wrapper`));
   const images = Array.from(sliderImagesElement.querySelectorAll(`.img-wrapper`));
+  images.forEach((wrapper) => {
+    const swiper = wrapper.querySelector(".desktop-slider");
+    if (!swiper) return;
+    const buttons = wrapper.querySelector(".desktop-slider-buttons");
+    if (!buttons) return;
+    initFullpageSlider(swiper, buttons);
+  });
   tl.to(backgroundElement, {
     duration: 1.5,
     ease: "power1.out",
@@ -159,7 +184,8 @@ function createPremiumClassDesktopState(sectionElement, tl, startStep) {
   }, "<").to(images[0], {
     duration: 1,
     ease: "power1.in",
-    opacity: 1
+    opacity: 1,
+    zIndex: 1
   }, "<");
   tl.addLabel(`${startStep + 3}`);
   tl.to(texts[0], {
@@ -170,11 +196,13 @@ function createPremiumClassDesktopState(sectionElement, tl, startStep) {
   }).to(images[0], {
     duration: 1,
     ease: "power1.in",
-    opacity: 0
+    opacity: 0,
+    zIndex: 0
   }, "<").to(images[1], {
     duration: 0.5,
     ease: "power1.in",
-    opacity: 1
+    opacity: 1,
+    zIndex: 1
   }).to(texts[1], {
     duration: 0.5,
     ease: "power1.in",
@@ -189,11 +217,13 @@ function createPremiumClassDesktopState(sectionElement, tl, startStep) {
   }).to(images[1], {
     duration: 1,
     ease: "power1.in",
-    opacity: 0
+    opacity: 0,
+    zIndex: 0
   }, "<").to(images[2], {
     duration: 0.5,
     ease: "power1.in",
-    opacity: 1
+    opacity: 1,
+    zIndex: 1
   }).to(texts[2], {
     duration: 0.5,
     ease: "power1.in",
@@ -208,11 +238,13 @@ function createPremiumClassDesktopState(sectionElement, tl, startStep) {
   }).to(images[2], {
     duration: 1,
     ease: "power1.in",
-    opacity: 0
+    opacity: 0,
+    zIndex: 0
   }, "<").to(images[3], {
     duration: 0.5,
     ease: "power1.in",
-    opacity: 1
+    opacity: 1,
+    zIndex: 1
   }).to(texts[3], {
     duration: 0.5,
     ease: "power1.in",
@@ -314,6 +346,13 @@ function createImprovementDesktopState(sectionElement, tl, startStep) {
   const sliderImagesElement = sliderElement.querySelector(".half-slider-img");
   const texts = Array.from(sliderTextElements.querySelectorAll(`.text-wrapper`));
   const images = Array.from(sliderImagesElement.querySelectorAll(`.img-wrapper`));
+  images.forEach((wrapper) => {
+    const swiper = wrapper.querySelector(".desktop-slider");
+    if (!swiper) return;
+    const buttons = wrapper.querySelector(".desktop-slider-buttons");
+    if (!buttons) return;
+    initFullpageSlider(swiper, buttons);
+  });
   tl.to(backgroundElement, {
     duration: 1.5,
     ease: "power1.out",
@@ -377,6 +416,13 @@ function createDesignAndInteriorDesktopState(sectionElement, tl, startStep) {
   const sliderImagesElement = sliderElement.querySelector(".half-slider-img");
   const texts = Array.from(sliderTextElements.querySelectorAll(`.text-wrapper`));
   const images = Array.from(sliderImagesElement.querySelectorAll(`.img-wrapper`));
+  images.forEach((wrapper) => {
+    const swiper = wrapper.querySelector(".desktop-slider");
+    if (!swiper) return;
+    const buttons = wrapper.querySelector(".desktop-slider-buttons");
+    if (!buttons) return;
+    initFullpageSlider(swiper, buttons);
+  });
   tl.to(backgroundElement, {
     duration: 1.5,
     ease: "power1.out",
@@ -430,37 +476,14 @@ function createDesignAndInteriorDesktopState(sectionElement, tl, startStep) {
   };
 }
 
-function initFullpageSlider(backgroundElement, buttonsElement) {
-  const slider = backgroundElement.querySelector(".swiper");
-  const paginationElement = backgroundElement.querySelector(".slider-pagination");
-  buttonsElement.querySelector(".next");
-  buttonsElement.querySelector(".prev");
-  new Swiper(slider, {
-    modules: [EffectFade, Pagination, Navigation],
-    effect: "fade",
-    fadeEffect: {
-      crossFade: true
-    },
-    speed: 700,
-    loop: true,
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev"
-    },
-    pagination: {
-      el: paginationElement,
-      clickable: true
-    }
-  });
-}
-
 function createApartmentsDesktopState(sectionElement, tl, startStep) {
   const maxStep = startStep + 2;
   const backgroundElement = document.querySelector(".apartments-background");
   const filterElement = document.querySelector(".filter");
   const nextSectionTitleElement = sectionElement.querySelector(".section-title");
-  const buttonsElement = sectionElement.querySelector(".slider-buttons");
-  initFullpageSlider(backgroundElement, sectionElement);
+  const sliderElement = backgroundElement.querySelector(".desktop-slider");
+  const buttonsElement = sectionElement.querySelector(".desktop-slider-buttons");
+  initFullpageSlider(sliderElement, buttonsElement);
   tl.to(backgroundElement, {
     duration: 1.5,
     ease: "power1.out",
@@ -506,8 +529,9 @@ function createPenthousesDesktopState(sectionElement, tl, startStep) {
   const maxStep = startStep + 2;
   const backgroundElement = document.querySelector(".penthouses-background");
   const filterElement = document.querySelector(".filter");
-  const buttonsElement = sectionElement.querySelector(".slider-buttons");
-  initFullpageSlider(backgroundElement, sectionElement);
+  const sliderElement = backgroundElement.querySelector(".desktop-slider");
+  const buttonsElement = sectionElement.querySelector(".desktop-slider-buttons");
+  initFullpageSlider(sliderElement, buttonsElement);
   tl.to(backgroundElement, {
     duration: 1.5,
     ease: "power1.out",
@@ -586,7 +610,6 @@ function initMobileSliderSection(sectionElement) {
     onEnter: () => tl.play(),
     onLeaveBack: () => tl.reverse()
   });
-  initFullpageSlider(sectionElement, sectionElement);
   gsapWithCSS.to(
     sectionElement.querySelectorAll(".img-wrapper"),
     {
