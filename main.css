@@ -382,7 +382,7 @@ header .header-wrapper .logo-main {
 }
 .desktop-slider .swiper-slide > img {
   width: auto;
-  height: 100%;
+  height: auto;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -552,7 +552,7 @@ header .header-wrapper .logo-main {
   will-change: opacity;
   opacity: 0;
 }
-.section-wrapper .half-slider .half-slider-img .img-wrapper img {
+.section-wrapper .half-slider .half-slider-img .img-wrapper > img {
   height: auto;
   width: auto;
 }
@@ -700,13 +700,13 @@ footer {
   header .header-wrapper .info-block .phone {
     font-size: 44px;
   }
-  .desktop-slider-buttons.desktop-slider-buttons .slider-button {
+  .desktop-slider-buttons .slider-button {
     width: 94px;
     height: 94px;
   }
-  .desktop-slider-buttons.desktop-slider-buttons .slider-button > img {
-    width: 44px !important;
-    height: 44px !important;
+  .desktop-slider-buttons .slider-button > img {
+    width: 44px;
+    height: 44px;
   }
   .section-wrapper .half-slider .half-slider-text .text-wrapper .slide-number {
     font-size: 148px;
@@ -778,11 +778,9 @@ footer {
   }
 }
 @media (min-width: 1920px) {
-  .desktop-slider-buttons .slider-button > img {
-    width: auto !important;
-    height: auto !important;
-    transform: unset !important;
-    position: unset !important;
+  .desktop-slider .swiper-slide > img {
+    width: 100%;
+    height: auto;
   }
   .section-background > img {
     width: 100%;
@@ -795,7 +793,7 @@ footer {
   .section-wrapper .half-slider .half-slider-img .img-wrapper {
     height: 100vh;
   }
-  .section-wrapper .half-slider .half-slider-img .img-wrapper img {
+  .section-wrapper .half-slider .half-slider-img .img-wrapper > img {
     width: 100%;
     height: auto;
     position: absolute;
