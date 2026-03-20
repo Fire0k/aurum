@@ -458,14 +458,12 @@ footer {
         }
     }
 
-    .desktop-slider-buttons {
+    .desktop-slider-buttons.desktop-slider-buttons {
         .slider-button {
             width: 94px;
             height: 94px;
 
             > img {
-                transform: unset !important;
-                position: unset !important;
                 width: 44px !important;
                 height: 44px !important;
             }
@@ -583,6 +581,17 @@ footer {
     }
 }
 @media (min-width: 1920px) {
+    .desktop-slider-buttons {
+        .slider-button {
+            > img {
+                width: auto !important;
+                height: auto !important;
+                transform: unset !important;
+                position: unset !important;
+            }
+        }
+    }
+
     .section-background {
         > img {
             width: 100%;
