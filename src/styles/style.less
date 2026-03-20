@@ -65,7 +65,7 @@ header {
 
         > img {
             width: auto;
-            height: 100%;
+            height: auto;
             position: absolute;
             top: 50%;
             left: 50%;
@@ -261,7 +261,7 @@ header {
                 will-change: opacity;
                 opacity: 0;
 
-                img {
+                > img {
                     height: auto;
                     width: auto;
                 }
@@ -458,14 +458,14 @@ footer {
         }
     }
 
-    .desktop-slider-buttons.desktop-slider-buttons {
+    .desktop-slider-buttons {
         .slider-button {
             width: 94px;
             height: 94px;
 
             > img {
-                width: 44px !important;
-                height: 44px !important;
+                width: 44px;
+                height: 44px;
             }
         }
     }
@@ -581,13 +581,11 @@ footer {
     }
 }
 @media (min-width: 1920px) {
-    .desktop-slider-buttons {
-        .slider-button {
+    .desktop-slider {
+        .swiper-slide {
             > img {
-                width: auto !important;
-                height: auto !important;
-                transform: unset !important;
-                position: unset !important;
+                width: 100%;
+                height: auto;
             }
         }
     }
@@ -612,7 +610,7 @@ footer {
                 .img-wrapper {
                     height: 100vh;
 
-                    img {
+                    > img {
                         width: 100%;
                         height: auto;
                         position: absolute;
