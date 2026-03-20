@@ -33,7 +33,7 @@ export function initMobileSliderSection(sectionElement: Element) {
         onLeaveBack: () => tl.reverse()
     })
 
-    initFullpageSlider(sectionElement, sectionElement);
+    // initFullpageSlider(sectionElement);
 
     gsap.to(
         sectionElement.querySelectorAll('.img-wrapper'),

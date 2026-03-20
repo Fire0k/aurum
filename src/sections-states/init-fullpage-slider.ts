@@ -1,18 +1,13 @@
 import Swiper from 'swiper'
-import { EffectFade, Pagination, Navigation } from 'swiper/modules'
+import { EffectFade, Navigation } from 'swiper/modules'
 
 
-export function initFullpageSlider(
-    backgroundElement: Element,
-    buttonsElement: Element,
-) {
-    const slider = backgroundElement.querySelector('.swiper') as HTMLElement;
-    const paginationElement = backgroundElement.querySelector('.slider-pagination') as HTMLElement | null;
+export function initFullpageSlider(sliderElement: Element, buttonsElement: Element) {
     const nextBtn = buttonsElement.querySelector('.next') as HTMLElement | null;
     const prevBtn = buttonsElement.querySelector('.prev') as HTMLElement | null;
 
-    const swiper = new Swiper(slider, {
-        modules: [EffectFade, Pagination, Navigation],
+    new Swiper(sliderElement as HTMLElement, {
+        modules: [EffectFade, Navigation],
         effect: 'fade',
         fadeEffect: {
             crossFade: true
@@ -21,13 +16,8 @@ export function initFullpageSlider(
         loop: true,
 
         navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
+            nextEl: nextBtn,
+            prevEl: prevBtn,
         },
-
-        pagination: {
-            el: paginationElement,
-            clickable: true
-        }
     })
 }

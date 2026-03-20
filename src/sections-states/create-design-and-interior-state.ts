@@ -1,7 +1,7 @@
 import gsap from "gsap";
 
 import { SectionTools } from '../types';
-import bg from '../img/apartments-section.webp';
+import { initFullpageSlider } from './init-fullpage-slider';
 
 
 export function createDesignAndInteriorDesktopState(
@@ -21,6 +21,16 @@ export function createDesignAndInteriorDesktopState(
     const sliderImagesElement = sliderElement.querySelector('.half-slider-img')!;
     const texts = Array.from(sliderTextElements.querySelectorAll(`.text-wrapper`));
     const images = Array.from(sliderImagesElement.querySelectorAll(`.img-wrapper`));
+
+    images.forEach((wrapper) => {
+        const swiper = wrapper.querySelector('.desktop-slider');
+        if (!swiper) return;
+
+        const buttons = wrapper.querySelector('.desktop-slider-buttons');
+        if (!buttons) return;
+
+        initFullpageSlider(swiper, buttons);
+    })
 
     tl.to(backgroundElement, {
         duration: 1.5,

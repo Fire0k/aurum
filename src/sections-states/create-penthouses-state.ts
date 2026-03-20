@@ -15,9 +15,10 @@ export function createPenthousesDesktopState(
 
     const filterElement = document.querySelector('.filter');
 
-    const buttonsElement = sectionElement.querySelector('.slider-buttons');
+    const sliderElement = backgroundElement.querySelector('.desktop-slider')!;
+    const buttonsElement = sectionElement.querySelector('.desktop-slider-buttons')!;
 
-    initFullpageSlider(backgroundElement, sectionElement);
+    initFullpageSlider(sliderElement, buttonsElement);
 
     tl.to(backgroundElement, {
         duration: 1.5,

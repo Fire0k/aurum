@@ -16,9 +16,10 @@ export function createApartmentsDesktopState(
     const filterElement = document.querySelector('.filter');
     const nextSectionTitleElement = sectionElement.querySelector('.section-title');
 
-    const buttonsElement = sectionElement.querySelector('.slider-buttons');
+    const sliderElement = backgroundElement.querySelector('.desktop-slider')!;
+    const buttonsElement = sectionElement.querySelector('.desktop-slider-buttons')!;
 
-    initFullpageSlider(backgroundElement, sectionElement);
+    initFullpageSlider(sliderElement, buttonsElement);
 
     tl.to(backgroundElement, {
         duration: 1.5,

@@ -1,6 +1,7 @@
 import gsap from "gsap";
 
 import { SectionTools } from '../types';
+import { initFullpageSlider } from './init-fullpage-slider';
 
 
 export function createPremiumClassDesktopState(
@@ -24,6 +25,16 @@ export function createPremiumClassDesktopState(
 
     const texts = Array.from(sliderTextElements.querySelectorAll(`.text-wrapper`));
     const images = Array.from(sliderImagesElement.querySelectorAll(`.img-wrapper`));
+
+    images.forEach((wrapper) => {
+        const swiper = wrapper.querySelector('.desktop-slider');
+        if (!swiper) return;
+
+        const buttons = wrapper.querySelector('.desktop-slider-buttons');
+        if (!buttons) return;
+
+        initFullpageSlider(swiper, buttons);
+    })
 
     tl.to(backgroundElement, {
         duration: 1.5,
@@ -63,6 +74,7 @@ export function createPremiumClassDesktopState(
         duration: 1,
         ease: "power1.in",
         opacity: 1,
+        zIndex: 1,
     }, "<")
 
     tl.addLabel(`${startStep + 3}`);
@@ -76,10 +88,12 @@ export function createPremiumClassDesktopState(
         duration: 1,
         ease: "power1.in",
         opacity: 0,
+        zIndex: 0,
     }, "<").to(images[1], {
         duration: 0.5,
         ease: "power1.in",
         opacity: 1,
+        zIndex: 1,
     }).to(texts[1], {
         duration: 0.5,
         ease: "power1.in",
@@ -97,10 +111,12 @@ export function createPremiumClassDesktopState(
         duration: 1,
         ease: "power1.in",
         opacity: 0,
+        zIndex: 0,
     }, "<").to(images[2], {
         duration: 0.5,
         ease: "power1.in",
         opacity: 1,
+        zIndex: 1,
     }).to(texts[2], {
         duration: 0.5,
         ease: "power1.in",
@@ -118,10 +134,12 @@ export function createPremiumClassDesktopState(
         duration: 1,
         ease: "power1.in",
         opacity: 0,
+        zIndex: 0,
     }, "<").to(images[3], {
         duration: 0.5,
         ease: "power1.in",
         opacity: 1,
+        zIndex: 1,
     }).to(texts[3], {
         duration: 0.5,
         ease: "power1.in",
