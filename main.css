@@ -966,6 +966,10 @@ footer {
   }
 }
 @media (max-width: 768px) {
+  .mobile-slider .slide-wrapper .slide-img > img {
+    height: 100%;
+    width: auto;
+  }
   .phone-group .phone {
     font-size: 50px;
   }
