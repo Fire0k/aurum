@@ -1,7 +1,7 @@
 import gsap from "gsap";
 
 import { createPageObserver } from "./create-page-observer";
-import { getDesktopSectionsTools, activateMobileAnimate } from '../sections-states/get-sections-tools';
+import { getDesktopSectionsTools, getMobileSectionTools } from '../sections-states/get-sections-tools';
 import { SectionTools } from "../types";
 import { createApplicationFormHandler } from './create-application-form-handler';
 
@@ -73,15 +73,6 @@ export function createPageState() {
             () => increaseStep(),
         );
 
-        const smallLogoElement = document.getElementById('anchor-logo');
-        smallLogoElement?.addEventListener('click', () => {
-            tl.progress(0);
-            firstScreenSection.classList.remove('with-mask');
-            tl.tweenTo(`${0}`);
-            prevStep = 0;
-            currentStep = 0;
-        })
-
         /**
          * Анимация маски через js лагает в Chrome,
          * обходной путь для реализации этой анимации через css
@@ -105,7 +96,67 @@ export function createPageState() {
             if (prevStep < currentStep) return;
             (maskElement as HTMLElement).style.transitionDuration = 'unset';
         }, undefined, '1');
+
+        const smallLogoElement = document.getElementById('anchor-logo');
+        smallLogoElement?.addEventListener('click', () => {
+            tl.progress(0);
+            firstScreenSection.classList.remove('with-mask');
+            tl.tweenTo(`${0}`);
+            prevStep = 0;
+            currentStep = 0;
+        })
     } else {
-        activateMobileAnimate();
+        let ready = false;
+        setTimeout(() => ready = true, 2500)
+
+        const tl = gsap.timeline({ paused: true });
+
+        const sectionsTools = getMobileSectionTools(tl) as SectionTools[];
+        if (!sectionsTools) return;
+
+        let prevStep = 0;
+        let currentStep = 0;
+
+        function increaseStep() {
+            if (gsap.isTweening(tl) || !ready) return;
+
+            if (currentStep === sectionsTools.at(-1)!.maxStep) return;
+
+            currentStep++;
+            tl.tweenTo(`${currentStep}`);
+
+            if (currentStep !== 1) {
+                prevStep++;
+            }
+        }
+        function decreaseStep() {
+            if (gsap.isTweening(tl)) return;
+
+            if (currentStep === 0) return;
+
+            currentStep--;
+            tl.tweenTo(`${currentStep}`);
+
+            if (currentStep !== 0) {
+                prevStep--;
+            }
+        }
+
+        tl.tweenTo(`${0}`);
+
+        createPageObserver(
+            () => decreaseStep(),
+            () => increaseStep(),
+        );
+
+        const firstScreenSection = document.getElementById('first-section')!;
+        const smallLogoElement = document.getElementById('anchor-logo');
+        smallLogoElement?.addEventListener('click', () => {
+            tl.progress(0);
+            firstScreenSection.classList.remove('with-mask');
+            tl.tweenTo(`${0}`);
+            prevStep = 0;
+            currentStep = 0;
+        })
     }
 }

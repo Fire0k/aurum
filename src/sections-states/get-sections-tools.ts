@@ -1,13 +1,12 @@
 import { SectionTools } from "../types";
-import { createFirstScreenDesktopState, createFirstScreenMobileAnimate } from './create-first-screen-state';
-import { createPremiumClassDesktopState } from './create-premium-class-state';
-import { createSafetyAndComfortDesktopState } from './create-safety-and-comfort-state';
-import { createImprovementDesktopState } from './create-improvement-state';
-import { createDesignAndInteriorDesktopState } from './create-design-and-interior-state';
-import { createApartmentsDesktopState } from './create-apartments-state';
-import { createPenthousesDesktopState } from './create-penthouses-state';
+import { createFirstScreenDesktopState, createFirstScreenMobileState } from './create-first-screen-state';
+import { createPremiumClassDesktopState, createPremiumClassMobileState } from './create-premium-class-state';
+import { createSafetyAndComfortDesktopState, createSafetyAndComfortMobileState } from './create-safety-and-comfort-state';
+import { createImprovementDesktopState, createImprovementMobileState } from './create-improvement-state';
+import { createDesignAndInteriorDesktopState, createDesignAndInteriorMobileState } from './create-design-and-interior-state';
+import { createApartmentsDesktopState, createApartmentsMobileState } from './create-apartments-state';
+import { createPenthousesDesktopState, createPenthousesMobileState } from './create-penthouses-state';
 import { createApplicationFormDesktopState } from './create-application-form-state';
-import { initMobileSliderSection } from "./init-mobile-slider-section";
 
 
 function getSections() {
@@ -61,13 +60,20 @@ export function getDesktopSectionsTools(tl: gsap.core.Timeline): SectionTools[] 
     return tools;
 }
 
-export function activateMobileAnimate(): void {
+export function getMobileSectionTools(tl: gsap.core.Timeline): SectionTools[] | null {
     const sections = getSections();
-    if (!sections) return;
+    if (!sections) return null;
 
-    createFirstScreenMobileAnimate();
-    initMobileSliderSection(sections.premiumClassSection);
-    initMobileSliderSection(sections.safetyAndComfortSection);
-    initMobileSliderSection(sections.improvementSection);
-    initMobileSliderSection(sections.designAndInteriorSection);
+    const tools: SectionTools[] = [];
+
+    tools.push(createFirstScreenMobileState(sections.firstScreenSection, tl));
+    tools.push(createPremiumClassMobileState(sections.premiumClassSection, tl, tools[0].maxStep));
+    tools.push(createSafetyAndComfortMobileState(sections.safetyAndComfortSection, tl, tools[1].maxStep));
+    tools.push(createImprovementMobileState(sections.improvementSection, tl, tools[2].maxStep));
+    tools.push(createDesignAndInteriorMobileState(sections.designAndInteriorSection, tl, tools[3].maxStep));
+    tools.push(createApartmentsMobileState(sections.apartmentsSection, tl, tools[4].maxStep));
+    tools.push(createPenthousesMobileState(sections.penthousesSection, tl, tools[5].maxStep));
+    tools.push(createApplicationFormDesktopState(sections.applicationFormSection, tl, tools[6].maxStep));
+
+    return tools;
 }

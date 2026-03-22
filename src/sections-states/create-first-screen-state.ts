@@ -83,6 +83,56 @@ export function createFirstScreenDesktopState(
     }
 }
 
-export function createFirstScreenMobileAnimate(): void {
+export function createFirstScreenMobileState(
+    sectionElement: Element,
+    tl: gsap.core.Timeline
+): SectionTools {
     document.body.classList.add('ready');
+
+    const maxStep: number = 1;
+
+    const backgroundElement = document.querySelector('.first-section-background');
+
+    const filterElement = document.querySelector('.filter');
+
+    const maskElement = sectionElement.querySelector('.mask');
+    const nextSectionTitleElement = sectionElement.querySelector('.section-title');
+
+    tl.set(filterElement, { zIndex: 0, opacity: 1 })
+    tl.set(nextSectionTitleElement, { yPercent: 50 })
+
+    tl.addLabel('0');
+
+    tl.to(maskElement, {
+        duration: 1.5,
+        ease: "none",
+        maskSize: '100% 100%, 0px',
+    })
+
+    tl.set(maskElement, { delay: 0.1, display: 'none' });
+    tl.set(backgroundElement, { opacity: 0.1 });
+
+    tl.to(nextSectionTitleElement, {
+        delay: 0.2,
+        duration: 1.5,
+        ease: "power1.out",
+        opacity: 1,
+        yPercent: -50,
+    })
+
+    tl.addLabel('1');
+
+    tl.to(backgroundElement, { 
+        duration: 1,
+        ease: "none",
+        opacity: 0,
+    }).to(sectionElement, {
+        duration: 1,
+        ease: "none",
+        opacity: 0,
+    }, "<");
+
+    return {
+        maxStep,
+    }
 }

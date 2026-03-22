@@ -1,7 +1,6 @@
 import gsap from "gsap";
 
 import { SectionTools } from '../types';
-import bg from '../img/improvement-section.webp';
 
 
 export function createSafetyAndComfortDesktopState(
@@ -79,6 +78,70 @@ export function createSafetyAndComfortDesktopState(
         ease: 'power1.out',
         opacity: 1,
         yPercent: -50,
+    })
+
+    return {
+        maxStep,
+    }
+}
+
+export function createSafetyAndComfortMobileState(
+    sectionElement: Element,
+    tl: gsap.core.Timeline,
+    startStep: number,
+): SectionTools {
+    const maxStep: number = startStep + 3;
+
+    const mobileTitleElement = sectionElement.querySelector('.mobile-section-title-wrapper')!;
+    const titleImageElement = mobileTitleElement.querySelector('.img-wrapper')!;
+
+    const sliderElement = sectionElement.querySelector('.mobile-slider')!;
+    const sliders = sliderElement.querySelectorAll('.slide-wrapper');
+
+    tl.to(sectionElement, { 
+        duration: 1.5,
+        delay: 0.5,
+        ease: "none",
+        yPercent: -100,
+    }, "<").to(titleImageElement, { 
+        duration: 1.5,
+        ease: "none",
+        height: '75vh',
+    }, "<");
+
+    tl.addLabel(`${startStep + 1}`);
+
+    tl.to(mobileTitleElement, {
+        duration: 1.5,
+        ease: "none",
+        opacity: 0,
+        height: '30%',
+        display: 'none'
+    }).fromTo(sliderElement, { yPercent: 100 }, {
+        duration: 1.5,
+        ease: "none",
+        yPercent: 0,
+    })
+
+    tl.addLabel(`${startStep + 2}`);
+
+    tl.to(sliders[0], {
+        duration: 1.5,
+        ease: "none",
+        yPercent: -5,
+    }).to(sliders[0].querySelector('.slide-text'), {
+        duration: 1.5,
+        ease: "none",
+        opacity: 0,
+        height: 0,
+    }, "<")
+
+    tl.addLabel(`${startStep + 3}`);
+
+    tl.to(sectionElement, {
+        duration: 1,
+        ease: "none",
+        opacity: 0,
     })
 
     return {
