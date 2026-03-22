@@ -112,8 +112,43 @@ function createFirstScreenDesktopState(sectionElement, tl) {
     maxStep
   };
 }
-function createFirstScreenMobileAnimate() {
+function createFirstScreenMobileState(sectionElement, tl) {
   document.body.classList.add("ready");
+  const maxStep = 1;
+  const backgroundElement = document.querySelector(".first-section-background");
+  const filterElement = document.querySelector(".filter");
+  const maskElement = sectionElement.querySelector(".mask");
+  const nextSectionTitleElement = sectionElement.querySelector(".section-title");
+  tl.set(filterElement, { zIndex: 0, opacity: 1 });
+  tl.set(nextSectionTitleElement, { yPercent: 50 });
+  tl.addLabel("0");
+  tl.to(maskElement, {
+    duration: 1.5,
+    ease: "none",
+    maskSize: "100% 100%, 0px"
+  });
+  tl.set(maskElement, { delay: 0.1, display: "none" });
+  tl.set(backgroundElement, { opacity: 0.1 });
+  tl.to(nextSectionTitleElement, {
+    delay: 0.2,
+    duration: 1.5,
+    ease: "power1.out",
+    opacity: 1,
+    yPercent: -50
+  });
+  tl.addLabel("1");
+  tl.to(backgroundElement, {
+    duration: 1,
+    ease: "none",
+    opacity: 0
+  }).to(sectionElement, {
+    duration: 1,
+    ease: "none",
+    opacity: 0
+  }, "<");
+  return {
+    maxStep
+  };
 }
 
 function initFullpageSlider(sliderElement, buttonsElement) {
@@ -272,6 +307,124 @@ function createPremiumClassDesktopState(sectionElement, tl, startStep) {
     maxStep
   };
 }
+function createPremiumClassMobileState(sectionElement, tl, startStep) {
+  const maxStep = startStep + 9;
+  const mobileTitleElement = sectionElement.querySelector(".mobile-section-title-wrapper");
+  const titleImageElement = mobileTitleElement.querySelector(".img-wrapper");
+  const sliderElement = sectionElement.querySelector(".mobile-slider");
+  const sliders = sliderElement.querySelectorAll(".slide-wrapper");
+  tl.to(sectionElement, {
+    duration: 1.5,
+    delay: 0.5,
+    ease: "none",
+    yPercent: -100
+  }, "<").to(titleImageElement, {
+    duration: 1.5,
+    ease: "none",
+    height: "75vh"
+  }, "<");
+  tl.addLabel(`${startStep + 1}`);
+  tl.to(mobileTitleElement, {
+    duration: 1.5,
+    ease: "none",
+    opacity: 0,
+    height: "30%",
+    display: "none"
+  }).fromTo(sliderElement, { yPercent: 100 }, {
+    duration: 1.5,
+    ease: "none",
+    yPercent: 0
+  });
+  tl.addLabel(`${startStep + 2}`);
+  tl.to(sliders[0], {
+    duration: 1.5,
+    ease: "none",
+    yPercent: -5
+  }).to(sliders[0].querySelector(".slide-text"), {
+    duration: 1.5,
+    ease: "none",
+    opacity: 0,
+    height: 0
+  }, "<");
+  tl.addLabel(`${startStep + 3}`);
+  tl.to(sliders[0], {
+    duration: 1.5,
+    ease: "none",
+    opacity: 0,
+    yPercent: -10,
+    display: "none"
+  }).fromTo(sliders[1], { yPercent: 100 }, {
+    duration: 1.5,
+    ease: "none",
+    yPercent: 0
+  });
+  tl.addLabel(`${startStep + 4}`);
+  tl.to(sliders[1], {
+    duration: 1.5,
+    ease: "none",
+    yPercent: -5
+  }).to(sliders[1].querySelector(".slide-text"), {
+    duration: 1.5,
+    ease: "none",
+    opacity: 0,
+    height: 0
+  }, "<");
+  tl.addLabel(`${startStep + 5}`);
+  tl.to(sliders[1], {
+    duration: 1.5,
+    ease: "none",
+    opacity: 0,
+    yPercent: -10,
+    display: "none"
+  }).fromTo(sliders[2], { yPercent: 100 }, {
+    duration: 1.5,
+    ease: "none",
+    yPercent: 0
+  });
+  tl.addLabel(`${startStep + 6}`);
+  tl.to(sliders[2], {
+    duration: 1.5,
+    ease: "none",
+    yPercent: -5
+  }).to(sliders[2].querySelector(".slide-text"), {
+    duration: 1.5,
+    ease: "none",
+    opacity: 0,
+    height: 0
+  }, "<");
+  tl.addLabel(`${startStep + 7}`);
+  tl.to(sliders[2], {
+    duration: 1.5,
+    ease: "none",
+    opacity: 0,
+    yPercent: -10,
+    display: "none"
+  }).fromTo(sliders[3], { yPercent: 100 }, {
+    duration: 1.5,
+    ease: "none",
+    yPercent: 0
+  });
+  tl.addLabel(`${startStep + 8}`);
+  tl.to(sliders[3], {
+    duration: 1.5,
+    ease: "none",
+    yPercent: -5
+  }).to(sliders[3].querySelector(".slide-text"), {
+    duration: 1.5,
+    ease: "none",
+    opacity: 0,
+    height: 0
+  }, "<");
+  tl.addLabel(`${startStep + 9}`);
+  tl.to(sectionElement, {
+    duration: 1,
+    ease: "none",
+    opacity: 0
+  });
+  return {
+    maxStep
+  };
+}
 
 function createSafetyAndComfortDesktopState(sectionElement, tl, startStep) {
   const maxStep = startStep + 3;
@@ -330,6 +483,55 @@ function createSafetyAndComfortDesktopState(sectionElement, tl, startStep) {
     ease: "power1.out",
     opacity: 1,
     yPercent: -50
+  });
+  return {
+    maxStep
+  };
+}
+function createSafetyAndComfortMobileState(sectionElement, tl, startStep) {
+  const maxStep = startStep + 3;
+  const mobileTitleElement = sectionElement.querySelector(".mobile-section-title-wrapper");
+  const titleImageElement = mobileTitleElement.querySelector(".img-wrapper");
+  const sliderElement = sectionElement.querySelector(".mobile-slider");
+  const sliders = sliderElement.querySelectorAll(".slide-wrapper");
+  tl.to(sectionElement, {
+    duration: 1.5,
+    delay: 0.5,
+    ease: "none",
+    yPercent: -100
+  }, "<").to(titleImageElement, {
+    duration: 1.5,
+    ease: "none",
+    height: "75vh"
+  }, "<");
+  tl.addLabel(`${startStep + 1}`);
+  tl.to(mobileTitleElement, {
+    duration: 1.5,
+    ease: "none",
+    opacity: 0,
+    height: "30%",
+    display: "none"
+  }).fromTo(sliderElement, { yPercent: 100 }, {
+    duration: 1.5,
+    ease: "none",
+    yPercent: 0
+  });
+  tl.addLabel(`${startStep + 2}`);
+  tl.to(sliders[0], {
+    duration: 1.5,
+    ease: "none",
+    yPercent: -5
+  }).to(sliders[0].querySelector(".slide-text"), {
+    duration: 1.5,
+    ease: "none",
+    opacity: 0,
+    height: 0
+  }, "<");
+  tl.addLabel(`${startStep + 3}`);
+  tl.to(sectionElement, {
+    duration: 1,
+    ease: "none",
+    opacity: 0
   });
   return {
     maxStep
@@ -405,6 +607,55 @@ function createImprovementDesktopState(sectionElement, tl, startStep) {
     maxStep
   };
 }
+function createImprovementMobileState(sectionElement, tl, startStep) {
+  const maxStep = startStep + 3;
+  const mobileTitleElement = sectionElement.querySelector(".mobile-section-title-wrapper");
+  const titleImageElement = mobileTitleElement.querySelector(".img-wrapper");
+  const sliderElement = sectionElement.querySelector(".mobile-slider");
+  const sliders = sliderElement.querySelectorAll(".slide-wrapper");
+  tl.to(sectionElement, {
+    duration: 1.5,
+    delay: 0.5,
+    ease: "none",
+    yPercent: -100
+  }, "<").to(titleImageElement, {
+    duration: 1.5,
+    ease: "none",
+    height: "75vh"
+  }, "<");
+  tl.addLabel(`${startStep + 1}`);
+  tl.to(mobileTitleElement, {
+    duration: 1.5,
+    ease: "none",
+    opacity: 0,
+    height: "30%",
+    display: "none"
+  }).fromTo(sliderElement, { yPercent: 100 }, {
+    duration: 1.5,
+    ease: "none",
+    yPercent: 0
+  });
+  tl.addLabel(`${startStep + 2}`);
+  tl.to(sliders[0], {
+    duration: 1.5,
+    ease: "none",
+    yPercent: -5
+  }).to(sliders[0].querySelector(".slide-text"), {
+    duration: 1.5,
+    ease: "none",
+    opacity: 0,
+    height: 0
+  }, "<");
+  tl.addLabel(`${startStep + 3}`);
+  tl.to(sectionElement, {
+    duration: 1,
+    ease: "none",
+    opacity: 0
+  });
+  return {
+    maxStep
+  };
+}
 
 function createDesignAndInteriorDesktopState(sectionElement, tl, startStep) {
   const maxStep = startStep + 3;
@@ -475,6 +726,55 @@ function createDesignAndInteriorDesktopState(sectionElement, tl, startStep) {
     maxStep
   };
 }
+function createDesignAndInteriorMobileState(sectionElement, tl, startStep) {
+  const maxStep = startStep + 3;
+  const mobileTitleElement = sectionElement.querySelector(".mobile-section-title-wrapper");
+  const titleImageElement = mobileTitleElement.querySelector(".img-wrapper");
+  const sliderElement = sectionElement.querySelector(".mobile-slider");
+  const sliders = sliderElement.querySelectorAll(".slide-wrapper");
+  tl.to(sectionElement, {
+    duration: 1.5,
+    delay: 0.5,
+    ease: "none",
+    yPercent: -100
+  }, "<").to(titleImageElement, {
+    duration: 1.5,
+    ease: "none",
+    height: "75vh"
+  }, "<");
+  tl.addLabel(`${startStep + 1}`);
+  tl.to(mobileTitleElement, {
+    duration: 1.5,
+    ease: "none",
+    opacity: 0,
+    height: "30%",
+    display: "none"
+  }).fromTo(sliderElement, { yPercent: 100 }, {
+    duration: 1.5,
+    ease: "none",
+    yPercent: 0
+  });
+  tl.addLabel(`${startStep + 2}`);
+  tl.to(sliders[0], {
+    duration: 1.5,
+    ease: "none",
+    yPercent: -5
+  }).to(sliders[0].querySelector(".slide-text"), {
+    duration: 1.5,
+    ease: "none",
+    opacity: 0,
+    height: 0
+  }, "<");
+  tl.addLabel(`${startStep + 3}`);
+  tl.to(sectionElement, {
+    duration: 1,
+    ease: "none",
+    opacity: 0
+  });
+  return {
+    maxStep
+  };
+}
 
 function createApartmentsDesktopState(sectionElement, tl, startStep) {
   const maxStep = startStep + 2;
@@ -524,6 +824,55 @@ function createApartmentsDesktopState(sectionElement, tl, startStep) {
     maxStep
   };
 }
+function createApartmentsMobileState(sectionElement, tl, startStep) {
+  const maxStep = startStep + 3;
+  const mobileTitleElement = sectionElement.querySelector(".mobile-section-title-wrapper");
+  const titleImageElement = mobileTitleElement.querySelector(".img-wrapper");
+  const sliderElement = sectionElement.querySelector(".mobile-slider");
+  const sliders = sliderElement.querySelectorAll(".slide-wrapper");
+  tl.to(sectionElement, {
+    duration: 1.5,
+    delay: 0.5,
+    ease: "none",
+    yPercent: -100
+  }, "<").to(titleImageElement, {
+    duration: 1.5,
+    ease: "none",
+    height: "75vh"
+  }, "<");
+  tl.addLabel(`${startStep + 1}`);
+  tl.to(mobileTitleElement, {
+    duration: 1.5,
+    ease: "none",
+    opacity: 0,
+    height: "30%",
+    display: "none"
+  }).fromTo(sliderElement, { yPercent: 100 }, {
+    duration: 1.5,
+    ease: "none",
+    yPercent: 0
+  });
+  tl.addLabel(`${startStep + 2}`);
+  tl.to(sliders[0], {
+    duration: 1.5,
+    ease: "none",
+    yPercent: -5
+  }).to(sliders[0].querySelector(".slide-text"), {
+    duration: 1.5,
+    ease: "none",
+    opacity: 0,
+    height: 0
+  }, "<");
+  tl.addLabel(`${startStep + 3}`);
+  tl.to(sectionElement, {
+    duration: 1,
+    ease: "none",
+    opacity: 0
+  });
+  return {
+    maxStep
+  };
+}
 
 function createPenthousesDesktopState(sectionElement, tl, startStep) {
   const maxStep = startStep + 2;
@@ -566,6 +915,55 @@ function createPenthousesDesktopState(sectionElement, tl, startStep) {
     maxStep
   };
 }
+function createPenthousesMobileState(sectionElement, tl, startStep) {
+  const maxStep = startStep + 3;
+  const mobileTitleElement = sectionElement.querySelector(".mobile-section-title-wrapper");
+  const titleImageElement = mobileTitleElement.querySelector(".img-wrapper");
+  const sliderElement = sectionElement.querySelector(".mobile-slider");
+  const sliders = sliderElement.querySelectorAll(".slide-wrapper");
+  tl.to(sectionElement, {
+    duration: 1.5,
+    delay: 0.5,
+    ease: "none",
+    yPercent: -100
+  }, "<").to(titleImageElement, {
+    duration: 1.5,
+    ease: "none",
+    height: "75vh"
+  }, "<");
+  tl.addLabel(`${startStep + 1}`);
+  tl.to(mobileTitleElement, {
+    duration: 1.5,
+    ease: "none",
+    opacity: 0,
+    height: "30%",
+    display: "none"
+  }).fromTo(sliderElement, { yPercent: 100 }, {
+    duration: 1.5,
+    ease: "none",
+    yPercent: 0
+  });
+  tl.addLabel(`${startStep + 2}`);
+  tl.to(sliders[0], {
+    duration: 1.5,
+    ease: "none",
+    yPercent: -5
+  }).to(sliders[0].querySelector(".slide-text"), {
+    duration: 1.5,
+    ease: "none",
+    opacity: 0,
+    height: 0
+  }, "<");
+  tl.addLabel(`${startStep + 3}`);
+  tl.to(sectionElement, {
+    duration: 1,
+    ease: "none",
+    opacity: 0
+  });
+  return {
+    maxStep
+  };
+}
 
 function createApplicationFormDesktopState(sectionElement, tl, startStep) {
   const maxStep = startStep + 1;
@@ -585,44 +983,6 @@ function createApplicationFormDesktopState(sectionElement, tl, startStep) {
   return {
     maxStep
   };
-}
-
-function initMobileSliderSection(sectionElement) {
-  const paginationElement = sectionElement.querySelector(".slider-pagination");
-  const nextButtonElements = sectionElement.querySelectorAll(".swiper-button-next");
-  const prevButtonElements = sectionElement.querySelectorAll(".swiper-button-prev");
-  const siderTexts = sectionElement.querySelectorAll(".mobile-slide-text");
-  const filterElement = sectionElement.querySelector(".mobile-slider-filter");
-  const titleElement = sectionElement.querySelector(".section-title-wrapper");
-  const tl = gsapWithCSS.timeline({ paused: true });
-  tl.to([filterElement, titleElement], {
-    duration: 1,
-    ease: "none",
-    opacity: 0
-  }).to([nextButtonElements, prevButtonElements, paginationElement, ...siderTexts], {
-    duration: 1,
-    ease: "none",
-    opacity: 1
-  }, "<").set([filterElement, titleElement], { display: "none" });
-  ScrollTrigger.create({
-    trigger: sectionElement,
-    start: "top top+=100",
-    onEnter: () => tl.play(),
-    onLeaveBack: () => tl.reverse()
-  });
-  gsapWithCSS.to(
-    sectionElement.querySelectorAll(".img-wrapper"),
-    {
-      scale: 1.2,
-      ease: "none",
-      scrollTrigger: {
-        trigger: sectionElement,
-        start: "top bottom",
-        end: "top top",
-        scrub: true
-      }
-    }
-  );
 }
 
 function getSections() {
@@ -669,14 +1029,19 @@ function getDesktopSectionsTools(tl) {
   tools.push(createApplicationFormDesktopState(sections.applicationFormSection, tl, tools[6].maxStep));
   return tools;
 }
-function activateMobileAnimate() {
+function getMobileSectionTools(tl) {
   const sections = getSections();
-  if (!sections) return;
-  createFirstScreenMobileAnimate();
-  initMobileSliderSection(sections.premiumClassSection);
-  initMobileSliderSection(sections.safetyAndComfortSection);
-  initMobileSliderSection(sections.improvementSection);
-  initMobileSliderSection(sections.designAndInteriorSection);
+  if (!sections) return null;
+  const tools = [];
+  tools.push(createFirstScreenMobileState(sections.firstScreenSection, tl));
+  tools.push(createPremiumClassMobileState(sections.premiumClassSection, tl, tools[0].maxStep));
+  tools.push(createSafetyAndComfortMobileState(sections.safetyAndComfortSection, tl, tools[1].maxStep));
+  tools.push(createImprovementMobileState(sections.improvementSection, tl, tools[2].maxStep));
+  tools.push(createDesignAndInteriorMobileState(sections.designAndInteriorSection, tl, tools[3].maxStep));
+  tools.push(createApartmentsMobileState(sections.apartmentsSection, tl, tools[4].maxStep));
+  tools.push(createPenthousesMobileState(sections.penthousesSection, tl, tools[5].maxStep));
+  tools.push(createApplicationFormDesktopState(sections.applicationFormSection, tl, tools[6].maxStep));
+  return tools;
 }
 
 function createApplicationFormHandler() {
@@ -761,14 +1126,6 @@ function createPageState() {
       () => decreaseStep(),
       () => increaseStep()
     );
-    const smallLogoElement = document.getElementById("anchor-logo");
-    smallLogoElement?.addEventListener("click", () => {
-      tl.progress(0);
-      firstScreenSection.classList.remove("with-mask");
-      tl.tweenTo(`${0}`);
-      prevStep = 0;
-      currentStep = 0;
-    });
     const firstScreenSection = document.getElementById("first-section");
     const maskElement = document.querySelector(".mask");
     tl.call(() => {
@@ -787,8 +1144,45 @@ function createPageState() {
       if (prevStep < currentStep) return;
       maskElement.style.transitionDuration = "unset";
     }, void 0, "1");
+    const smallLogoElement = document.getElementById("anchor-logo");
+    smallLogoElement?.addEventListener("click", () => {
+      tl.progress(0);
+      firstScreenSection.classList.remove("with-mask");
+      tl.tweenTo(`${0}`);
+      prevStep = 0;
+      currentStep = 0;
+    });
   } else {
-    activateMobileAnimate();
+    let increaseStep = function() {
+      if (gsapWithCSS.isTweening(tl) || !ready) return;
+      if (currentStep === sectionsTools.at(-1).maxStep) return;
+      currentStep++;
+      tl.tweenTo(`${currentStep}`);
+    }, decreaseStep = function() {
+      if (gsapWithCSS.isTweening(tl)) return;
+      if (currentStep === 0) return;
+      currentStep--;
+      tl.tweenTo(`${currentStep}`);
+    };
+    let ready = false;
+    setTimeout(() => ready = true, 2500);
+    const tl = gsapWithCSS.timeline({ paused: true });
+    const sectionsTools = getMobileSectionTools(tl);
+    if (!sectionsTools) return;
+    let currentStep = 0;
+    tl.tweenTo(`${0}`);
+    createPageObserver(
+      () => decreaseStep(),
+      () => increaseStep()
+    );
+    const firstScreenSection = document.getElementById("first-section");
+    const smallLogoElement = document.getElementById("anchor-logo");
+    smallLogoElement?.addEventListener("click", () => {
+      tl.progress(0);
+      firstScreenSection.classList.remove("with-mask");
+      tl.tweenTo(`${0}`);
+      currentStep = 0;
+    });
   }
 }
 
