@@ -176,6 +176,24 @@ header .header-wrapper .info-block .phone-mobile {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+.tags {
+  margin-top: 20px;
+  font-size: 20px;
+  color: #1C1C1C;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  font-weight: 300;
+}
+.tags .tag {
+  padding: 10px 20px;
+  background-color: #ffffff99;
+  border-radius: 40px;
+}
+.tags .tag.accent {
+  background-color: var(--accent-color);
+}
 .section-wrapper {
   position: absolute;
   top: 100%;
@@ -215,23 +233,6 @@ header .header-wrapper .info-block .phone-mobile {
 .section-wrapper .section-title-wrapper .section-title .description {
   margin-top: 20px;
   font-size: 32px;
-}
-.section-wrapper .section-title-wrapper .section-title .tags {
-  margin-top: 20px;
-  font-size: 20px;
-  color: #1C1C1C;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-.section-wrapper .section-title-wrapper .section-title .tags .tag {
-  padding: 10px 20px;
-  background-color: #ffffff99;
-  border-radius: 40px;
-}
-.section-wrapper .section-title-wrapper .section-title .tags .tag.accent {
-  background-color: var(--accent-color);
 }
 .section-wrapper .section-title-wrapper .section-title.with-decorate::before {
   content: "";
@@ -334,7 +335,7 @@ footer {
 body {
   position: relative;
   margin: 0;
-  height: 100vh;
+  height: 100svh;
   width: 100vw;
   overflow: hidden;
 }
@@ -403,7 +404,7 @@ header .header-wrapper .logo-main {
   font-weight: 800;
 }
 .mobile-slider .slide-wrapper .slide-img {
-  height: 75vh;
+  height: 75svh;
   overflow: hidden;
   border-radius: var(--section-radius);
   position: relative;
@@ -417,7 +418,7 @@ header .header-wrapper .logo-main {
   width: auto;
 }
 .desktop-slider .swiper-slide {
-  height: 100vh;
+  height: 100svh;
   position: relative;
 }
 .desktop-slider .swiper-slide > img {
@@ -539,7 +540,7 @@ header .header-wrapper .logo-main {
 }
 #first-section {
   top: 0;
-  height: 100vh;
+  height: 100svh;
   z-index: 2;
 }
 #first-section > img {
@@ -680,6 +681,13 @@ footer {
     width: 44px;
     height: 44px;
   }
+  .tags {
+    margin-top: 40px;
+    font-size: 40px;
+  }
+  .tags .tag {
+    padding: 20px 40px;
+  }
   .section-wrapper .half-slider .half-slider-text .text-wrapper .slide-number {
     font-size: 148px;
   }
@@ -699,13 +707,6 @@ footer {
   .section-wrapper .section-title-wrapper .section-title .description {
     margin-top: 20px;
     font-size: 52px;
-  }
-  .section-wrapper .section-title-wrapper .section-title .tags {
-    margin-top: 40px;
-    font-size: 40px;
-  }
-  .section-wrapper .section-title-wrapper .section-title .tags .tag {
-    padding: 20px 40px;
   }
   #first-section .slogan {
     font-size: 390px;
@@ -763,7 +764,7 @@ footer {
     height: auto;
   }
   .section-wrapper .half-slider .half-slider-img .img-wrapper {
-    height: 100vh;
+    height: 100svh;
   }
   .section-wrapper .half-slider .half-slider-img .img-wrapper > img {
     width: 100%;
@@ -909,6 +910,9 @@ footer {
     left: 50%;
     transform: translate(-50%, -50%);
   }
+  .tags {
+    font-size: 16px;
+  }
   .section-wrapper .desktop-slider-buttons {
     display: none;
   }
@@ -923,7 +927,7 @@ footer {
     flex-direction: column;
     width: 100%;
     height: 100%;
-    padding: 100px 20px 20px;
+    padding: 100px 20px 50px;
     gap: 40px;
   }
   .section-wrapper .mobile-section-title-wrapper .mobile-img {

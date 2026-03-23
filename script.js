@@ -1,4 +1,4 @@
-import { g as gsapWithCSS, O as Observer, S as ScrollToPlugin, a as ScrollTrigger, b as Swiper, E as EffectFade, N as Navigation, c as EffectCreative, I as IMask } from './modules.js';
+import { g as gsapWithCSS, O as Observer, S as ScrollToPlugin, a as ScrollTrigger, b as Swiper, E as EffectFade, N as Navigation, I as IMask } from './modules.js';
 
 true              &&(function polyfill() {
 	const relList = document.createElement("link").relList;
@@ -173,21 +173,21 @@ function initFullpageSlider(sliderElement, buttonsElement) {
 
 function initMobileSlider(sliderElement) {
   new Swiper(sliderElement, {
-    modules: [EffectCreative],
-    effect: "creative",
-    creativeEffect: {
-      prev: {
-        translate: ["-20%", 0, -1]
-      },
-      next: {
-        translate: ["100%", 0, 0]
-      }
-    },
-    // modules: [EffectFade],
-    // effect: 'fade',
-    // fadeEffect: {
-    //     crossFade: true
+    // modules: [EffectCreative],
+    // effect: 'creative',
+    // creativeEffect: {
+    //     prev: {
+    //         translate: ["-20%", 0, -1],
+    //     },
+    //         next: {
+    //         translate: ["100%", 0, 0],
+    //     },
     // },
+    modules: [EffectFade],
+    effect: "fade",
+    fadeEffect: {
+      crossFade: true
+    },
     speed: 700,
     loop: true
   });
