@@ -1,4 +1,4 @@
-import { g as gsapWithCSS, O as Observer, S as ScrollToPlugin, a as ScrollTrigger, b as Swiper, E as EffectFade, N as Navigation, I as IMask } from './modules.js';
+import { g as gsapWithCSS, O as Observer, S as ScrollToPlugin, a as ScrollTrigger, b as Swiper, E as EffectFade, N as Navigation, c as EffectCreative, I as IMask } from './modules.js';
 
 true              &&(function polyfill() {
 	const relList = document.createElement("link").relList;
@@ -36,12 +36,13 @@ function bootstrap() {
 }
 
 function createPageObserver(onDownCallback, onUpCallback) {
-  Observer.create({
+  const observer = Observer.create({
     type: "wheel,touch,pointer",
     wheelSpeed: -1,
     target: window,
-    tolerance: 10,
+    tolerance: 50,
     preventDefault: true,
+    ignore: document.getElementById("application-form"),
     onDown() {
       onDownCallback();
     },
@@ -49,6 +50,7 @@ function createPageObserver(onDownCallback, onUpCallback) {
       onUpCallback();
     }
   });
+  return observer;
 }
 
 function createFirstScreenDesktopState(sectionElement, tl) {
@@ -125,7 +127,7 @@ function createFirstScreenMobileState(sectionElement, tl) {
   tl.to(maskElement, {
     duration: 1.5,
     ease: "none",
-    maskSize: "100% 100%, 0px"
+    maskSize: "100% 100%, auto 0%"
   });
   tl.set(maskElement, { delay: 0.1, display: "none" });
   tl.set(backgroundElement, { opacity: 0.1 });
@@ -166,6 +168,28 @@ function initFullpageSlider(sliderElement, buttonsElement) {
       nextEl: nextBtn,
       prevEl: prevBtn
     }
+  });
+}
+
+function initMobileSlider(sliderElement) {
+  new Swiper(sliderElement, {
+    modules: [EffectCreative],
+    effect: "creative",
+    creativeEffect: {
+      prev: {
+        translate: ["-20%", 0, -1]
+      },
+      next: {
+        translate: ["100%", 0, 0]
+      }
+    },
+    // modules: [EffectFade],
+    // effect: 'fade',
+    // fadeEffect: {
+    //     crossFade: true
+    // },
+    speed: 700,
+    loop: true
   });
 }
 
@@ -310,18 +334,25 @@ function createPremiumClassDesktopState(sectionElement, tl, startStep) {
 function createPremiumClassMobileState(sectionElement, tl, startStep) {
   const maxStep = startStep + 9;
   const mobileTitleElement = sectionElement.querySelector(".mobile-section-title-wrapper");
-  const titleImageElement = mobileTitleElement.querySelector(".img-wrapper");
+  const titleImageElement = mobileTitleElement.querySelector(".mobile-img");
+  const titleImageWrapperElement = titleImageElement.querySelector(".img-wrapper");
+  titleImageWrapperElement.querySelector("img").style.height = `${titleImageElement.getBoundingClientRect().height}px`;
   const sliderElement = sectionElement.querySelector(".mobile-slider");
   const sliders = sliderElement.querySelectorAll(".slide-wrapper");
+  sliders.forEach((wrapper) => {
+    const swiper = wrapper.querySelector(".mobile-swiper");
+    if (!swiper) return;
+    initMobileSlider(swiper);
+  });
   tl.to(sectionElement, {
     duration: 1.5,
     delay: 0.5,
     ease: "none",
     yPercent: -100
-  }, "<").to(titleImageElement, {
+  }, "<").to(titleImageWrapperElement, {
     duration: 1.5,
     ease: "none",
-    height: "75vh"
+    height: "100%"
   }, "<");
   tl.addLabel(`${startStep + 1}`);
   tl.to(mobileTitleElement, {
@@ -491,7 +522,9 @@ function createSafetyAndComfortDesktopState(sectionElement, tl, startStep) {
 function createSafetyAndComfortMobileState(sectionElement, tl, startStep) {
   const maxStep = startStep + 3;
   const mobileTitleElement = sectionElement.querySelector(".mobile-section-title-wrapper");
-  const titleImageElement = mobileTitleElement.querySelector(".img-wrapper");
+  const titleImageElement = mobileTitleElement.querySelector(".mobile-img");
+  const titleImageWrapperElement = titleImageElement.querySelector(".img-wrapper");
+  titleImageWrapperElement.querySelector("img").style.height = `${titleImageElement.getBoundingClientRect().height}px`;
   const sliderElement = sectionElement.querySelector(".mobile-slider");
   const sliders = sliderElement.querySelectorAll(".slide-wrapper");
   tl.to(sectionElement, {
@@ -499,10 +532,10 @@ function createSafetyAndComfortMobileState(sectionElement, tl, startStep) {
     delay: 0.5,
     ease: "none",
     yPercent: -100
-  }, "<").to(titleImageElement, {
+  }, "<").to(titleImageWrapperElement, {
     duration: 1.5,
     ease: "none",
-    height: "75vh"
+    height: "100%"
   }, "<");
   tl.addLabel(`${startStep + 1}`);
   tl.to(mobileTitleElement, {
@@ -610,18 +643,25 @@ function createImprovementDesktopState(sectionElement, tl, startStep) {
 function createImprovementMobileState(sectionElement, tl, startStep) {
   const maxStep = startStep + 3;
   const mobileTitleElement = sectionElement.querySelector(".mobile-section-title-wrapper");
-  const titleImageElement = mobileTitleElement.querySelector(".img-wrapper");
+  const titleImageElement = mobileTitleElement.querySelector(".mobile-img");
+  const titleImageWrapperElement = titleImageElement.querySelector(".img-wrapper");
+  titleImageWrapperElement.querySelector("img").style.height = `${titleImageElement.getBoundingClientRect().height}px`;
   const sliderElement = sectionElement.querySelector(".mobile-slider");
   const sliders = sliderElement.querySelectorAll(".slide-wrapper");
+  sliders.forEach((wrapper) => {
+    const swiper = wrapper.querySelector(".mobile-swiper");
+    if (!swiper) return;
+    initMobileSlider(swiper);
+  });
   tl.to(sectionElement, {
     duration: 1.5,
     delay: 0.5,
     ease: "none",
     yPercent: -100
-  }, "<").to(titleImageElement, {
+  }, "<").to(titleImageWrapperElement, {
     duration: 1.5,
     ease: "none",
-    height: "75vh"
+    height: "100%"
   }, "<");
   tl.addLabel(`${startStep + 1}`);
   tl.to(mobileTitleElement, {
@@ -729,18 +769,25 @@ function createDesignAndInteriorDesktopState(sectionElement, tl, startStep) {
 function createDesignAndInteriorMobileState(sectionElement, tl, startStep) {
   const maxStep = startStep + 3;
   const mobileTitleElement = sectionElement.querySelector(".mobile-section-title-wrapper");
-  const titleImageElement = mobileTitleElement.querySelector(".img-wrapper");
+  const titleImageElement = mobileTitleElement.querySelector(".mobile-img");
+  const titleImageWrapperElement = titleImageElement.querySelector(".img-wrapper");
+  titleImageWrapperElement.querySelector("img").style.height = `${titleImageElement.getBoundingClientRect().height}px`;
   const sliderElement = sectionElement.querySelector(".mobile-slider");
   const sliders = sliderElement.querySelectorAll(".slide-wrapper");
+  sliders.forEach((wrapper) => {
+    const swiper = wrapper.querySelector(".mobile-swiper");
+    if (!swiper) return;
+    initMobileSlider(swiper);
+  });
   tl.to(sectionElement, {
     duration: 1.5,
     delay: 0.5,
     ease: "none",
     yPercent: -100
-  }, "<").to(titleImageElement, {
+  }, "<").to(titleImageWrapperElement, {
     duration: 1.5,
     ease: "none",
-    height: "75vh"
+    height: "100%"
   }, "<");
   tl.addLabel(`${startStep + 1}`);
   tl.to(mobileTitleElement, {
@@ -827,18 +874,25 @@ function createApartmentsDesktopState(sectionElement, tl, startStep) {
 function createApartmentsMobileState(sectionElement, tl, startStep) {
   const maxStep = startStep + 3;
   const mobileTitleElement = sectionElement.querySelector(".mobile-section-title-wrapper");
-  const titleImageElement = mobileTitleElement.querySelector(".img-wrapper");
+  const titleImageElement = mobileTitleElement.querySelector(".mobile-img");
+  const titleImageWrapperElement = titleImageElement.querySelector(".img-wrapper");
+  titleImageWrapperElement.querySelector("img").style.height = `${titleImageElement.getBoundingClientRect().height}px`;
   const sliderElement = sectionElement.querySelector(".mobile-slider");
   const sliders = sliderElement.querySelectorAll(".slide-wrapper");
+  sliders.forEach((wrapper) => {
+    const swiper = wrapper.querySelector(".mobile-swiper");
+    if (!swiper) return;
+    initMobileSlider(swiper);
+  });
   tl.to(sectionElement, {
     duration: 1.5,
     delay: 0.5,
     ease: "none",
     yPercent: -100
-  }, "<").to(titleImageElement, {
+  }, "<").to(titleImageWrapperElement, {
     duration: 1.5,
     ease: "none",
-    height: "75vh"
+    height: "100%"
   }, "<");
   tl.addLabel(`${startStep + 1}`);
   tl.to(mobileTitleElement, {
@@ -918,18 +972,25 @@ function createPenthousesDesktopState(sectionElement, tl, startStep) {
 function createPenthousesMobileState(sectionElement, tl, startStep) {
   const maxStep = startStep + 3;
   const mobileTitleElement = sectionElement.querySelector(".mobile-section-title-wrapper");
-  const titleImageElement = mobileTitleElement.querySelector(".img-wrapper");
+  const titleImageElement = mobileTitleElement.querySelector(".mobile-img");
+  const titleImageWrapperElement = titleImageElement.querySelector(".img-wrapper");
+  titleImageWrapperElement.querySelector("img").style.height = `${titleImageElement.getBoundingClientRect().height}px`;
   const sliderElement = sectionElement.querySelector(".mobile-slider");
   const sliders = sliderElement.querySelectorAll(".slide-wrapper");
+  sliders.forEach((wrapper) => {
+    const swiper = wrapper.querySelector(".mobile-swiper");
+    if (!swiper) return;
+    initMobileSlider(swiper);
+  });
   tl.to(sectionElement, {
     duration: 1.5,
     delay: 0.5,
     ease: "none",
     yPercent: -100
-  }, "<").to(titleImageElement, {
+  }, "<").to(titleImageWrapperElement, {
     duration: 1.5,
     ease: "none",
-    height: "75vh"
+    height: "100%"
   }, "<");
   tl.addLabel(`${startStep + 1}`);
   tl.to(mobileTitleElement, {
@@ -1155,7 +1216,9 @@ function createPageState() {
   } else {
     let increaseStep = function() {
       if (gsapWithCSS.isTweening(tl) || !ready) return;
-      if (currentStep === sectionsTools.at(-1).maxStep) return;
+      if (currentStep === sectionsTools.at(-1).maxStep) {
+        return;
+      }
       currentStep++;
       tl.tweenTo(`${currentStep}`);
     }, decreaseStep = function() {
@@ -1171,10 +1234,7 @@ function createPageState() {
     if (!sectionsTools) return;
     let currentStep = 0;
     tl.tweenTo(`${0}`);
-    createPageObserver(
-      () => decreaseStep(),
-      () => increaseStep()
-    );
+    createPageObserver(decreaseStep, increaseStep);
     const firstScreenSection = document.getElementById("first-section");
     const smallLogoElement = document.getElementById("anchor-logo");
     smallLogoElement?.addEventListener("click", () => {
