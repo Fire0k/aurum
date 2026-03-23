@@ -106,7 +106,7 @@ export function createFirstScreenMobileState(
     tl.to(maskElement, {
         duration: 1.5,
         ease: "none",
-        maskSize: '100% 100%, 0px',
+        maskSize: '100% 100%, auto 0%',
     })
 
     tl.set(maskElement, { delay: 0.1, display: 'none' });

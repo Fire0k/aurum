@@ -2,6 +2,7 @@ import gsap from "gsap";
 
 import { SectionTools } from '../types';
 import { initFullpageSlider } from './init-fullpage-slider';
+import { initMobileSlider } from './init-mobile-slider';
 
 
 export function createDesignAndInteriorDesktopState(
@@ -104,20 +105,29 @@ export function createDesignAndInteriorMobileState(
     const maxStep: number = startStep + 3;
 
     const mobileTitleElement = sectionElement.querySelector('.mobile-section-title-wrapper')!;
-    const titleImageElement = mobileTitleElement.querySelector('.img-wrapper')!;
+    const titleImageElement = mobileTitleElement.querySelector('.mobile-img')!;
+    const titleImageWrapperElement = titleImageElement.querySelector('.img-wrapper')!;
+    titleImageWrapperElement.querySelector('img')!.style.height = `${titleImageElement.getBoundingClientRect().height}px`;
 
     const sliderElement = sectionElement.querySelector('.mobile-slider')!;
     const sliders = sliderElement.querySelectorAll('.slide-wrapper');
+
+    sliders.forEach((wrapper) => {
+        const swiper = wrapper.querySelector('.mobile-swiper');
+        if (!swiper) return;
+
+        initMobileSlider(swiper);
+    })
 
     tl.to(sectionElement, { 
         duration: 1.5,
         delay: 0.5,
         ease: "none",
         yPercent: -100,
-    }, "<").to(titleImageElement, { 
+    }, "<").to(titleImageWrapperElement, { 
         duration: 1.5,
         ease: "none",
-        height: '75vh',
+        height: '100%',
     }, "<");
 
     tl.addLabel(`${startStep + 1}`);

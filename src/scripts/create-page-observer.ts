@@ -2,12 +2,13 @@ import Observer from "gsap/dist/Observer";
 
 
 export function createPageObserver(onDownCallback: () => void, onUpCallback: () => void) {
-    Observer.create({
+    const observer = Observer.create({
         type: "wheel,touch,pointer",
         wheelSpeed: -1,
         target: window,
-        tolerance: 10,
+        tolerance: 50,
         preventDefault: true,
+        ignore: document.getElementById('application-form'),
 
         onDown() {
             onDownCallback();
@@ -17,4 +18,6 @@ export function createPageObserver(onDownCallback: () => void, onUpCallback: () 
             onUpCallback();
         },
     });
+
+    return observer;
 }

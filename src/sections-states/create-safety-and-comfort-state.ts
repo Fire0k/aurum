@@ -93,7 +93,9 @@ export function createSafetyAndComfortMobileState(
     const maxStep: number = startStep + 3;
 
     const mobileTitleElement = sectionElement.querySelector('.mobile-section-title-wrapper')!;
-    const titleImageElement = mobileTitleElement.querySelector('.img-wrapper')!;
+    const titleImageElement = mobileTitleElement.querySelector('.mobile-img')!;
+    const titleImageWrapperElement = titleImageElement.querySelector('.img-wrapper')!;
+    titleImageWrapperElement.querySelector('img')!.style.height = `${titleImageElement.getBoundingClientRect().height}px`;
 
     const sliderElement = sectionElement.querySelector('.mobile-slider')!;
     const sliders = sliderElement.querySelectorAll('.slide-wrapper');
@@ -103,10 +105,10 @@ export function createSafetyAndComfortMobileState(
         delay: 0.5,
         ease: "none",
         yPercent: -100,
-    }, "<").to(titleImageElement, { 
+    }, "<").to(titleImageWrapperElement, { 
         duration: 1.5,
         ease: "none",
-        height: '75vh',
+        height: '100%',
     }, "<");
 
     tl.addLabel(`${startStep + 1}`);

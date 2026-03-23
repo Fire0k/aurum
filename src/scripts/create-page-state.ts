@@ -120,7 +120,10 @@ export function createPageState() {
         function increaseStep() {
             if (gsap.isTweening(tl) || !ready) return;
 
-            if (currentStep === sectionsTools.at(-1)!.maxStep) return;
+            if (currentStep === sectionsTools.at(-1)!.maxStep) {
+                // observer.disable();
+                return;
+            };
 
             currentStep++;
             tl.tweenTo(`${currentStep}`);
@@ -144,10 +147,7 @@ export function createPageState() {
 
         tl.tweenTo(`${0}`);
 
-        createPageObserver(
-            () => decreaseStep(),
-            () => increaseStep(),
-        );
+        const observer = createPageObserver(decreaseStep, increaseStep);
 
         const firstScreenSection = document.getElementById('first-section')!;
         const smallLogoElement = document.getElementById('anchor-logo');
