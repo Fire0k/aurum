@@ -5,7 +5,7 @@ export function createPageObserver(onDownCallback: () => void, onUpCallback: () 
     const observer = Observer.create({
         type: "wheel,touch,pointer",
         wheelSpeed: -1,
-        target: window,
+        target: document.querySelector('.main-page-wrapper'),
         tolerance: 50,
         preventDefault: false,
         ignore: document.getElementById('application-form'),
