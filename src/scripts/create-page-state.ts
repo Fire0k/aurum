@@ -132,7 +132,7 @@ export function createPageState() {
                 prevStep++;
             }
 
-            window.scrollBy({ top: 0 })
+            window.scrollBy({ top: 1 })
         }
         function decreaseStep() {
             if (gsap.isTweening(tl)) return;
