@@ -39,9 +39,9 @@ function createPageObserver(onDownCallback, onUpCallback) {
   const observer = Observer.create({
     type: "wheel,touch,pointer",
     wheelSpeed: -1,
-    target: document.querySelector(".main-page-wrapper"),
+    target: window,
     tolerance: 50,
-    preventDefault: false,
+    preventDefault: true,
     ignore: document.getElementById("application-form"),
     onDown() {
       onDownCallback();
