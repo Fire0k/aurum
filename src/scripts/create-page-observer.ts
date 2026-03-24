@@ -7,7 +7,7 @@ export function createPageObserver(onDownCallback: () => void, onUpCallback: () 
         wheelSpeed: -1,
         target: window,
         tolerance: 50,
-        preventDefault: true,
+        preventDefault: false,
         ignore: document.getElementById('application-form'),
 
         onDown() {
