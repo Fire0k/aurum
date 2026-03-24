@@ -121,7 +121,6 @@ export function createImprovementMobileState(
 
     tl.to(sectionElement, { 
         duration: 1.5,
-        delay: 0.5,
         ease: "none",
         yPercent: -100,
     }, "<").to(titleImageWrapperElement, { 

@@ -1,9 +1,16 @@
 body {
-    position: relative;
     margin: 0;
-    height: 100vh;
-    width: 100vw;
-    overflow: hidden;
+    
+    .scroll-area {
+        height: 5000vh;
+
+        .main-page-wrapper {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            width: 100vw;
+        }
+    }
 }
 
 .mobile-menu {
@@ -690,8 +697,6 @@ footer {
 @media (max-width: 992px) {
     body {
         background: #333333;
-        // overflow: visible;
-        height: auto;
 
         .filter {
             transition-property: opacity;
@@ -805,9 +810,6 @@ footer {
     }
 
     .section-wrapper {
-        position: relative;
-        top: unset;
-
         .desktop-slider-buttons {
             display: none;
         }
@@ -930,11 +932,6 @@ footer {
         flex-direction: column;
         align-items: center;
         gap: 20px;
-    }
-
-    footer {
-        position: relative;
-        background-color: #333333;
     }
 }
 @media (max-width: 768px) {

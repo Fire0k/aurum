@@ -109,11 +109,10 @@ export function createFirstScreenMobileState(
         maskSize: '100% 100%, auto 0%',
     })
 
-    tl.set(maskElement, { delay: 0.1, display: 'none' });
+    tl.set(maskElement, { display: 'none' });
     tl.set(backgroundElement, { opacity: 0.1 });
 
     tl.to(nextSectionTitleElement, {
-        delay: 0.2,
         duration: 1.5,
         ease: "power1.out",
         opacity: 1,

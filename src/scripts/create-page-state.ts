@@ -109,7 +109,73 @@ export function createPageState() {
         let ready = false;
         setTimeout(() => ready = true, 2500)
 
-        const tl = gsap.timeline({ paused: true });
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: '.scroll-area',
+                start: 'top top',
+                end: 'bottom bottom',
+                scrub: 1,
+                // snap: {
+                //     snapTo: (progress, self) => {
+                //         const labels = Object.values(self.animation.labels)
+                //         const duration = self.animation.duration()
+
+                //         // текущая позиция таймлайна
+                //         const currentTime = progress * duration
+
+                //         if (self.direction > 0) {
+                //             // 🔽 скролл вниз → ищем следующий label
+                //             for (let i = 0; i < labels.length; i++) {
+                //             if (labels[i] > currentTime) {
+                //                 return labels[i] / duration
+                //             }
+                //             }
+                //             return 1 // если в конце
+                //         } else {
+                //             // 🔼 скролл вверх → ищем предыдущий label
+                //             for (let i = labels.length - 1; i >= 0; i--) {
+                //             if (labels[i] < currentTime) {
+                //                 return labels[i] / duration
+                //             }
+                //             }
+                //             return 0 // если в начале
+                //         }
+                //     },
+                //     duration: 0.5,
+                //     delay: 0,
+                //     ease: "none"
+                // },
+                // snapTo: (progress, self) => {
+                //     const tl = self.animation
+                //     const duration = tl.duration()
+                //     const currentTime = progress * duration
+
+                //     const labels = Object.values(tl.labels)
+
+                //     const threshold = 2 // 🔥 зона прилипания (в секундах таймлайна)
+
+                //     let closest = null
+                //     let minDistance = Infinity
+
+                //     for (let i = 0; i < labels.length; i++) {
+                //         const dist = Math.abs(labels[i] - currentTime)
+
+                //         if (dist < minDistance) {
+                //         minDistance = dist
+                //         closest = labels[i]
+                //         }
+                //     }
+
+                //     // 👉 если близко к лейблу — снапим
+                //     if (minDistance <= threshold) {
+                //         return closest / duration
+                //     }
+
+                //     // 👉 если далеко — НЕ снапим (остаёмся где есть)
+                //     return progress
+                // }
+            }
+        });
 
         const sectionsTools = getMobileSectionTools(tl) as SectionTools[];
         if (!sectionsTools) return;
@@ -147,7 +213,7 @@ export function createPageState() {
 
         tl.tweenTo(`${0}`);
 
-        const observer = createPageObserver(decreaseStep, increaseStep);
+        // createPageObserver(decreaseStep, increaseStep);
 
         const firstScreenSection = document.getElementById('first-section')!;
         const smallLogoElement = document.getElementById('anchor-logo');
