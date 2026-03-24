@@ -1221,6 +1221,7 @@ function createPageState() {
       }
       currentStep++;
       tl.tweenTo(`${currentStep}`);
+      window.scrollBy({ top: 0 });
     }, decreaseStep = function() {
       if (gsapWithCSS.isTweening(tl)) return;
       if (currentStep === 0) return;
