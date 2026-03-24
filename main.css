@@ -335,9 +335,14 @@ footer {
 body {
   position: relative;
   margin: 0;
-  height: 100vh;
+  height: 100dvh;
   width: 100vw;
   overflow: hidden;
+}
+body::after {
+  content: '';
+  display: block;
+  height: 1px;
 }
 .mobile-menu {
   position: fixed;
@@ -404,7 +409,7 @@ header .header-wrapper .logo-main {
   font-weight: 800;
 }
 .mobile-slider .slide-wrapper .slide-img {
-  height: 75vh;
+  height: 75dvh;
   overflow: hidden;
   border-radius: var(--section-radius);
   position: relative;
@@ -418,7 +423,7 @@ header .header-wrapper .logo-main {
   width: auto;
 }
 .desktop-slider .swiper-slide {
-  height: 100vh;
+  height: 100dvh;
   position: relative;
 }
 .desktop-slider .swiper-slide > img {
@@ -540,7 +545,7 @@ header .header-wrapper .logo-main {
 }
 #first-section {
   top: 0;
-  height: 100vh;
+  height: 100dvh;
   z-index: 2;
 }
 #first-section > img {
@@ -607,6 +612,7 @@ header .header-wrapper .logo-main {
   font-size: 20px;
   color: #1c1c1c;
   font-weight: 300;
+  text-decoration: none;
 }
 .safety-and-comfort-background {
   z-index: 7;
@@ -764,7 +770,7 @@ footer {
     height: auto;
   }
   .section-wrapper .half-slider .half-slider-img .img-wrapper {
-    height: 100vh;
+    height: 100dvh;
   }
   .section-wrapper .half-slider .half-slider-img .img-wrapper > img {
     width: 100%;
