@@ -41,7 +41,7 @@ function createPageObserver(onDownCallback, onUpCallback) {
     wheelSpeed: -1,
     target: window,
     tolerance: 50,
-    preventDefault: true,
+    preventDefault: false,
     ignore: document.getElementById("application-form"),
     onDown() {
       onDownCallback();
@@ -1221,7 +1221,6 @@ function createPageState() {
       }
       currentStep++;
       tl.tweenTo(`${currentStep}`);
-      window.scrollBy({ top: 1 });
     }, decreaseStep = function() {
       if (gsapWithCSS.isTweening(tl)) return;
       if (currentStep === 0) return;

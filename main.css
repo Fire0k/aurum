@@ -339,11 +339,6 @@ body {
   width: 100vw;
   overflow: hidden;
 }
-body::after {
-  content: '';
-  display: block;
-  height: 1px;
-}
 .mobile-menu {
   position: fixed;
   inset: 0;
