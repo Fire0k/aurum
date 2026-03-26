@@ -31,3 +31,37 @@ export function createApplicationFormDesktopState(
         maxStep,
     }
 }
+
+export function createApplicationFormMobileState(
+    sectionElement: Element,
+    tl: gsap.core.Timeline,
+    startStep: number,
+): SectionTools {
+    const maxStep: number = startStep + 1;
+
+    const footerElement = document.querySelector('footer')!;
+    const footerHeight = footerElement.getBoundingClientRect().height;
+
+    tl.set(sectionElement, { yPercent: -80 });
+
+    tl.to(sectionElement, {
+        duration: 1,
+        ease: 'none',
+        yPercent: -100,
+        opacity: 1,
+    }).to(sectionElement, {
+        duration: 1,
+        ease: 'none',
+        y: -footerHeight,
+    }).to(footerElement, {
+        duration: 1,
+        ease: 'none',
+        yPercent: -100,
+    }, "<")
+
+    tl.addLabel(`${startStep + 1}`);
+
+    return {
+        maxStep,
+    }
+}
