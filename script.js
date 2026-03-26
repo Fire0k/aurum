@@ -125,16 +125,15 @@ function createFirstScreenMobileState(sectionElement, tl) {
   tl.set(nextSectionTitleElement, { yPercent: 50 });
   tl.addLabel("0");
   tl.to(maskElement, {
-    duration: 1.5,
+    duration: 1,
     ease: "none",
     maskSize: "100% 100%, auto 0%"
   });
-  tl.set(maskElement, { delay: 0.1, display: "none" });
+  tl.set(maskElement, { display: "none" });
   tl.set(backgroundElement, { opacity: 0.1 });
   tl.to(nextSectionTitleElement, {
-    delay: 0.2,
-    duration: 1.5,
-    ease: "power1.out",
+    duration: 1,
+    ease: "none",
     opacity: 1,
     yPercent: -50
   });
@@ -345,103 +344,102 @@ function createPremiumClassMobileState(sectionElement, tl, startStep) {
     initMobileSlider(swiper);
   });
   tl.to(sectionElement, {
-    duration: 1.5,
-    delay: 0.5,
+    duration: 1,
     ease: "none",
     yPercent: -100
   }, "<").to(titleImageWrapperElement, {
-    duration: 1.5,
+    duration: 1,
     ease: "none",
     height: "100%"
   }, "<");
   tl.addLabel(`${startStep + 1}`);
   tl.to(mobileTitleElement, {
-    duration: 1.5,
+    duration: 1,
     ease: "none",
     opacity: 0,
     height: "30%",
     display: "none"
   }).fromTo(sliderElement, { yPercent: 100 }, {
-    duration: 1.5,
+    duration: 1,
     ease: "none",
     yPercent: 0
   });
   tl.addLabel(`${startStep + 2}`);
   tl.to(sliders[0], {
-    duration: 1.5,
+    duration: 1,
     ease: "none",
     yPercent: -5
   }).to(sliders[0].querySelector(".slide-text"), {
-    duration: 1.5,
+    duration: 1,
     ease: "none",
     opacity: 0,
     height: 0
   }, "<");
   tl.addLabel(`${startStep + 3}`);
   tl.to(sliders[0], {
-    duration: 1.5,
+    duration: 1,
     ease: "none",
     opacity: 0,
     yPercent: -10,
     display: "none"
   }).fromTo(sliders[1], { yPercent: 100 }, {
-    duration: 1.5,
+    duration: 1,
     ease: "none",
     yPercent: 0
   });
   tl.addLabel(`${startStep + 4}`);
   tl.to(sliders[1], {
-    duration: 1.5,
+    duration: 1,
     ease: "none",
     yPercent: -5
   }).to(sliders[1].querySelector(".slide-text"), {
-    duration: 1.5,
+    duration: 1,
     ease: "none",
     opacity: 0,
     height: 0
   }, "<");
   tl.addLabel(`${startStep + 5}`);
   tl.to(sliders[1], {
-    duration: 1.5,
+    duration: 1,
     ease: "none",
     opacity: 0,
     yPercent: -10,
     display: "none"
   }).fromTo(sliders[2], { yPercent: 100 }, {
-    duration: 1.5,
+    duration: 1,
     ease: "none",
     yPercent: 0
   });
   tl.addLabel(`${startStep + 6}`);
   tl.to(sliders[2], {
-    duration: 1.5,
+    duration: 1,
     ease: "none",
     yPercent: -5
   }).to(sliders[2].querySelector(".slide-text"), {
-    duration: 1.5,
+    duration: 1,
     ease: "none",
     opacity: 0,
     height: 0
   }, "<");
   tl.addLabel(`${startStep + 7}`);
   tl.to(sliders[2], {
-    duration: 1.5,
+    duration: 1,
     ease: "none",
     opacity: 0,
     yPercent: -10,
     display: "none"
   }).fromTo(sliders[3], { yPercent: 100 }, {
-    duration: 1.5,
+    duration: 1,
     ease: "none",
     yPercent: 0
   });
   tl.addLabel(`${startStep + 8}`);
   tl.to(sliders[3], {
-    duration: 1.5,
+    duration: 1,
     ease: "none",
     yPercent: -5
   }).to(sliders[3].querySelector(".slide-text"), {
-    duration: 1.5,
+    duration: 1,
     ease: "none",
     opacity: 0,
     height: 0
@@ -528,34 +526,33 @@ function createSafetyAndComfortMobileState(sectionElement, tl, startStep) {
   const sliderElement = sectionElement.querySelector(".mobile-slider");
   const sliders = sliderElement.querySelectorAll(".slide-wrapper");
   tl.to(sectionElement, {
-    duration: 1.5,
-    delay: 0.5,
+    duration: 1,
     ease: "none",
     yPercent: -100
   }, "<").to(titleImageWrapperElement, {
-    duration: 1.5,
+    duration: 1,
     ease: "none",
     height: "100%"
   }, "<");
   tl.addLabel(`${startStep + 1}`);
   tl.to(mobileTitleElement, {
-    duration: 1.5,
+    duration: 1,
     ease: "none",
     opacity: 0,
     height: "30%",
     display: "none"
   }).fromTo(sliderElement, { yPercent: 100 }, {
-    duration: 1.5,
+    duration: 1,
     ease: "none",
     yPercent: 0
   });
   tl.addLabel(`${startStep + 2}`);
   tl.to(sliders[0], {
-    duration: 1.5,
+    duration: 1,
     ease: "none",
     yPercent: -5
   }).to(sliders[0].querySelector(".slide-text"), {
-    duration: 1.5,
+    duration: 1,
     ease: "none",
     opacity: 0,
     height: 0
@@ -654,34 +651,33 @@ function createImprovementMobileState(sectionElement, tl, startStep) {
     initMobileSlider(swiper);
   });
   tl.to(sectionElement, {
-    duration: 1.5,
-    delay: 0.5,
+    duration: 1,
     ease: "none",
     yPercent: -100
   }, "<").to(titleImageWrapperElement, {
-    duration: 1.5,
+    duration: 1,
     ease: "none",
     height: "100%"
   }, "<");
   tl.addLabel(`${startStep + 1}`);
   tl.to(mobileTitleElement, {
-    duration: 1.5,
+    duration: 1,
     ease: "none",
     opacity: 0,
     height: "30%",
     display: "none"
   }).fromTo(sliderElement, { yPercent: 100 }, {
-    duration: 1.5,
+    duration: 1,
     ease: "none",
     yPercent: 0
   });
   tl.addLabel(`${startStep + 2}`);
   tl.to(sliders[0], {
-    duration: 1.5,
+    duration: 1,
     ease: "none",
     yPercent: -5
   }).to(sliders[0].querySelector(".slide-text"), {
-    duration: 1.5,
+    duration: 1,
     ease: "none",
     opacity: 0,
     height: 0
@@ -780,34 +776,33 @@ function createDesignAndInteriorMobileState(sectionElement, tl, startStep) {
     initMobileSlider(swiper);
   });
   tl.to(sectionElement, {
-    duration: 1.5,
-    delay: 0.5,
+    duration: 1,
     ease: "none",
     yPercent: -100
   }, "<").to(titleImageWrapperElement, {
-    duration: 1.5,
+    duration: 1,
     ease: "none",
     height: "100%"
   }, "<");
   tl.addLabel(`${startStep + 1}`);
   tl.to(mobileTitleElement, {
-    duration: 1.5,
+    duration: 1,
     ease: "none",
     opacity: 0,
     height: "30%",
     display: "none"
   }).fromTo(sliderElement, { yPercent: 100 }, {
-    duration: 1.5,
+    duration: 1,
     ease: "none",
     yPercent: 0
   });
   tl.addLabel(`${startStep + 2}`);
   tl.to(sliders[0], {
-    duration: 1.5,
+    duration: 1,
     ease: "none",
     yPercent: -5
   }).to(sliders[0].querySelector(".slide-text"), {
-    duration: 1.5,
+    duration: 1,
     ease: "none",
     opacity: 0,
     height: 0
@@ -885,34 +880,33 @@ function createApartmentsMobileState(sectionElement, tl, startStep) {
     initMobileSlider(swiper);
   });
   tl.to(sectionElement, {
-    duration: 1.5,
-    delay: 0.5,
+    duration: 1,
     ease: "none",
     yPercent: -100
   }, "<").to(titleImageWrapperElement, {
-    duration: 1.5,
+    duration: 1,
     ease: "none",
     height: "100%"
   }, "<");
   tl.addLabel(`${startStep + 1}`);
   tl.to(mobileTitleElement, {
-    duration: 1.5,
+    duration: 1,
     ease: "none",
     opacity: 0,
     height: "30%",
     display: "none"
   }).fromTo(sliderElement, { yPercent: 100 }, {
-    duration: 1.5,
+    duration: 1,
     ease: "none",
     yPercent: 0
   });
   tl.addLabel(`${startStep + 2}`);
   tl.to(sliders[0], {
-    duration: 1.5,
+    duration: 1,
     ease: "none",
     yPercent: -5
   }).to(sliders[0].querySelector(".slide-text"), {
-    duration: 1.5,
+    duration: 1,
     ease: "none",
     opacity: 0,
     height: 0
@@ -983,18 +977,17 @@ function createPenthousesMobileState(sectionElement, tl, startStep) {
     initMobileSlider(swiper);
   });
   tl.to(sectionElement, {
-    duration: 1.5,
-    delay: 0.5,
+    duration: 1,
     ease: "none",
     yPercent: -100
   }, "<").to(titleImageWrapperElement, {
-    duration: 1.5,
+    duration: 1,
     ease: "none",
     height: "100%"
   }, "<");
   tl.addLabel(`${startStep + 1}`);
   tl.to(mobileTitleElement, {
-    duration: 1.5,
+    duration: 1,
     ease: "none",
     opacity: 0,
     height: "30%",
@@ -1006,11 +999,11 @@ function createPenthousesMobileState(sectionElement, tl, startStep) {
   });
   tl.addLabel(`${startStep + 2}`);
   tl.to(sliders[0], {
-    duration: 1.5,
+    duration: 1,
     ease: "none",
     yPercent: -5
   }).to(sliders[0].querySelector(".slide-text"), {
-    duration: 1.5,
+    duration: 1,
     ease: "none",
     opacity: 0,
     height: 0
@@ -1040,6 +1033,30 @@ function createApplicationFormDesktopState(sectionElement, tl, startStep) {
     ease: "power1.out",
     opacity: 1
   });
+  tl.addLabel(`${startStep + 1}`);
+  return {
+    maxStep
+  };
+}
+function createApplicationFormMobileState(sectionElement, tl, startStep) {
+  const maxStep = startStep + 1;
+  const footerElement = document.querySelector("footer");
+  const footerHeight = footerElement.getBoundingClientRect().height;
+  tl.set(sectionElement, { yPercent: -80 });
+  tl.to(sectionElement, {
+    duration: 1,
+    ease: "none",
+    yPercent: -100,
+    opacity: 1
+  }).to(sectionElement, {
+    duration: 1,
+    ease: "none",
+    y: -footerHeight
+  }).to(footerElement, {
+    duration: 1,
+    ease: "none",
+    yPercent: -100
+  }, "<");
   tl.addLabel(`${startStep + 1}`);
   return {
     maxStep
@@ -1101,7 +1118,7 @@ function getMobileSectionTools(tl) {
   tools.push(createDesignAndInteriorMobileState(sections.designAndInteriorSection, tl, tools[3].maxStep));
   tools.push(createApartmentsMobileState(sections.apartmentsSection, tl, tools[4].maxStep));
   tools.push(createPenthousesMobileState(sections.penthousesSection, tl, tools[5].maxStep));
-  tools.push(createApplicationFormDesktopState(sections.applicationFormSection, tl, tools[6].maxStep));
+  tools.push(createApplicationFormMobileState(sections.applicationFormSection, tl, tools[6].maxStep));
   return tools;
 }
 
@@ -1214,34 +1231,74 @@ function createPageState() {
       currentStep = 0;
     });
   } else {
-    let increaseStep = function() {
-      if (gsapWithCSS.isTweening(tl) || !ready) return;
-      if (currentStep === sectionsTools.at(-1).maxStep) {
-        return;
+    setTimeout(() => document.body.style.overflow = "auto", 2500);
+    const tl = gsapWithCSS.timeline({
+      scrollTrigger: {
+        trigger: ".scroll-area",
+        start: "top top",
+        end: "bottom bottom",
+        scrub: 1
+        // snap: {
+        //     snapTo: (progress, self) => {
+        //         const labels = Object.values(self.animation.labels)
+        //         const duration = self.animation.duration()
+        //         // текущая позиция таймлайна
+        //         const currentTime = progress * duration
+        //         if (self.direction > 0) {
+        //             // 🔽 скролл вниз → ищем следующий label
+        //             for (let i = 0; i < labels.length; i++) {
+        //             if (labels[i] > currentTime) {
+        //                 return labels[i] / duration
+        //             }
+        //             }
+        //             return 1 // если в конце
+        //         } else {
+        //             // 🔼 скролл вверх → ищем предыдущий label
+        //             for (let i = labels.length - 1; i >= 0; i--) {
+        //             if (labels[i] < currentTime) {
+        //                 return labels[i] / duration
+        //             }
+        //             }
+        //             return 0 // если в начале
+        //         }
+        //     },
+        //     duration: 0.5,
+        //     delay: 0,
+        //     ease: "none"
+        // },
+        // snapTo: (progress, self) => {
+        //     const tl = self.animation
+        //     const duration = tl.duration()
+        //     const currentTime = progress * duration
+        //     const labels = Object.values(tl.labels)
+        //     const threshold = 2 // 🔥 зона прилипания (в секундах таймлайна)
+        //     let closest = null
+        //     let minDistance = Infinity
+        //     for (let i = 0; i < labels.length; i++) {
+        //         const dist = Math.abs(labels[i] - currentTime)
+        //         if (dist < minDistance) {
+        //         minDistance = dist
+        //         closest = labels[i]
+        //         }
+        //     }
+        //     // 👉 если близко к лейблу — снапим
+        //     if (minDistance <= threshold) {
+        //         return closest / duration
+        //     }
+        //     // 👉 если далеко — НЕ снапим (остаёмся где есть)
+        //     return progress
+        // }
       }
-      currentStep++;
-      tl.tweenTo(`${currentStep}`);
-    }, decreaseStep = function() {
-      if (gsapWithCSS.isTweening(tl)) return;
-      if (currentStep === 0) return;
-      currentStep--;
-      tl.tweenTo(`${currentStep}`);
-    };
-    let ready = false;
-    setTimeout(() => ready = true, 2500);
-    const tl = gsapWithCSS.timeline({ paused: true });
+    });
     const sectionsTools = getMobileSectionTools(tl);
     if (!sectionsTools) return;
-    let currentStep = 0;
     tl.tweenTo(`${0}`);
-    createPageObserver(decreaseStep, increaseStep);
     const firstScreenSection = document.getElementById("first-section");
     const smallLogoElement = document.getElementById("anchor-logo");
     smallLogoElement?.addEventListener("click", () => {
       tl.progress(0);
       firstScreenSection.classList.remove("with-mask");
       tl.tweenTo(`${0}`);
-      currentStep = 0;
     });
   }
 }
