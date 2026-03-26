@@ -6,7 +6,7 @@ import { createImprovementDesktopState, createImprovementMobileState } from './c
 import { createDesignAndInteriorDesktopState, createDesignAndInteriorMobileState } from './create-design-and-interior-state';
 import { createApartmentsDesktopState, createApartmentsMobileState } from './create-apartments-state';
 import { createPenthousesDesktopState, createPenthousesMobileState } from './create-penthouses-state';
-import { createApplicationFormDesktopState } from './create-application-form-state';
+import { createApplicationFormDesktopState, createApplicationFormMobileState } from './create-application-form-state';
 
 
 function getSections() {
@@ -73,7 +73,7 @@ export function getMobileSectionTools(tl: gsap.core.Timeline): SectionTools[] | 
     tools.push(createDesignAndInteriorMobileState(sections.designAndInteriorSection, tl, tools[3].maxStep));
     tools.push(createApartmentsMobileState(sections.apartmentsSection, tl, tools[4].maxStep));
     tools.push(createPenthousesMobileState(sections.penthousesSection, tl, tools[5].maxStep));
-    tools.push(createApplicationFormDesktopState(sections.applicationFormSection, tl, tools[6].maxStep));
+    tools.push(createApplicationFormMobileState(sections.applicationFormSection, tl, tools[6].maxStep));
 
     return tools;
 }

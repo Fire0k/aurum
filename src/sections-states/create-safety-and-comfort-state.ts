@@ -101,11 +101,11 @@ export function createSafetyAndComfortMobileState(
     const sliders = sliderElement.querySelectorAll('.slide-wrapper');
 
     tl.to(sectionElement, { 
-        duration: 1.5,
+        duration: 1,
         ease: "none",
         yPercent: -100,
     }, "<").to(titleImageWrapperElement, { 
-        duration: 1.5,
+        duration: 1,
         ease: "none",
         height: '100%',
     }, "<");
@@ -113,13 +113,13 @@ export function createSafetyAndComfortMobileState(
     tl.addLabel(`${startStep + 1}`);
 
     tl.to(mobileTitleElement, {
-        duration: 1.5,
+        duration: 1,
         ease: "none",
         opacity: 0,
         height: '30%',
         display: 'none'
     }).fromTo(sliderElement, { yPercent: 100 }, {
-        duration: 1.5,
+        duration: 1,
         ease: "none",
         yPercent: 0,
     })
@@ -127,11 +127,11 @@ export function createSafetyAndComfortMobileState(
     tl.addLabel(`${startStep + 2}`);
 
     tl.to(sliders[0], {
-        duration: 1.5,
+        duration: 1,
         ease: "none",
         yPercent: -5,
     }).to(sliders[0].querySelector('.slide-text'), {
-        duration: 1.5,
+        duration: 1,
         ease: "none",
         opacity: 0,
         height: 0,

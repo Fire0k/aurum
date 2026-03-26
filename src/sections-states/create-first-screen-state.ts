@@ -104,7 +104,7 @@ export function createFirstScreenMobileState(
     tl.addLabel('0');
 
     tl.to(maskElement, {
-        duration: 1.5,
+        duration: 1,
         ease: "none",
         maskSize: '100% 100%, auto 0%',
     })
@@ -113,8 +113,8 @@ export function createFirstScreenMobileState(
     tl.set(backgroundElement, { opacity: 0.1 });
 
     tl.to(nextSectionTitleElement, {
-        duration: 1.5,
-        ease: "power1.out",
+        duration: 1,
+        ease: "none",
         opacity: 1,
         yPercent: -50,
     })
