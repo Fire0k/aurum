@@ -34,7 +34,8 @@ export function createPageState() {
 
     if (!isMobile) {
         document.querySelectorAll('[data-version="desktop"]').forEach(img => {
-            (img as HTMLImageElement).src = (img as HTMLImageElement).dataset.src!;
+            const url = new URL((img as HTMLImageElement).dataset.src!, import.meta.url).href;
+            (img as HTMLImageElement).src = url;
         })
 
         const tl = gsap.timeline({ paused: true });
@@ -111,7 +112,8 @@ export function createPageState() {
         })
     } else {
         document.querySelectorAll('[data-version="mobile"]').forEach(img => {
-            (img as HTMLImageElement).src = (img as HTMLImageElement).dataset.src!;
+            const url = new URL((img as HTMLImageElement).dataset.src!, import.meta.url).href;
+            (img as HTMLImageElement).src = url;
         })
 
         setTimeout(() => document.body.style.overflow = 'auto', 2500)
