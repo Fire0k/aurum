@@ -826,10 +826,6 @@ function createPageState() {
         prevStep--;
       }
     };
-    document.querySelectorAll('[data-version="desktop"]').forEach((img) => {
-      const url = new URL(img.dataset.src, import.meta.url).href;
-      img.src = url;
-    });
     const tl = gsapWithCSS.timeline({ paused: true });
     const sectionsTools = getDesktopSectionsTools(tl);
     if (!sectionsTools) return;
@@ -867,10 +863,6 @@ function createPageState() {
       currentStep = 0;
     });
   } else {
-    document.querySelectorAll('[data-version="mobile"]').forEach((img) => {
-      const url = new URL(img.dataset.src, import.meta.url).href;
-      img.src = url;
-    });
     setTimeout(() => document.body.style.overflow = "auto", 2500);
     const tl = gsapWithCSS.timeline({
       scrollTrigger: {
