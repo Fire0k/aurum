@@ -42,7 +42,6 @@ function createPageObserver(onDownCallback, onUpCallback) {
     target: window,
     tolerance: 50,
     preventDefault: true,
-    ignore: document.getElementById("application-form"),
     onDown() {
       onDownCallback();
     },
@@ -170,28 +169,6 @@ function initFullpageSlider(sliderElement, buttonsElement) {
   });
 }
 
-function initMobileSlider(sliderElement) {
-  new Swiper(sliderElement, {
-    // modules: [EffectCreative],
-    // effect: 'creative',
-    // creativeEffect: {
-    //     prev: {
-    //         translate: ["-20%", 0, -1],
-    //     },
-    //         next: {
-    //         translate: ["100%", 0, 0],
-    //     },
-    // },
-    modules: [EffectFade],
-    effect: "fade",
-    fadeEffect: {
-      crossFade: true
-    },
-    speed: 700,
-    loop: true
-  });
-}
-
 function createPremiumClassDesktopState(sectionElement, tl, startStep) {
   const maxStep = startStep + 6;
   const headerElement = document.querySelector("header");
@@ -207,7 +184,7 @@ function createPremiumClassDesktopState(sectionElement, tl, startStep) {
   images.forEach((wrapper) => {
     const swiper = wrapper.querySelector(".desktop-slider");
     if (!swiper) return;
-    const buttons = wrapper.querySelector(".desktop-slider-buttons");
+    const buttons = wrapper.querySelector(".slider-buttons");
     if (!buttons) return;
     initFullpageSlider(swiper, buttons);
   });
@@ -341,7 +318,9 @@ function createPremiumClassMobileState(sectionElement, tl, startStep) {
   sliders.forEach((wrapper) => {
     const swiper = wrapper.querySelector(".mobile-swiper");
     if (!swiper) return;
-    initMobileSlider(swiper);
+    const buttons = wrapper.querySelector(".slider-buttons");
+    if (!buttons) return;
+    initFullpageSlider(swiper, buttons);
   });
   tl.to(sectionElement, {
     duration: 1,
@@ -572,7 +551,6 @@ function createImprovementDesktopState(sectionElement, tl, startStep) {
   const maxStep = startStep + 3;
   const backgroundElement = document.querySelector(".improvement-background");
   const filterElement = document.querySelector(".filter");
-  const nextSectionTitleElement = sectionElement.querySelector(".section-title");
   const sliderElement = sectionElement.querySelector(".half-slider");
   const sliderTextElements = sliderElement.querySelector(".half-slider-text");
   const sliderImagesElement = sliderElement.querySelector(".half-slider-img");
@@ -598,7 +576,6 @@ function createImprovementDesktopState(sectionElement, tl, startStep) {
     yPercent: -100,
     scale: 1.2
   });
-  tl.set(nextSectionTitleElement, { yPercent: 50 });
   tl.set(filterElement, { zIndex: 9 });
   tl.addLabel(`${startStep + 2}`);
   tl.set(sectionElement, { yPercent: -100 });
@@ -627,12 +604,6 @@ function createImprovementDesktopState(sectionElement, tl, startStep) {
     height: 0
   }, "<");
   tl.set(sliderElement, { display: "none" });
-  tl.to(nextSectionTitleElement, {
-    duration: 1.5,
-    ease: "power1.out",
-    opacity: 1,
-    yPercent: -50
-  });
   return {
     maxStep
   };
@@ -648,133 +619,10 @@ function createImprovementMobileState(sectionElement, tl, startStep) {
   sliders.forEach((wrapper) => {
     const swiper = wrapper.querySelector(".mobile-swiper");
     if (!swiper) return;
-    initMobileSlider(swiper);
-  });
-  tl.to(sectionElement, {
-    duration: 1,
-    ease: "none",
-    yPercent: -100
-  }, "<").to(titleImageWrapperElement, {
-    duration: 1,
-    ease: "none",
-    height: "100%"
-  }, "<");
-  tl.addLabel(`${startStep + 1}`);
-  tl.to(mobileTitleElement, {
-    duration: 1,
-    ease: "none",
-    opacity: 0,
-    height: "30%",
-    display: "none"
-  }).fromTo(sliderElement, { yPercent: 100 }, {
-    duration: 1,
-    ease: "none",
-    yPercent: 0
-  });
-  tl.addLabel(`${startStep + 2}`);
-  tl.to(sliders[0], {
-    duration: 1,
-    ease: "none",
-    yPercent: -5
-  }).to(sliders[0].querySelector(".slide-text"), {
-    duration: 1,
-    ease: "none",
-    opacity: 0,
-    height: 0
-  }, "<");
-  tl.addLabel(`${startStep + 3}`);
-  tl.to(sectionElement, {
-    duration: 1,
-    ease: "none",
-    opacity: 0
-  });
-  return {
-    maxStep
-  };
-}
-
-function createDesignAndInteriorDesktopState(sectionElement, tl, startStep) {
-  const maxStep = startStep + 3;
-  const backgroundElement = document.querySelector(".design-and-interior-background");
-  const filterElement = document.querySelector(".filter");
-  const nextSectionTitleElement = sectionElement.querySelector(".section-title");
-  const sliderElement = sectionElement.querySelector(".half-slider");
-  const sliderTextElements = sliderElement.querySelector(".half-slider-text");
-  const sliderImagesElement = sliderElement.querySelector(".half-slider-img");
-  const texts = Array.from(sliderTextElements.querySelectorAll(`.text-wrapper`));
-  const images = Array.from(sliderImagesElement.querySelectorAll(`.img-wrapper`));
-  images.forEach((wrapper) => {
-    const swiper = wrapper.querySelector(".desktop-slider");
-    if (!swiper) return;
-    const buttons = wrapper.querySelector(".desktop-slider-buttons");
+    const buttons = wrapper.querySelector(".slider-buttons");
     if (!buttons) return;
     initFullpageSlider(swiper, buttons);
   });
-  tl.to(backgroundElement, {
-    duration: 1.5,
-    ease: "power1.out",
-    scale: 0.9,
-    yPercent: -20
-  }, "<");
-  tl.addLabel(`${startStep + 1}`);
-  tl.to(backgroundElement, {
-    duration: 2,
-    ease: "power1.in",
-    yPercent: -100,
-    scale: 1.2
-  });
-  tl.set(nextSectionTitleElement, { yPercent: 50 });
-  tl.set(filterElement, { zIndex: 12 });
-  tl.addLabel(`${startStep + 2}`);
-  tl.set(sectionElement, { yPercent: -100 });
-  tl.to(backgroundElement, {
-    duration: 1,
-    ease: "power1.in",
-    opacity: 0.2
-  }).to(texts[0], {
-    duration: 1,
-    ease: "power1.in",
-    opacity: 1
-  }, "<").to(images[0], {
-    duration: 1,
-    ease: "power1.in",
-    opacity: 1
-  }, "<");
-  tl.addLabel(`${startStep + 3}`);
-  tl.to(texts[0], {
-    duration: 1,
-    ease: "power1.in",
-    opacity: 0,
-    yPercent: 20
-  }).to(sliderImagesElement, {
-    duration: 1,
-    ease: "power1.in",
-    height: 0
-  }, "<");
-  tl.set(sliderElement, { display: "none" });
-  tl.to(nextSectionTitleElement, {
-    duration: 1.5,
-    ease: "power1.out",
-    opacity: 1,
-    yPercent: -50
-  });
-  return {
-    maxStep
-  };
-}
-function createDesignAndInteriorMobileState(sectionElement, tl, startStep) {
-  const maxStep = startStep + 3;
-  const mobileTitleElement = sectionElement.querySelector(".mobile-section-title-wrapper");
-  const titleImageElement = mobileTitleElement.querySelector(".mobile-img");
-  const titleImageWrapperElement = titleImageElement.querySelector(".img-wrapper");
-  titleImageWrapperElement.querySelector("img").style.height = `${titleImageElement.getBoundingClientRect().height}px`;
-  const sliderElement = sectionElement.querySelector(".mobile-slider");
-  const sliders = sliderElement.querySelectorAll(".slide-wrapper");
-  sliders.forEach((wrapper) => {
-    const swiper = wrapper.querySelector(".mobile-swiper");
-    if (!swiper) return;
-    initMobileSlider(swiper);
-  });
   tl.to(sectionElement, {
     duration: 1,
     ease: "none",
@@ -793,207 +641,6 @@ function createDesignAndInteriorMobileState(sectionElement, tl, startStep) {
     display: "none"
   }).fromTo(sliderElement, { yPercent: 100 }, {
     duration: 1,
-    ease: "none",
-    yPercent: 0
-  });
-  tl.addLabel(`${startStep + 2}`);
-  tl.to(sliders[0], {
-    duration: 1,
-    ease: "none",
-    yPercent: -5
-  }).to(sliders[0].querySelector(".slide-text"), {
-    duration: 1,
-    ease: "none",
-    opacity: 0,
-    height: 0
-  }, "<");
-  tl.addLabel(`${startStep + 3}`);
-  tl.to(sectionElement, {
-    duration: 1,
-    ease: "none",
-    opacity: 0
-  });
-  return {
-    maxStep
-  };
-}
-
-function createApartmentsDesktopState(sectionElement, tl, startStep) {
-  const maxStep = startStep + 2;
-  const backgroundElement = document.querySelector(".apartments-background");
-  const filterElement = document.querySelector(".filter");
-  const nextSectionTitleElement = sectionElement.querySelector(".section-title");
-  const sliderElement = backgroundElement.querySelector(".desktop-slider");
-  const buttonsElement = sectionElement.querySelector(".desktop-slider-buttons");
-  initFullpageSlider(sliderElement, buttonsElement);
-  tl.to(backgroundElement, {
-    duration: 1.5,
-    ease: "power1.out",
-    scale: 0.9,
-    yPercent: -20
-  }, "<");
-  tl.addLabel(`${startStep + 1}`);
-  tl.to(backgroundElement, {
-    duration: 2,
-    ease: "power1.in",
-    yPercent: -100,
-    scale: 1.2
-  });
-  tl.set(nextSectionTitleElement, { yPercent: 50 });
-  tl.set(filterElement, { zIndex: 15 });
-  tl.set(sectionElement, { yPercent: -100 });
-  tl.to(buttonsElement, {
-    duration: 0.5,
-    ease: "none",
-    opacity: 1
-  });
-  tl.addLabel(`${startStep + 2}`);
-  tl.to(backgroundElement, {
-    duration: 1,
-    ease: "power1.in",
-    opacity: 0.2
-  }).to(buttonsElement, {
-    duration: 1,
-    ease: "power1.in",
-    opacity: 0
-  }, "<").to(nextSectionTitleElement, {
-    duration: 1.5,
-    ease: "power1.out",
-    opacity: 1,
-    yPercent: -50
-  });
-  return {
-    maxStep
-  };
-}
-function createApartmentsMobileState(sectionElement, tl, startStep) {
-  const maxStep = startStep + 3;
-  const mobileTitleElement = sectionElement.querySelector(".mobile-section-title-wrapper");
-  const titleImageElement = mobileTitleElement.querySelector(".mobile-img");
-  const titleImageWrapperElement = titleImageElement.querySelector(".img-wrapper");
-  titleImageWrapperElement.querySelector("img").style.height = `${titleImageElement.getBoundingClientRect().height}px`;
-  const sliderElement = sectionElement.querySelector(".mobile-slider");
-  const sliders = sliderElement.querySelectorAll(".slide-wrapper");
-  sliders.forEach((wrapper) => {
-    const swiper = wrapper.querySelector(".mobile-swiper");
-    if (!swiper) return;
-    initMobileSlider(swiper);
-  });
-  tl.to(sectionElement, {
-    duration: 1,
-    ease: "none",
-    yPercent: -100
-  }, "<").to(titleImageWrapperElement, {
-    duration: 1,
-    ease: "none",
-    height: "100%"
-  }, "<");
-  tl.addLabel(`${startStep + 1}`);
-  tl.to(mobileTitleElement, {
-    duration: 1,
-    ease: "none",
-    opacity: 0,
-    height: "30%",
-    display: "none"
-  }).fromTo(sliderElement, { yPercent: 100 }, {
-    duration: 1,
-    ease: "none",
-    yPercent: 0
-  });
-  tl.addLabel(`${startStep + 2}`);
-  tl.to(sliders[0], {
-    duration: 1,
-    ease: "none",
-    yPercent: -5
-  }).to(sliders[0].querySelector(".slide-text"), {
-    duration: 1,
-    ease: "none",
-    opacity: 0,
-    height: 0
-  }, "<");
-  tl.addLabel(`${startStep + 3}`);
-  tl.to(sectionElement, {
-    duration: 1,
-    ease: "none",
-    opacity: 0
-  });
-  return {
-    maxStep
-  };
-}
-
-function createPenthousesDesktopState(sectionElement, tl, startStep) {
-  const maxStep = startStep + 2;
-  const backgroundElement = document.querySelector(".penthouses-background");
-  const filterElement = document.querySelector(".filter");
-  const sliderElement = backgroundElement.querySelector(".desktop-slider");
-  const buttonsElement = sectionElement.querySelector(".desktop-slider-buttons");
-  initFullpageSlider(sliderElement, buttonsElement);
-  tl.to(backgroundElement, {
-    duration: 1.5,
-    ease: "power1.out",
-    scale: 0.9,
-    yPercent: -20
-  }, "<");
-  tl.addLabel(`${startStep + 1}`);
-  tl.to(backgroundElement, {
-    duration: 2,
-    ease: "power1.in",
-    yPercent: -100,
-    scale: 1.2
-  });
-  tl.set(filterElement, { zIndex: 18 });
-  tl.set(sectionElement, { yPercent: -100 });
-  tl.to(buttonsElement, {
-    duration: 0.5,
-    ease: "none",
-    opacity: 1
-  });
-  tl.addLabel(`${startStep + 2}`);
-  tl.to(backgroundElement, {
-    duration: 1,
-    ease: "power1.in",
-    opacity: 0.2
-  }).to(buttonsElement, {
-    duration: 1,
-    ease: "power1.in",
-    opacity: 0
-  }, "<");
-  return {
-    maxStep
-  };
-}
-function createPenthousesMobileState(sectionElement, tl, startStep) {
-  const maxStep = startStep + 3;
-  const mobileTitleElement = sectionElement.querySelector(".mobile-section-title-wrapper");
-  const titleImageElement = mobileTitleElement.querySelector(".mobile-img");
-  const titleImageWrapperElement = titleImageElement.querySelector(".img-wrapper");
-  titleImageWrapperElement.querySelector("img").style.height = `${titleImageElement.getBoundingClientRect().height}px`;
-  const sliderElement = sectionElement.querySelector(".mobile-slider");
-  const sliders = sliderElement.querySelectorAll(".slide-wrapper");
-  sliders.forEach((wrapper) => {
-    const swiper = wrapper.querySelector(".mobile-swiper");
-    if (!swiper) return;
-    initMobileSlider(swiper);
-  });
-  tl.to(sectionElement, {
-    duration: 1,
-    ease: "none",
-    yPercent: -100
-  }, "<").to(titleImageWrapperElement, {
-    duration: 1,
-    ease: "none",
-    height: "100%"
-  }, "<");
-  tl.addLabel(`${startStep + 1}`);
-  tl.to(mobileTitleElement, {
-    duration: 1,
-    ease: "none",
-    opacity: 0,
-    height: "30%",
-    display: "none"
-  }).fromTo(sliderElement, { yPercent: 100 }, {
-    duration: 1.5,
     ease: "none",
     yPercent: 0
   });
@@ -1068,18 +715,12 @@ function getSections() {
   const premiumClassSection = document.getElementById("premium-class");
   const safetyAndComfortSection = document.getElementById("safety-and-comfort");
   const improvementSection = document.getElementById("improvement");
-  const designAndInteriorSection = document.getElementById("design-and-interior");
-  const apartmentsSection = document.getElementById("apartments");
-  const penthousesSection = document.getElementById("penthouses");
   const applicationFormSection = document.getElementById("application-form");
   if (![
     firstScreenSection,
     premiumClassSection,
     safetyAndComfortSection,
     improvementSection,
-    designAndInteriorSection,
-    apartmentsSection,
-    penthousesSection,
     applicationFormSection
   ].every((sectionEl) => !!sectionEl)) return null;
   return {
@@ -1087,9 +728,6 @@ function getSections() {
     premiumClassSection,
     safetyAndComfortSection,
     improvementSection,
-    designAndInteriorSection,
-    apartmentsSection,
-    penthousesSection,
     applicationFormSection
   };
 }
@@ -1101,10 +739,7 @@ function getDesktopSectionsTools(tl) {
   tools.push(createPremiumClassDesktopState(sections.premiumClassSection, tl, tools[0].maxStep));
   tools.push(createSafetyAndComfortDesktopState(sections.safetyAndComfortSection, tl, tools[1].maxStep));
   tools.push(createImprovementDesktopState(sections.improvementSection, tl, tools[2].maxStep));
-  tools.push(createDesignAndInteriorDesktopState(sections.designAndInteriorSection, tl, tools[3].maxStep));
-  tools.push(createApartmentsDesktopState(sections.apartmentsSection, tl, tools[4].maxStep));
-  tools.push(createPenthousesDesktopState(sections.penthousesSection, tl, tools[5].maxStep));
-  tools.push(createApplicationFormDesktopState(sections.applicationFormSection, tl, tools[6].maxStep));
+  tools.push(createApplicationFormDesktopState(sections.applicationFormSection, tl, tools[3].maxStep));
   return tools;
 }
 function getMobileSectionTools(tl) {
@@ -1115,10 +750,7 @@ function getMobileSectionTools(tl) {
   tools.push(createPremiumClassMobileState(sections.premiumClassSection, tl, tools[0].maxStep));
   tools.push(createSafetyAndComfortMobileState(sections.safetyAndComfortSection, tl, tools[1].maxStep));
   tools.push(createImprovementMobileState(sections.improvementSection, tl, tools[2].maxStep));
-  tools.push(createDesignAndInteriorMobileState(sections.designAndInteriorSection, tl, tools[3].maxStep));
-  tools.push(createApartmentsMobileState(sections.apartmentsSection, tl, tools[4].maxStep));
-  tools.push(createPenthousesMobileState(sections.penthousesSection, tl, tools[5].maxStep));
-  tools.push(createApplicationFormMobileState(sections.applicationFormSection, tl, tools[6].maxStep));
+  tools.push(createApplicationFormMobileState(sections.applicationFormSection, tl, tools[3].maxStep));
   return tools;
 }
 
@@ -1194,6 +826,9 @@ function createPageState() {
         prevStep--;
       }
     };
+    document.querySelectorAll('[data-version="desktop"]').forEach((img) => {
+      img.src = img.dataset.src;
+    });
     const tl = gsapWithCSS.timeline({ paused: true });
     const sectionsTools = getDesktopSectionsTools(tl);
     if (!sectionsTools) return;
@@ -1231,6 +866,9 @@ function createPageState() {
       currentStep = 0;
     });
   } else {
+    document.querySelectorAll('[data-version="mobile"]').forEach((img) => {
+      img.src = img.dataset.src;
+    });
     setTimeout(() => document.body.style.overflow = "auto", 2500);
     const tl = gsapWithCSS.timeline({
       scrollTrigger: {
@@ -1238,56 +876,6 @@ function createPageState() {
         start: "top top",
         end: "bottom bottom",
         scrub: 1
-        // snap: {
-        //     snapTo: (progress, self) => {
-        //         const labels = Object.values(self.animation.labels)
-        //         const duration = self.animation.duration()
-        //         // текущая позиция таймлайна
-        //         const currentTime = progress * duration
-        //         if (self.direction > 0) {
-        //             // 🔽 скролл вниз → ищем следующий label
-        //             for (let i = 0; i < labels.length; i++) {
-        //             if (labels[i] > currentTime) {
-        //                 return labels[i] / duration
-        //             }
-        //             }
-        //             return 1 // если в конце
-        //         } else {
-        //             // 🔼 скролл вверх → ищем предыдущий label
-        //             for (let i = labels.length - 1; i >= 0; i--) {
-        //             if (labels[i] < currentTime) {
-        //                 return labels[i] / duration
-        //             }
-        //             }
-        //             return 0 // если в начале
-        //         }
-        //     },
-        //     duration: 0.5,
-        //     delay: 0,
-        //     ease: "none"
-        // },
-        // snapTo: (progress, self) => {
-        //     const tl = self.animation
-        //     const duration = tl.duration()
-        //     const currentTime = progress * duration
-        //     const labels = Object.values(tl.labels)
-        //     const threshold = 2 // 🔥 зона прилипания (в секундах таймлайна)
-        //     let closest = null
-        //     let minDistance = Infinity
-        //     for (let i = 0; i < labels.length; i++) {
-        //         const dist = Math.abs(labels[i] - currentTime)
-        //         if (dist < minDistance) {
-        //         minDistance = dist
-        //         closest = labels[i]
-        //         }
-        //     }
-        //     // 👉 если близко к лейблу — снапим
-        //     if (minDistance <= threshold) {
-        //         return closest / duration
-        //     }
-        //     // 👉 если далеко — НЕ снапим (остаёмся где есть)
-        //     return progress
-        // }
       }
     });
     const sectionsTools = getMobileSectionTools(tl);

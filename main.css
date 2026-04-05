@@ -438,18 +438,18 @@ header .header-wrapper .logo-main {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.desktop-slider-buttons {
+.slider-buttons {
   position: absolute;
   width: 100%;
   top: 50%;
   transform: translateY(-50%);
-  padding: 0 70px;
+  padding: 0 20px;
   display: flex;
   justify-content: space-between;
   z-index: 5;
   opacity: 0;
 }
-.desktop-slider-buttons .slider-button {
+.slider-buttons .slider-button {
   width: 64px;
   height: 64px;
   border-radius: 50%;
@@ -458,19 +458,19 @@ header .header-wrapper .logo-main {
   align-items: center;
   justify-content: center;
 }
-.desktop-slider-buttons .slider-button.prev {
+.slider-buttons .slider-button.prev {
   background-color: #ffffff;
 }
-.desktop-slider-buttons .slider-button.next {
+.slider-buttons .slider-button.next {
   background-color: #1C1C1C;
 }
-.desktop-slider-buttons .swiper-button-prev,
-.desktop-slider-buttons .swiper-button-next {
+.slider-buttons .swiper-button-prev,
+.slider-buttons .swiper-button-next {
   margin-top: 0;
   position: unset;
 }
-.desktop-slider-buttons .swiper-button-prev svg,
-.desktop-slider-buttons .swiper-button-next svg {
+.slider-buttons .swiper-button-prev svg,
+.slider-buttons .swiper-button-next svg {
   display: none;
 }
 .section-background {
@@ -516,9 +516,8 @@ header .header-wrapper .logo-main {
   height: 100%;
   position: relative;
 }
-.section-wrapper .half-slider .half-slider-img .desktop-slider-buttons {
+.section-wrapper .half-slider .half-slider-img .slider-buttons {
   opacity: 1;
-  padding: 0 20px;
 }
 .section-wrapper .half-slider .half-slider-img .img-wrapper {
   position: absolute;
@@ -630,35 +629,8 @@ header .header-wrapper .logo-main {
 #improvement {
   z-index: 11;
 }
-.design-and-interior-background {
-  z-index: 13;
-}
-#design-and-interior {
-  z-index: 14;
-}
-.apartments-background {
-  z-index: 16;
-}
-#apartments {
-  z-index: 17;
-}
-.penthouses-background {
-  z-index: 19;
-}
-#penthouses {
-  z-index: 20;
-}
-#penthouses .swiper-button-prev,
-#penthouses .swiper-button-next {
-  margin-top: 0;
-  position: unset;
-}
-#penthouses .swiper-button-prev svg,
-#penthouses .swiper-button-next svg {
-  display: none;
-}
 #application-form {
-  z-index: 22;
+  z-index: 13;
   opacity: 0;
   will-change: transform, opacity;
 }
@@ -683,11 +655,11 @@ footer {
   header .header-wrapper .info-block .phone {
     font-size: 44px;
   }
-  .desktop-slider-buttons .slider-button {
+  .slider-buttons .slider-button {
     width: 94px;
     height: 94px;
   }
-  .desktop-slider-buttons .slider-button > img {
+  .slider-buttons .slider-button > img {
     width: 44px;
     height: 44px;
   }
@@ -910,6 +882,9 @@ footer {
   .mobile-slider {
     display: block;
   }
+  .mobile-slider .slider-buttons {
+    opacity: 1;
+  }
   .mobile-slider .slide-wrapper .slide-img > img {
     height: auto;
     width: 100%;
@@ -931,9 +906,6 @@ footer {
   }
   .tags {
     font-size: 16px;
-  }
-  .section-wrapper .desktop-slider-buttons {
-    display: none;
   }
   .section-wrapper .half-slider {
     display: none;
