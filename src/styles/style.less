@@ -127,12 +127,12 @@ header {
     }
 }
 
-.desktop-slider-buttons {
+.slider-buttons {
     position: absolute;
     width: 100%;
     top: 50%;
     transform: translateY(-50%);
-    padding: 0 70px;
+    padding: 0 20px;
     display: flex;
     justify-content: space-between;
     z-index: 5;
@@ -216,9 +216,8 @@ header {
             height: 100%;
             position: relative;
 
-            .desktop-slider-buttons {
+            .slider-buttons {
                 opacity: 1;
-                padding: 0 20px;
             }
 
             .img-wrapper {
@@ -358,41 +357,8 @@ header {
     z-index: 11;
 }
 
-.design-and-interior-background {
-    z-index: 13;
-}
-
-#design-and-interior {
-    z-index: 14;
-}
-
-.apartments-background {
-    z-index: 16;
-}
-
-#apartments {
-    z-index: 17;
-}
-
-.penthouses-background {
-    z-index: 19;
-}
-
-#penthouses {
-    z-index: 20;
-
-    .swiper-button-prev, .swiper-button-next {
-        margin-top: 0;
-        position: unset;
-
-        svg {
-            display: none;
-        }
-    }
-}
-
 #application-form {
-    z-index: 22;
+    z-index: 13;
     opacity: 0;
     will-change: transform, opacity;
 }
@@ -434,7 +400,7 @@ footer {
         }
     }
 
-    .desktop-slider-buttons {
+    .slider-buttons {
         .slider-button {
             width: 94px;
             height: 94px;
@@ -788,6 +754,10 @@ footer {
     .mobile-slider {
         display: block;
 
+        .slider-buttons {
+            opacity: 1;
+        }
+
         .slide-wrapper {
             .slide-img {
                 > img {
@@ -821,10 +791,6 @@ footer {
     }
 
     .section-wrapper {
-        .desktop-slider-buttons {
-            display: none;
-        }
-
         .half-slider {
             display: none;
         }

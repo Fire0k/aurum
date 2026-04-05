@@ -8,7 +8,6 @@ export function createPageObserver(onDownCallback: () => void, onUpCallback: () 
         target: window,
         tolerance: 50,
         preventDefault: true,
-        ignore: document.getElementById('application-form'),
 
         onDown() {
             onDownCallback();

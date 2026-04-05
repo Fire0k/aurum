@@ -2,7 +2,6 @@ import gsap from "gsap";
 
 import { SectionTools } from '../types';
 import { initFullpageSlider } from './init-fullpage-slider';
-import { initMobileSlider } from './init-mobile-slider';
 
 
 export function createImprovementDesktopState(
@@ -15,7 +14,6 @@ export function createImprovementDesktopState(
     const backgroundElement = document.querySelector('.improvement-background')!;
 
     const filterElement = document.querySelector('.filter');
-    const nextSectionTitleElement = sectionElement.querySelector('.section-title');
 
     const sliderElement = sectionElement.querySelector('.half-slider')!;
     const sliderTextElements = sliderElement.querySelector('.half-slider-text')!;
@@ -49,7 +47,6 @@ export function createImprovementDesktopState(
         scale: 1.2,
     });
 
-    tl.set(nextSectionTitleElement, { yPercent: 50 })
     tl.set(filterElement, { zIndex: 9 })
 
     tl.addLabel(`${startStep + 2}`);
@@ -85,13 +82,6 @@ export function createImprovementDesktopState(
 
     tl.set(sliderElement, { display: 'none' })
 
-    tl.to(nextSectionTitleElement, {
-        duration: 1.5,
-        ease: 'power1.out',
-        opacity: 1,
-        yPercent: -50,
-    })
-
     return {
         maxStep,
     }
@@ -116,7 +106,10 @@ export function createImprovementMobileState(
         const swiper = wrapper.querySelector('.mobile-swiper');
         if (!swiper) return;
 
-        initMobileSlider(swiper);
+        const buttons = wrapper.querySelector('.slider-buttons');
+        if (!buttons) return;
+
+        initFullpageSlider(swiper, buttons);
     })
 
     tl.to(sectionElement, { 

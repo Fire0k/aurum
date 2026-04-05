@@ -2,7 +2,6 @@ import gsap from "gsap";
 
 import { SectionTools } from '../types';
 import { initFullpageSlider } from './init-fullpage-slider';
-import { initMobileSlider } from './init-mobile-slider';
 
 
 export function createPremiumClassDesktopState(
@@ -31,7 +30,7 @@ export function createPremiumClassDesktopState(
         const swiper = wrapper.querySelector('.desktop-slider');
         if (!swiper) return;
 
-        const buttons = wrapper.querySelector('.desktop-slider-buttons');
+        const buttons = wrapper.querySelector('.slider-buttons');
         if (!buttons) return;
 
         initFullpageSlider(swiper, buttons);
@@ -193,7 +192,10 @@ export function createPremiumClassMobileState(
         const swiper = wrapper.querySelector('.mobile-swiper');
         if (!swiper) return;
 
-        initMobileSlider(swiper);
+        const buttons = wrapper.querySelector('.slider-buttons');
+        if (!buttons) return;
+
+        initFullpageSlider(swiper, buttons);
     })
 
     tl.to(sectionElement, { 
