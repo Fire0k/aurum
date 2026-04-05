@@ -953,8 +953,8 @@ footer {
     display: none;
   }
   #first-section .mask {
-    transform-origin: 50% 0;
-    mask-size: 100% 100%, auto 95%;
+    transform-origin: 50% 20%;
+    mask-size: 100% 100%, auto 70%;
     transition-delay: 1s;
   }
   #first-section .section-title-wrapper {

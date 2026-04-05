@@ -444,6 +444,13 @@ function createSafetyAndComfortDesktopState(sectionElement, tl, startStep) {
   const sliderImagesElement = sliderElement.querySelector(".half-slider-img");
   const texts = Array.from(sliderTextElements.querySelectorAll(`.text-wrapper`));
   const images = Array.from(sliderImagesElement.querySelectorAll(`.img-wrapper`));
+  images.forEach((wrapper) => {
+    const swiper = wrapper.querySelector(".desktop-slider");
+    if (!swiper) return;
+    const buttons = wrapper.querySelector(".slider-buttons");
+    if (!buttons) return;
+    initFullpageSlider(swiper, buttons);
+  });
   tl.to(backgroundElement, {
     duration: 1.5,
     ease: "power1.out",
@@ -504,6 +511,13 @@ function createSafetyAndComfortMobileState(sectionElement, tl, startStep) {
   titleImageWrapperElement.querySelector("img").style.height = `${titleImageElement.getBoundingClientRect().height}px`;
   const sliderElement = sectionElement.querySelector(".mobile-slider");
   const sliders = sliderElement.querySelectorAll(".slide-wrapper");
+  sliders.forEach((wrapper) => {
+    const swiper = wrapper.querySelector(".mobile-swiper");
+    if (!swiper) return;
+    const buttons = wrapper.querySelector(".slider-buttons");
+    if (!buttons) return;
+    initFullpageSlider(swiper, buttons);
+  });
   tl.to(sectionElement, {
     duration: 1,
     ease: "none",
@@ -559,7 +573,7 @@ function createImprovementDesktopState(sectionElement, tl, startStep) {
   images.forEach((wrapper) => {
     const swiper = wrapper.querySelector(".desktop-slider");
     if (!swiper) return;
-    const buttons = wrapper.querySelector(".desktop-slider-buttons");
+    const buttons = wrapper.querySelector(".slider-buttons");
     if (!buttons) return;
     initFullpageSlider(swiper, buttons);
   });
