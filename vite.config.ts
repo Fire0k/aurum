@@ -41,23 +41,4 @@ export default defineConfig({
       }
     }
   },
-  // plugins: [
-  //   viteImagemin({
-  //     gifsicle: {
-  //       optimizationLevel: 7,
-  //       interlaced: false,
-  //     },
-  //     optipng: {
-  //       optimizationLevel: 7,
-  //     },
-  //     mozjpeg: {
-  //       quality: 80,
-  //       progressive: true,
-  //     },
-  //     pngquant: {
-  //       quality: [0.65, 0.8],
-  //       speed: 3,
-  //     },
-  //   }),
-  // ],
 })

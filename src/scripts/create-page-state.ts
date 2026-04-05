@@ -33,11 +33,6 @@ export function createPageState() {
     const isMobile = window.innerWidth <= 992;
 
     if (!isMobile) {
-        document.querySelectorAll('[data-version="desktop"]').forEach(img => {
-            const url = new URL((img as HTMLImageElement).dataset.src!, import.meta.url).href;
-            (img as HTMLImageElement).src = url;
-        })
-
         const tl = gsap.timeline({ paused: true });
 
         const sectionsTools = getDesktopSectionsTools(tl) as SectionTools[];
@@ -111,11 +106,6 @@ export function createPageState() {
             currentStep = 0;
         })
     } else {
-        document.querySelectorAll('[data-version="mobile"]').forEach(img => {
-            const url = new URL((img as HTMLImageElement).dataset.src!, import.meta.url).href;
-            (img as HTMLImageElement).src = url;
-        })
-
         setTimeout(() => document.body.style.overflow = 'auto', 2500)
 
         const tl = gsap.timeline({
