@@ -25,7 +25,7 @@ export function createImprovementDesktopState(
         const swiper = wrapper.querySelector('.desktop-slider');
         if (!swiper) return;
 
-        const buttons = wrapper.querySelector('.desktop-slider-buttons');
+        const buttons = wrapper.querySelector('.slider-buttons');
         if (!buttons) return;
 
         initFullpageSlider(swiper, buttons);

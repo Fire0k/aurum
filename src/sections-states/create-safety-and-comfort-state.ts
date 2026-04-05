@@ -1,6 +1,7 @@
 import gsap from "gsap";
 
 import { SectionTools } from '../types';
+import { initFullpageSlider } from './init-fullpage-slider';
 
 
 export function createSafetyAndComfortDesktopState(
@@ -20,6 +21,16 @@ export function createSafetyAndComfortDesktopState(
     const sliderImagesElement = sliderElement.querySelector('.half-slider-img')!;
     const texts = Array.from(sliderTextElements.querySelectorAll(`.text-wrapper`));
     const images = Array.from(sliderImagesElement.querySelectorAll(`.img-wrapper`));
+
+    images.forEach((wrapper) => {
+        const swiper = wrapper.querySelector('.desktop-slider');
+        if (!swiper) return;
+
+        const buttons = wrapper.querySelector('.slider-buttons');
+        if (!buttons) return;
+
+        initFullpageSlider(swiper, buttons);
+    })
 
     tl.to(backgroundElement, {
         duration: 1.5,
@@ -99,6 +110,16 @@ export function createSafetyAndComfortMobileState(
 
     const sliderElement = sectionElement.querySelector('.mobile-slider')!;
     const sliders = sliderElement.querySelectorAll('.slide-wrapper');
+
+    sliders.forEach((wrapper) => {
+        const swiper = wrapper.querySelector('.mobile-swiper');
+        if (!swiper) return;
+
+        const buttons = wrapper.querySelector('.slider-buttons');
+        if (!buttons) return;
+
+        initFullpageSlider(swiper, buttons);
+    })
 
     tl.to(sectionElement, { 
         duration: 1,
