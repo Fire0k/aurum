@@ -827,7 +827,8 @@ function createPageState() {
       }
     };
     document.querySelectorAll('[data-version="desktop"]').forEach((img) => {
-      img.src = img.dataset.src;
+      const url = new URL(img.dataset.src, import.meta.url).href;
+      img.src = url;
     });
     const tl = gsapWithCSS.timeline({ paused: true });
     const sectionsTools = getDesktopSectionsTools(tl);
@@ -867,7 +868,8 @@ function createPageState() {
     });
   } else {
     document.querySelectorAll('[data-version="mobile"]').forEach((img) => {
-      img.src = img.dataset.src;
+      const url = new URL(img.dataset.src, import.meta.url).href;
+      img.src = url;
     });
     setTimeout(() => document.body.style.overflow = "auto", 2500);
     const tl = gsapWithCSS.timeline({
