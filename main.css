@@ -409,6 +409,10 @@ header .header-wrapper .logo-main {
   font-size: 40px;
   font-weight: 800;
 }
+.mobile-slider .slide-wrapper .slide-text .slide-desc {
+  margin-top: 40px;
+  font-size: 30px;
+}
 .mobile-slider .slide-wrapper .slide-img {
   height: 75vh;
   overflow: hidden;
@@ -1009,6 +1013,18 @@ footer {
   }
 }
 @media (max-width: 768px) {
+  .mobile-slider .slide-wrapper .slide-text .slide-number {
+    font-size: 38px;
+    margin-top: 20px;
+  }
+  .mobile-slider .slide-wrapper .slide-text .slide-title {
+    margin-top: 20px;
+    font-size: 30px;
+  }
+  .mobile-slider .slide-wrapper .slide-text .slide-desc {
+    margin-top: 20px;
+    font-size: 20px;
+  }
   .mobile-slider .slide-wrapper .slide-img > img {
     height: 100%;
     width: auto;
