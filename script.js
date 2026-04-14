@@ -336,12 +336,13 @@ function createPremiumClassMobileState(sectionElement, tl, startStep) {
     duration: 1,
     ease: "none",
     opacity: 0,
-    height: "30%",
-    display: "none"
-  }).fromTo(sliderElement, { yPercent: 100 }, {
+    height: "30%"
+  }).to(mobileTitleElement, {
     duration: 1,
     ease: "none",
-    yPercent: 0
+    height: 0,
+    paddingTop: 0,
+    paddingBottom: 0
   });
   tl.addLabel(`${startStep + 2}`);
   tl.to(sliders[0], {
