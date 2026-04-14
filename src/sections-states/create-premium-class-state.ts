@@ -215,11 +215,12 @@ export function createPremiumClassMobileState(
         ease: "none",
         opacity: 0,
         height: '30%',
-        display: 'none'
-    }).fromTo(sliderElement, { yPercent: 100 }, {
+    }).to(mobileTitleElement, {
         duration: 1,
         ease: "none",
-        yPercent: 0,
+        height: 0,
+        paddingTop: 0,
+        paddingBottom: 0,
     })
 
     tl.addLabel(`${startStep + 2}`);
