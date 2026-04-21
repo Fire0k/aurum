@@ -44,9 +44,13 @@ function createPageObserver(onDownCallback, onUpCallback) {
     preventDefault: true,
     onDown() {
       onDownCallback();
+      observer.disable();
+      setTimeout(() => observer.enable(), 1200);
     },
     onUp() {
       onUpCallback();
+      observer.disable();
+      setTimeout(() => observer.enable(), 1200);
     }
   });
   return observer;
@@ -104,7 +108,7 @@ function createFirstScreenDesktopState(sectionElement, tl) {
   tl.set(backgroundElement, { opacity: 0.1 });
   tl.to(nextSectionTitleElement, {
     delay: 0.2,
-    duration: 1.5,
+    duration: 1,
     ease: "power1.out",
     opacity: 1,
     yPercent: -50
@@ -189,7 +193,7 @@ function createPremiumClassDesktopState(sectionElement, tl, startStep) {
     initFullpageSlider(swiper, buttons);
   });
   tl.to(backgroundElement, {
-    duration: 1.5,
+    duration: 1,
     ease: "power1.out",
     scale: 0.9,
     yPercent: -20
@@ -199,7 +203,7 @@ function createPremiumClassDesktopState(sectionElement, tl, startStep) {
     duration: 0.5,
     opacity: 1
   }).to(backgroundElement, {
-    duration: 2,
+    duration: 1.5,
     ease: "power1.in",
     yPercent: -100,
     scale: 1.2
@@ -209,27 +213,27 @@ function createPremiumClassDesktopState(sectionElement, tl, startStep) {
   tl.addLabel(`${startStep + 2}`);
   tl.set(sectionElement, { yPercent: -100 });
   tl.to(backgroundElement, {
-    duration: 1,
+    duration: 0.5,
     ease: "power1.in",
     opacity: 0.2
   }).to(texts[0], {
-    duration: 1,
+    duration: 0.5,
     ease: "power1.in",
     opacity: 1
   }, "<").to(images[0], {
-    duration: 1,
+    duration: 0.5,
     ease: "power1.in",
     opacity: 1,
     zIndex: 1
   }, "<");
   tl.addLabel(`${startStep + 3}`);
   tl.to(texts[0], {
-    duration: 1,
+    duration: 0.5,
     ease: "power1.in",
     opacity: 0,
     yPercent: 20
   }).to(images[0], {
-    duration: 1,
+    duration: 0.5,
     ease: "power1.in",
     opacity: 0,
     zIndex: 0
@@ -245,12 +249,12 @@ function createPremiumClassDesktopState(sectionElement, tl, startStep) {
   }, "<");
   tl.addLabel(`${startStep + 4}`);
   tl.to(texts[1], {
-    duration: 1,
+    duration: 0.5,
     ease: "power1.in",
     opacity: 0,
     yPercent: 20
   }).to(images[1], {
-    duration: 1,
+    duration: 0.5,
     ease: "power1.in",
     opacity: 0,
     zIndex: 0
@@ -266,12 +270,12 @@ function createPremiumClassDesktopState(sectionElement, tl, startStep) {
   }, "<");
   tl.addLabel(`${startStep + 5}`);
   tl.to(texts[2], {
-    duration: 1,
+    duration: 0.5,
     ease: "power1.in",
     opacity: 0,
     yPercent: 20
   }).to(images[2], {
-    duration: 1,
+    duration: 0.5,
     ease: "power1.in",
     opacity: 0,
     zIndex: 0
@@ -287,7 +291,7 @@ function createPremiumClassDesktopState(sectionElement, tl, startStep) {
   }, "<");
   tl.addLabel(`${startStep + 6}`);
   tl.to(texts[3], {
-    duration: 1,
+    duration: 0.5,
     ease: "power1.in",
     opacity: 0,
     yPercent: 20
@@ -298,7 +302,7 @@ function createPremiumClassDesktopState(sectionElement, tl, startStep) {
   }, "<");
   tl.set(sliderElement, { display: "none" });
   tl.to(nextSectionTitleElement, {
-    duration: 1.5,
+    duration: 1,
     ease: "power1.out",
     opacity: 1,
     yPercent: -50
@@ -323,22 +327,22 @@ function createPremiumClassMobileState(sectionElement, tl, startStep) {
     initFullpageSlider(swiper, buttons);
   });
   tl.to(sectionElement, {
-    duration: 1,
+    duration: 1.5,
     ease: "none",
     yPercent: -100
   }, "<").to(titleImageWrapperElement, {
-    duration: 1,
+    duration: 1.5,
     ease: "none",
     height: "100%"
   }, "<");
   tl.addLabel(`${startStep + 1}`);
   tl.to(mobileTitleElement, {
-    duration: 1,
+    duration: 1.5,
     ease: "none",
     opacity: 0,
     height: "30%"
   }).to(mobileTitleElement, {
-    duration: 1,
+    duration: 1.5,
     ease: "none",
     height: 0,
     paddingTop: 0,
@@ -357,7 +361,7 @@ function createPremiumClassMobileState(sectionElement, tl, startStep) {
   }, "<");
   tl.addLabel(`${startStep + 3}`);
   tl.to(sliders[0], {
-    duration: 1,
+    duration: 0.5,
     ease: "none",
     opacity: 0,
     yPercent: -10,
@@ -380,7 +384,7 @@ function createPremiumClassMobileState(sectionElement, tl, startStep) {
   }, "<");
   tl.addLabel(`${startStep + 5}`);
   tl.to(sliders[1], {
-    duration: 1,
+    duration: 0.5,
     ease: "none",
     opacity: 0,
     yPercent: -10,
@@ -403,7 +407,7 @@ function createPremiumClassMobileState(sectionElement, tl, startStep) {
   }, "<");
   tl.addLabel(`${startStep + 7}`);
   tl.to(sliders[2], {
-    duration: 1,
+    duration: 0.5,
     ease: "none",
     opacity: 0,
     yPercent: -10,
@@ -453,14 +457,14 @@ function createSafetyAndComfortDesktopState(sectionElement, tl, startStep) {
     initFullpageSlider(swiper, buttons);
   });
   tl.to(backgroundElement, {
-    duration: 1.5,
+    duration: 1,
     ease: "power1.out",
     scale: 0.9,
     yPercent: -20
   }, "<");
   tl.addLabel(`${startStep + 1}`);
   tl.to(backgroundElement, {
-    duration: 2,
+    duration: 1.5,
     ease: "power1.in",
     yPercent: -100,
     scale: 1.2
@@ -470,32 +474,32 @@ function createSafetyAndComfortDesktopState(sectionElement, tl, startStep) {
   tl.addLabel(`${startStep + 2}`);
   tl.set(sectionElement, { yPercent: -100 });
   tl.to(backgroundElement, {
-    duration: 1,
+    duration: 0.5,
     ease: "power1.in",
     opacity: 0.2
   }).to(texts[0], {
-    duration: 1,
+    duration: 0.5,
     ease: "power1.in",
     opacity: 1
   }, "<").to(images[0], {
-    duration: 1,
+    duration: 0.5,
     ease: "power1.in",
     opacity: 1
   }, "<");
   tl.addLabel(`${startStep + 3}`);
   tl.to(texts[0], {
-    duration: 1,
+    duration: 0.5,
     ease: "power1.in",
     opacity: 0,
     yPercent: 20
   }).to(sliderImagesElement, {
-    duration: 1,
+    duration: 0.5,
     ease: "power1.in",
     height: 0
   }, "<");
   tl.set(sliderElement, { display: "none" });
   tl.to(nextSectionTitleElement, {
-    duration: 1.5,
+    duration: 1,
     ease: "power1.out",
     opacity: 1,
     yPercent: -50
@@ -520,23 +524,23 @@ function createSafetyAndComfortMobileState(sectionElement, tl, startStep) {
     initFullpageSlider(swiper, buttons);
   });
   tl.to(sectionElement, {
-    duration: 1,
+    duration: 1.5,
     ease: "none",
     yPercent: -100
   }, "<").to(titleImageWrapperElement, {
-    duration: 1,
+    duration: 1.5,
     ease: "none",
     height: "100%"
   }, "<");
   tl.addLabel(`${startStep + 1}`);
   tl.to(mobileTitleElement, {
-    duration: 1,
+    duration: 1.5,
     ease: "none",
     opacity: 0,
     height: "30%",
     display: "none"
   }).fromTo(sliderElement, { yPercent: 100 }, {
-    duration: 1,
+    duration: 1.5,
     ease: "none",
     yPercent: 0
   });
@@ -579,14 +583,14 @@ function createImprovementDesktopState(sectionElement, tl, startStep) {
     initFullpageSlider(swiper, buttons);
   });
   tl.to(backgroundElement, {
-    duration: 1.5,
+    duration: 1,
     ease: "power1.out",
     scale: 0.9,
     yPercent: -20
   }, "<");
   tl.addLabel(`${startStep + 1}`);
   tl.to(backgroundElement, {
-    duration: 2,
+    duration: 1.5,
     ease: "power1.in",
     yPercent: -100,
     scale: 1.2
@@ -595,26 +599,26 @@ function createImprovementDesktopState(sectionElement, tl, startStep) {
   tl.addLabel(`${startStep + 2}`);
   tl.set(sectionElement, { yPercent: -100 });
   tl.to(backgroundElement, {
-    duration: 1,
+    duration: 0.5,
     ease: "power1.in",
     opacity: 0.2
   }).to(texts[0], {
-    duration: 1,
+    duration: 0.5,
     ease: "power1.in",
     opacity: 1
   }, "<").to(images[0], {
-    duration: 1,
+    duration: 0.5,
     ease: "power1.in",
     opacity: 1
   }, "<");
   tl.addLabel(`${startStep + 3}`);
   tl.to(texts[0], {
-    duration: 1,
+    duration: 0.5,
     ease: "power1.in",
     opacity: 0,
     yPercent: 20
   }).to(sliderImagesElement, {
-    duration: 1,
+    duration: 0.5,
     ease: "power1.in",
     height: 0
   }, "<");
@@ -639,23 +643,23 @@ function createImprovementMobileState(sectionElement, tl, startStep) {
     initFullpageSlider(swiper, buttons);
   });
   tl.to(sectionElement, {
-    duration: 1,
+    duration: 1.5,
     ease: "none",
     yPercent: -100
   }, "<").to(titleImageWrapperElement, {
-    duration: 1,
+    duration: 1.5,
     ease: "none",
     height: "100%"
   }, "<");
   tl.addLabel(`${startStep + 1}`);
   tl.to(mobileTitleElement, {
-    duration: 1,
+    duration: 1.5,
     ease: "none",
     opacity: 0,
     height: "30%",
     display: "none"
   }).fromTo(sliderElement, { yPercent: 100 }, {
-    duration: 1,
+    duration: 1.5,
     ease: "none",
     yPercent: 0
   });
@@ -686,12 +690,12 @@ function createApplicationFormDesktopState(sectionElement, tl, startStep) {
   const footerElement = document.querySelector("footer");
   tl.set(sectionElement, { yPercent: -80 });
   tl.to(sectionElement, {
-    duration: 2,
+    duration: 1,
     ease: "power1.out",
     yPercent: -100,
     opacity: 1
   }).to(footerElement, {
-    duration: 1,
+    duration: 0.5,
     ease: "power1.out",
     opacity: 1
   });
