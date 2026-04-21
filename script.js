@@ -337,12 +337,12 @@ function createPremiumClassMobileState(sectionElement, tl, startStep) {
   }, "<");
   tl.addLabel(`${startStep + 1}`);
   tl.to(mobileTitleElement, {
-    duration: 1.5,
+    duration: 1,
     ease: "none",
     opacity: 0,
     height: "30%"
   }).to(mobileTitleElement, {
-    duration: 1.5,
+    duration: 1,
     ease: "none",
     height: 0,
     paddingTop: 0,
@@ -534,13 +534,13 @@ function createSafetyAndComfortMobileState(sectionElement, tl, startStep) {
   }, "<");
   tl.addLabel(`${startStep + 1}`);
   tl.to(mobileTitleElement, {
-    duration: 1.5,
+    duration: 1,
     ease: "none",
     opacity: 0,
     height: "30%",
     display: "none"
   }).fromTo(sliderElement, { yPercent: 100 }, {
-    duration: 1.5,
+    duration: 1,
     ease: "none",
     yPercent: 0
   });
@@ -653,13 +653,13 @@ function createImprovementMobileState(sectionElement, tl, startStep) {
   }, "<");
   tl.addLabel(`${startStep + 1}`);
   tl.to(mobileTitleElement, {
-    duration: 1.5,
+    duration: 1,
     ease: "none",
     opacity: 0,
     height: "30%",
     display: "none"
   }).fromTo(sliderElement, { yPercent: 100 }, {
-    duration: 1.5,
+    duration: 1,
     ease: "none",
     yPercent: 0
   });

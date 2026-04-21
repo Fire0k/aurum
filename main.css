@@ -826,7 +826,7 @@ footer {
     background: #333333;
   }
   body .scroll-area {
-    height: 3000vh;
+    height: 2000vh;
   }
   body .scroll-area .main-page-wrapper {
     position: sticky;
