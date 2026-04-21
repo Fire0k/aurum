@@ -72,7 +72,7 @@ export function createFirstScreenDesktopState(
     
     tl.to(nextSectionTitleElement, {
         delay: 0.2,
-        duration: 1.5,
+        duration: 1,
         ease: "power1.out",
         opacity: 1,
         yPercent: -50,

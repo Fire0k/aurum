@@ -11,10 +11,14 @@ export function createPageObserver(onDownCallback: () => void, onUpCallback: () 
 
         onDown() {
             onDownCallback();
+            observer.disable();
+            setTimeout(() => observer.enable(), 1200);
         },
 
         onUp() {
             onUpCallback();
+            observer.disable();
+            setTimeout(() => observer.enable(), 1200);
         },
     });
 

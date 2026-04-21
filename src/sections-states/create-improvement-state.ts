@@ -32,7 +32,7 @@ export function createImprovementDesktopState(
     })
 
     tl.to(backgroundElement, {
-        duration: 1.5,
+        duration: 1,
         ease: 'power1.out',
         scale: 0.9,
         yPercent: -20,
@@ -41,7 +41,7 @@ export function createImprovementDesktopState(
     tl.addLabel(`${startStep + 1}`);
 
     tl.to(backgroundElement, {
-        duration: 2,
+        duration: 1.5,
         ease: "power1.in",
         yPercent: -100,
         scale: 1.2,
@@ -54,15 +54,15 @@ export function createImprovementDesktopState(
     tl.set(sectionElement, { yPercent: -100 });
 
     tl.to(backgroundElement, {
-        duration: 1,
+        duration: 0.5,
         ease: "power1.in",
         opacity: 0.2,
     }).to(texts[0], {
-        duration: 1,
+        duration: 0.5,
         ease: "power1.in",
         opacity: 1,
     }, "<").to(images[0], {
-        duration: 1,
+        duration: 0.5,
         ease: "power1.in",
         opacity: 1,
     }, "<")
@@ -70,12 +70,12 @@ export function createImprovementDesktopState(
     tl.addLabel(`${startStep + 3}`);
 
     tl.to(texts[0], {
-        duration: 1,
+        duration: 0.5,
         ease: "power1.in",
         opacity: 0,
         yPercent: 20,
     }).to(sliderImagesElement, {
-        duration: 1,
+        duration: 0.5,
         ease: "power1.in",
         height: 0,
     }, "<")
@@ -113,11 +113,11 @@ export function createImprovementMobileState(
     })
 
     tl.to(sectionElement, { 
-        duration: 1,
+        duration: 1.5,
         ease: "none",
         yPercent: -100,
     }, "<").to(titleImageWrapperElement, { 
-        duration: 1,
+        duration: 1.5,
         ease: "none",
         height: '100%',
     }, "<");
@@ -125,13 +125,13 @@ export function createImprovementMobileState(
     tl.addLabel(`${startStep + 1}`);
 
     tl.to(mobileTitleElement, {
-        duration: 1,
+        duration: 1.5,
         ease: "none",
         opacity: 0,
         height: '30%',
         display: 'none'
     }).fromTo(sliderElement, { yPercent: 100 }, {
-        duration: 1,
+        duration: 1.5,
         ease: "none",
         yPercent: 0,
     })
