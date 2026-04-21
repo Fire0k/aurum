@@ -134,13 +134,13 @@ export function createSafetyAndComfortMobileState(
     tl.addLabel(`${startStep + 1}`);
 
     tl.to(mobileTitleElement, {
-        duration: 1.5,
+        duration: 1,
         ease: "none",
         opacity: 0,
         height: '30%',
         display: 'none'
     }).fromTo(sliderElement, { yPercent: 100 }, {
-        duration: 1.5,
+        duration: 1,
         ease: "none",
         yPercent: 0,
     })

@@ -211,12 +211,12 @@ export function createPremiumClassMobileState(
     tl.addLabel(`${startStep + 1}`);
 
     tl.to(mobileTitleElement, {
-        duration: 1.5,
+        duration: 1,
         ease: "none",
         opacity: 0,
         height: '30%',
     }).to(mobileTitleElement, {
-        duration: 1.5,
+        duration: 1,
         ease: "none",
         height: 0,
         paddingTop: 0,
